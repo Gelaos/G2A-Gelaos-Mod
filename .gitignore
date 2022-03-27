@@ -1,0 +1,16 @@
+# Ignore all files in root folder
+*
+
+# Allow subfolders
+!*/
+!CONTENT/*
+!System/*
+
+# ignore all except the following:
+!*.[dD]
+!*.gitattributes
+!*.gitignore
+!*.[Mm][Dd]
+!*.[Ss][Cc][Cc]
+!*.[Ss][Rr][Cc]
+!*.[Tt][Xx][Tt]
