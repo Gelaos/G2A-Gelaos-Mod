@@ -334,6 +334,18 @@ STORY\Events\*.d
 AI\Test_Skripts\*.d
 
 STORY\B_Story\B_ENTER_DRAGONISLAND.d
+
+; ///////////////////////////////////////////////
+; Gelaos Mod
+; ///////////////////////////////////////////////
+
+\GelaosMod\Constants_And_Variables.d
+\GelaosMod\CharacterCustomization.d
+\GelaosMod\Story\NPC\*.d
+\GelaosMod\Story\Dialoge\*.d
+
+; ///////////////////////////////////////////////
+
 STORY\Startup.d
 
 

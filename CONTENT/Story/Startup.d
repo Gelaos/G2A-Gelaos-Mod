@@ -14,6 +14,11 @@ func void STARTUP_GLOBAL()
 {
 	// wird fuer jede Welt aufgerufen (vor STARTUP_<LevelName>)
 	Game_InitGerman();
+
+	// ////////////////////////////// 
+	// Gelaos Mod
+	// //////////////////////////////
+	CharacterCustomizationInitFaces();
 };
 
 func void INIT_GLOBAL()
@@ -32,6 +37,17 @@ func void INIT_GLOBAL()
 	
 	//Register console commands
 	CC_Register (CC_FMT, "fmt", "Tests, if FMT is running.");
+
+	// AFSP Enhanced InfoManager
+	G12_EnhancedInfoManager_Init ();
+
+	// ////////////////////////////// 
+	// Gelaos Mod
+	// //////////////////////////////
+
+	// set character appearance
+	var C_NPC pchero; pchero = Hlp_GetNpc(PC_Hero);
+	CharacterCustomizationApply(pchero);
 };
 
 
