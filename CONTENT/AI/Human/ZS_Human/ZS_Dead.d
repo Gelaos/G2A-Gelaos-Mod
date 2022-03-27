@@ -15,7 +15,8 @@ func void ZS_Dead ()
 	AI_StopPointAt	(self);
 		
 	// ------ XP ------
-	if ( Npc_IsPlayer(other) || (other.aivar[AIV_PARTYMEMBER]==TRUE) )
+	//if ( Npc_IsPlayer(other) || (other.aivar[AIV_PARTYMEMBER]==TRUE) )
+	if ( Npc_IsPlayer(other) )
 	&& (self.aivar[AIV_VictoryXPGiven] == FALSE)							
 	{
 		B_GivePlayerXP (self.level * XP_PER_VICTORY);			
