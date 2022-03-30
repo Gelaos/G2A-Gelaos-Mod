@@ -2,7 +2,7 @@
 // Spell_ProcessMana
 // -----------------
 // wird pro investiertem Mana aufgerufen 
-// wieviele Mana bisher investiert wurden kann Ã¼ber manaInvested abgefragt werden
+// wieviele Mana bisher investiert wurden kann über manaInvested abgefragt werden
 // diese Methode wird immer vom Caster aufgerufen
 // self 	= Der Caster
 // other 	= Das Opfer (kann auch leer sein)
@@ -21,7 +21,7 @@ func INT Spell_ProcessMana (VAR INT manaInvested)
 	if (activeSpell == SPL_PalFullHeal			)	{	return  Spell_Logic_PalFullHeal			(manaInvested); };
 	if (activeSpell == SPL_PalDestroyEvil		)	{	return  Spell_Logic_PalDestroyEvil		(manaInvested); };
 	//Teleport-Runen
-	if (activeSpell == SPL_PalTeleportSecret	)	{	return  Spell_Logic_PalTeleportSecret	(manaInvested); };
+	if (activeSpell == SPL_PalTeleportSecret	)	{	return  Spell_Logic_TeleportGeneral		(manaInvested); };
 	if (activeSpell == SPL_TeleportSeaport		)	{	return  Spell_Logic_TeleportSeaport		(manaInvested); };
 	if (activeSpell == SPL_TeleportMonastery	)	{	return  Spell_Logic_TeleportMonastery	(manaInvested); };
 	if (activeSpell == SPL_TeleportFarm			)	{	return  Spell_Logic_TeleportFarm		(manaInvested); };
