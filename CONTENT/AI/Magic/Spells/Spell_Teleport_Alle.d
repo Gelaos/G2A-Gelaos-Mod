@@ -373,8 +373,6 @@ func int Spell_Logic_TeleportGeneral (var int manaInvested)
 
 func void Spell_Cast_TeleportGeneral()
 {
-	B_PrintTeleportTooFarAway (NEWWORLD_ZEN);
-	
 	if (Npc_GetActiveSpellIsScroll(self))
 	{
 		self.attribute[ATR_MANA] = self.attribute[ATR_MANA] - SPL_Cost_Scroll;
@@ -383,9 +381,8 @@ func void Spell_Cast_TeleportGeneral()
 	{
 		self.attribute[ATR_MANA] = self.attribute[ATR_MANA] - SPL_Cost_Teleport;
 	};
-
-	//AI_Teleport		(self, "KLOSTER");
-	//AI_PlayAni		(self, "T_HEASHOOT_2_STAND" );
+	
+	MEM_Timer.factorMotion = divf (mkf(1), mkf(10));
 	AI_ProcessInfos(self);
 };
 
