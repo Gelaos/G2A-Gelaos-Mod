@@ -65,6 +65,8 @@ FUNC INT DIA_ItRu_Teleport_General_EXIT_Condition()
 };
 FUNC VOID DIA_ItRu_Teleport_General_EXIT_Info()
 {
+	MEM_Timer.factorMotion = mkf(1);
+	DIA_Teleport_Location_Reset_Selection();
 	AI_StopProcessInfos (self);
 };
 
