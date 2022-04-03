@@ -1,6 +1,6 @@
 func void CharacterCustomizationInitFaces() {
 
-    if (!CharacterCustomizationFinished) {
+    if ( CharacterCustomizationState == CHARACTERCUSTOMIZATIONSTATE_NONE ) {
 
         // face textures for bald hero 
         CharacterCustomizationFacesBaldLength = 21;
@@ -97,6 +97,11 @@ func int CharacterCustomizationGetFace() {
 // ---------------------------------------------------
 
 func void CharacterCustomizationApply(var C_NPC npc) {
+
+    if ( CharacterCustomizationState == CHARACTERCUSTOMIZATIONSTATE_NONE) {
+        return;
+    };
+
     var string headMeshStr;  
     var int faceTex;  
     

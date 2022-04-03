@@ -17,7 +17,10 @@ var int CharacterCustomizationFacesBald[21];
 var int CharacterCustomizationFacesBaldLength;
 
 var int CharacterCustomizationBaldness;
-var int CharacterCustomizationFinished;
+var int CharacterCustomizationState;
+const int CHARACTERCUSTOMIZATIONSTATE_NONE = 0;
+const int CHARACTERCUSTOMIZATIONSTATE_IN_PROGRESS = 1;
+const int CHARACTERCUSTOMIZATIONSTATE_FINISHED = 2;
 
 // /////////////////////////////////////////////////
 // Items

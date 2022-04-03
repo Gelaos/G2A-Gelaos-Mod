@@ -23,7 +23,7 @@ FUNC INT DIA_GelaosModHelper_EXIT_Condition()
 };
 FUNC VOID DIA_GelaosModHelper_EXIT_Info()
 {  
-   CharacterCustomizationFinished = true;
+   CharacterCustomizationState = CHARACTERCUSTOMIZATIONSTATE_FINISHED;
    AI_StopProcessInfos (self);   
 };
 
@@ -42,6 +42,11 @@ instance DIA_GelaosModHelper_ChangeFace (C_INFO) {
 };
 
 func int DIA_GelaosModHelper_ChangeFace_Condition() {
+      if (CharacterCustomizationState == CHARACTERCUSTOMIZATIONSTATE_FINISHED) {
+         return false;
+      };
+      CharacterCustomizationState = CHARACTERCUSTOMIZATIONSTATE_IN_PROGRESS;
+
       // set range
       changeFaceSpinnerFaceMin = 0; 
       if (CharacterCustomizationBaldness == true) {
@@ -111,7 +116,7 @@ instance DIA_GelaosModHelper_ChangeBaldness (C_INFO) {
 };
 
 func int DIA_GelaosModHelper_ChangeBaldness_Condition() {
-   return true;
+   return (CharacterCustomizationState == CHARACTERCUSTOMIZATIONSTATE_IN_PROGRESS);
 };
 
 func void DIA_GelaosModHelper_ChangeBaldness_Info() {
