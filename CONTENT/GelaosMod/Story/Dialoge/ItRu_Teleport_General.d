@@ -46,6 +46,13 @@ func void InitializeTeleportLocations() {
 	Teleport_Location_IsEnabled [ TELEPORT_OW_NEWCAMP 		] = true;
 	Teleport_Location_IsEnabled [ TELEPORT_OW_XARDAS 		] = true;
 };
+//---------------------------------------------------------------------
+func void DIA_Teleport_Location_Reset_Selection () {
+	Info_ClearChoices (DIA_Teleport_Location_NW_Nature);
+	Info_ClearChoices (DIA_Teleport_Location_NW_City);
+	Info_ClearChoices (DIA_Teleport_Location_OW_Nature);
+	TeleportLocationMainMenu = true;
+};
 
 //---------------------------------------------------------------------
 //	Info EXIT 
@@ -61,7 +68,7 @@ INSTANCE DIA_ItRu_Teleport_General_EXIT   (C_INFO)
 };
 FUNC INT DIA_ItRu_Teleport_General_EXIT_Condition()
 {
-	return false;
+	return (CurrentLevel != OLDWORLD_ZEN && CurrentLevel != NEWWORLD_ZEN);
 };
 FUNC VOID DIA_ItRu_Teleport_General_EXIT_Info()
 {
@@ -72,13 +79,6 @@ FUNC VOID DIA_ItRu_Teleport_General_EXIT_Info()
 
 //---------------------------------------------------------------------
 //	Teleport function
-//---------------------------------------------------------------------
-func void DIA_Teleport_Location_Reset_Selection () {
-	Info_ClearChoices (DIA_Teleport_Location_NW_Nature);
-	Info_ClearChoices (DIA_Teleport_Location_NW_City);
-	Info_ClearChoices (DIA_Teleport_Location_OW_Nature);
-	TeleportLocationMainMenu = true;
-};
 //---------------------------------------------------------------------
 func void TeleportHandler (var C_NPC npc, var string wp) {
 	MEM_Timer.factorMotion = mkf(1);
