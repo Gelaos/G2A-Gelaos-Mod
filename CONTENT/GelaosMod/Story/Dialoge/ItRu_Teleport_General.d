@@ -2,6 +2,8 @@
 //	Set enabled/disabled teleport locations
 //---------------------------------------------------------------------
 func void InitializeTeleportLocations() {
+	TeleportLocationMainMenu = true;
+
 	// NewWorld - nature
 	Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_PORTAL				] = true;
 	Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_PYRAMID			] = true;
@@ -69,11 +71,85 @@ FUNC VOID DIA_ItRu_Teleport_General_EXIT_Info()
 //---------------------------------------------------------------------
 //	Teleport function
 //---------------------------------------------------------------------
-func void TeleportHandler (var C_INFO info, var C_NPC npc, var string wp) {
+func void DIA_Teleport_Location_Reset_Selection () {
+	Info_ClearChoices (DIA_Teleport_Location_NW_Nature);
+	Info_ClearChoices (DIA_Teleport_Location_NW_City);
+	Info_ClearChoices (DIA_Teleport_Location_OW_Nature);
+	TeleportLocationMainMenu = true;
+};
+//---------------------------------------------------------------------
+func void TeleportHandler (var C_NPC npc, var string wp) {
 	MEM_Timer.factorMotion = mkf(1);
-	Info_ClearChoices (info);
+	DIA_Teleport_Location_Reset_Selection();
 	AI_StopProcessInfos (npc);
-	AI_Teleport (npc, wp);
+	AI_Teleport (npc, wp); // should be last statement, because this function erases AI queue
+};
+
+//---------------------------------------------------------------------
+//	Target location selection - City
+//---------------------------------------------------------------------
+INSTANCE DIA_Teleport_Location_NW_City   (C_INFO)
+{
+	npc         = PC_Hero;
+	nr          = 1;
+	condition   = DIA_Teleport_Location_NW_City_Condition;
+	information = DIA_Teleport_Location_NW_City_Info;
+	permanent   = TRUE;
+	description = "City locations -->";
+};
+FUNC INT DIA_Teleport_Location_NW_City_Condition()
+{
+	return (CurrentLevel == NEWWORLD_ZEN && TeleportLocationMainMenu);
+};
+FUNC VOID DIA_Teleport_Location_NW_City_Info()
+{
+	TeleportLocationMainMenu = false;
+
+	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_SEWERS ] ) {
+		Info_AddChoice (DIA_Teleport_Location_NW_City, "Sewers", DIA_Teleport_Location_NW_City_Sewers );
+	};	
+	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_ADANOS ] ) {
+		Info_AddChoice (DIA_Teleport_Location_NW_City, "Adanos temple", DIA_Teleport_Location_NW_City_Adanos );
+	};
+	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_KASERNE ] ) {
+		Info_AddChoice (DIA_Teleport_Location_NW_City, "Militia barracks", DIA_Teleport_Location_NW_City_Kaserne );
+	};
+	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_HARBOR ] ) {
+		Info_AddChoice (DIA_Teleport_Location_NW_City, "Harbour", DIA_Teleport_Location_NW_City_Harbor );
+	};
+	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_MARKET ] ) {
+		Info_AddChoice (DIA_Teleport_Location_NW_City, "Marketplace", DIA_Teleport_Location_NW_City_Market );
+	};
+	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_SOUTHGATE ] ) {
+		Info_AddChoice (DIA_Teleport_Location_NW_City, "Worker's Quarter", DIA_Teleport_Location_NW_City_SouthGate );
+	};
+	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_UPPERCITY ] ) {
+		Info_AddChoice (DIA_Teleport_Location_NW_City, "Upper Quarter", DIA_Teleport_Location_NW_City_UpperCity );
+	};
+
+	Info_AddChoice 	  (DIA_Teleport_Location_NW_City,"<-- BACK",DIA_Teleport_Location_Reset_Selection);
+};
+
+func void DIA_Teleport_Location_NW_City_Sewers () {
+	TeleportHandler( self, "NW_CITY_KANAL_23");
+};
+func void DIA_Teleport_Location_NW_City_Adanos () {
+	TeleportHandler( self, "NW_CITY_MERCHANT_TEMPLE_IN");
+};
+func void DIA_Teleport_Location_NW_City_Kaserne () {
+	TeleportHandler( self, "NW_CITY_HABOUR_KASERN_12");
+};
+func void DIA_Teleport_Location_NW_City_Harbor () {
+	TeleportHandler( self, "HAFEN");
+};
+func void DIA_Teleport_Location_NW_City_Market () {
+	TeleportHandler( self, "NW_CITY_MERCHANT_PATH_28_F");
+};
+func void DIA_Teleport_Location_NW_City_SouthGate () {
+	TeleportHandler( self, "DOWNTOWN");
+};
+func void DIA_Teleport_Location_NW_City_UpperCity () {
+	TeleportHandler( self, "REICH");
 };
 
 //---------------------------------------------------------------------
@@ -82,19 +158,19 @@ func void TeleportHandler (var C_INFO info, var C_NPC npc, var string wp) {
 INSTANCE DIA_Teleport_Location_NW_Nature   (C_INFO)
 {
 	npc         = PC_Hero;
-	nr          = 1;
+	nr          = 2;
 	condition   = DIA_Teleport_Location_NW_Nature_Condition;
 	information = DIA_Teleport_Location_NW_Nature_Info;
 	permanent   = TRUE;
-	description = "Nature -->";
+	description = "Other locations -->";
 };
 FUNC INT DIA_Teleport_Location_NW_Nature_Condition()
 {
-	return (CurrentLevel == NEWWORLD_ZEN);
+	return (CurrentLevel == NEWWORLD_ZEN && TeleportLocationMainMenu);
 };
 FUNC VOID DIA_Teleport_Location_NW_Nature_Info()
 {
-	Info_ClearChoices (DIA_Teleport_Location_NW_Nature);	
+	TeleportLocationMainMenu = false;
 
 	// Wilderness
 	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_BIGFORESTCENTER	] ) { 
@@ -115,8 +191,6 @@ FUNC VOID DIA_Teleport_Location_NW_Nature_Info()
 	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_PORTAL				] ) { 
 		Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"Portal to Jharkendar",DIA_Teleport_Location_NW_Nature_Portal); 
 	};
-
-	Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"   ------------   ",DIA_Teleport_Location_NW_Nature);
 
 	// Onar area
 	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_DEXTER 			] ) { 
@@ -140,13 +214,11 @@ FUNC VOID DIA_Teleport_Location_NW_Nature_Info()
 	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_ONARCROSSROAD 		] ) { 
 		Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"Farm crossroads",DIA_Teleport_Location_NW_Nature_OnarCrossroad); 
 	};
-	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_ONAR 				] ) { 
-		Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"Onar's farm",DIA_Teleport_Location_NW_Nature_Onar); 
-	};
 
-	Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"   ------------   ",DIA_Teleport_Location_NW_Nature);
-
-	// city area + monastery & tavern
+	// city area
+	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_AKIL				] ) { 
+		Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"Akil's farm",DIA_Teleport_Location_NW_Nature_Akil); 
+	};	
 	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_XARDAS 			] ) { 
 		Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"Xardas tower",DIA_Teleport_Location_NW_Nature_Xardas); 
 	};
@@ -155,142 +227,70 @@ FUNC VOID DIA_Teleport_Location_NW_Nature_Info()
 	};
 	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_LIGHTHOUSE			] ) { 
 		Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"Lighthouse",DIA_Teleport_Location_NW_Nature_Lighthouse); 
-	};							
-	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_AKIL				] ) { 
-		Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"Akil's farm",DIA_Teleport_Location_NW_Nature_Akil); 
 	};
-	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_MONASTERY			] ) { 
-		Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"Monastery",DIA_Teleport_Location_NW_Nature_Monastery); 
-	};
-	if (Teleport_Location_IsEnabled [ TELEPORT_NW_NATURE_TAVERNE			] ) { 
-		Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"Dead Harpy tavern",DIA_Teleport_Location_NW_Nature_Taverne); 
-	};	
+
+	Info_AddChoice 	  (DIA_Teleport_Location_NW_Nature,"<-- BACK",DIA_Teleport_Location_Reset_Selection);
 };
 
 func void DIA_Teleport_Location_NW_Nature_Taverne () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_TAVERNE");	
+	TeleportHandler( self, "NW_TAVERNE");	
 };
 func void DIA_Teleport_Location_NW_Nature_Monastery () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_MONASTERY_ENTRY_01");
+	TeleportHandler( self, "NW_MONASTERY_ENTRY_01");
 };
 func void DIA_Teleport_Location_NW_Nature_Akil () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_FARM2_PATH_05");
+	TeleportHandler( self, "NW_FARM2_PATH_05");
 };
 func void DIA_Teleport_Location_NW_Nature_Lighthouse () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "LIGHTHOUSE");
+	TeleportHandler( self, "LIGHTHOUSE");
 };
 func void DIA_Teleport_Location_NW_Nature_Lobart () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "FARM1");
+	TeleportHandler( self, "FARM1");
 };
 func void DIA_Teleport_Location_NW_Nature_Xardas () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_XARDAS_TOWER_PATH_01_B");
+	TeleportHandler( self, "NW_XARDAS_TOWER_PATH_01_B");
 };
 func void DIA_Teleport_Location_NW_Nature_Onar () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_BIGFARM_STABLE_OUT_04");
+	TeleportHandler( self, "NW_BIGFARM_STABLE_OUT_04");
 };
 func void DIA_Teleport_Location_NW_Nature_OnarCrossroad () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_BIGFARM_CROSS");
+	TeleportHandler( self, "NW_BIGFARM_CROSS");
 };
 func void DIA_Teleport_Location_NW_Nature_Bengar () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "FARM3");
+	TeleportHandler( self, "FARM3");
 };
 func void DIA_Teleport_Location_NW_Nature_Sekob () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_FARM4_05");
+	TeleportHandler( self, "NW_FARM4_05");
 };
 func void DIA_Teleport_Location_NW_Nature_PassWaterfalls () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "LEVELCHANGE");
+	TeleportHandler( self, "LEVELCHANGE");
 };
 func void DIA_Teleport_Location_NW_Nature_Pass () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_PASS_ORKS_12");
+	TeleportHandler( self, "NW_PASS_ORKS_12");
 };
 func void DIA_Teleport_Location_NW_Nature_Sagitta () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_SAGITTA_CAVE_03");
+	TeleportHandler( self, "NW_SAGITTA_CAVE_03");
 };
 func void DIA_Teleport_Location_NW_Nature_Dexter () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "CASTLEMINE");
+	TeleportHandler( self, "CASTLEMINE");
 };
 func void DIA_Teleport_Location_NW_Nature_Portal () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_TROLLAREA_PORTAL_09");
+	TeleportHandler( self, "NW_TROLLAREA_PORTAL_09");
 };
 func void DIA_Teleport_Location_NW_Nature_Pyramid () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_TROLLAREA_RUINS_11");
+	TeleportHandler( self, "NW_TROLLAREA_RUINS_11");
 };
 func void DIA_Teleport_Location_NW_Nature_TrollArea () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_TROLLAREA_PATH_80"); 
+	TeleportHandler( self, "NW_TROLLAREA_PATH_80"); 
 };
 func void DIA_Teleport_Location_NW_Nature_SunCircle () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_TROLLAREA_RITUALPATH_01");
+	TeleportHandler( self, "NW_TROLLAREA_RITUALPATH_01");
 };
 func void DIA_Teleport_Location_NW_Nature_BigForestNorth () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_FOREST_PATH_65");
+	TeleportHandler( self, "NW_FOREST_PATH_65");
 };
 func void DIA_Teleport_Location_NW_Nature_BigForestCenter () {
-	TeleportHandler(DIA_Teleport_Location_NW_Nature, self, "NW_FOREST_PATH_26");
-};
-
-//---------------------------------------------------------------------
-//	Target location selection - City
-//---------------------------------------------------------------------
-INSTANCE DIA_Teleport_Location_NW_City   (C_INFO)
-{
-	npc         = PC_Hero;
-	nr          = 2;
-	condition   = DIA_Teleport_Location_NW_City_Condition;
-	information = DIA_Teleport_Location_NW_City_Info;
-	permanent   = TRUE;
-	description = "City -->";
-};
-FUNC INT DIA_Teleport_Location_NW_City_Condition()
-{
-	return (CurrentLevel == NEWWORLD_ZEN);
-};
-FUNC VOID DIA_Teleport_Location_NW_City_Info()
-{
-	Info_ClearChoices (DIA_Teleport_Location_NW_City);
-
-	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_SEWERS ] ) {
-		Info_AddChoice (DIA_Teleport_Location_NW_City, "Sewers", DIA_Teleport_Location_NW_City_Sewers );
-	};	
-	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_ADANOS ] ) {
-		Info_AddChoice (DIA_Teleport_Location_NW_City, "Adanos temple", DIA_Teleport_Location_NW_City_Adanos );
-	};
-	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_KASERNE ] ) {
-		Info_AddChoice (DIA_Teleport_Location_NW_City, "Militia barracks", DIA_Teleport_Location_NW_City_Kaserne );
-	};
-	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_HARBOR ] ) {
-		Info_AddChoice (DIA_Teleport_Location_NW_City, "Harbour", DIA_Teleport_Location_NW_City_Harbor );
-	};
-	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_MARKET ] ) {
-		Info_AddChoice (DIA_Teleport_Location_NW_City, "Marketplace", DIA_Teleport_Location_NW_City_Market );
-	};
-	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_SOUTHGATE ] ) {
-		Info_AddChoice (DIA_Teleport_Location_NW_City, "Worker's Quarter", DIA_Teleport_Location_NW_City_SouthGate );
-	};
-	if ( Teleport_Location_IsEnabled [ TELEPORT_NW_CITY_UPPERCITY ] ) {
-		Info_AddChoice (DIA_Teleport_Location_NW_City, "Upper Quarter", DIA_Teleport_Location_NW_City_UpperCity );
-	};
-};
-
-func void DIA_Teleport_Location_NW_City_Sewers () {
-	TeleportHandler(DIA_Teleport_Location_NW_City, self, "NW_CITY_KANAL_23");
-};
-func void DIA_Teleport_Location_NW_City_Adanos () {
-	TeleportHandler(DIA_Teleport_Location_NW_City, self, "NW_CITY_MERCHANT_TEMPLE_IN");
-};
-func void DIA_Teleport_Location_NW_City_Kaserne () {
-	TeleportHandler(DIA_Teleport_Location_NW_City, self, "NW_CITY_HABOUR_KASERN_12");
-};
-func void DIA_Teleport_Location_NW_City_Harbor () {
-	TeleportHandler(DIA_Teleport_Location_NW_City, self, "HAFEN");
-};
-func void DIA_Teleport_Location_NW_City_Market () {
-	TeleportHandler(DIA_Teleport_Location_NW_City, self, "NW_CITY_MERCHANT_PATH_28_F");
-};
-func void DIA_Teleport_Location_NW_City_SouthGate () {
-	TeleportHandler(DIA_Teleport_Location_NW_City, self, "DOWNTOWN");
-};
-func void DIA_Teleport_Location_NW_City_UpperCity () {
-	TeleportHandler(DIA_Teleport_Location_NW_City, self, "REICH");
+	TeleportHandler( self, "NW_FOREST_PATH_26");
 };
 
 //---------------------------------------------------------------------
@@ -307,7 +307,7 @@ INSTANCE DIA_Teleport_Location_NW_Separator   (C_INFO)
 };
 FUNC INT DIA_Teleport_Location_NW_Separator_Condition()
 {
-	return (CurrentLevel == NEWWORLD_ZEN);
+	return (CurrentLevel == NEWWORLD_ZEN && TeleportLocationMainMenu);
 };
 FUNC VOID DIA_Teleport_Location_NW_Separator_Info()
 {
@@ -329,6 +329,7 @@ FUNC INT DIA_Teleport_Location_NW_Quick_City_Condition()
 {
 	return (
 		CurrentLevel == NEWWORLD_ZEN 
+		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_NW_CITY_SOUTHGATE]
 	);
 };
@@ -353,6 +354,7 @@ FUNC INT DIA_Teleport_Location_NW_Quick_Onar_Condition()
 {
 	return (
 		CurrentLevel == NEWWORLD_ZEN 
+		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_NW_NATURE_ONAR]
 	);
 };
@@ -377,6 +379,7 @@ FUNC INT DIA_Teleport_Location_NW_Quick_Tavern_Condition()
 {
 	return (
 		CurrentLevel == NEWWORLD_ZEN 
+		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_NW_NATURE_TAVERNE]
 	);
 };
@@ -401,6 +404,7 @@ FUNC INT DIA_Teleport_Location_NW_Quick_Monastery_Condition()
 {
 	return (
 		CurrentLevel == NEWWORLD_ZEN 
+		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_NW_NATURE_MONASTERY] 
 	);
 };
@@ -419,15 +423,15 @@ INSTANCE DIA_Teleport_Location_OW_Nature   (C_INFO)
 	condition   = DIA_Teleport_Location_OW_Nature_Condition;
 	information = DIA_Teleport_Location_OW_Nature_Info;
 	permanent   = TRUE;
-	description = "Nature -->";
+	description = "Other locations -->";
 };
 FUNC INT DIA_Teleport_Location_OW_Nature_Condition()
 {
-	return (CurrentLevel == OLDWORLD_ZEN);
+	return (CurrentLevel == OLDWORLD_ZEN && TeleportLocationMainMenu);
 };
 FUNC VOID DIA_Teleport_Location_OW_Nature_Info()
 {
-	Info_ClearChoices (DIA_Teleport_Location_OW_Nature);
+	TeleportLocationMainMenu = false;
 
 	if (Teleport_Location_IsEnabled [ TELEPORT_OW_EXCHANGEPLACE ] ) {
 		Info_AddChoice (DIA_Teleport_Location_OW_Nature, "Former exchange place", DIA_Teleport_Location_OW_Nature_ExchangePlace );
@@ -448,42 +452,44 @@ FUNC VOID DIA_Teleport_Location_OW_Nature_Info()
 		Info_AddChoice (DIA_Teleport_Location_OW_Nature, "Former Cavalorn's hut", DIA_Teleport_Location_OW_Nature_Cavalorn );
 	};
 	if (Teleport_Location_IsEnabled [ TELEPORT_OW_SOUTHGATE ] ) {
-		Info_AddChoice (DIA_Teleport_Location_OW_Nature, "South castle gate", DIA_Teleport_Location_OW_Nature_SouthGate );
+		Info_AddChoice (DIA_Teleport_Location_OW_Nature, "Castle - South", DIA_Teleport_Location_OW_Nature_SouthGate );
 	};
 	if (Teleport_Location_IsEnabled [ TELEPORT_OW_NORTHGATE ] ) {
-		Info_AddChoice (DIA_Teleport_Location_OW_Nature, "North castle gate", DIA_Teleport_Location_OW_Nature_NorthGate );
+		Info_AddChoice (DIA_Teleport_Location_OW_Nature, "Castle - North", DIA_Teleport_Location_OW_Nature_NorthGate );
 	};
 	if (Teleport_Location_IsEnabled [ TELEPORT_OW_CASTLE ] ) {
-		Info_AddChoice (DIA_Teleport_Location_OW_Nature, "Castle", DIA_Teleport_Location_OW_Nature_Castle );
+		Info_AddChoice (DIA_Teleport_Location_OW_Nature, "Castle - Inside", DIA_Teleport_Location_OW_Nature_Castle );
 	};
+
+	Info_AddChoice 	  (DIA_Teleport_Location_OW_Nature,"<-- BACK",DIA_Teleport_Location_Reset_Selection);
 };
 
 func void DIA_Teleport_Location_OW_Nature_ExchangePlace () {
-	TeleportHandler (DIA_Teleport_Location_OW_Nature, self, "WP_INTRO03");
+	TeleportHandler( self, "WP_INTRO03");
 };
 func void DIA_Teleport_Location_OW_Nature_StoneFortress () {
-	TeleportHandler (DIA_Teleport_Location_OW_Nature, self, "LOCATION_19_03_PATH_RUIN7");
+	TeleportHandler( self, "LOCATION_19_03_PATH_RUIN7");
 };
 func void DIA_Teleport_Location_OW_Nature_Xardas () {
-	TeleportHandler (DIA_Teleport_Location_OW_Nature, self, "DT_PLATFORM_02");
+	TeleportHandler( self, "DT_PLATFORM_02");
 };
 func void DIA_Teleport_Location_OW_Nature_NewCamp () {
-	TeleportHandler (DIA_Teleport_Location_OW_Nature, self, "OW_ICEREGION_01");
+	TeleportHandler( self, "OW_ICEREGION_01");
 };
 func void DIA_Teleport_Location_OW_Nature_OldMine () {
-	TeleportHandler (DIA_Teleport_Location_OW_Nature, self, "OW_PATH_266");
+	TeleportHandler( self, "OW_PATH_266");
 };
 func void DIA_Teleport_Location_OW_Nature_Cavalorn () {
-	TeleportHandler (DIA_Teleport_Location_OW_Nature, self, "CAVALORN");
+	TeleportHandler( self, "CAVALORN");
 };
 func void DIA_Teleport_Location_OW_Nature_SouthGate () {
-	TeleportHandler (DIA_Teleport_Location_OW_Nature, self, "OC2");
+	TeleportHandler( self, "OC2");
 };
 func void DIA_Teleport_Location_OW_Nature_NorthGate () {
-	TeleportHandler (DIA_Teleport_Location_OW_Nature, self, "OC1");
+	TeleportHandler( self, "OC1");
 };
 func void DIA_Teleport_Location_OW_Nature_Castle () {
-	TeleportHandler (DIA_Teleport_Location_OW_Nature, self, "OC_GATE_GUARD_01");
+	TeleportHandler( self, "OC_GATE_GUARD_01");
 };
 
 //---------------------------------------------------------------------
@@ -500,7 +506,7 @@ INSTANCE DIA_Teleport_Location_OW_Separator   (C_INFO)
 };
 FUNC INT DIA_Teleport_Location_OW_Separator_Condition()
 {
-	return (CurrentLevel == OLDWORLD_ZEN);
+	return (CurrentLevel == OLDWORLD_ZEN && TeleportLocationMainMenu);
 };
 FUNC VOID DIA_Teleport_Location_OW_Separator_Info()
 {
@@ -522,6 +528,7 @@ FUNC INT DIA_Teleport_Location_OW_Quick_Castle_Condition()
 {
 	return (
 		CurrentLevel == OLDWORLD_ZEN 
+		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_OW_CASTLE] 
 	);
 };

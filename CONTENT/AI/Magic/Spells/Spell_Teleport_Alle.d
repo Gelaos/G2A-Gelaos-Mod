@@ -381,9 +381,9 @@ func void Spell_Cast_TeleportGeneral()
 	{
 		self.attribute[ATR_MANA] = self.attribute[ATR_MANA] - SPL_Cost_Teleport;
 	};
-	
-	MEM_Timer.factorMotion = divf (mkf(1), mkf(10));
-	AI_ProcessInfos(self);
+			
+	MEM_Timer.factorMotion = divf (mkf(1), mkf(10)); // Slow down the time. MUST BE SET BACK TO 1.0 LATER!
+	AI_ProcessInfos(self); // start the teleportation rune "dialogue"	
 };
 
 // ////////////////////////////////////////////////////
