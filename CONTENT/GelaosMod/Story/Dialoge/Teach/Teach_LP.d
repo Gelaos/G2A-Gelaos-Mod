@@ -34,7 +34,7 @@ func void Teach_LP_Spinner_Setup() {
 
     // update spinner description
     spinnerLPDescription = "";
-    spinnerLPDescription = ConcatStrings (spinnerLPDescription, "s@Teach_LP Buy Learning Points: "); //Cook some meat     
+    spinnerLPDescription = ConcatStrings (spinnerLPDescription, "s@Teach_LP Buy Learning Points: ");
     spinnerLPDescription = ConcatStrings (spinnerLPDescription, IntToString (spinnerLPValue));
     spinnerLPDescription = ConcatStrings (spinnerLPDescription, " / ");
     spinnerLPDescription = ConcatStrings (spinnerLPDescription, IntToString (spinnerLPMax));

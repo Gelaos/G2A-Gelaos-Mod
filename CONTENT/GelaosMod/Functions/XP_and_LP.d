@@ -21,7 +21,7 @@ func void GetLP_CostAndCount(var int ownedLPs, var int LPsToBuy, var int availab
     var int budgetXP; budgetXP = availableXPs;
     var int priceLP; priceLP = GetPriceNthLP(ownedLPs);
 
-    // get LPs one by one while XP budgetXP is large enough OR when target LP count is reached
+    // get LPs one by one while XP budgetXP is large enough OR until target LP count is reached
     while (budgetXP >= priceLP && countLP != LPsToBuy);      
         budgetXP = budgetXP - priceLP;
         countLP = countLP + 1;
