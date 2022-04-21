@@ -1,4 +1,4 @@
-// Eine Hashtable ist eigentlich blo√ü zCArray<zCArray<_HT_Obj>*>, also ein zweidimensionales Array.
+// Eine Hashtable ist eigentlich bloﬂ zCArray<zCArray<_HT_Obj>*>, also ein zweidimensionales Array.
 
 class _HT_Obj {
 	var int key;

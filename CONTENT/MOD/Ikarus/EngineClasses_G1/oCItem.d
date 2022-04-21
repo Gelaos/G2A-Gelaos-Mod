@@ -39,7 +39,7 @@ class oCItem {
         var int        _zCVob_m_poCollisionObject;
 //  }
   
-	// FÃ¼r alle Items
+	// Für alle Items
 	VAR INT		id								;				
 	VAR STRING  name,nameID						;
 	VAR INT		hp,hp_max						;
@@ -47,23 +47,23 @@ class oCItem {
 	VAR INT     mainflag,flags					;		//	Hauptflag und weitere Flags
 	VAR INT		weight,value					;			
 															
-	// FÃ¼r Waffen								
+	// Für Waffen								
 	VAR INT		damageType						;		//	Welche Schadensarten
 	VAR	INT		damageTotal						;
 	VAR INT		damage			[DAM_INDEX_MAX]	;
 
-	// FÃ¼r RÃ¼stungen
+	// Für Rüstungen
 	VAR INT		wear							;
 	VAR INT		protection		[PROT_INDEX_MAX];
 
-	// FÃ¼r Nahrung
+	// Für Nahrung
 	VAR INT		nutrition						;		//	HP-Steigerung bei Nahrung
 
-	// BenÃ¶tigte Attribute zum Benutzen des Items
+	// Benötigte Attribute zum Benutzen des Items
 	VAR INT		cond_atr		[3]				;
 	VAR INT		cond_value		[3]				;
 
-	// Attribute, die bei anlegen des Items verÃ¤ndert werden
+	// Attribute, die bei anlegen des Items verändert werden
 	VAR INT		change_atr		[3]				;
 	VAR INT		change_value	[3]				;
 
@@ -81,7 +81,7 @@ class oCItem {
 	// Die 3DS-Datei
 	VAR STRING	visual							;
 
-	// VerÃ¤nderung des NSC-Meshes beim Anlegen dieses Gegenstandes
+	// Veränderung des NSC-Meshes beim Anlegen dieses Gegenstandes
 	VAR STRING  visual_change					;		//	ASC - File
 	VAR INT		visual_skin						;
 	

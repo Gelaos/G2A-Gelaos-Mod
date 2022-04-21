@@ -4,11 +4,11 @@
 //  Besonders oCAniCtrl_Human erschien mir im
 //  nachhinein eher nutzlos
 //  daher habe ich wenig Anstrengung in sie gesteckt.
-//  zCAIPlayer m√ºsste aber noch stimmen und 
+//  zCAIPlayer m¸sste aber noch stimmen und 
 //  zumindest die "Species.d" Eigenschaften sind
-//  f√ºr Modder interessant. Zum Beispiel k√∂nnte man
-//  einen "Wasserl√§ufer" Zauber bauen oder
-//  machen, dass der Spieler steile W√§nde hochkommt.
+//  f¸r Modder interessant. Zum Beispiel kˆnnte man
+//  einen "Wasserl‰ufer" Zauber bauen oder
+//  machen, dass der Spieler steile W‰nde hochkommt.
 //  Nutzung auf eigene Gefahr.
 //
 //######################################################
@@ -25,7 +25,7 @@ class zCAIPlayer {
 
     // Config
     //struct zTConfig {
-        //Ungef√§hr das, was auch in der Species.d festgelegt wird.
+        //Ungef‰hr das, was auch in der Species.d festgelegt wird.
         
         var int zMV_MIN_SPACE_MOVE_FORWARD;     //zREAL 
         var int zMV_DETECT_CHASM_SCAN_AT;       //zREAL
@@ -48,13 +48,13 @@ class zCAIPlayer {
     /*
     
     //
-    Nur weil es gerade einen Berg heraufgeht, hei√üt das nicht, dass die Npcs genauso schiefstehen
+    Nur weil es gerade einen Berg heraufgeht, heiﬂt das nicht, dass die Npcs genauso schiefstehen
     wie der Untergrund schief ist. Zumindest ist das nicht bei allen Npcs so.
-    Dieses enum einhaltet die Konstanten, die f√ºr die Verschiedenen m√∂glichkeiten stehen.
+    Dieses enum einhaltet die Konstanten, die f¸r die Verschiedenen mˆglichkeiten stehen.
     
     enum zTSurfaceAlignMode {                       
         zMV_SURFACE_ALIGN_NONE  = 0,                // kein Alignment (z.B. Menschen)
-        zMV_SURFACE_ALIGN_NORMAL= 1,                // wie z.B. bei Schattenl√§ufern
+        zMV_SURFACE_ALIGN_NORMAL= 1,                // wie z.B. bei Schattenl‰ufern
         zMV_SURFACE_ALIGN_HIGH  = 2,                // Meatbugs sind z.B. mit allen Beinen am Boden festgeklebt.
     }; */                                               
     
@@ -429,8 +429,8 @@ class oCAniCtrl_Human {
     
     var int dummyLastVar;
     
-    //Da oCAIHuman (eine Unterklasse) nicht mehr viel zus√§tzlich enth√§lt, hier einfach mal drangeklatscht:
-    //Ich habe sowieso nicht den Eindruck, dass diese Eigenschaften sehr n√ºztlich sind.
+    //Da oCAIHuman (eine Unterklasse) nicht mehr viel zus‰tzlich enth‰lt, hier einfach mal drangeklatscht:
+    //Ich habe sowieso nicht den Eindruck, dass diese Eigenschaften sehr n¸ztlich sind.
     
     //zCList<zCVob>     ignoreVobList;
         var int oCAIHuman_ignoreVobList_data; //zCVob*

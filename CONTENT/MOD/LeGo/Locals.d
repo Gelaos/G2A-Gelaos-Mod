@@ -62,7 +62,7 @@ func void Locals() {
         locals_Arr = MEM_ArrayCreate();
     };
 
-    // Zuerst alle Symbole die ich fÃ¼r die Tokens brauche initialisieren. //{
+    // Zuerst alle Symbole die ich für die Tokens brauche initialisieren. //{
     const int arrayinsert   = -1;
     const int arraypop      = -1;
     const int copybytes     = -1;
@@ -115,7 +115,7 @@ func void Locals() {
     MEM_Info(ConcatStrings("Locals: Install at ", s.name));
     MEM_Info(ConcatStrings("        Offset is ", IntToString(p - foff)));
 
-    // GrÃ¶ÃŸe bestimmen
+    // Größe bestimmen
     var int size; size = 0;
 
     while(1); //{
@@ -270,7 +270,7 @@ func void Locals() {
 
     const int s_skipblock = 3 * 5 + 2;
 
-    // Den RÃ¼ckgabewert behandeln:
+    // Den Rückgabewert behandeln:
     if(fret == 0) {}
     else if(fret == (zPAR_TYPE_STRING>>12)) {
         SBc(zPAR_TOK_PUSHVAR);    SBc(retstr);
@@ -427,7 +427,7 @@ func int Tokens_Copy(var int src, var int dest, var int len) {
 // Final
 //========================================
 func int Final() {
-    // Alle benÃ¶tigten Funktionsoffsets
+    // Alle benötigten Funktionsoffsets
     const int setcallerpos = -1;
     if(setcallerpos == -1) {
         setcallerpos = MEM_GetFuncOffset(MEM_SetCallerStackPos);

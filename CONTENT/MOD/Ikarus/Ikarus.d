@@ -311,7 +311,7 @@ func void MEMINT_GetMemHelper() {
         var C_NPC selfBak;
         selfBak = Hlp_GetNpc (self);
         Wld_InsertNpc (MEM_HELPER_INST, MEM_FARFARAWAY);
-        MEM_Helper = Hlp_GetNpc (self);
+        MEM_Helper = Hlp_GetNpc (MEM_HELPER_INST);
         self = Hlp_GetNpc (selfBak);
     };
 };
@@ -364,7 +364,7 @@ func string MEM_ReadString (var int address) {
 func void MEMINT_OldWriteInt (var int address, var int val) {
     /* other = address - MEM_NpcID_Offset */
     MEM_Helper.enemy = address - MEM_NpcID_Offset;
-    /* res wird nicht gebraucht, mÃ¼llt aber sonst den Stack zu! */
+    /* res wird nicht gebraucht, müllt aber sonst den Stack zu! */
     var int res; res = Npc_GetTarget (MEM_Helper);
 
     /* *(other + oCNpc_idx_offset) = val */
@@ -372,9 +372,9 @@ func void MEMINT_OldWriteInt (var int address, var int val) {
 };
 
 func void MEMINT_PrepareAssignments() {
-    /* sorgt dafÃ¼r, dass MEMINT_Assign und MEMINT_StrAssign
+    /* sorgt dafür, dass MEMINT_Assign und MEMINT_StrAssign
      * genau die Funktion von zPAR_OP_IS bzw. zPAR_TOK_ASSIGNSTR
-     * erfÃ¼llen.
+     * erfüllen.
      * Diese Funktion wird nach Start von Gothic genau einmal aufgerufen. */
 
     var int symTab; var int MEMINT_Assign_Sym; var int MEMINT_Assign_StackPos; var int stackStart;
@@ -390,13 +390,13 @@ func void MEMINT_PrepareAssignments() {
     var C_NPC othBak;
     othBak = Hlp_GetNpc (other);
 
-    //Code Ã¼berschreiben. Vorsicht: Der erste Aufruf soll auch klappen!
+    //Code überschreiben. Vorsicht: Der erste Aufruf soll auch klappen!
     MEMINT_OldWriteInt (stackStart + MEMINT_Assign_StackPos     , (zPAR_OP_IS          << 0) | (zPAR_TOK_RET       << 8) | (zPAR_TOK_RET << 16) | (zPAR_TOK_RET << 24));
     MEMINT_OldWriteInt (stackStart + MEMINT_Assign_StackPos +  4, (zPAR_TOK_RET        << 0) | (zPAR_OP_IS         << 8) | (zPAR_TOK_RET << 16) | (zPAR_TOK_RET << 24));
     MEMINT_OldWriteInt (stackStart + MEMINT_Assign_StackPos +  8, (zPAR_TOK_ASSIGNSTR  << 0) | (zPAR_TOK_RET       << 8) | (zPAR_TOK_RET << 16) | (zPAR_TOK_RET << 24));
     MEMINT_OldWriteInt (stackStart + MEMINT_Assign_StackPos + 12, (zPAR_TOK_RET        << 0) | (zPAR_TOK_ASSIGNSTR << 8) | (zPAR_TOK_RET << 16) | (zPAR_TOK_RET << 24));
 
-    //alte Lesemethode muss aufrÃ¤umen
+    //alte Lesemethode muss aufräumen
     MEM_Helper.enemy = 0;
     other = Hlp_GetNpc (othBak);
 };
@@ -563,7 +563,7 @@ func void MEM_AssignInst (var int inst, var int ptr) {
     };
 
     if (ptr == 0 && !MEM_AssignInstSuppressNullWarning) {
-		/* Instanzen die Null sind, will man eigentlich nicht, die machen nur Ã„rger. */
+		/* Instanzen die Null sind, will man eigentlich nicht, die machen nur Ärger. */
 		MEM_Warn ("MEM_AssignInst: ptr is NULL. Use MEM_AssignInstNull if that's what you want.");
     };
 
@@ -573,7 +573,7 @@ func void MEM_AssignInst (var int inst, var int ptr) {
 };
 
 func void MEM_AssignInstNull (var int inst) {
-    /* Normalerweise will man Instanzen nicht zurÃ¼ck auf 0 setzen.
+    /* Normalerweise will man Instanzen nicht zurück auf 0 setzen.
      * Oft wird es ein Fehler sein. Daher wird oben eine Warnung ausgegeben.
      * Um die nicht zu bekommen gibt es hier die explizite Funktion */
     MEM_AssignInstSuppressNullWarning = true;
@@ -589,7 +589,7 @@ func MEMINT_HelperClass MEM_PtrToInst (var int ptr) {
     };
     
     if (ptr == 0 && !MEM_AssignInstSuppressNullWarning ) {
-		/* Instanzen die Null sind, will man eigentlich nicht, die machen nur Ã„rger. */
+		/* Instanzen die Null sind, will man eigentlich nicht, die machen nur Ärger. */
 		MEM_Warn ("MEM_PtrToInst: ptr is NULL. Use MEM_NullToInst if that's what you want.");
 		MEM_WriteInt(hlpOffsetPtr, 0);
     } else {
@@ -653,18 +653,18 @@ func int MEM_InstToPtr(var int inst) {
     return MEM_ReadInt (symb + zCParSymbol_offset_offset);
 };
 
-//AbwÃ¤rtskompatibilitÃ¤t
+//Abwärtskompatibilität
 func int MEM_InstGetOffset (var int inst) {
     return MEM_InstToPtr(inst);
 };
 
 //--------------------------------------
-// Unsinnig. Nur zur AbwÃ¤rtskompatibilitÃ¤t
-// Ã¼berhaupt noch drin. Google sagt,
+// Unsinnig. Nur zur Abwärtskompatibilität
+// überhaupt noch drin. Google sagt,
 // Lehona hat es mal irgendwo benutzt.
 //--------------------------------------
 
-//LÃ¤sst currParserSymb auf das Symbol mit Instanz inst zeigen.
+//Lässt currParserSymb auf das Symbol mit Instanz inst zeigen.
 INSTANCE currParserSymb (zCPar_Symbol);
 func void MEM_SetCurrParserSymb (var int inst) {
     if (inst <= 0) {
@@ -680,7 +680,7 @@ func void MEM_SetCurrParserSymb (var int inst) {
 };
 
 //************************************************
-//   SprÃ¼nge
+//   Sprünge
 //************************************************
 
 /* Es sieht einfach aus, gell? Aber das das funktioniert ist
@@ -1002,11 +1002,11 @@ func int MEM_Alloc (var int amount) {
     /* aus den As Nuller machen, weil ich genullten Speicher will */
     MEM_WriteInt (zstr.ptr, 0);
 
-    /* string mit sich selbst konkatenieren bis groÃŸ genug */
+    /* string mit sich selbst konkatenieren bis groß genug */
     var int size; size = 4;
 
     //VORSICHT! mindestens einmal muss die Schleife durchlaufen werden.
-    //sonst kommt (vermutlich, nicht genau Ã¼berprÃ¼ft) statisch die Adrese von der Parserkonstanten "AAAA" zurÃ¼ck!
+    //sonst kommt (vermutlich, nicht genau überprüft) statisch die Adrese von der Parserkonstanten "AAAA" zurück!
     //Und das ist ein richtig mieser Fehler.
     var int loopStart; loopStart = MEM_StackPos.position;
     /* do */
@@ -1016,7 +1016,7 @@ func int MEM_Alloc (var int amount) {
 
     /* Speicher ist jetzt reserviert. Dem String die Referenz wieder wegnehmen. */
     /* Vorsicht: ptr in Strings zeigt auf das Byte nach dem ersten Reservierten!
-     * Strings haben ReferenzzÃ¤hler! */
+     * Strings haben Referenzzähler! */
     var int res; res = zstr.ptr - 1;
     
     zstr.ptr = 0;
@@ -1040,7 +1040,7 @@ func void MEM_Free (var int ptr) {
     };
     
     /* Vorsicht: ptr in Strings zeigt auf das Byte nach dem ersten Reservierten!
-     * Strings haben ReferenzzÃ¤hler! Den Nullen! */
+     * Strings haben Referenzzähler! Den Nullen! */
     
     MEM_WriteByte(ptr, 0); ptr += 1;
     
@@ -1068,6 +1068,7 @@ func void MEM_Free (var int ptr) {
 //#################################################
 
 /* 1 Byte */
+const int ASMINT_OP_movImToEAX   = 184;  //0xB8
 const int ASMINT_OP_movImToECX   = 185;  //0xB9
 const int ASMINT_OP_movImToEDX   = 186;  //0xBA
 const int ASMINT_OP_pushIm       = 104;  //0x68
@@ -1075,6 +1076,9 @@ const int ASMINT_OP_call         = 232;  //0xE8
 const int ASMINT_OP_retn         = 195;  //0xC3
 const int ASMINT_OP_nop          = 144;  //0x90
 const int ASMINT_OP_jmp          = 233;  //0xE9
+const int ASMINT_OP_cld          = 252;  //0xFC
+const int ASMINT_OP_repz         = 243;  //0xF3
+const int ASMINT_OP_cmpsb        = 166;  //0xA6
 const int ASMINT_OP_PushEAX      =  80;  //0x50
 const int ASMINT_OP_pushECX      =  81;  //0x51
 const int ASMINT_OP_popEAX       =  88;  //0x58
@@ -1093,6 +1097,8 @@ const int ASMINT_OP_addImToESP      = 50307; //0xC483
 const int ASMINT_OP_movMemToECX     =  3467; //0x0D8B
 const int ASMINT_OP_movMemToCL      =  3466; //0x0D8A
 const int ASMINT_OP_movMemToEDX     =  5515; //0x158B
+const int ASMINT_OP_movMemToEDI     = 15755; //0x3D8B
+const int ASMINT_OP_movMemToESI     = 13707; //0x358B
 const int ASMINT_OP_movECXtoEAX     = 49547; //0xC18B  aus LeGo geklaut
 const int ASMINT_OP_movESPtoEAX     = 50315; //0xC48B  aus LeGo geklaut
 const int ASMINT_OP_movEAXtoECX     = 49545; //0xC189  aus LeGo geklaut
@@ -1100,6 +1106,9 @@ const int ASMINT_OP_movEBXtoEAX     = 55433; //0xD889  aus LeGo geklaut
 const int ASMINT_OP_movEBPtoEAX     = 50571; //0xC58B  aus LeGo geklaut
 const int ASMINT_OP_movEDItoEAX     = 51083; //0xC78B  aus LeGo geklaut
 const int ASMINT_OP_addImToEAX      = 49283; //0xC083  aus LeGo geklaut
+
+/* 3 Bytes */
+const int ASMINT_OP_setzMem         = 365583; //0x05940F
 
 /* Tuning:
    If not specified differently,
@@ -1587,7 +1596,7 @@ func void CALLINT_makecall (var int adr, var int cleanStack) {
     
     /* default: return value is not a float
      * and has default location */
-    CALLINT_RetValIsFloat = false; //fÃ¼rs nÃ¤chste mal muss neugeschaltet werden.
+    CALLINT_RetValIsFloat = false; //fürs nächste mal muss neugeschaltet werden.
     CALLINT_PutRetValTo   = 0;
     
     /* __cdecl has to clean the stack here: */
@@ -1687,7 +1696,7 @@ func void MEM_CopyWords (var int src, var int dst, var int wordcount) {
     MEM_CopyBytes (src, dst, wordcount * 4);
 };
 
-//alias, AbwÃ¤rtskompatibilitÃ¤t
+//alias, Abwärtskompatibilität
 func void MEM_Copy (var int src, var int dst, var int wordcount) {
     MEM_CopyBytes (src, dst, wordcount * 4);
 };
@@ -1782,8 +1791,7 @@ func int MEM_Realloc (var int ptr, var int oldsize, var int newsize) {
 //   Compare Memory
 //************************************************
 
-/* couldnt find memcmp at first glance...
- * left it as it is. */
+/* couldnt find memcmp at first glance... */
  
 func int MEM_CompareBytes(var int ptr1, var int ptr2, var int byteCount) {
     if (byteCount < 0) {
@@ -1802,18 +1810,22 @@ func int MEM_CompareBytes(var int ptr1, var int ptr2, var int byteCount) {
         return 0;
     };
 
-    var int loopPos; loopPos = MEM_StackPos.position;
-    if (byteCount >= 4) {
-        if (MEM_ReadInt(ptr1) != MEM_ReadInt(ptr2)) {
-            return 0;
-        };
-        ptr1 += 4; ptr2 += 4;
-        byteCount -= 4;
-        MEM_StackPos.position = loopPos;
+    const int call = 0;
+    if (CALL_Begin(call)) {
+        ASM_Open(31);
+        ASM_1(ASMINT_OP_pusha);
+        ASM_2(ASMINT_OP_movMemToESI); ASM_4(_@(ptr1));
+        ASM_2(ASMINT_OP_movMemToEDI); ASM_4(_@(ptr2));
+        ASM_2(ASMINT_OP_movMemToECX); ASM_4(_@(byteCount));
+        ASM_1(ASMINT_OP_cld);
+        ASM_1(ASMINT_OP_repz);        ASM_1(ASMINT_OP_cmpsb);
+        ASM_3(ASMINT_OP_setzMem);     ASM_4(_@(ret));
+        ASM_1(ASMINT_OP_popa);
+        call = CALL_End();
     };
-    
-    var int mask; mask = (1 << byteCount * 8) - 1;
-    return (MEM_ReadInt(ptr1) & mask) == (MEM_ReadInt(ptr2) & mask);
+
+    var int ret;
+    return +ret;
 };
 
 func int MEM_CompareWords(var int ptr0, var int ptr1, var int wordCount) {
@@ -2171,7 +2183,7 @@ func void MEM_ArrayRemoveIndex (var int zCArray_ptr, var int index) {
         return;
     };
 
-    //letzten Wert in die LÃ¼cke schieben
+    //letzten Wert in die Lücke schieben
     array.numInArray -= 1;
     MEM_WriteIntArray (array.array, index, MEM_ReadIntArray (array.array, array.numInArray));
 };
@@ -2347,7 +2359,7 @@ func int STR_GetCharAt (var string str, var int pos) {
 };
 
 //--------------------------------------
-// LÃ¤nge eines Strings
+// Länge eines Strings
 //--------------------------------------
 
 func int STR_Len (var string str) {
@@ -2407,7 +2419,7 @@ func string STR_SubStr (var string str, var int start, var int count) {
         return "";
     };
 
-    /* Hole Adressen von zwei Strings, Source und Destination (fÃ¼r Kopieroperation) */
+    /* Hole Adressen von zwei Strings, Source und Destination (für Kopieroperation) */
     var zString zStrSrc;
     var zString zStrDst; var string dstStr; dstStr = "";
     
@@ -2440,7 +2452,7 @@ func string STR_SubStr (var string str, var int start, var int count) {
     return dstStr;
 };
 
-//Von frÃ¼her:
+//Von früher:
 func string STR_Prefix (var string str, var int len) {
     return STR_SubStr(str, 0, len);
 };
@@ -2584,9 +2596,9 @@ func int STR_IndexOf(var string str, var string tok) {
 // STR_Split
 //************************************************
 
-/* ursprÃ¼nglicher Code von Gottfried */
+/* ursprünglicher Code von Gottfried */
 
-/* STRINT_SplitArray enthÃ¤lt folgendes:
+/* STRINT_SplitArray enthält folgendes:
  *
  *    struct TStringInfo {
  *        int length;
@@ -2753,13 +2765,13 @@ func string STR_Lower(var string str) {
 //   Zeiger auf 8KB holen. Jeder darf drauf
 //   schreiben, niemand darf sich drauf
 //   verlassen, dass irgendjemand ihn
-//   unangetastet lÃ¤sst.
+//   unangetastet lässt.
 //
-//   Zur Vermeidung temporÃ¤rer kleiner
+//   Zur Vermeidung temporärer kleiner
 //   MEM_Alloc anfragen.
 //--------------------------------------
 
-/* WeiÃŸ nicht ob ich das mit hÃ¤tte reinnehmen sollen...
+/* Weiß nicht ob ich das mit hätte reinnehmen sollen...
  * Aber warum nicht? */
  
 func int MEMINT_GetBuf_8K_Sub() {
@@ -2830,8 +2842,8 @@ func int MEM_GetSymbolByIndex(var int id) {
 //************************************************
 
 //--------------------------------------
-//  Parameter Ã¼bergeben,
-//  RÃ¼ckgabewerte verwenden.
+//  Parameter übergeben,
+//  Rückgabewerte verwenden.
 //  Nochmal explizit
 //--------------------------------------
 
@@ -2851,7 +2863,7 @@ func void MEM_PushInstParam (var int inst) {
 };
 
 /* wie MEMINT_PushString, aber eigene statische Strings
- * ging nÃ¤mlich schief, weil STR_Compare oft string auf den Stack
+ * ging nämlich schief, weil STR_Compare oft string auf den Stack
  * schieben will! */
 func string MEMINT_PushStringParamSub (var string str) {
     var int n; n += 1; if (n == 10) { n = 0; };
@@ -2954,9 +2966,11 @@ func int MEMINT_BuildFuncStartsArray() {
         var zCPar_Symbol symb;
         symb = _^(MEM_ReadIntArray(MEM_Parser.symtab_table_array, i));
        
+        var int type; type = symb.bitfield & zCPar_Symbol_bitfield_type;
         if  (symb.bitfield & zPAR_FLAG_CONST)
         && !(symb.bitfield & zPAR_FLAG_EXTERNAL)
-        && ((symb.bitfield & zCPar_Symbol_bitfield_type) == zPAR_TYPE_FUNC) {
+        && ((type == zPAR_TYPE_FUNC) || (type == zPAR_TYPE_INSTANCE))
+        ||  (type == zPAR_TYPE_PROTOTYPE) { // Not constant
             /* check integrity */
             if (wasSorted && lastOffset > symb.content) {
                 wasSorted = 0;
@@ -3070,7 +3084,7 @@ func int MEMINT_GetESP() {
 func int MEMINT_IsFrameBoundary(var int ESP) {
     const int retAdr = 0;
     if (!retAdr) {
-        /* Wenn DoStack sich selbst aufruft, steht diese RÃ¼cksprungaddresse auf dem Stack: */
+        /* Wenn DoStack sich selbst aufruft, steht diese Rücksprungaddresse auf dem Stack: */
         retAdr = MEMINT_SwitchG1G2(7246244 /* 0x6E91A4 */, 7939332 /*0x792504 */);
     };
 
@@ -3210,7 +3224,7 @@ func void MEMINT_TokenizeFunction(var int funcID, var int tokenArray, var int pa
     
     if (tok == zPAR_TOK_RET) {
         if (MEM_GetFuncIDByOffset(pos - currParserStackAddress) != funcID)
-        || (pos >= MEM_Parser.stack_stacklast) {
+        || (pos - currParserStackAddress >= MEM_Parser.stack_stacksize) {
             /* mark end of function */
             MEM_ArrayInsert(posArr, pos);
             MEM_ArrayInsert(tokenArray, -1);
@@ -3671,11 +3685,11 @@ func int MEMINT_RepeatRedoCheck(var int loopData) {
 //######################################################
 
 /*
-    Leider werden manche MenÃ¼s jedesmal neu erzeugt (vom Script aus),
+    Leider werden manche Menüs jedesmal neu erzeugt (vom Script aus),
     andere dagegen werden beim ersten mal nach dem Spielstart erzeugt und dann behalten.
-    AbhÃ¤ngig davon und von dem, was man eigentlich tun will, kann es nÃ¶tig sein
-    in den MenÃ¼scripten Ã„nderungen einzubringen (indem man
-    in den Variablen dort schreibt) oder es ist nÃ¶tig sich das MenÃ¼
+    Abhängig davon und von dem, was man eigentlich tun will, kann es nötig sein
+    in den Menüscripten Änderungen einzubringen (indem man
+    in den Variablen dort schreibt) oder es ist nötig sich das Menü
     als Objekt zu holen und in dem fertigen Objekt selbst herumzuschmieren.
 */
 
@@ -3710,7 +3724,7 @@ func int MEM_GetMenuByString (var string menuName) {
 // MenuItem Zugriff
 //--------------------------------------
 
-/* Selbe Bemerkung wie zu MenÃ¼s */
+/* Selbe Bemerkung wie zu Menüs */
 
 func int MEM_GetMenuItemByString (var string menuItemName) {
     var zCArray menuItems;
@@ -3822,129 +3836,40 @@ func void MEM_InitGlobalInst() {
 };
 
 //************************************************
-// Validity checks
-//************************************************
-
-func int Hlp_Is_oCMobFire (var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == oCMobFire_vtbl);
-};
-
-func int Hlp_Is_zCMover(var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == zCMover_vtbl);
-};
-
-func int Hlp_Is_oCMob(var int ptr) {
-    if (!ptr) { return 0; };
-
-    var int vtbl;
-    vtbl = MEM_ReadInt (ptr);
-
-    /* Schreibweise so bescheuert, weil Gothic Sourcer bei || meckert. */
-    return (vtbl == oCMob_vtbl)
-        |  (vtbl == oCMobInter_vtbl)
-        |  (vtbl == oCMobSwitch_vtbl)
-        |  (vtbl == oCMobWheel_vtbl)
-        |  (vtbl == oCMobContainer_vtbl)
-        |  (vtbl == oCMobLockable_vtbl)
-        |  (vtbl == oCMobLadder_vtbl)
-        |  (vtbl == oCMobFire_vtbl)
-        |  (vtbl == oCMobBed_vtbl)
-        |  (vtbl == oCMobDoor_vtbl);
-};
-
-func int Hlp_Is_oCMobInter(var int ptr) {
-    if (!ptr) { return 0; };
-
-    var int vtbl;
-    vtbl = MEM_ReadInt (ptr);
-
-    return (vtbl == oCMobInter_vtbl)
-         | (vtbl == oCMobSwitch_vtbl)
-         | (vtbl == oCMobWheel_vtbl)
-         | (vtbl == oCMobContainer_vtbl)
-         | (vtbl == oCMobLockable_vtbl)
-         | (vtbl == oCMobLadder_vtbl)
-         | (vtbl == oCMobFire_vtbl)
-         | (vtbl == oCMobBed_vtbl)
-         | (vtbl == oCMobDoor_vtbl);
-};
-
-func int Hlp_Is_oCMobLockable(var int ptr) {
-    if (!ptr) { return 0; };
-
-    var int vtbl;
-    vtbl = MEM_ReadInt (ptr);
-
-    return (vtbl == oCMobContainer_vtbl)
-         | (vtbl == oCMobLockable_vtbl)
-         | (vtbl == oCMobDoor_vtbl);
-};
-
-func int Hlp_Is_oCMobContainer(var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == oCMobContainer_vtbl);
-};
-
-func int Hlp_Is_oCMobDoor(var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == oCMobDoor_vtbl);
-};
-
-func int Hlp_Is_oCMobBed(var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == oCMobBed_vtbl);
-};
-
-func int Hlp_Is_oCMobSwitch(var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == oCMobSwitch_vtbl);
-};
-
-func int Hlp_Is_oCMobWheel(var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == oCMobWheel_vtbl);
-};
-
-func int Hlp_Is_oCMobLadder(var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == oCMobLadder_vtbl);
-};
-
-func int Hlp_Is_oCNpc (var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == oCNpc_vtbl);
-};
-
-func int Hlp_Is_oCItem (var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == oCItem_vtbl);
-};
-
-func int Hlp_Is_zCVobLight (var int ptr) {
-    if (!ptr) { return 0; };
-    return (MEM_ReadInt (ptr) == zCVobLight_vtbl);
-};
-
-//************************************************
 //   Find zCClassDef
 //************************************************
 
 func int MEM_GetClassDef (var int objPtr) {
     if (!objPtr) {
-        MEM_Error ("MEMINT_GetClassDef: ObjPtr == 0.");
+        MEM_Error ("MEM_GetClassDef: ObjPtr == 0");
         return 0;
     };
     
-    //In obj._vtbl[0] steht die Adresse der Funktion, die ClassDef zurÃ¼ckgibt.
+    //In obj._vtbl[0] steht die Adresse der Funktion, die ClassDef zurückgibt.
     //Diese Funktion besteht aus einem einfachen "mov eax" (1 byte), der Adresse (4 byte) und einem "retn" (1 byte).
     
     //obj._vtbl[0] contains the address of a virtual function that returns
     //the classDef of the class of the object.
     //This function contains of a single "mov" command (1 byte) that is followed by the address that is of interest here.
-    
-    return MEM_ReadInt (1 + MEM_ReadInt (MEM_ReadInt (objPtr)));
+
+    //return MEM_ReadInt (1 + MEM_ReadInt (MEM_ReadInt (objPtr)));
+    var int addr; addr = MEM_ReadInt(objPtr);
+    if (addr) {
+        addr = MEM_ReadInt(addr);
+        if (addr) {
+            // The following (see explanation above) holds for all original ClassDef functions
+            if (MEM_ReadByte(addr) == ASMINT_OP_movImToEAX) && (MEM_ReadByte(5 + addr) == ASMINT_OP_retn) {
+                return MEM_ReadInt(1 + addr);
+            };
+
+            // For newly added classes, however, the function may look different
+            CALL__thiscall(objPtr, addr);
+            return CALL_RetValAsInt();
+        };
+    };
+
+    MEM_Error("MEM_GetClassDef: ObjPtr not a valid object");
+    return 0;
 };
 
 func string MEM_GetClassName (var int objPtr) {
@@ -3957,11 +3882,87 @@ func string MEM_GetClassName (var int objPtr) {
     return "";
 };
 
+func int MEM_CheckInheritance(var int objPtr, var int classDef) {
+    if (!objPtr) || (!classDef) {
+        return 0;
+    };
+
+    var int curClassDef; curClassDef = MEM_GetClassDef(objPtr);
+
+    // Iterate over base classes
+    while(curClassDef && curClassDef != classDef);
+        var zCClassDef cD; cD = _^(curClassDef);
+        curClassDef = cD.baseClassDef;
+    end;
+
+    return (curClassDef == classDef);
+};
+
+//************************************************
+// Validity checks
+//************************************************
+
+func int Hlp_Is_oCMobFire(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMobFire_classDef);
+};
+
+func int Hlp_Is_zCMover(var int ptr) {
+    return MEM_CheckInheritance(ptr, zCMover_classDef);
+};
+
+func int Hlp_Is_oCMob(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMOB_classDef);
+};
+
+func int Hlp_Is_oCMobInter(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMobInter_classDef);
+};
+
+func int Hlp_Is_oCMobLockable(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMobLockable_classDef);
+};
+
+func int Hlp_Is_oCMobContainer(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMobContainer_classDef);
+};
+
+func int Hlp_Is_oCMobDoor(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMobDoor_classDef);
+};
+
+func int Hlp_Is_oCMobBed(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMobBed_classDef);
+};
+
+func int Hlp_Is_oCMobSwitch(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMobSwitch_classDef);
+};
+
+func int Hlp_Is_oCMobWheel(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMobWheel_classDef);
+};
+
+func int Hlp_Is_oCMobLadder(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCMobLadder_classDef);
+};
+
+func int Hlp_Is_oCNpc(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCNpc_classDef);
+};
+
+func int Hlp_Is_oCItem(var int ptr) {
+    return MEM_CheckInheritance(ptr, oCItem_classDef);
+};
+
+func int Hlp_Is_zCVobLight(var int ptr) {
+    return MEM_CheckInheritance(ptr, zCVobLight_classDef);
+};
+
 //************************************************
 //    Create and delete Vobs
 //************************************************
 
-/* Danke an Gottfried fÃ¼r die Entdeckung von Wld_InsertObject! */
+/* Danke an Gottfried für die Entdeckung von Wld_InsertObject! */
 func int MEM_InsertVob(var string vis, var string wp) {
     /* oCMob von Gothic konstruieren lassen */
     const int oCNpc__player_G1 = 9288624; //0x8DBBB0
@@ -4157,7 +4158,6 @@ func void MEM_TriggerVob (var int vobPtr) {
     const int zCEventManager_OnTrigger_G1 = 7202656; //0x6DE760
     const int zCEventManager_OnTrigger_G2 = 7895536; //0x7879F0
     
-    var zCVob vob; vob = _^(vobPtr);
     var int eventMan; eventMan = MEMINT_VobGetEM(vobPtr);
     
     const int call = 0;
@@ -4181,7 +4181,6 @@ func void MEM_UntriggerVob (var int vobPtr) {
     const int zCEventManager_OnUnTrigger_G1 = 7202848; //6DE820
     const int zCEventManager_OnUnTrigger_G2 = 7895728; //787AB0
     
-    var zCVob vob; vob = _^(vobPtr);
     var int eventMan; eventMan = MEMINT_VobGetEM(vobPtr);
     
     const int call = 0;
@@ -4202,18 +4201,18 @@ func void MEM_UntriggerVob (var int vobPtr) {
 //
 //######################################################
 
-//RÃ¼ckgabewerte
+//Rückgabewerte
 const int KEY_UP = 0;
 const int KEY_PRESSED = 1;
 const int KEY_HOLD = 2;
 const int KEY_RELEASED = 3;
 
 //--------------------------------------
-//  Grundlage: Ist die Taste gedrÃ¼ckt?
+//  Grundlage: Ist die Taste gedrückt?
 //--------------------------------------
 
-//etwas ungeschickt, dass die Methode, die auf KEY_HOLD prÃ¼ft KeyPressed heiÃŸt... :-(
-//aber jetzt ist es so und ich wills nicht Ã¤ndern.
+//etwas ungeschickt, dass die Methode, die auf KEY_HOLD prüft KeyPressed heißt... :-(
+//aber jetzt ist es so und ich wills nicht ändern.
 
 func int MEM_KeyPressed(var int key) {
     return MEM_ReadInt (MEMINT_KeyEvent_Offset + key) & 255;
@@ -4221,11 +4220,11 @@ func int MEM_KeyPressed(var int key) {
 
 //--------------------------------------
 //  Darauf aufbauend: Erkennung
-//  wann das erste mal gedrÃ¼ckt
+//  wann das erste mal gedrückt
 //  und wann gehalten
 //--------------------------------------
 
-//Hier merke ich mir die ZustÃ¤nde seit der letzten Abfrage:
+//Hier merke ich mir die Zustände seit der letzten Abfrage:
 var int MEMINT_KeyState[1024]; //lieber mal etwas mehr, gibt noch JoystickButtons usw.
 
 func int MEM_KeyState(var int key) {
@@ -4264,28 +4263,28 @@ func int MEM_KeyState(var int key) {
 
     //Neuen State merken
     MEM_WriteInt (adr, keyState);
-    return keyState; //zurÃ¼ckgeben.
+    return keyState; //zurückgeben.
 };
 
 //--------------------------------------
-//  Key-Event einfÃ¼gen
+//  Key-Event einfügen
 //--------------------------------------
 
-/* Problematisch, vielleicht gibt es irgendwann eine bessere LÃ¶sung.
+/* Problematisch, vielleicht gibt es irgendwann eine bessere Lösung.
  * Aber einiges kann man damit schon machen.
  * Beispiel:
- *   -Inventar Ã¶ffnen.
+ *   -Inventar öffnen.
  *   -Quicksave
- *   -CharaktermenÃ¼ Ã¶ffnen
+ *   -Charaktermenü öffnen
  *   -Pause togglen (Marvin Modus)
- *   -Log-Ã–ffnen
- *   -HauptmenÃ¼ Ã¶ffnen (ESC)
+ *   -Log-Öffnen
+ *   -Hauptmenü öffnen (ESC)
  *   ...
  *
  * An anderen Stellen will die Engine aber, dass der Key "getoggled"
  * wurde, das wird anderweitig verwaltet und ist hiervon nicht betroffen.
  * Daher kann man zum Beispiel das Inventar mit Hilfe dieser Funktion
- * nicht wieder schlieÃŸen. */
+ * nicht wieder schließen. */
 
 func void MEM_InsertKeyEvent(var int key) {
     MEM_ArrayInsert (MEMINT_KeyBuffer_offset, key);
@@ -4311,7 +4310,7 @@ var zCOptionEntry MEMINT_OPT_Entry;
 
 /* Search the current section for an entry */
 func int MEMINT_OPT_FindEntry(var string optname) {
-    //Anzahl EintrÃ¤ge == 0 ausschlieÃŸen (weil nur do-while schleife mÃ¶glich, keine while-do).
+    //Anzahl Einträge == 0 ausschließen (weil nur do-while schleife möglich, keine while-do).
     if (!MEMINT_OPT_Section.entryList_numInArray) {
         return FALSE;
     };
@@ -4336,7 +4335,7 @@ func int MEMINT_OPT_FindEntry(var string optname) {
 
 /* Search the current option set for a section */
 func int MEMINT_OPT_FindSection (var string sectname) {
-    //Anzahl Sektionen == 0 ausschlieÃŸen (weil nur do-while schleife mÃ¶glich, keine while-do).
+    //Anzahl Sektionen == 0 ausschließen (weil nur do-while schleife möglich, keine while-do).
     if (!MEMINT_OPT_Set.sectionList_numInArray) {
         return FALSE;
     };
@@ -4724,7 +4723,11 @@ func int MEM_BenchmarkPC_N(var func f, var int n) {
 //************************************************
 
 func void MEMINT_SendToSpy_Implementation(var int errorType, var string text) {
-    text = ConcatStrings("Q: ", text); //! = Ikarus
+    if (errorType == zERR_TYPE_FATAL) {
+        text = ConcatStrings("  ", text); // No author prefix required
+    } else {
+        text = ConcatStrings("Q: ", text); //! = Ikarus
+    };
     
     const int zerr_G1 = 8821208; //0x8699D8
     const int zerr_G2 = 9231568; //0x8CDCD0
@@ -4736,9 +4739,15 @@ func void MEMINT_SendToSpy_Implementation(var int errorType, var string text) {
         if (GOTHIC_BASE_VERSION == 1) {
             /* There is a warning "lost focus",
              * that will be printed constantly, unless
-             * I reduce its priority here */
-            MemoryProtectionOverride(/*0x4F55C2*/ 5199298, 1);
-            MEM_WriteByte(5199298, 1);
+             * I reduce its priority here.
+             * To avoid a crash, remove it entirely */
+            const int WndProc_FocusWarn = 5199312; //0x4F55D0
+            MemoryProtectionOverride(WndProc_FocusWarn, 5);
+            MEM_WriteByte(WndProc_FocusWarn+0, /*83*/ 131); // esp
+            MEM_WriteByte(WndProc_FocusWarn+1, /*C4*/ 196); // add
+            MEM_WriteByte(WndProc_FocusWarn+2, 8*4);        // 0x20
+            MEM_WriteByte(WndProc_FocusWarn+3, ASMINT_OP_nop);
+            MEM_WriteByte(WndProc_FocusWarn+4, ASMINT_OP_nop);
         };
     
         zerr.ack_type = zERR_TYPE_WARN;
@@ -4887,8 +4896,8 @@ func void MEMINT_PrintStackTrace_Implementation() {
      * from here, because I am further down in the stack: */
     ESP += MEMINT_DoStackFrameSize; 
     
-    /* sehr ungÃ¼nstig: Im Stackframe der Funktion steht gar nicht die
-     * aktuelle PopPos, die steht nur im Stackframe desjenigen obendrÃ¼ber
+    /* sehr ungünstig: Im Stackframe der Funktion steht gar nicht die
+     * aktuelle PopPos, die steht nur im Stackframe desjenigen obendrüber
      * wo der sie eben grade pushen wollte: */
     var int passedMySelf; passedMySelf = 0;
     var int mySelf; mySelf = MEM_GetFuncID(MEMINT_PrintStackTrace_Implementation);
@@ -5141,7 +5150,7 @@ func void MEMINT_InitFasterReadWrite() {
         MEMINT_OfTok   (zPAR_TOK_RET);
         
     /* Vorsicht, MEM_ReplaceFunc(MEM_WriteInt, MEM_WriteInt_);
-     * kann so nicht funktionieren, schlieÃŸlich wird MEM_WriteInt dazu gebraucht */
+     * kann so nicht funktionieren, schließlich wird MEM_WriteInt dazu gebraucht */
     var int buf; buf = MEM_Alloc(5);
     MEM_WriteByte(buf    , zPAR_TOK_JUMP);
     MEM_WriteInt (buf + 1, MEM_GetFuncOffset(MEM_WriteInt_));
@@ -5249,7 +5258,7 @@ func void MEMINT_VersionError() {
     } else {
         str = ConcatStrings(str, G2);
     };
-    str = ConcatStrings(str, ", da sie FunktionalitÃ¤t aus dem Skriptpaket 'Ikarus' verwendet. Es ist wahrscheinlich, dass Gothic unmittelbar nach dieser Fehlermeldung abstÃ¼rzt. Die genannte Version von Gothic steht zum Beispiel auf worldofgothic.de zum Download bereit. Der merkwÃ¼rdige Charakter dieser Fehlermeldung ist leider nicht zu vermeiden. ### This mod only works with ");
+    str = ConcatStrings(str, ", da sie Funktionalität aus dem Skriptpaket 'Ikarus' verwendet. Es ist wahrscheinlich, dass Gothic unmittelbar nach dieser Fehlermeldung abstürzt. Die genannte Version von Gothic steht zum Beispiel auf worldofgothic.de zum Download bereit. Der merkwürdige Charakter dieser Fehlermeldung ist leider nicht zu vermeiden. ### This mod only works with ");
     if (GOTHIC_BASE_VERSION == 1) {
         str = ConcatStrings(str, G1);
     } else {

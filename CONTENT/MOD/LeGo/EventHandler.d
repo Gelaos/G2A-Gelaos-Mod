@@ -39,7 +39,7 @@ func int Event_Create() {
 };
 
 //========================================
-// Event lÃ¶schen
+// Event löschen
 //========================================
 func void EventPtr_Delete(var int ptr) {
     free(ptr, lCEvent);
@@ -59,7 +59,7 @@ func int Event_Empty(var int h) {
 };
 
 //========================================
-// Event auf Listener prÃ¼fen
+// Event auf Listener prüfen
 //========================================
 func int EventPtr_HasI(var int ptr, var int id) {
     return (MEM_ArrayIndexOf(ptr, id) >= 0);
@@ -72,7 +72,7 @@ func int Event_Has(var int h, var func handler) {
 };
 
 //========================================
-// Listener hinzufÃ¼gen
+// Listener hinzufügen
 //========================================
 func void EventPtr_AddI(var int ptr, var int id) {
     MEM_ArrayInsert(ptr, id);
@@ -85,7 +85,7 @@ func void Event_Add(var int h, var func handler) {
 };
 
 //========================================
-// Listener einmalig hinzufÃ¼gen
+// Listener einmalig hinzufügen
 //========================================
 func void EventPtr_AddOnceI(var int ptr, var int id) {
     if (!EventPtr_HasI(ptr, id)) {

@@ -1,5 +1,5 @@
 class zCVobWaypoint {
-    //Ein ganz gewÃ¶hnliches Vob (wird als Hilfsvob verwendet)
+    //Ein ganz gewöhnliches Vob (wird als Hilfsvob verwendet)
     //zCVob {
         //zCObject {
         var int    _vtbl;
@@ -55,7 +55,7 @@ class zCWaypoint {
         var string _zCObject_objectName;
     //}
     
-    // KÃ¼rzeste Weg Suche durch das zCWaynet
+    // Kürzeste Weg Suche durch das zCWaynet
     // Diese Eigenschaften besser nicht nutzen,
     // es sind A* (Zwischen-) Ergebnisse.
     var int routeCtr;                       //int                 
@@ -73,7 +73,7 @@ class zCWaypoint {
     var int dir[3];                         //zVEC3   // AtVector
     var string name;                        //zSTRING   
 
-    // dazugehÃ¶riger Vob in dÃ©r Welt
+    // dazugehöriger Vob in dér Welt
     var int wpvob;                          //zCVobWaypoint*
     
     // Liste der hier beginnenden Wege ( Ways )
@@ -85,7 +85,7 @@ class zCWaypoint {
 class oCWay { //Unterklasse von zCWay.
     var int _vtbl;                  //Zeiger auf Methodentabelle
 
-    // KÃ¼rzeste Weg Suche durch das zCWaynet
+    // Kürzeste Weg Suche durch das zCWaynet
     // Diese Eigenschaften besser nicht nutzen,
     // es sind A* (Zwischen-) Ergebnisse.
     var int cost;                   //int
@@ -96,7 +96,7 @@ class oCWay { //Unterklasse von zCWay.
     var int chasm;                  //zBOOL
     var int jump;                   //zBOOL
 
-    //die beiden anschlieÃŸenden Wegpunkte
+    //die beiden anschließenden Wegpunkte
     var int left;                   //zCWaypoint*
     var int right;                  //zCWaypoint*
     

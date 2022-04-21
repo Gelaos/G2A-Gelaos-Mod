@@ -209,7 +209,7 @@ func int Print_GetStringWidth(var string s, var string font) {
 };
 
 //========================================
-// HÃ¶he einer Font holen
+// Höhe einer Font holen
 //========================================
 func int Print_GetFontHeight(var string font) {
     var int adr; adr = Print_GetFontPtr(font);
@@ -231,7 +231,7 @@ func string MEM_GetAnyWP() {
 };
 
 //========================================
-// Item an Koordinaten einfÃ¼gen
+// Item an Koordinaten einfügen
 //========================================
 func void MEM_InsertItem(var c_item itm, var int fX, var int fY, var int fZ) {
     var zCWaynet wayNet; wayNet = MEM_PtrToInst(MEM_World.wayNet);
@@ -249,7 +249,7 @@ func void MEM_InsertItem(var c_item itm, var int fX, var int fY, var int fZ) {
 };
 
 //========================================
-// Vob an Npc hÃ¤ngen
+// Vob an Npc hängen
 //========================================
 func int oCNpc_PutInSlot(var c_npc slf, var string SlotName, var int oCVobPtr, var int SlotID) {
     CALL_IntParam(SlotID);

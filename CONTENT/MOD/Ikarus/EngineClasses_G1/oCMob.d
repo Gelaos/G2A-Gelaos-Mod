@@ -64,7 +64,7 @@ class oCMob {
     var int owner;                  //int
     var int ownerGuild;             //int
                                     
-    var int focusNameIndex;         //int //Index des Parsersymbols, dass den Namen enthÃ¤lt, zum Beispiel Index des Symbols MOBNAME_DOOR.
+    var int focusNameIndex;         //int //Index des Parsersymbols, dass den Namen enthält, zum Beispiel Index des Symbols MOBNAME_DOOR.
 
     //zCList<zCVob>     ignoreVobList;
         var int ignoreVobList_data;     //zCVob*
@@ -256,7 +256,7 @@ class oCMobLockable {
     
     var int bitfield;
     
-    var string keyInstance;     // zSTRING //SchlÃ¼sselinstanzname
+    var string keyInstance;     // zSTRING //Schlüsselinstanzname
     var string pickLockStr;     // zSTRING //linksrechtscombo
 };
 

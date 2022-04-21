@@ -8,13 +8,13 @@ class oCInfoChoice
 //  oCInfo
 //----------------------------------
 
-/* Gro√üe Vorsicht!
+/* Groﬂe Vorsicht!
 
-Im Gegensatz zu C_NPC und C_ITEM zeigt eine C_INFO nicht auf den vergr√∂√üerten
-Speicherbereich, sondern tats√§chlich auf sich selbst.
+Im Gegensatz zu C_NPC und C_ITEM zeigt eine C_INFO nicht auf den vergrˆﬂerten
+Speicherbereich, sondern tats‰chlich auf sich selbst.
 MEM_InstGetOffset liefert also, auf eine C_INFO angewendet NICHT die Adresse
-des umrahmenden oCInfo Objekts sondern die Adresse der enthaltenen C_INFO zur√ºck.
-Um an die oCInfo zu kommen m√ºssen 4 + 4 + 20 = 28 abgezogen werden! */
+des umrahmenden oCInfo Objekts sondern die Adresse der enthaltenen C_INFO zur¸ck.
+Um an die oCInfo zu kommen m¸ssen 4 + 4 + 20 = 28 abgezogen werden! */
 
 const int oCInfo_C_INFO_Offset = 28;
 
@@ -50,7 +50,7 @@ class oCInfo {
 class oCInfoManager {
     var int _vtbl;                  //Zeiger auf Methodentabelle                                            
     
-    //Liste aller oCInfos. Geordnet nach...? M√ºsste man mal nachschauen.
+    //Liste aller oCInfos. Geordnet nach...? M¸sste man mal nachschauen.
     //zCListSort< oCInfo > infoList;    
         var int infoList_compare;   //int (*Compare)(oCInfo *ele1,oCInfo *ele2);
         var int infoList_data;      //oCInfo*
@@ -74,9 +74,9 @@ class oCInformationManager
     zTInfoMgrMode; */
 
     var string LastMethod           ;  //zSTRING                         
-    var int DlgStatus               ;  //zCViewDialogChoice*    //das sind Views. Das hei√üt vermutlich nur Anzeige
-    var int DlgTrade                ;  //oCViewDialogTrade*     //das sind Views. Das hei√üt vermutlich nur Anzeige
-    var int DlgChoice               ;  //zCViewDialogChoice*    //das sind Views. Das hei√üt vermutlich nur Anzeige
+    var int DlgStatus               ;  //zCViewDialogChoice*    //das sind Views. Das heiﬂt vermutlich nur Anzeige
+    var int DlgTrade                ;  //oCViewDialogTrade*     //das sind Views. Das heiﬂt vermutlich nur Anzeige
+    var int DlgChoice               ;  //zCViewDialogChoice*    //das sind Views. Das heiﬂt vermutlich nur Anzeige
     var int Npc                     ;  //oCNpc*                       
     var int Player                  ;  //oCNpc*                       
     var int Info                    ;  //oCInfo*                         

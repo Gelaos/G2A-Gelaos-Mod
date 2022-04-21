@@ -1,5 +1,5 @@
 //--------------------------------------
-// Baum / Knoten. FÃ¼r Vobtree
+// Baum / Knoten. Für Vobtree
 //--------------------------------------
 
 //template <class T> 
@@ -22,7 +22,7 @@ const int sizeof_zCArray = 12;
 //template <class T> 
 class zCArray {
     var int array;              //T*        //Zeiger auf Speicherbereich
-    var int numAlloc;           //int       //FÃ¼r wieviele Elemente ist gerade Speicher reserviert?
+    var int numAlloc;           //int       //Für wieviele Elemente ist gerade Speicher reserviert?
     var int numInArray;         //int       //Anzahl der Elemente in diesem Speicherbereich
 };
 
@@ -297,7 +297,7 @@ class oCWorldTimer {
      SPAWN_INSERTRANGE_Address   
      SPAWN_REMOVERANGE_Address   
 
- * EingefÃ¼hrt sind sie in Ikarus_Const.d */
+ * Eingeführt sind sie in Ikarus_Const.d */
 
 class oTSpawnNode {
     var int npc;         //oCNpc *
@@ -313,7 +313,7 @@ class oCSpawnManager {
         
     var int spawningEnabled;        //zBOOL
     var int camPos[3];              //zVEC3
-    var int insertTime;             //zREAL //VerzÃ¶gerungszeit des Spawnmanagers (PerformancegrÃ¼nde)
+    var int insertTime;             //zREAL //Verzögerungszeit des Spawnmanagers (Performancegründe)
 };
 
 //--------------------------------------
@@ -385,7 +385,7 @@ class zCVobLight {
 //  }
     
     //Ein Licht Vob kann verschiedene Farben und Reichweite haben.
-    //SchlieÃŸlich gibt es animierte Lichter!
+    //Schließlich gibt es animierte Lichter!
     
     //zCVobLightData    lightData;
         //zCArray<zVALUE>       rangeAniScaleList; //zREAL ~ zVALUE
@@ -428,10 +428,10 @@ class zCVobLight {
 // Magie buch
 //--------------------------------------
 
-/* Beschreibungen ergÃ¤nzt von Mud-freak. Danke dafÃ¼r! */
+/* Beschreibungen ergänzt von Mud-freak. Danke dafür! */
 
-/* Genutzt um den Kreis Ã¼ber dem Spieler bei der Zauberauswahl anzuzeigen 
- * auÃŸerdem fÃ¼r zuordnungen von Zaubern <-> Items <-> Tasten. */
+/* Genutzt um den Kreis über dem Spieler bei der Zauberauswahl anzuzeigen 
+ * außerdem für zuordnungen von Zaubern <-> Items <-> Tasten. */
 
 class oCMag_Book {
     //zCArray    <oCSpell*>   spells;
@@ -449,11 +449,11 @@ class oCMag_Book {
     var int spellnr;            //int         //selected spell --> n+4 = Slot/Taste
     var int MAG_HEIGHT;         //zREAL       //some offset to shift the spell above the head of the owner (for spell choosing)
     var int active;             //zBOOL       //unused??
-    var int remove_all;         //zBOOL       //some internal stuff? --> Beim SchlieÃŸen des MagBooks, wenn ein vorher gezogene Zauber weggesteckt wird auf 1, sonst auf 0 (ALLE (vorher gezogener einbegriffen) Spells wieder zurÃ¼ck "in die HÃ¼fte")
-    var int in_movement;        //zBOOL       //currently rotating the spells above the player head? --> und Ã¶ffnen oder schlieÃŸen
+    var int remove_all;         //zBOOL       //some internal stuff? --> Beim Schließen des MagBooks, wenn ein vorher gezogene Zauber weggesteckt wird auf 1, sonst auf 0 (ALLE (vorher gezogener einbegriffen) Spells wieder zurück "in die Hüfte")
+    var int in_movement;        //zBOOL       //currently rotating the spells above the player head? --> und öffnen oder schließen
     var int show_handsymbol;    //zBOOL       //? --> PFX bzw. Spell in der Hand (vergleichbar mit gezogen oder nicht)
     var int step;               //zREAL       //if n spells are in the mag book this is 360/n 
-    var int action;             //int         //internal --> 0 = keine Aktion, 1 = drehen, 2 = Ã¶ffnen, 3 = schlieÃŸen
+    var int action;             //int         //internal --> 0 = keine Aktion, 1 = drehen, 2 = öffnen, 3 = schließen
     var int UNUSED;             //int         //
     var int open;               //zBOOL       //currently showing mag book (cirlce above player head)?
     var int open_delay_timer;   //zREAL       //used for delaying the time until the rune turns into a pfx --> 2000 msec
@@ -461,10 +461,10 @@ class oCMag_Book {
     var int targetdir;          //zREAL       //used for turning the spellbook over time when player pressed "left" or "right" --> um wieviel Grad drehen; Ist nach rechts wie die Eigenschaft step (also 360/n), aber nach links ((360/n)-1)*-1 (negativ und ein Grad weniger)
     var int t1;                 //zREAL       // - " -  --> "Keyframes": FLOATNULL = Die Eigenschaft action startet, FLOATEINS = Die Eigenschaft action endet
     var int targetpos[3];       //zVEC3       //used for popping out the magbook (from the hips) and closing it again. --> von Position
-    var int startpos[3];        //zVEC3       // - " -  --> nach Position (auch beim SchlieÃŸen, d.h. startpos und targetpos werden ausgetauscht)
+    var int startpos[3];        //zVEC3       // - " -  --> nach Position (auch beim Schließen, d.h. startpos und targetpos werden ausgetauscht)
 
-    var int nextRegister;       //int         //not sure. Something with key assignment? --> Dieser Wert scheint sich nie zu Ã¤ndern
-    var int keys;               //int         //bitfield. If key n \in {0, 1, ..., 9} is used, keys & (1 << n) is true.  --> zeigt, ob ein Zauber im Slot (Taste) n+4 angelegt ist, hÃ¶rt also eigentlich bei n = 6 (Anzahl der Tasten fÃ¼r die Zauber) auf (nicht bei 9)
+    var int nextRegister;       //int         //not sure. Something with key assignment? --> Dieser Wert scheint sich nie zu ändern
+    var int keys;               //int         //bitfield. If key n \in {0, 1, ..., 9} is used, keys & (1 << n) is true.  --> zeigt, ob ein Zauber im Slot (Taste) n+4 angelegt ist, hört also eigentlich bei n = 6 (Anzahl der Tasten für die Zauber) auf (nicht bei 9)
 };
 
 //--------------------------------------
@@ -481,7 +481,7 @@ class zString {
     var int _vtbl; //immer 0
     var int _allocater; //immer 0
     var int ptr; //pointer zu den Daten
-    var int len; //LÃ¤nge des Strings
+    var int len; //Länge des Strings
     var int res; //Anzahl allozierter Bytes
 };
 
@@ -491,14 +491,14 @@ const int sizeof_zString = 20;
 // zCClassDef
 //--------------------------------------
 
-/* FÃ¼r jede (von zCObject abgeleitete) Klasse gibt es
+/* Für jede (von zCObject abgeleitete) Klasse gibt es
  * ein "Verwaltungsobjekt" vom Typ zCClassDef.
- * Dieses kapselt einige nÃ¼tzliche Informationen zu der
+ * Dieses kapselt einige nützliche Informationen zu der
  * Gesamtheit der Objekte dieser Klasse.
  * Mit MEM_GetClassDef (var int objPtr) kann das
- * zu einem Objekt gehÃ¶rige zCClassDef Objekt bestimmt
- * werden. Das heiÃŸt fÃ¼r ein Ã¼bergebenes Vob, bekÃ¤me
- * man zCClassDef fÃ¼r die Klasse zCVob.
+ * zu einem Objekt gehörige zCClassDef Objekt bestimmt
+ * werden. Das heißt für ein übergebenes Vob, bekäme
+ * man zCClassDef für die Klasse zCVob.
  */
 
 const int zCClassDef_bitfield_archiveVersion    = ((1 << 16) - 1) <<  0; //zWORD
@@ -516,18 +516,18 @@ class zCClassDef {
     /*
     enum zTClassFlags {
         zCLASS_FLAG_SHARED_OBJECTS      = 1<<0, //Mehrfach benutzt Objekte (wie Visuals zum Beispiel)
-        zCLASS_FLAG_TRANSIENT           = 1<<1, //FlÃ¼chtig, soll nicht gespeichert werden.
+        zCLASS_FLAG_TRANSIENT           = 1<<1, //Flüchtig, soll nicht gespeichert werden.
         zCLASS_FLAG_RESOURCE            = 1<<2, //keine Ahnung / vermutlich irrelevant
     };*/
 
     var int classFlags;              //zDWORD //siehe enum
-    var int classSize;               //zDWORD //GrÃ¶ÃŸe in Bytes
+    var int classSize;               //zDWORD //Größe in Bytes
 
     var int numLivingObjects;        //Anzahl Objekte von dieser Klasse
     var int numCtorCalled;           //Konstruktor wurde sooft aufgerufen
 
-    var int hashTable;               //zCObject** //Hashtabelle der GrÃ¶ÃŸe 1024. Objekte sind mit zCObject.hashNext verknÃ¼pft, falls mehrere auf den selben Wert hashen.
-    //zCArray<zCObject*> objectList;    //alle benannten (!) Objekte von genau (!) dieser Klasse (!) //Ausrufezeichenanmerkungen: 1.) unbenannte sind nicht drin 2.) Objekte von Unterklassen sind nicht drin 3.) diese Eigenschaft kann sehr nÃ¼tzlich sein.
+    var int hashTable;               //zCObject** //Hashtabelle der Größe 1024. Objekte sind mit zCObject.hashNext verknüpft, falls mehrere auf den selben Wert hashen.
+    //zCArray<zCObject*> objectList;    //alle benannten (!) Objekte von genau (!) dieser Klasse (!) //Ausrufezeichenanmerkungen: 1.) unbenannte sind nicht drin 2.) Objekte von Unterklassen sind nicht drin 3.) diese Eigenschaft kann sehr nützlich sein.
         var int objectList_array;       //zCObject**
         var int objectList_numAlloc;    //int
         var int objectList_numInArray;  //int

@@ -113,7 +113,7 @@ func int Anim8_NewExt(var int value, var func handler, var int data, var int IsF
 };
 
 //========================================
-// Objekt komplett lÃ¶schen
+// Objekt komplett löschen
 //========================================
 func void Anim8_Delete(var int hndl) {
     if(!Hlp_IsValidHandle(hndl)) {
@@ -286,7 +286,7 @@ func void Anim8_Set(var int hndl, var int v) {
 };
 
 //========================================
-// Objekt zerstÃ¶ren wenn es leer ist?
+// Objekt zerstören wenn es leer ist?
 //========================================
 func void Anim8_RemoveIfEmpty(var int hndl, var int on) {
     if(!Hlp_IsValidHandle(hndl)) {
@@ -297,7 +297,7 @@ func void Anim8_RemoveIfEmpty(var int hndl, var int on) {
 };
 
 //========================================
-// Objektdata zerstÃ¶ren wenn es leer ist?
+// Objektdata zerstören wenn es leer ist?
 //========================================
 func void Anim8_RemoveDataIfEmpty(var int hndl, var int on) {
     if(!Hlp_IsValidHandle(hndl)) {
@@ -339,7 +339,7 @@ func void Anim8(var int hndl, var int target, var int span, var int interpol) {
 };
 
 //========================================
-// Neuen Befehl anhÃ¤ngen
+// Neuen Befehl anhängen
 //========================================
 func void Anim8q(var int hndl, var int target, var int span, var int interpol) {
     _Anim8_Ext(hndl, target, span + (!span), interpol, 1);

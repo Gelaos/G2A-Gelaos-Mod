@@ -7,7 +7,7 @@
 // Update: Falsch! Noch spezieller ist der
 // oCSkyControler_Barrier. Ich werden diesen hier aber
 // nicht umbenennen sondern die Barrier Eigenschaften
-// einfach unten dran fÃ¼gen.
+// einfach unten dran fügen.
 //######################################################
 
 
@@ -22,7 +22,7 @@ class zCSkyController_Outdoor /* eigentlich oCSkyControler_Barrier */ {
     
     //zCSkyControler
     
-    //Es wird eine TageszeitabhÃ¤ngige Lookuptable fÃ¼r Lichtwerte bereitgestellt.
+    //Es wird eine Tageszeitabhängige Lookuptable für Lichtwerte bereitgestellt.
     var int polyLightCLUTPtr;   //zCOLOR*  "colour look up table", siehe unten
     
     var int cloudShadowScale;   //zREAL    
@@ -40,7 +40,7 @@ class zCSkyController_Outdoor /* eigentlich oCSkyControler_Barrier */ {
     var int oldFovY;            //zREAL                      
     var int vobUnderwaterPFX;   //zCVob*                        
 
-    //Screen Poly? FÃ¼r Blenden? DafÃ¼r gibts doch die Kamera...
+    //Screen Poly? Für Blenden? Dafür gibts doch die Kamera...
     var int scrPoly;            //zCPolygon*                   
     var int scrPolyMesh;        //zCMesh*                        
     var int scrPolyAlpha;       //int                               
@@ -92,7 +92,7 @@ class zCSkyController_Outdoor /* eigentlich oCSkyControler_Barrier */ {
         var int stateList_numAlloc;      //int
         var int stateList_numInArray;    //int
     
-    var int polyLightCLUT[256];     //zCOLOR //Farbtabelle fÃ¼r Beleuchtung. AbhÃ¤ngig von der Tageszeit
+    var int polyLightCLUT[256];     //zCOLOR //Farbtabelle für Beleuchtung. Abhängig von der Tageszeit
     var int relightCtr;				//zTFrameCtr / int
 	var int lastRelightTime;		//zREAL
     var int dayCounter;             //zREAL  //sehr nutzlos
@@ -183,7 +183,7 @@ class zCSkyController_Outdoor /* eigentlich oCSkyControler_Barrier */ {
     var int bFadeInOut; //zBOOL
 };
 
-/* Hier heran kommt man Ã¼ber MEM_SkyController.barrier */
+/* Hier heran kommt man über MEM_SkyController.barrier */
 
 class oCBarrier {
     var int skySphereMesh;             //zCMesh*

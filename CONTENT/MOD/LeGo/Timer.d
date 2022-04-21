@@ -86,7 +86,7 @@ func void Timer_SetPause(var int on) {
 };
 
 //========================================
-// In MenÃ¼s automatisch pausieren?
+// In Menüs automatisch pausieren?
 //========================================
 func void Timer_SetPauseInMenu(var int on) {
 	_Timer_PiM = on;

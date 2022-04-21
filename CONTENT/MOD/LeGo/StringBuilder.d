@@ -53,7 +53,7 @@ func void SB_InitBuffer(var int size) {
 };
 
 //========================================
-// Leeren (wird nicht zerstÃ¶rt!)
+// Leeren (wird nicht zerstört!)
 //========================================
 func void SB_Clear() {
     var StringBuilder c; c = _^(_SB_Current);
@@ -74,7 +74,7 @@ func void SB_Release() {
 };
 
 //========================================
-// StringBuilder komplett zerstÃ¶ren
+// StringBuilder komplett zerstören
 //========================================
 func void SB_Destroy() {
     SB_Clear();
@@ -82,7 +82,7 @@ func void SB_Destroy() {
 };
 
 //========================================
-// Stream als String zurÃ¼ckgeben
+// Stream als String zurückgeben
 //========================================
 func string SB_ToString() {
     var StringBuilder c; c = _^(_SB_Current);
@@ -97,7 +97,7 @@ func string SB_ToString() {
 };
 
 //========================================
-// Stream als Pointer zurÃ¼ckgeben
+// Stream als Pointer zurückgeben
 //========================================
 func int SB_GetStream() {
     if(!_SB_Current) {
@@ -107,7 +107,7 @@ func int SB_GetStream() {
 };
 
 //========================================
-// Kopie des Streams zurÃ¼ckgeben
+// Kopie des Streams zurückgeben
 //========================================
 func int SB_ToStream() {
     if(!_SB_Current) {
@@ -120,7 +120,7 @@ func int SB_ToStream() {
 };
 
 //========================================
-// Aktuelle LÃ¤nge
+// Aktuelle Länge
 //========================================
 func int SB_Length() {
     if(!_SB_Current) {
@@ -130,7 +130,7 @@ func int SB_Length() {
 };
 
 //========================================
-// Rohbytes anhÃ¤ngen
+// Rohbytes anhängen
 //========================================
 func void SBraw(var int ptr, var int len) {
     var StringBuilder c; c = _^(_SB_Current);
@@ -150,7 +150,7 @@ func void SBraw(var int ptr, var int len) {
 };
 
 //========================================
-// String anhÃ¤ngen
+// String anhängen
 //========================================
 func void SB(var string s) {
     var zString z; z = _^(_@s(s));
@@ -158,14 +158,14 @@ func void SB(var string s) {
 };
 
 //========================================
-// Int als ASCII anhÃ¤ngen
+// Int als ASCII anhängen
 //========================================
 func void SBi(var int i) {
     SB(IntToString(i));
 };
 
 //========================================
-// Buchstaben anhÃ¤ngen (ASCII)
+// Buchstaben anhängen (ASCII)
 //========================================
 func void SBc(var int b) {
     var StringBuilder c; c = _^(_SB_Current);
@@ -181,7 +181,7 @@ func void SBc(var int b) {
 };
 
 //========================================
-// Int als 4 Byte roh anhÃ¤ngen
+// Int als 4 Byte roh anhängen
 //========================================
 func void SBw(var int b) {
     var StringBuilder c; c = _^(_SB_Current);
@@ -197,21 +197,21 @@ func void SBw(var int b) {
 };
 
 //========================================
-// Float anhÃ¤ngen (ASCII)
+// Float anhängen (ASCII)
 //========================================
 func void SBflt(var float f) {
     SB(FloatToString(f));
 };
 
 //========================================
-// Int als Float anhÃ¤ngen (ASCII)
+// Int als Float anhängen (ASCII)
 //========================================
 func void SBf(var int f) {
     f; MEM_Call(SBflt);
 };
 
 //========================================
-// LÃ¤nge setzen
+// Länge setzen
 //========================================
 func void SB_SetLength(var int l) {
     while(l > SB_Length());

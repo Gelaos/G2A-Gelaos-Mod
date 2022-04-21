@@ -1,11 +1,11 @@
 //#################################################################
 //
-//  32 bit IEEE 754 floats (kurz: Gleitkommazahlen) fÃ¼r Daedalus:
+//  32 bit IEEE 754 floats (kurz: Gleitkommazahlen) für Daedalus:
 //      Script vom 26.11.2008, erstellt von Sektenspinner
 //
-//  Es wird NICHT der vollstÃ¤ndige IEEE 754 Standard unterstÃ¼tzt
-//  Es gibt Unterschiede in SpezialfÃ¤llen und Rundungsfehler.
-//  Das grundsÃ¤tzliche Format wird aber eingehalten, sodass
+//  Es wird NICHT der vollständige IEEE 754 Standard unterstützt
+//  Es gibt Unterschiede in Spezialfällen und Rundungsfehler.
+//  Das grundsätzliche Format wird aber eingehalten, sodass
 //  auch mit Engine-Floats gerechnet werden kann.
 //
 //  Bugfix am 19.03.2010:
@@ -26,11 +26,11 @@
 //          -Die Funktionen sollten nun beliebig schachtelbar sein.
 //      Danke an mud-freak!
 //  Erweiterung am 5.2.2011:
-//      -fracf hinzugefÃ¼gt, danke an orcwarriorPL!
+//      -fracf hinzugefügt, danke an orcwarriorPL!
 //  Erweiterung am 7.4.2011:
-//      -sqrtf_approx hinzugefÃ¼gt, geschrieben von Lehona
+//      -sqrtf_approx hinzugefügt, geschrieben von Lehona
 //  Performanceverbesserung 8.4.2011:
-//      -sqrtf beschleunigt, Dank gebÃ¼hrt Lehona
+//      -sqrtf beschleunigt, Dank gebührt Lehona
 //
 //#################################################################
 
@@ -39,26 +39,26 @@
 //####################################
 
 //*********************
-//  GrundsÃ¤tzliches
+//  Grundsätzliches
 //*********************
 
-32-bit Floats der Genauigkeit "single" werden mit den in diesem Script enthaltenen Funktionen auf einem gewÃ¶hnlichen integer simuliert. Dabei ist darauf zu achten floats und integer trotz des formal gleichen Datentyps penibel zu unterscheiden. Wenn eine Zahl in Floatdarstellung mit einer Zahl in Integerdarstellung verrechnet wird oder Funktionen auf integer angewendet werden, die eigentlich fÃ¼r floats gedacht sind oder umgekehrt kommt im besten Fall einfach nur BlÃ¶dsinn heraus. Normalerweise meckert in so einem Fall der Compiler, Gothic kennt aber den Unterschied nicht!
+32-bit Floats der Genauigkeit "single" werden mit den in diesem Script enthaltenen Funktionen auf einem gewöhnlichen integer simuliert. Dabei ist darauf zu achten floats und integer trotz des formal gleichen Datentyps penibel zu unterscheiden. Wenn eine Zahl in Floatdarstellung mit einer Zahl in Integerdarstellung verrechnet wird oder Funktionen auf integer angewendet werden, die eigentlich für floats gedacht sind oder umgekehrt kommt im besten Fall einfach nur Blödsinn heraus. Normalerweise meckert in so einem Fall der Compiler, Gothic kennt aber den Unterschied nicht!
 
 //************************************
 //  Das Instrumentarium
 //************************************
 
-Um mit floats rechnen zu kÃ¶nnen, mÃ¼ssen diese zunÃ¤chst erzeugt werden. Dazu gibt es eine Abbildung mkf, die eine integer Ganzzahl in einen float umwandelt.
-floats kÃ¶nnen untereinander addiert, subtrahiert, multipliziert und dividiert werden. Eine Wurzelfunktion ist ebenfalls definiert.
-Um den Wert der floats intepretieren zu kÃ¶nnen, sind die Ordnungsrelationen >=, >, <, <= mit den Funktionen ge, g, l, le gegeben.
-Ferner kÃ¶nnen floats mit der truncf und roundf Funktion zurÃ¼ck in einen integer konvertiert werden.
+Um mit floats rechnen zu können, müssen diese zunächst erzeugt werden. Dazu gibt es eine Abbildung mkf, die eine integer Ganzzahl in einen float umwandelt.
+floats können untereinander addiert, subtrahiert, multipliziert und dividiert werden. Eine Wurzelfunktion ist ebenfalls definiert.
+Um den Wert der floats intepretieren zu können, sind die Ordnungsrelationen >=, >, <, <= mit den Funktionen ge, g, l, le gegeben.
+Ferner können floats mit der truncf und roundf Funktion zurück in einen integer konvertiert werden.
 
 //************************************
-//  Die Funktionen im Ãœberblick:
+//  Die Funktionen im Überblick:
 //************************************
 
-"func float" und "var float" wie hier angegeben gibt es nicht wirklich (fÃ¼r Gothic sind alles integer). Diese Notation soll hier nur zur Veranschaulichung dienen.
-Um sich die Funktionsnamen merken zu kÃ¶nnen hilft vielleicht folgende Liste, die die AbkÃ¼rzungen erklÃ¤rt:
+"func float" und "var float" wie hier angegeben gibt es nicht wirklich (für Gothic sind alles integer). Diese Notation soll hier nur zur Veranschaulichung dienen.
+Um sich die Funktionsnamen merken zu können hilft vielleicht folgende Liste, die die Abkürzungen erklärt:
 
 mkf    = make float
 truncf = truncate float
@@ -78,36 +78,36 @@ printf = print float
 
 **************** Umwandlung *******************
 func float mkf (var int x) //Erzeugt die Floatdarstellung aus einer Ganzzahl.
-func int truncf (var float x) //reduziert einen float auf seinen Ganzzahlanteil, wobei alle Nachkommastellen verworfen werden. Der Ergebnistyp ist Integer. (-1.5 wÃ¼rde zu -1.0, nicht zu -2)
+func int truncf (var float x) //reduziert einen float auf seinen Ganzzahlanteil, wobei alle Nachkommastellen verworfen werden. Der Ergebnistyp ist Integer. (-1.5 würde zu -1.0, nicht zu -2)
 func int roundf (var float x) //reduziert einen float auf eine Ganzzahl, die durch Runden ermittelt wird. Wie truncf, nur das zuvor 0.5 addiert wird. Der Ergebnistyp ist Integer.
 
 **************** Addition *********************
-func float addf (var float x, var float y) //addiert x und y und gibt das Ergebnis zurÃ¼ck.
-func float subf (var float x, var float y) //subtrahiert y von x und gibt das Ergebnis zurÃ¼ck.
-func float negf (var float x) //Gibt das additive Inverse von x (also -x) zurÃ¼ck.
+func float addf (var float x, var float y) //addiert x und y und gibt das Ergebnis zurück.
+func float subf (var float x, var float y) //subtrahiert y von x und gibt das Ergebnis zurück.
+func float negf (var float x) //Gibt das additive Inverse von x (also -x) zurück.
 
 **************** Multiplikation ***************
-func float mulf (var float x, var float y) //multipliziert x und y miteinander und gibt das Ergebnis zurÃ¼ck.
-func float divf (var float x, var float y) //dividiert x durch y und gibt das Ergebnis zurÃ¼ck.
-func float invf (var float x) //Gibt das multiplikative Inverse des floats x, also 1/x zurÃ¼ck. Gibt fÃ¼r x = 0 einen Fehler aus.
-func float fracf (var int p, var int p) //Gibt den Bruch p/q als float zurÃ¼ck. Ã„quivalent zu divf(mkf(p), mkf(q))
+func float mulf (var float x, var float y) //multipliziert x und y miteinander und gibt das Ergebnis zurück.
+func float divf (var float x, var float y) //dividiert x durch y und gibt das Ergebnis zurück.
+func float invf (var float x) //Gibt das multiplikative Inverse des floats x, also 1/x zurück. Gibt für x = 0 einen Fehler aus.
+func float fracf (var int p, var int p) //Gibt den Bruch p/q als float zurück. Äquivalent zu divf(mkf(p), mkf(q))
 
 **************** Ordnungsrelationen ***********
-func int gf (var float x, var float y) //gibt fÃ¼r x > y TRUE zurÃ¼ck, sonst FALSE
-func int gef (var float x, var float y) //gibt fÃ¼r x >= y TRUE zurÃ¼ck, sonst FALSE
-func int lef (var float x, var float y) //gibt fÃ¼r x <= y TRUE zurÃ¼ck, sonst FALSE
-func int lf (var float x, var float y) //gibt fÃ¼r x < y TRUE zurÃ¼ck, sonst FALSE
+func int gf (var float x, var float y) //gibt für x > y TRUE zurück, sonst FALSE
+func int gef (var float x, var float y) //gibt für x >= y TRUE zurück, sonst FALSE
+func int lef (var float x, var float y) //gibt für x <= y TRUE zurück, sonst FALSE
+func int lf (var float x, var float y) //gibt für x < y TRUE zurück, sonst FALSE
 
 **************** Verschiedene *****************
-func float sqrtf (var float x) //gibt die Wurzel des floats x zurÃ¼ck. Gibt fÃ¼r negative x einen Fehler aus.
-func float sqrtf_approx (var float x) //berechnet die Wurzel erheblich performanter als sqrtf aber mÃ¶glicherweise ungenauer
-func void printf (var float x) {}; //gibt einen float als Kommazahl auf dem Bildschirmaus. Diese Funktion funktioniert fÃ¼r sehr groÃŸe und sehr kleine x nicht richtig.
+func float sqrtf (var float x) //gibt die Wurzel des floats x zurück. Gibt für negative x einen Fehler aus.
+func float sqrtf_approx (var float x) //berechnet die Wurzel erheblich performanter als sqrtf aber möglicherweise ungenauer
+func void printf (var float x) {}; //gibt einen float als Kommazahl auf dem Bildschirmaus. Diese Funktion funktioniert für sehr große und sehr kleine x nicht richtig.
 
 //************************************
 //  Sonstiges
 //************************************
 
-Es sind fÃ¼nf float Konstanten definiert, die genutzt werden kÃ¶nnen, ohne dass sie erst berechnet/erzeugt werden mÃ¼ssen:
+Es sind fünf float Konstanten definiert, die genutzt werden können, ohne dass sie erst berechnet/erzeugt werden müssen:
 
 FLOATNULL = 0
 FLOATEINS = 1
@@ -119,14 +119,14 @@ E = 2.7182...
 //  Beispiele
 //************************************
 
-Folgende Funktion soll das Volumen eines Zylinders in cmÅ‚ berechnen und gerundet zurÃ¼ckgeben:
+Folgende Funktion soll das Volumen eines Zylinders in cm³ berechnen und gerundet zurückgeben:
 
 func int Zylindervolumen (var int radius, var int hoehe) {
     var int radiusf, var int hoehef;
     radiusf = mkf (radius);
     hoehef = mkf (hoehe);
 
-    //Volumen = rË› * PI * h
+    //Volumen = r² * PI * h
 
     var int ergebnisf;
     ergebnisf = mulf (radiusf, radiusf);
@@ -144,7 +144,7 @@ func void antwort () {
     foo = mulf (mkf (1337), PI);
     printf (divf (foo, mkf (100)));
 
-    //(1337*PI)/100 ist verblÃ¼ffend genau 42. ;-)
+    //(1337*PI)/100 ist verblüffend genau 42. ;-)
 };
 
 Folgende Funktion macht ein paar Vergleiche. Es wird in keinem Fall "FEHLER" ausgegeben.
@@ -173,26 +173,26 @@ func void floattest()
 };
 
 //************************************
-//  BeschrÃ¤nkungen und Fallen
+//  Beschränkungen und Fallen
 //************************************
 
 ***********  Nutzerfehler ************
-Es sollten unter keinen UmstÃ¤nden die Operatoren +, -, * oder / auf floats angewendet werden. Sie haben dort keine sinnvolle Anwendung. Bestensfalls kommt einfach nur BlÃ¶dsinn heraus. Wie oben beschrieben sind addf, subf, mulf und divf anzuwenden.
-Wer versteht wie ein float intern aufgebaut ist, kann zum Beispiel innerhalb der positiven Zahlen die Ordnungsrealtionen (>, <, <= >=) benutzen. Wer sich nicht sicher ist, sollte auf die gegebenen Funktionen zurÃ¼ckgreifen.
-NatÃ¼rlich sind umgekehrt die Floatfunktionen fÃ¼r Integer unbrauchbar. Der Ausdruck sqrtf (4) ist nicht 2 sondern einfach nur falsch, da 81 ein Integer ist!
+Es sollten unter keinen Umständen die Operatoren +, -, * oder / auf floats angewendet werden. Sie haben dort keine sinnvolle Anwendung. Bestensfalls kommt einfach nur Blödsinn heraus. Wie oben beschrieben sind addf, subf, mulf und divf anzuwenden.
+Wer versteht wie ein float intern aufgebaut ist, kann zum Beispiel innerhalb der positiven Zahlen die Ordnungsrealtionen (>, <, <= >=) benutzen. Wer sich nicht sicher ist, sollte auf die gegebenen Funktionen zurückgreifen.
+Natürlich sind umgekehrt die Floatfunktionen für Integer unbrauchbar. Der Ausdruck sqrtf (4) ist nicht 2 sondern einfach nur falsch, da 81 ein Integer ist!
 
 *********** Float-Fehler *************
-Die Genauigkeit der floats ist sehr begrenzt, ab etwa 4 Dezimalstellen ist mit Rundungsfehlern zu rechnen. DafÃ¼r kÃ¶nnen sehr groÃŸe und sehr kleine Zahlen dargestellt werden.
-Es gelten die gewÃ¶hnlichen EinschrÃ¤nkungen und Empfehlungen fÃ¼r floats. Zum Beispiel ist es selten sinnvoll floats auf Gleichheit zu Ã¼berprÃ¼fen, da es durch Rundungsfehler wahrscheinlich ist, dass auch zwei floats, die eigentlich gleich sein mÃ¼ssten kleine Abweichungen zueinander aufweisen. Es sollte in einem solchen Fall besser geprÃ¼ft werden, ob die Differenz der beiden floats einen (im VerhÃ¤ltnis zur Problemstellung) kleinen Wert unterschreitet.
+Die Genauigkeit der floats ist sehr begrenzt, ab etwa 4 Dezimalstellen ist mit Rundungsfehlern zu rechnen. Dafür können sehr große und sehr kleine Zahlen dargestellt werden.
+Es gelten die gewöhnlichen Einschränkungen und Empfehlungen für floats. Zum Beispiel ist es selten sinnvoll floats auf Gleichheit zu überprüfen, da es durch Rundungsfehler wahrscheinlich ist, dass auch zwei floats, die eigentlich gleich sein müssten kleine Abweichungen zueinander aufweisen. Es sollte in einem solchen Fall besser geprüft werden, ob die Differenz der beiden floats einen (im Verhältnis zur Problemstellung) kleinen Wert unterschreitet.
 
 //************************************
 //  Vielen Dank...
 //************************************
 
-...dass du dich fÃ¼r dieses Script interessierst und es gelesen, oder zumindest Ã¼berflogen hast. Dann war meine Arbeit nicht ganz umsonst. ;-)
+...dass du dich für dieses Script interessierst und es gelesen, oder zumindest überflogen hast. Dann war meine Arbeit nicht ganz umsonst. ;-)
 Mir ist allerdings bewusst, dass dies wohl eher ein Randgebiet des Gothicmoddings ist.
 
-Edit: MÃ¤rz 2010: Haha! Mit direktem Zugriff auf zEngine Objekte ist dies mitnicht ein Randgebiet! Es lassen sich einige hochinteressante Floatwerte in Gothic finden!
+Edit: März 2010: Haha! Mit direktem Zugriff auf zEngine Objekte ist dies mitnicht ein Randgebiet! Es lassen sich einige hochinteressante Floatwerte in Gothic finden!
 
 */
 
@@ -204,7 +204,7 @@ Edit: MÃ¤rz 2010: Haha! Mit direktem Zugriff auf zEngine Objekte ist dies mitnic
 
 const int BIT_VZ = 1; //Vorzeichen hat 1 Bit (was auch sonst?!)
 const int BIT_EXP = 8; //nach IEEE 754 ist 8 die Norm
-const int BIT_MT = 23; //bleiben 23 bit fÃ¼r die Mantisse
+const int BIT_MT = 23; //bleiben 23 bit für die Mantisse
 const int EXP_OFFSET = 127; //exp = characteristic - EXP_OFFSET
 
 const int EXP_PATTERN = ((1 << BIT_EXP) - 1) << BIT_MT;
@@ -272,7 +272,7 @@ func int mkf (var int x) {
     var int exp;
     exp = HighestBitPos (x) - 1;
 
-    if (exp < 0) { //kann nur heiÃŸen, dass die Zahl null ist
+    if (exp < 0) { //kann nur heißen, dass die Zahl null ist
         return FLOATNULL;
     };
 
@@ -291,11 +291,11 @@ func int mkf (var int x) {
 };
 
 //************************************
-//  RÃ¼ckumwandlung zu integer
+//  Rückumwandlung zu integer
 //************************************
 
 func int truncf (var int x) {
-    //Sonderbehandlung fÃ¼r das Symbol NULL
+    //Sonderbehandlung für das Symbol NULL
     if (x == FLOATNULL) {
         return 0;
     };
@@ -305,8 +305,8 @@ func int truncf (var int x) {
 
     var int result;
 
-    //ÃœberlÃ¤ufe:
-    if (exp >= 31) { //2^31 * 1.0 lÃ¤uft ins Vorzeichenbit rein!
+    //Überläufe:
+    if (exp >= 31) { //2^31 * 1.0 läuft ins Vorzeichenbit rein!
         if (x > 0) {
             return MAXINT;
         } else {
@@ -347,7 +347,7 @@ func int addf (var int x, var int y) {
     var int isnegX; isnegX = x & MINUS;
     var int isnegY; isnegY = y & MINUS;
 
-    //Sonderbehandlung fÃ¼r das Symbol NULL
+    //Sonderbehandlung für das Symbol NULL
     if (x == FLOATNULL) {
         return y + 0;
     }
@@ -355,12 +355,12 @@ func int addf (var int x, var int y) {
         return x + 0;
     };
 
-    //Die BetragsmÃ¤ÃŸig kleinere Zahl an die grÃ¶ÃŸere anpassen
+    //Die Betragsmäßig kleinere Zahl an die größere anpassen
     if (expX > expY)
     {
         if (expX - expY > 31) {
             //dann schlagen die folgenden shiftoperationen fehl.
-            //Aber x ist soviel grÃ¶ÃŸer als y, einfach x zurÃ¼ckgeben.
+            //Aber x ist soviel größer als y, einfach x zurückgeben.
             return x + 0;
         };
 
@@ -371,7 +371,7 @@ func int addf (var int x, var int y) {
     {
         if (expY - expX > 31) {
             //dann schlagen die folgenden shiftoperationen fehl.
-            //Aber y ist soviel grÃ¶ÃŸer als x, einfach y zurÃ¼ckgeben.
+            //Aber y ist soviel größer als x, einfach y zurückgeben.
             return y + 0;
         };
 
@@ -404,8 +404,8 @@ func int addf (var int x, var int y) {
         isnegRes = 0;
     };
 
-    //PrÃ¤zisierung:
-    if (!mtRes) { //damit abziehen eines Wertes von sich selbst prÃ¤zise ist.
+    //Präzisierung:
+    if (!mtRes) { //damit abziehen eines Wertes von sich selbst präzise ist.
         return FLOATNULL;
     };
 
@@ -430,7 +430,7 @@ func int addf (var int x, var int y) {
 
 //************************************
 //  Es lassen sich vier kleine
-//  nÃ¼tzliche Hilfsfunktionen
+//  nützliche Hilfsfunktionen
 //  definieren:
 //************************************
 
@@ -468,7 +468,7 @@ func int mulf (var int x, var int y) {
     var int isnegX; isnegX = x & MINUS;
     var int isnegY; isnegY = y & MINUS;
 
-    //Sonderbehandlung fÃ¼r das Symbol NULL
+    //Sonderbehandlung für das Symbol NULL
     if (x == FLOATNULL)
     || (y == FLOATNULL) {
         return FLOATNULL;
@@ -500,15 +500,15 @@ func int mulf (var int x, var int y) {
         isNegRes = MINUS;
     };
 
-    //noch Erkenntnisse zusammenfÃ¼gen
+    //noch Erkenntnisse zusammenfügen
     return isnegRes | packExp(expRes) | mtRes;
 };
 
 //************************************
-//  Die Division lÃ¤sst sich
+//  Die Division lässt sich
 //  nicht auf die Multiplikation
-//  zurÃ¼ckfÃ¼hren. Das multiplikative
-//  Inverse ist schlieÃŸlich schwerer
+//  zurückführen. Das multiplikative
+//  Inverse ist schließlich schwerer
 //  zu finden, als das additive
 //  Inverse. Also, gesonderte Funktion:
 //************************************
@@ -521,7 +521,7 @@ func int divf (var int x, var int y) {
     var int isnegX; isnegX = x & MINUS;
     var int isnegY; isnegY = y & MINUS;
 
-    //Sonderbehandlung fÃ¼r das Symbol NULL
+    //Sonderbehandlung für das Symbol NULL
     if (y == FLOATNULL) {
         Print ("### ERROR: DIVISION BY ZERO ###");
         return FLOATNULL;
@@ -539,7 +539,7 @@ func int divf (var int x, var int y) {
     mtRes = (mtX << (7)) / (mtY >> 9); //X soweit es geht nach links, Y auf die Mitte
     mtRes = mtRes << (BIT_MT - 7 - 9);
 
-    //Und das Ergebnis wieder zurÃ¼ckschieben
+    //Und das Ergebnis wieder zurückschieben
     if (mtRes < (1 << (BIT_MT))) {
         mtRes = mtRes << 1;
         expRes -= 1;
@@ -556,7 +556,7 @@ func int divf (var int x, var int y) {
         isNegRes = MINUS;
     };
 
-    //noch Erkenntnisse zusammenfÃ¼gen
+    //noch Erkenntnisse zusammenfügen
     return isnegRes | packExp(expRes) | mtRes;
 };
 
@@ -605,7 +605,7 @@ func int sqrtf (var int x) {
     guess = packExp(e); //Mantisse ist egal.
     
     //4 ist schon eher viel. Man kann hier auch auf 3 runtergehen.
-    //ab 4 dÃ¼rfte sich das Ergebnis spÃ¤testens stabilisiert haben.
+    //ab 4 dürfte sich das Ergebnis spätestens stabilisiert haben.
     return sqrtf_hlp (x, guess, 4) + 0;
 };
 
@@ -696,7 +696,7 @@ func string BuildNumber (var string res, var int x, var int kommapos) {
 
 func void printf (var int x) { //Ok, ok sorry c-ler. Aber ich will konsistente Namen haben.
     //Ich bekomme nur eine primitive Darstellung als Kommazahl hin.
-    //fÃ¼r die Darstellung als X * 10^EXP fehlen mir Ideen oder Logarithmusfunktionen
+    //für die Darstellung als X * 10^EXP fehlen mir Ideen oder Logarithmusfunktionen
 
     x = mulf (x, mkf (10000));
     x = truncf (x);

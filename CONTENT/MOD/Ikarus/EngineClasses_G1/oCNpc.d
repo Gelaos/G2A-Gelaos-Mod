@@ -142,7 +142,7 @@ const int oTRobustTrace_bitfield_isObstVobSmall       = ((1 << 1) - 1) << 6;
 const int oTRobustTrace_bitfield_targetVisible        = ((1 << 1) - 1) << 7;
 const int oTRobustTrace_bitfield_useChasmChecks       = ((1 << 1) - 1) << 8;
 
-//Das alte Lese/Schreibsystem benÃ¶tigt diese Offsets
+//Das alte Lese/Schreibsystem benötigt diese Offsets
 const int MEM_NpcID_Offset   = 256; //0x100
 const int MEM_NpcName_Offset = 260; //0x104
 

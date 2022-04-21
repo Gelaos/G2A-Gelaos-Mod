@@ -38,7 +38,7 @@ func string GetParmValue(var string str) {
 };
 
 //========================================
-// [intern] Gibt Pfad zur Speicherdatei zurÃ¼ck
+// [intern] Gibt Pfad zur Speicherdatei zurück
 //========================================
 func string _BIN_GetSavefilePath(var int slot) {
     // Game save path. The class zCOption is defined incorrectly in Ikarus for Gothic1, hence the use of an offset here

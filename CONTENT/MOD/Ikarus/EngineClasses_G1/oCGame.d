@@ -39,7 +39,7 @@ class oCGame {
         GAME_VIEW_MAX
     }*/
     
-    //Views sind KanÃ¤le, Ã¼ber die die Engine
+    //Views sind Kanäle, über die die Engine
     //Informationen anzeigen kann.
     //Beispiel sind die normalen Dialoguntertitelboxen.
     var int array_view[GAME_VIEW_MAX];          //zCView*
@@ -83,10 +83,10 @@ class oCGame {
     
     // Timer
     var int wldTimer;               //oCWorldTimer*                 
-    var int timeStep;               //zREAL                               // ErmÃ¶glicht Einzelbildschaltung
+    var int timeStep;               //zREAL                               // Ermöglicht Einzelbildschaltung
     var int singleStep;             //zBOOL                               
     
-    // Referenzen auf EinzelstÃ¼ckklassen.
+    // Referenzen auf Einzelstückklassen.
     var int guilds;                 //oCGuilds*                        
     var int infoman;                //oCInfoManager*                   
     var int newsman;                //oCNewsManager*                   
@@ -134,7 +134,7 @@ class oCGame {
     var int progressBar;                            //zCViewProgressBar*
     
     //Nicht jedes Fass in der Welt hat ein privates Visual.
-    //Ich schÃ¤tze mal, dass alle benutzten Visuals hier gesammelt werden
+    //Ich schätze mal, dass alle benutzten Visuals hier gesammelt werden
     //und Vobs nur Kopien der Referenzen halten.
     
     //zCArray   <zCVisual*>     visualList;
@@ -145,7 +145,7 @@ class oCGame {
 
 //######################################################
 //
-//	Game Manager: KÃ¼mmert sich darum
+//	Game Manager: Kümmert sich darum
 //  Game Sessions zu starten zu speichern usw.
 //
 //######################################################

@@ -6,7 +6,7 @@ class RenderItem {
     var int itmPtr; // oCItem*
     var int view;
     var int view_open;
-    var int priority; // standardmÃ¤ÃŸig 0! TODO: HÃ¶here PrioritÃ¤t = weiter oben oder unten?
+    var int priority; // standardmäßig 0! TODO: Höhere Priorität = weiter oben oder unten?
 };
 instance RenderItem@(RenderItem);
 
@@ -77,7 +77,7 @@ func void Render_Remove(var int ID) {
         View_Delete(itm.view);
     };
     MEMINT_GetMemHelper();
-    Npc_RemoveInvItem(MEM_Helper, itm.inst); // Alle GegenstÃ¤nde, die der MEM_Helper hat, werden auch gerade gebraucht.
+    Npc_RemoveInvItem(MEM_Helper, itm.inst); // Alle Gegenstände, die der MEM_Helper hat, werden auch gerade gebraucht.
     List_Delete(getPtr(_render_list), List_Contains(getPtr(_render_list), ID));
     delete(ID);
 };
@@ -122,7 +122,7 @@ func int _Render_Comparator(var int data1, var int data2) {
 };
 
 func void _Render_RestorePointer_Sub(var int list) {
-    // TODO: Nach dieser Funktion hat der Render immer nur 1 Item von jeder Instanz im Inventar, das kÃ¶nnte gehÃ¶rig schief gehen?
+    // TODO: Nach dieser Funktion hat der Render immer nur 1 Item von jeder Instanz im Inventar, das könnte gehörig schief gehen?
     var RenderItem itm;
     var zCList l; l = _^(list);
     if (l.data) {

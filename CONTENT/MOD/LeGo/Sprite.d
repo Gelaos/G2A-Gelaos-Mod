@@ -213,7 +213,7 @@ func void Sprite_SetColor(var int h, var int col) {
 };
 
 //========================================
-// PrioritÃ¤t eines Sprites
+// Priorität eines Sprites
 //========================================
 func void Sprite_SetPrio(var int h, var int prio) {
     var gCSprite s; s = get(h);
@@ -296,7 +296,7 @@ func void Sprite_SetWidth(var int h, var int w) {
 };
 
 //========================================
-// HÃ¶he eines Sprites setzen
+// Höhe eines Sprites setzen
 //========================================
 func void Sprite_SetHeightPxl(var int h, var int hg) {
     var gCSprite s; s = get(h);
@@ -309,7 +309,7 @@ func void Sprite_SetHeight(var int h, var int hg) {
 };
 
 //========================================
-// Breite und HÃ¶he eines Sprites setzen
+// Breite und Höhe eines Sprites setzen
 //========================================
 func void Sprite_SetDimPxl(var int h, var int w, var int hg) {
     var gCSprite s; s = get(h);
@@ -388,7 +388,7 @@ func void Sprite_Render(var int h) {
 // [intern] alle Sprites rendern
 //========================================
 func void _Sprite_DoRender() {
-    if(!Hlp_IsValidNpc(hero)) { return; }; // Vielen Dank an Sektenspinner fÃ¼r diesen "Hack"
+    if(!Hlp_IsValidNpc(hero)) { return; }; // Vielen Dank an Sektenspinner für diesen "Hack"
 
     zRND_XD3D_SetRenderState(D3DRS_ZENABLE, false); // Disable depthbuffer
 

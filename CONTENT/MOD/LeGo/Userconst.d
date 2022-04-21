@@ -1,7 +1,7 @@
 /***********************************\
               READ-ONLY
 \***********************************/
-// Folgende Konstanten dÃ¼rfen NICHT verÃ¤ndert, nur verwendet werden.
+// Folgende Konstanten dürfen NICHT verändert, nur verwendet werden.
 
 //========================================
 // Anim8
@@ -76,14 +76,14 @@ const int CUR_WheelDown  = 4;
                MODIFY
 \***********************************/
 // Folgende Konstanten dienen nicht als Parameter sondern als Vorgaben.
-// Sie dÃ¼rfen frei verÃ¤ndert werden.
+// Sie dürfen frei verändert werden.
 
 //========================================
 // Bloodsplats
 //========================================
 const int BLOODSPLAT_NUM = 15; // Maximale Anzahl auf dem Screen
 const int BLOODSPLAT_TEX = 6;  // Maximale Anzahl an Texturen ( "BLOODSPLAT" + texID + ".TGA" )
-const int BLOODSPLAT_DAM = 7;  // Schadensmultiplikator bzgl. der TexturgrÃ¶ÃŸe ( damage * 2^BLOODSPLAT_DAM )
+const int BLOODSPLAT_DAM = 7;  // Schadensmultiplikator bzgl. der Texturgröße ( damage * 2^BLOODSPLAT_DAM )
 
 //========================================
 // Cursor
@@ -98,7 +98,7 @@ const int Buffs_DisplayForHero = 1;
 //========================================
 // Interface
 //========================================
-const string Print_LineSeperator = "~"; // Sollte man lieber nicht Ã¤ndern
+const string Print_LineSeperator = "~"; // Sollte man lieber nicht ändern
 
 /* ==== PrintS ==== */
 // <<Virtuelle Positionen>>

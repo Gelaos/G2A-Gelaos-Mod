@@ -10,7 +10,7 @@ func void _AI_Function(var c_npc slf, var string fnc) {
 };
 
 //========================================
-// VerzÃ¶gert eine Funktion aufrufen
+// Verzögert eine Funktion aufrufen
 //========================================
 func void AI_Function (var c_npc slf, var func function) {
     _AI_Function(slf, IntToString(MEM_GetFuncID(function)));

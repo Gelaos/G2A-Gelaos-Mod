@@ -201,7 +201,7 @@ func void _Bufflist_UpdateDurationFade() {
 
  		var int xf; xf = fracf(timediff, buff.durationMS);
 
- 		// If you don't like this, complain to GiftGrÃ¼n
+ 		// If you don't like this, complain to GiftGrün
  		// 128 - 128/tan(1) * tan(2x-1)
  		var int new_alphaf; new_alphaf = addf(mkf(160), mulf(divf(mkf(128), tan(FLOATEINS)), tan(subf(mulf(mkf(2), xf), FLOATEINS))));
  		var int new_alpha; new_alpha = roundf(new_alphaf);

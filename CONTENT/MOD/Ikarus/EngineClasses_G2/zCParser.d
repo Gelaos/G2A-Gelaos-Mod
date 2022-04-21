@@ -155,7 +155,7 @@ class zCPar_Symbol {
     
     //Inhalt des Symbols, Pointer oder Primitiver Typ
     var int content;                        //0x0018 void* oder int* oder float* oder zSTRING* oder int oder float. Bei Funktionen / Instanzen / Prototypen: Stackpointer. Sonst Daten oder Datenpointer.
-    var int offset;                         //0x001C Offset bei Klassenvariablen // Adresse bei Instanzen // RÃ¼ckgabewert bei Funktionen
+    var int offset;                         //0x001C Offset bei Klassenvariablen // Adresse bei Instanzen // Rückgabewert bei Funktionen
     
     var int bitfield;                       //0x0020 siehe oben
     var int filenr;                         //0x0024
@@ -174,7 +174,7 @@ class zCPar_Symbol {
 /* Operatoren nehmen zwei Werte vom Datenstack und verrechnen sie.
  * Das Ergebnis schieben sie auf den Datenstack. */
         
-//GewÃ¶hnliche Operatoren
+//Gewöhnliche Operatoren
 const int zPAR_OP_PLUS      = 0;            //"+" 0x00
 const int zPAR_OP_MINUS     = 1;            //"-" 0x01
 const int zPAR_OP_MUL       = 2;            //"*" 0x02
@@ -202,7 +202,7 @@ const int zPAR_OP_ISMINUS       = 20;       //"-="0x14
 const int zPAR_OP_ISMUL         = 21;       //"*="0x15
 const int zPAR_OP_ISDIV         = 22;       //"/="0x16
 
-/* UnÃ¤re Operatoren nehmen natÃ¼rlich nur einen Wert vom Datenstack.
+/* Unäre Operatoren nehmen natürlich nur einen Wert vom Datenstack.
    Sie schieben ebenfalls das Ergebnis auf den Datenstack. */
 const int zPAR_OP_UNARY         = 30;             
 const int zPAR_OP_UN_PLUS       = 30;       //"+" 0x1E
@@ -242,9 +242,9 @@ const int zPAR_TOK_ASSIGNFUNC   = 72; //0x48    //Zuweisung. Hole v1, v2 vom Sta
 const int zPAR_TOK_ASSIGNFLOAT  = 73; //0x49    //Zuweisung. Hole v1, v2 vom Stack und setze v1 = v2
 const int zPAR_TOK_ASSIGNINST   = 74; //0x4A    //Zuweisung. Hole v1, v2 vom Stack und setze v1 = v2
 const int zPAR_TOK_JUMP         = 75; //0x4B    //Springe im Parserstack. Es folgen 4 byte Sprungziel
-const int zPAR_TOK_JUMPF        = 76; //0x4C    //Hole b vom Datenstack und springe, falls b == 0 ist. Es folgen 4 byte Sprungziel (lies: "jump if false". FÃ¼r "if"-Bedingungen)
+const int zPAR_TOK_JUMPF        = 76; //0x4C    //Hole b vom Datenstack und springe, falls b == 0 ist. Es folgen 4 byte Sprungziel (lies: "jump if false". Für "if"-Bedingungen)
 
-const int zPAR_TOK_SETINSTANCE  = 80; //0x50    //Es folgen 4 byte Symbolindex. UmstÃ¤ndlich zu erklÃ¤ren. So grob: "Setze aktuelle Instanz."
+const int zPAR_TOK_SETINSTANCE  = 80; //0x50    //Es folgen 4 byte Symbolindex. Umständlich zu erklären. So grob: "Setze aktuelle Instanz."
 
 //Irgendwelche Internas. Wahrscheinlich nur bedingt relevant.
 const int zPAR_TOK_SKIP         = 90;
@@ -257,13 +257,13 @@ const int zPAR_TOK_INSTANCE     = 96;
 const int zPAR_TOK_INSTANCEEND  = 97;
 const int zPAR_TOK_NEWSTRING    = 98;
 
-//FÃ¼r Pushen von Arraywerten.
+//Für Pushen von Arraywerten.
 const int zPAR_TOK_FLAGARRAY      = zPAR_TOK_VAR | 128; //nicht nutzen!
 const int zPAR_TOK_PUSH_ARRAYVAR  = zPAR_TOK_FLAGARRAY + zPAR_TOK_PUSHVAR; //Hole 4 Byte Symbolindex vom Stack. Hole 1 Byte Arrayindex vom Stack. Schiebe Adresse des entsprechenden Arrayelements im Symbol auf den Stack.
 
 /* Siehe auch diesen Beitrag:
  * http://forum.worldofplayers.de/forum/showthread.php?p=13086904&#post13086904
- * indem ich vorschlage, wie man den Parser verstehen lernen kÃ¶nnte. */
+ * indem ich vorschlage, wie man den Parser verstehen lernen könnte. */
  
 const string PARSER_TOKEN_NAMES[246] = {
     "zPAR_OP_PLUS          ",
@@ -296,12 +296,12 @@ const string PARSER_TOKEN_NAMES[246] = {
     "[INVALID_TOKEN]       ",
     "[INVALID_TOKEN]       ",
     "[INVALID_TOKEN]       ",
-    "zPAR_OP_UNARY         ",
-    "zPAR_OP_UN_PLUS       ",
+    "zPAR_OP_UN_PLUS       ", // zPAR_OP_UNARY
     "zPAR_OP_UN_MINUS      ",
     "zPAR_OP_UN_NOT        ",
-    "zPAR_OP_UN_NEG        ",
-    "zPAR_OP_MAX           ",
+    "zPAR_OP_UN_NEG        ", // zPAR_OP_MAX
+    "[INVALID_TOKEN]       ",
+    "[INVALID_TOKEN]       ",
     "[INVALID_TOKEN]       ",
     "[INVALID_TOKEN]       ",
     "[INVALID_TOKEN]       ",

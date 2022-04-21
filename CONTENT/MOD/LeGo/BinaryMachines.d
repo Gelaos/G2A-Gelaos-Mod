@@ -114,9 +114,9 @@ const int _BIN_BufferLength = 32768;
 var int _bin_open; // Handle des Streams
 var int _bin_mode; // Mode (Write/Read)
 var int _bin_crsr; // Cursor
-var string _bin_prefix; // Debug-PrÃ¤fix
+var string _bin_prefix; // Debug-Präfix
 const int _bin_ccnt = 0; // Aktueller Content
-const int _bin_clen = 0; // Aktuelle StreamlÃ¤nge
+const int _bin_clen = 0; // Aktuelle Streamlänge
 
 /*--------------------
   Hilfsfunktionen
@@ -127,7 +127,7 @@ func void _BIN_Err(var string msg) {
 };
 func int _BIN_nRunning() {
     if(_bin_open) {
-        _BIN_Err("Der aktuelle Stream muss zuerst geschlossen werden bevor ein weiterer geÃ¶ffnet werden kann.");
+        _BIN_Err("Der aktuelle Stream muss zuerst geschlossen werden bevor ein weiterer geöffnet werden kann.");
         return 0;
     };
     return 1;
@@ -256,7 +256,7 @@ func int BR_OpenFile(var string file) {
     _bin_open = WIN_CreateFile(file, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
     if(_bin_open==-1) {
         _bin_open = 0;
-        var string err; err = ConcatStrings(file, " - Datei konnte nicht geÃ¶ffnet werden. Fehlercode ");
+        var string err; err = ConcatStrings(file, " - Datei konnte nicht geöffnet werden. Fehlercode ");
         _BIN_Err(ConcatStrings(err, IntToString(WIN_GetLastError())));
         return 0;
     };
@@ -356,7 +356,7 @@ func int BR_Bytes(var int length) {
     _bin_prefix = "BR_Bytes";
     if(!_BIN_Running()||!_BIN_nMode(1)) { return 0; };
     if(_bin_crsr + length > _bin_clen) {
-        _bin_Err("Die angegebene Struktur ist in dieser Datei nicht vollstÃ¤ndig enthalten.");
+        _bin_Err("Die angegebene Struktur ist in dieser Datei nicht vollständig enthalten.");
         return 0;
     };
     ptr = MEM_Alloc(length);

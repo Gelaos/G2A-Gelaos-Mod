@@ -82,7 +82,7 @@ func int Print_GetTextPtr(var int hndl) {
 };
 
 //========================================
-// Text lÃ¶schen
+// Text löschen
 //========================================
 func void Print_DeleteText(var int hndl) {
     if (!Hlp_IsValidHandle(hndl)) { return; };
@@ -108,7 +108,7 @@ func void Print_SetAlpha(var int hndl, var int a) {
 };
 
 //========================================
-// ScreengrÃ¶ÃŸe (in Pixeln)
+// Screengröße (in Pixeln)
 //========================================
 var int Print_Ratio; //float
 func void _Print_Ratio() {
@@ -336,7 +336,7 @@ func int Print_TextFieldPxl(var int x, var int y, var string text, var string fo
 
 
 //========================================
-// Klasse fÃ¼r PermMem
+// Klasse für PermMem
 //========================================
 class gCPrintS {
     var int a8_Alpha;    // Anim8(h)

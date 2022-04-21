@@ -91,7 +91,7 @@ class oWorld {
 /*0x00DC*/      var int perFrameCallbackList_numInArray; //int    
             
             //Der Outdoorskycontroller ist der interessante
-            //Hat eine Outdoorwelt einen Indoorskycontroller fÃ¼r PortalrÃ¤ume?
+            //Hat eine Outdoorwelt einen Indoorskycontroller für Portalräume?
 /*0x00E0*/  var int skyControlerIndoor;        //zCSkyControler*
 /*0x00E4*/  var int skyControlerOutdoor;       //zCSkyControler*
 /*0x00E8*/  var int activeSkyControler;        //zCSkyControler*
@@ -115,7 +115,7 @@ class oWorld {
         
 
             //Drei Handle-Listen, jeweils nach einer Koordinate sortiert.
-            //Um aktive Zonen fÃ¼r eine Welt durch Schnittmenge dreier Array Abschnitte zu bestimmen. (?)
+            //Um aktive Zonen für eine Welt durch Schnittmenge dreier Array Abschnitte zu bestimmen. (?)
             //zCVobBBox3DSorter<zCZone> zoneBoxSorter
 /*0x0118*/          var int zoneBoxSorter_vtbl;     //Methodentabelle
                 //zCArray<zTBoxSortHandle *>        handles;
@@ -219,10 +219,10 @@ class oWorld {
 /*0x0250*/      var int walkList_numAlloc;   //int
 /*0x0254*/      var int walkList_numInArray; //int  
             //zCArray<zCVob*>               vobHashTable[VOB_HASHTABLE_SIZE];               // for fast vob searching by name
-                //Mit "array", "numAlloc" und "numInArray" also 3*VOB_HASHTABLE_SIZE WÃ¶rter.
-                //Der Lexer erlaubt keine so groÃŸen Arrays, daher ist meine Deklaration semantischer Unsinn.
+                //Mit "array", "numAlloc" und "numInArray" also 3*VOB_HASHTABLE_SIZE Wörter.
+                //Der Lexer erlaubt keine so großen Arrays, daher ist meine Deklaration semantischer Unsinn.
                 //Wer mit der Hashtabelle arbeiten will, muss selbst die Offsetrechnung betreiben.
-                //Siehe MEM_SearchVobByName fÃ¼r Benutzung.
+                //Siehe MEM_SearchVobByName für Benutzung.
 /*0x0258*/      var int vobHashTableStart[2048];
                 var int vobHashTableMiddle[2048];
                 var int vobHashTableEnd[2048];
@@ -231,7 +231,7 @@ class oWorld {
             var string worldName;       //zSTRING Name des aktuellen Levels
     
             //nicht ausprobiert, aber hoffentlich ist der Name Programm.
-            //wie hier sortiert ist weiÃŸ ich nicht.
+            //wie hier sortiert ist weiß ich nicht.
             var int voblist;            //zCListSort<zCVob>*
             var int voblist_npcs;       //zCListSort<oCNpc>*
             var int voblist_items;      //zCListSort<oCItem>*

@@ -55,7 +55,7 @@ func void FFItem_Unarchiver(var FFItem this) {
 var int _FF_Symbol;
 
 //========================================
-// Funktion hinzufÃ¼gen
+// Funktion hinzufügen
 //========================================
 
 func void _FF_Create(var func function, var int delay, var int cycles, var int hasData, var int data, var int gametime) {
@@ -91,7 +91,7 @@ func void FF_ApplyExtGT(var func function, var int delay, var int cycles) {
 };
 
 //========================================
-// Funktion prÃ¼fen
+// Funktion prüfen
 //========================================
 func int FF_Active(var func function) {
     _FF_Symbol = MEM_GetFuncPtr(function);
@@ -108,7 +108,7 @@ func int _FF_Active(var int hndl) {
 };
 
 //========================================
-// Funktion hinzufÃ¼gen (vereinfacht)
+// Funktion hinzufügen (vereinfacht)
 //========================================
 func void FF_Apply(var func function) {
     FF_ApplyExt(function, 0, -1);
@@ -119,7 +119,7 @@ func void FF_ApplyGT(var func function) {
 };
 
 //========================================
-// Funktion einmalig hinzufÃ¼gen
+// Funktion einmalig hinzufügen
 //========================================
 func void FF_ApplyOnceExt(var func function, var int delay, var int cycles) {
     if(FF_Active(function)) {
@@ -136,7 +136,7 @@ func void FF_ApplyOnceExtGT(var func function, var int delay, var int cycles) {
 };
 
 //========================================
-// Funktion einmalig hinzufÃ¼gen (vereinfacht)
+// Funktion einmalig hinzufügen (vereinfacht)
 //========================================
 func void FF_ApplyOnce(var func function) {
     FF_ApplyOnceExt(function, 0, -1);

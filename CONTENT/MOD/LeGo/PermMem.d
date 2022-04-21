@@ -106,7 +106,7 @@ func int numHandles() {
         return (_HT_GetNumber(HandlesPointer));
     };
     return false;
-	/* return (!!HandlesPointer*(_HT_GetNumber(HandlesPointer))); wÃ¤re viel schÃ¶ner gewesen :( */
+	/* return (!!HandlesPointer*(_HT_GetNumber(HandlesPointer))); wäre viel schöner gewesen :( */
 };
 
 //========================================
@@ -120,7 +120,7 @@ func int zCParser_CreateInstance(var int inst, var int ptr) {
 };
 
 //========================================
-// Handle auf GÃ¼ltigkeit prÃ¼fen
+// Handle auf Gültigkeit prüfen
 //========================================
 func int Hlp_IsValidHandle(var int h) {
     if (!HandlesPointer) { return false; };
@@ -153,7 +153,7 @@ func string _PM_InstName(var int inst) {
 };
 
 //========================================
-// GrÃ¶ÃŸe einer Instanz ermitteln
+// Größe einer Instanz ermitteln
 //========================================
 func int sizeof(var int inst) {
     var zCPar_Symbol symb; symb = _PM_ToClass(inst);
@@ -161,7 +161,7 @@ func int sizeof(var int inst) {
 };
 
 //========================================
-// Handle lÃ¶schen
+// Handle löschen
 //========================================
 func void clear(var int h) {
     if (!Hlp_IsValidHandle(h)) { return; };
@@ -183,7 +183,7 @@ func void release(var int h) {
 };
 
 //========================================
-// Funktion fÃ¼r alle Handles aufrufen
+// Funktion für alle Handles aufrufen
 //========================================
 const int rBreak = break;
 const int rContinue = continue;
@@ -282,7 +282,7 @@ func void foreachHndlSort(var int inst, var func cmp) {
 };
 
 //========================================
-// Handle mit Destruktor lÃ¶schen
+// Handle mit Destruktor löschen
 //========================================
 func void delete(var int h) {
     locals();
@@ -305,7 +305,7 @@ func void delete(var int h) {
 };
 
 //========================================
-// Pointer mit Destruktor lÃ¶schen
+// Pointer mit Destruktor löschen
 //========================================
 func void free(var int h, var int inst) {
     if (!h) { return; };
@@ -330,7 +330,7 @@ func int create(var int inst) {
     //Symbol der Klasse holen
     symbCls = _PM_ToClass(inst);
 
-    //Speicher gemÃ¤ÃŸ der GrÃ¶ÃŸe eines Objekts der Klasse holen
+    //Speicher gemäß der Größe eines Objekts der Klasse holen
     var int ptr; ptr = MEM_Alloc(symbCls.offset);
     var int i; i = zCParser_CreateInstance(inst, ptr);
     return ptr;
@@ -799,7 +799,7 @@ func void _PM_DataToSaveStruct_Struct(var int classID, var int struct) {
         var int p1;
         if(!STR_Compare(curr, "AUTO")) {
             if(ptr) {
-                _PM_Error(ConcatStrings("auto* ist keine gÃ¼ltige Klasse. ", zstruct.name));
+                _PM_Error(ConcatStrings("auto* ist keine gültige Klasse. ", zstruct.name));
                 return;
             };
             p1 = MEM_StackPos.position;
@@ -815,7 +815,7 @@ func void _PM_DataToSaveStruct_Struct(var int classID, var int struct) {
 
         if(!STR_Compare(curr, "VOID")) {
             if(ptr) {
-                _PM_Error(ConcatStrings("void* ist keine gÃ¼ltige Klasse. ", zstruct.name));
+                _PM_Error(ConcatStrings("void* ist keine gültige Klasse. ", zstruct.name));
                 return;
             };
             currOffs += num;
@@ -1259,7 +1259,7 @@ func void _PM_ReadSaveStruct() {
 
     var string str; str = _PM_TextLine();
     if(STR_SplitCount(str, ":") < 2) {
-        _PM_Error(ConcatStrings("UngÃ¼ltiger Objektkopf: ", str));
+        _PM_Error(ConcatStrings("Ungültiger Objektkopf: ", str));
         return;
     };
 
@@ -1291,7 +1291,7 @@ func void _PM_ReadSaveStruct() {
     // Nach allen Sicherheitschecks endlich den Pointer holen:
     _PM_Head.currOffs = MEM_Alloc(classSym.offset);
 
-    // Und natÃ¼rlich fÃ¼llen:
+    // Und natürlich füllen:
     _PM_ReadClass();
 };
 
@@ -1448,7 +1448,7 @@ func void _PM_Unarchive() {
         return;
     }
     else if(v > _PM_Version) {
-        _PM_Error("Die PermMem Speicherdatei ist zu neu fÃ¼r diese Scripte und kann nicht gelesen werden.");
+        _PM_Error("Die PermMem Speicherdatei ist zu neu für diese Scripte und kann nicht gelesen werden.");
         return;
     };
 
@@ -1505,14 +1505,14 @@ func void _PM_ArchiveError() {
     if(_PM_Mode == 1&&(PM_CurrHandle)) {
         return;
     };
-    _PM_Error("Archiverfunktionen dÃ¼rfen nur innerhalb eines Archivers genutzt werden!");
+    _PM_Error("Archiverfunktionen dürfen nur innerhalb eines Archivers genutzt werden!");
 };
 
 func void _PM_UnarchiveError() {
     if(_PM_Mode == 0&&(PM_CurrHandle)) {
         return;
     };
-    _PM_Error("Unarchiverfunktionen dÃ¼rfen nur innerhalb eines Unarchivers genutzt werden!");
+    _PM_Error("Unarchiverfunktionen dürfen nur innerhalb eines Unarchivers genutzt werden!");
 };
 
 func void PM_SaveInt(var string name, var int val) {
@@ -1545,8 +1545,8 @@ func void PM_SaveFuncPtr(var string name, var int fnc) {
 func void _PM_SaveClassPtr(var string name, var int ptr, var string className, var int p) {
     _PM_ArchiveError();
     // Das hier ist etwas komplizierter als alles andere.
-    // Ich muss zuerst ein Klassenobjekt anlegen, dann den offsPtr vom PM_Head Ã¼berschreiben (und pushen)
-    // und dann den Archiver der gegebenen Klasse Ã¼berschreiben
+    // Ich muss zuerst ein Klassenobjekt anlegen, dann den offsPtr vom PM_Head überschreiben (und pushen)
+    // und dann den Archiver der gegebenen Klasse überschreiben
     name = STR_Upper(name);
     className = STR_Upper(className);
     if(!ptr) {
@@ -1629,7 +1629,7 @@ func int _PM_Load(var string objName, var int type, var int ptr) {
     if(!obj) { return 0; };
     if(type == -1) { type = _PM_ObjectType(obj); };
     if((_PM_ObjectType(obj) != type&&type < _PM_IntArr)||(!obj)) {
-        MEM_Warn(ConcatStrings("Objekt ist invalid oder Typ stimmt nicht Ã¼berein. ", objName));
+        MEM_Warn(ConcatStrings("Objekt ist invalid oder Typ stimmt nicht überein. ", objName));
         return 0;
     };
     if(type == _PM_String) {

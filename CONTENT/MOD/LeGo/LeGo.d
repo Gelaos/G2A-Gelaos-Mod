@@ -43,7 +43,7 @@ const int LeGo_Render          = 1<<24; // Render.d
 const int LeGo_Draw3D          = 1<<25; // Draw3D.d
 
 
-const int LeGo_All            = (1<<23)-1; // SÃ¤mtliche Bibliotheken // No Experimental
+const int LeGo_All            = (1<<23)-1; // Sämtliche Bibliotheken // No Experimental
 
 //========================================
 // [intern] Variablen
@@ -53,7 +53,7 @@ var int _LeGo_Loaded;
 
 
 //========================================
-// [intern] AbhÃ¤ngigkeiten bestimmen
+// [intern] Abhängigkeiten bestimmen
 //========================================
 func void LeGo_InitFlags(var int f) {
     if(f & LeGo_Bloodsplats)    { f = f | LeGo_FrameFunctions | LeGo_HookEngine | LeGo_Random | LeGo_Anim8; };
@@ -194,7 +194,7 @@ func void LeGo_InitAlways(var int f) {
 //========================================
 func void LeGo_InitGamestart(var int f) {
 
-	/* ACHTUNG: Es steht kein new() zur VerfÃ¼gung (aber create()) */
+	/* ACHTUNG: Es steht kein new() zur Verfügung (aber create()) */
 
     // Fix bug in Ikarus for displaying error boxes (Ikarus 1.2 line 4660 is missing writing permission)
     if(GOTHIC_BASE_VERSION == 1) {
@@ -260,7 +260,7 @@ func void LeGo_InitGamestart(var int f) {
 //========================================
 func void LeGo_Init(var int flags) {
     if(!MEM_CheckVersion(1,2,0)) {
-        MEM_Error("LeGo benÃ¶tigt mindestens Ikarus 1.2!");
+        MEM_Error("LeGo benötigt mindestens Ikarus 1.2!");
         return;
     };
 

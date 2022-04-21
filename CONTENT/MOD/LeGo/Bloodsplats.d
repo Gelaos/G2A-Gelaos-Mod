@@ -99,7 +99,7 @@ func int Npc_GetPercFunc(var C_Npc npc, var int type) {
 };
 
 //========================================
-// [intern] Perception fÃ¼r den Helden
+// [intern] Perception für den Helden
 //========================================
 func void _B_HeroDamage() {
     var int currDam; currDam = Hero_LastHP - hero.attribute[ATR_Hitpoints];

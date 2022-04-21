@@ -7,7 +7,7 @@
 // Update: Falsch! Noch spezieller ist der 
 // oCSkyControler_Barrier. Ich werden diesen hier aber
 // nicht umbenennen sondern die Barrier Eigenschaften
-// einfach unten dran fÃ¼gen.
+// einfach unten dran fügen.
 //######################################################
 
 
@@ -27,7 +27,7 @@ class zCSkyController_Outdoor /* eigentlich oCSkyControler_Barrier */ {
         zTWEATHER_RAIN
     };*/
     
-    //Es wird eine TageszeitabhÃ¤ngige Lookuptable fÃ¼r Lichtwerte bereitgestellt.
+    //Es wird eine Tageszeitabhängige Lookuptable für Lichtwerte bereitgestellt.
     var int polyLightCLUTPtr;   //zCOLOR*  "colour look up table", siehe unten
     
     var int cloudShadowScale;   //zREAL    
@@ -49,7 +49,7 @@ class zCSkyController_Outdoor /* eigentlich oCSkyControler_Barrier */ {
     var int oldFovY;            //zREAL                      
     var int vobUnderwaterPFX;   //zCVob*                        
 
-    //Screen Poly? FÃ¼r Blenden? DafÃ¼r gibts doch die Kamera...
+    //Screen Poly? Für Blenden? Dafür gibts doch die Kamera...
     var int scrPoly;            //zCPolygon*                   
     var int scrPolyMesh;        //zCMesh*                        
     var int scrPolyAlpha;       //int                               
@@ -97,7 +97,7 @@ class zCSkyController_Outdoor /* eigentlich oCSkyControler_Barrier */ {
         var int stateList_numAlloc;      //int
         var int stateList_numInArray;    //int
     
-    var int polyLightCLUT[256];     //zCOLOR //Farbtabelle fÃ¼r Beleuchtung. AbhÃ¤ngig von der Tageszeit
+    var int polyLightCLUT[256];     //zCOLOR //Farbtabelle für Beleuchtung. Abhängig von der Tageszeit
     /*  Its basically a rolled function that maps an intensity between 0 and 255 to a certain colour. It affects static lighting only.
 		polyLightCLUT is updated regularly by the Sky Controller from certain presets for different parts of the day (red in the evening, blue in the morning...).
 		In other words: At any given point it is a linear interpolation between black and the current sunlight.
@@ -187,7 +187,7 @@ class zCSkyController_Outdoor /* eigentlich oCSkyControler_Barrier */ {
     var int skyPFXTimer;          //zREAL    
 
     // wind
-    var int m_bIsMainControler;   //zBOOL //gibts Ã¼berhaupt noch andere als den Hauptcontroller?
+    var int m_bIsMainControler;   //zBOOL //gibts überhaupt noch andere als den Hauptcontroller?
     
     var int m_bWindVec[3];        //zVEC3
 
@@ -216,8 +216,8 @@ class zCSkyController_Outdoor /* eigentlich oCSkyControler_Barrier */ {
 	var int bFadeInOut; //zBOOL
 };
 
-/* Ist in Gothic 2 fÃ¼rs Rendern von Wetter-Blitzen verantwortlich
- * hier heran kommt man Ã¼ber MEM_SkyController.barrier */
+/* Ist in Gothic 2 fürs Rendern von Wetter-Blitzen verantwortlich
+ * hier heran kommt man über MEM_SkyController.barrier */
  
 class oCBarrier {
 	var int skySphereMesh;             //zCMesh*    

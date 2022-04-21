@@ -63,7 +63,7 @@ func void _DIAG_SetAni(var string AniName) {
     if(ani.len < 1 || ani.len > 17) {
         MEM_Error("DIAG_SetAni: Length of AniName has to be between 0 and 18");
     };
-    MEM_CopyBytes(ani.ptr, T_DIALOGGESTURE_, ani.len+1); // +1 fÃ¼r \0
+    MEM_CopyBytes(ani.ptr, T_DIALOGGESTURE_, ani.len+1); // +1 für \0
 };
 func void DIAG_SetAni(var string AniName) {
     AniName = ConcatStrings(DIAG_Prefix, AniName);
@@ -86,7 +86,7 @@ func void DIAG(var string AniName, var int Min, var int Max) {
 };
 
 //========================================
-// Gesten zurÃ¼cksetzen
+// Gesten zurücksetzen
 //========================================
 func void DIAG_Reset() {
     AI_WaitTillEnd(self, other);

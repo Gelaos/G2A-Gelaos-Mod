@@ -72,8 +72,8 @@ class zCMenu {
         var int m_listItems_numInArray;//int
     
     //[oCMenu_Status_only]
-    //oCMenu_Status ist eine Unterklasse und hat zusÃ¤tzlich diese Eigenschaften:
-    //Hab mir gespart dafÃ¼r nochmal eine Extraklasse zu schreiben:
+    //oCMenu_Status ist eine Unterklasse und hat zusätzlich diese Eigenschaften:
+    //Hab mir gespart dafür nochmal eine Extraklasse zu schreiben:
     
     //zCArray <oSMenuInfoAttribute> m_listAttributes;   
         var int m_listAttributes_array;     //oSMenuInfoAttribute*
@@ -91,7 +91,7 @@ class zCMenu {
     //[/oCMenu_Status_only]
 };
 
-//Danke an Nico fÃ¼r die folgenden drei Klassen:
+//Danke an Nico für die folgenden drei Klassen:
 class oSMenuInfoAttribute {
     var string Name;
     var string Description;
@@ -114,7 +114,7 @@ class oSMenuInfoArmor {
 
 //#################################################################
 //
-//  zCView: Basis fÃ¼r viele Anzeigeelemente //sollte jetzt auch fÃ¼r G1 korrekt sein.
+//  zCView: Basis für viele Anzeigeelemente //sollte jetzt auch für G1 korrekt sein.
 //
 //#################################################################
 
@@ -130,30 +130,30 @@ class zCViewText {
 	
 	var string text;	//zSTRING //Die Entscheidende Eigenschaft.
 	var int font;		//zCFont*
-	var int timer;		//zREAL //Ã¼brige Zeit fÃ¼r PrintScreen anzeigen die nur eine bestimmte Zeit dauern?
-	var int inPrintWin; //zBOOL //vermutlich fÃ¼r anzeigen mit "Print", die nach oben weggeschoben werden.
+	var int timer;		//zREAL //übrige Zeit für PrintScreen anzeigen die nur eine bestimmte Zeit dauern?
+	var int inPrintWin; //zBOOL //vermutlich für anzeigen mit "Print", die nach oben weggeschoben werden.
 
 	var int color;		//zCOLOR
 	var int timed;		//zBOOL
 	var int colored;	//zBOOL		//klingt interessant. Vielleicht kann man hiermit was anfangen.
 };
 
-//siehe Konstanten fÃ¼r Adresse vom globalen zCView screen.
+//siehe Konstanten für Adresse vom globalen zCView screen.
 
 /* zCViews kapseln zweidimensionale Objekte auf dem Bildschirm.
- * Dazu zÃ¤hlen zum Beispiel Texte oder MenÃ¼elemente.
+ * Dazu zählen zum Beispiel Texte oder Menüelemente.
  * 
- * Bei MenÃ¼elemente verhÃ¤lt es sich so:
- * -Ein MenÃ¼element wird generiert, wenn es das erste mal gebraucht wird. Es lebt dann bis zum beenden von Gothic.
- * -Ein MenÃ¼element speichert den Text, der zu ihm gehÃ¶rt in zCMenuItem.m_listLines.
- * -Sobald ein MenÃ¼element etwas anzeigen muss, erzeugt es ein "InnerWindow" um speichert sich eine Referenz
+ * Bei Menüelemente verhält es sich so:
+ * -Ein Menüelement wird generiert, wenn es das erste mal gebraucht wird. Es lebt dann bis zum beenden von Gothic.
+ * -Ein Menüelement speichert den Text, der zu ihm gehört in zCMenuItem.m_listLines.
+ * -Sobald ein Menüelement etwas anzeigen muss, erzeugt es ein "InnerWindow" um speichert sich eine Referenz
  *  auf dieses InnerWindow in zCMenuItem.m_pInnerWindow.
- * -Das InnerWindow ist ein zCView und bekommt eine Kopie des anzuzeigenden Textes vom MenÃ¼element.
+ * -Das InnerWindow ist ein zCView und bekommt eine Kopie des anzuzeigenden Textes vom Menüelement.
  * -Das InnerWindow speichert sich alle Textzeilen (meistens eine) in zCView.textLines. Das "nullte" Element von solchen Liste bleibt stets leer.
- * -Der Text wird vom InnerWindow dann in jedem Frame gezeichnet. Sobald das MenÃ¼item entscheidet, dass es nichts mehr anzeigen muss wird das InnerWindow zerstÃ¶rt.
+ * -Der Text wird vom InnerWindow dann in jedem Frame gezeichnet. Sobald das Menüitem entscheidet, dass es nichts mehr anzeigen muss wird das InnerWindow zerstört.
  */
 
-//siehe Konstanten fÃ¼r Adresse vom globalen zCView screen.
+//siehe Konstanten für Adresse vom globalen zCView screen.
 
 class zCView {
     var int _vtbl;
@@ -199,7 +199,7 @@ class zCView {
     var int owner;              //zCView*
     var int backTex;            //zCTexture*
 
-    //Das MenÃ¼zeug nutzt oft virtuelle Koordinaten.
+    //Das Menüzeug nutzt oft virtuelle Koordinaten.
     var int vposx;              //int
     var int vposy;              //int
     var int vsizex;             //int
@@ -465,11 +465,11 @@ class oCViewStatusBar
 
 //#################################################################
 //
-//  Vermutlich ziemlich nutzlos, ich dachte zunÃ¤chst die Klasse
-//  wÃ¤re wichtiger. Alles entscheidende spielt sich
-//  zumindest was das CharaktermenÃ¼ angeht in den gewÃ¶hnlichen
-//  zCMenuItems ab. zCMenuItemText wird (nicht ausschlieÃŸlich)
-//  fÃ¼r Auswahlboxen benutzt (In den Einstellungen: [ja|nein]-Box)
+//  Vermutlich ziemlich nutzlos, ich dachte zunächst die Klasse
+//  wäre wichtiger. Alles entscheidende spielt sich
+//  zumindest was das Charaktermenü angeht in den gewöhnlichen
+//  zCMenuItems ab. zCMenuItemText wird (nicht ausschließlich)
+//  für Auswahlboxen benutzt (In den Einstellungen: [ja|nein]-Box)
 //
 //#################################################################
 
@@ -590,7 +590,7 @@ class zCMenuItemText {
     var int m_mode; //siehe enum
 
     var string m_fullText;      //zSTRING
-    var int m_numOptions;       //int //Relevant fÃ¼r Options-MenÃ¼items wo man zum Beispiel zwischen "aus" und "an" wÃ¤hlen kann.
+    var int m_numOptions;       //int //Relevant für Options-Menüitems wo man zum Beispiel zwischen "aus" und "an" wählen kann.
 
     var int m_topLine;          //int
     var int m_viewLines;        //int

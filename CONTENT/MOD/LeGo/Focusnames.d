@@ -3,11 +3,11 @@
 \***********************************/
 
 func int Focusnames_Color_Friendly() {
-    return RGBA(0,   255, 0,   255); // Gr√ºn
+    return RGBA(0,   255, 0,   255); // Gr¸n
 };
 
 func int Focusnames_Color_Neutral() {
-    return RGBA(255, 255, 255, 255); // Wei√ü
+    return RGBA(255, 255, 255, 255); // Weiﬂ
 };
 
 func int Focusnames_Color_Angry() {
@@ -20,7 +20,7 @@ func int Focusnames_Color_Hostile() {
 
 
 //========================================
-// [intern] F√§rben der Namen
+// [intern] F‰rben der Namen
 //========================================
 func void _Focusnames() {
     var int col; col = -1; // Stupid pseudo-locals

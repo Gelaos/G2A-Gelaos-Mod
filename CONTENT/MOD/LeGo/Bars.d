@@ -8,7 +8,7 @@
 const int _Bar_Update_Status = -1;
 
 //========================================
-// Klasse fÃ¼r den Nutzer
+// Klasse für den Nutzer
 //========================================
 class Bar {
     var int x;
@@ -24,7 +24,7 @@ class Bar {
 };
 
 //========================================
-// Prototyp fÃ¼r Konstruktor-Instanz
+// Prototyp für Konstruktor-Instanz
 //========================================
 prototype GothicBar(Bar) {
     x = Print_Screen[PS_X] / 2;
@@ -40,12 +40,12 @@ prototype GothicBar(Bar) {
 };
 
 //========================================
-// Beispiel fÃ¼r Konstruktor-Instanz
+// Beispiel für Konstruktor-Instanz
 //========================================
 instance GothicBar@(GothicBar);
 
 //========================================
-// [intern] Klasse fÃ¼r PermMem
+// [intern] Klasse für PermMem
 //========================================
 class _bar {
     var int valMax;
@@ -88,7 +88,7 @@ func void _bar_Delete(var _bar b) {
 };
 
 //========================================
-// HÃ¶chstwert setzen
+// Höchstwert setzen
 //========================================
 func void Bar_SetMax(var int bar, var int max) {
     if(!Hlp_IsValidHandle(bar)) { return; };
@@ -128,7 +128,7 @@ func void Bar_SetValue(var int bar, var int val) {
 };
 
 //========================================
-// Bar lÃ¶schen
+// Bar löschen
 //========================================
 func void Bar_Delete(var int bar) {
     if(Hlp_IsValidHandle(bar)) {

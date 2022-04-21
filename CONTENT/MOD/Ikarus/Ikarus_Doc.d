@@ -21,14 +21,14 @@
         V.   ) Funktionen
                 1. Elementarer Speicherzugriff
                 2. Parser Zeug
-                3. SprÃ¼nge
+                3. Sprünge
                 4. String Funktionen
-                5. MenÃ¼-Funktionen
+                5. Menü-Funktionen
                 6. Globale Instanzen initialisieren
                 7. Ini Zugriff
                   * 7.1. Tastenzuordnungen
-                8. TastendrÃ¼cke erkennen
-                9. Maschinencode ausfÃ¼hren
+                8. Tastendrücke erkennen
+                9. Maschinencode ausführen
                10. Enginefunktionen aufrufen
                11. Externe Biblioteken
                12. Verschiedenes
@@ -43,35 +43,35 @@
 
 "Ikarus" ist eine Sammlung von Engine Klassen (bzw. ihrem Speicherbild) 
 und einigen Funktionen, die helfen mit diesen Klassen umzugehen. Ikarus 
-ist nÃ¼tzlich um jenseits der Grenzen von Daedalus aber innerhalb der 
-Grenzen der ZenGin zu arbeiten. Dadurch kÃ¶nnen einige sonst 
-unerreichbare Daten und Objekte ausgewertet und verÃ¤ndert werden, 
-darunter einige, die fÃ¼r Modder durchaus interessant sind. Ferner kÃ¶nnen 
+ist nützlich um jenseits der Grenzen von Daedalus aber innerhalb der 
+Grenzen der ZenGin zu arbeiten. Dadurch können einige sonst 
+unerreichbare Daten und Objekte ausgewertet und verändert werden, 
+darunter einige, die für Modder durchaus interessant sind. Ferner können 
 mit fortgesschrittenen Methoden auch Engine Funktionen aus den Skripten 
 heraus aufgerufen werden.
-Ikarus erÃ¶ffnet nur sehr begrenzte MÃ¶glichkeiten das Verhalten der 
-ZenGin selbst zu verÃ¤ndern.
+Ikarus eröffnet nur sehr begrenzte Möglichkeiten das Verhalten der 
+ZenGin selbst zu verändern.
 
 //######################################
 // II. Voraussetzungen / Setup
 //######################################
 
-Dieses Skriptpaket setzt ein VerstÃ¤ndnis grundlegender 
+Dieses Skriptpaket setzt ein Verständnis grundlegender 
 Programmierkonzepte und eine gute Portion Ausdauer und Forschungsgeist 
 voraus. Die meisten Klasseneigenschaften sind nicht dokumentiert, das 
-heiÃŸt oft muss man ausprobieren ob sie das tun, was man erwartet.
+heißt oft muss man ausprobieren ob sie das tun, was man erwartet.
 Das WoG-Editing Forum ist ein guter Ort um Erfahrungen mit den Klassen 
-und Eigenschaften auszutauschen, damit das Rad nicht stÃ¤ndig neu 
+und Eigenschaften auszutauschen, damit das Rad nicht ständig neu 
 erfunden werden muss.
 
 //--------------------------------------
 // 1.) Ikarus unter Gothic 2
 //--------------------------------------
 
-Dieses Skriptpaket ist nur auf einer Gothic 2 Reportversion lauffÃ¤hig. 
+Dieses Skriptpaket ist nur auf einer Gothic 2 Reportversion lauffähig. 
 Auf anderen Gothic Versionen wird die Nutzung dieser Skripte zu 
-AbstÃ¼rzen fÃ¼hren. Wer sich also dazu entscheidet, dieses Skriptpaket zu 
-verwenden, muss dafÃ¼r sorgen, dass die Spieler der Mod ebenfalls die 
+Abstürzen führen. Wer sich also dazu entscheidet, dieses Skriptpaket zu 
+verwenden, muss dafür sorgen, dass die Spieler der Mod ebenfalls die 
 Reportversion nutzen.
 Neuere Reportversionen als 2.6.0.0 (zur Zeit bei Nico in Planung) werden 
 KEINE Probleme bereiten und werden voll mit diesem Paket kompatibel sein.
@@ -80,12 +80,12 @@ KEINE Probleme bereiten und werden voll mit diesem Paket kompatibel sein.
 // 2.) Ikarus unter Gothic 1
 //--------------------------------------
 
-Ikarus wurde ursprÃ¼nglich nur fÃ¼r Gothic 2 erstellt. Mittlerweile ist 
+Ikarus wurde ursprünglich nur für Gothic 2 erstellt. Mittlerweile ist 
 Ikarus aber relativ gut mit Gothic 1 in der Version 1.08k_mod (neuste 
-Playerkit-Version) lauffÃ¤hig. Allerdings sind noch nicht alle Klassen an 
+Playerkit-Version) lauffähig. Allerdings sind noch nicht alle Klassen an 
 Gothic 1 angepasst. Nicht angepasste Klassen tragen ein ".unverified" im 
 Namen. Zur Zeit (Stand September 2010) ist insbesondere zCMenuItem 
-fehlerhaft, weshalb auch diesbetreffende Ikarus Funktionen abstÃ¼rzen 
+fehlerhaft, weshalb auch diesbetreffende Ikarus Funktionen abstürzen 
 werden. oCAIHuman und zCCamera sind ebenfalls noch nicht angepasst.
 Abgesehen davon sind mir keine Fehler bekannt.
 
@@ -94,20 +94,20 @@ Abgesehen davon sind mir keine Fehler bekannt.
 //--------------------------------------
 
 Ikarus besteht aus drei Teilen, Konstanten, Klassen und dem Ikarus-Kern, 
-die in genau dieser Reihenfolge geparst werden mÃ¼ssen. Der Ikarus-Kern 
-ist fÃ¼r Gothic 1 und 2 identisch und besteht aus der einzigen Datei 
-Ikarus.d. FÃ¼r die Konstanten und Klassen gibt es dagegen jeweils eine 
-Gothic 1 und eine Gothic 2 Version von der natÃ¼rlich jeweils genau die 
+die in genau dieser Reihenfolge geparst werden müssen. Der Ikarus-Kern 
+ist für Gothic 1 und 2 identisch und besteht aus der einzigen Datei 
+Ikarus.d. Für die Konstanten und Klassen gibt es dagegen jeweils eine 
+Gothic 1 und eine Gothic 2 Version von der natürlich jeweils genau die 
 richtige geparst werden muss. Ikarus nutzt einen C_NPC und muss daher 
 nach der C_NPC Klasse (nach der Datei classes.d) geparst werden. Andere 
-AbhÃ¤ngigkeiten gibt es nicht.
+Abhängigkeiten gibt es nicht.
 
 In der Konstantendatei gibt es ein paar Nutzervariablen mit denen unter 
 anderem die Debugausgabe von Ikarus geregelt wird.
 
-Beispielsweise kÃ¶nnte man in einer Gothic 2 Installation die 
+Beispielsweise könnte man in einer Gothic 2 Installation die 
 Ikarus-Dateien in das Verzeichnis _intern packen und die Gothic.src so 
-verÃ¤ndern, dass sie folgendermaÃŸen beginnt:
+verändern, dass sie folgendermaßen beginnt:
 
 //******************
 
@@ -128,57 +128,57 @@ AI\AI_INTERN\AI_CONSTANTS.D
 //######################################
 
 Ich habe versucht den folgenden Text so zu schreiben, dass auch 
-programmiertechnisch Unbedarfte sich ein Bild davon machen kÃ¶nnen, worum 
-es hier geht. Das soll nicht heiÃŸen, dass programmiertechnisch 
+programmiertechnisch Unbedarfte sich ein Bild davon machen können, worum 
+es hier geht. Das soll nicht heißen, dass programmiertechnisch 
 Unbedarfte das Paket nach lesen dieses Textes sofort effektiv nutzen 
-kÃ¶nnen. Aber ich wollte lieber etwas zu viel schreiben, als zu wenig.
+können. Aber ich wollte lieber etwas zu viel schreiben, als zu wenig.
 Wer sich mit Programmieren auskennt sollte mindestens Punkt 1 und 2 
-problemlos Ã¼berspringen kÃ¶nnen.
+problemlos überspringen können.
 
 //--------------------------------------
 // 1.) Der Speicher, Adressen und Zeiger
 
-Der Speicher ist eine groÃŸe Tabelle von Daten. Die Positionen in der 
+Der Speicher ist eine große Tabelle von Daten. Die Positionen in der 
 Tabelle werden durch Adressen benannt, also positive ganze Zahlen. An 
 jeder so identifizierten Speicherzelle steht ein Byte mit Daten (also 
-ein Wort, das aus 8 binÃ¤ren Ziffern (0 oder 1) besteht, zum Beispiel 
+ein Wort, das aus 8 binären Ziffern (0 oder 1) besteht, zum Beispiel 
 00101010). Meistens erstreckt sich ein Datum (also eine Dateneinheit) 
-Ã¼ber mehrere zusammenhÃ¤ngende Speicherzellen, oft 4 StÃ¼ck.
+über mehrere zusammenhängende Speicherzellen, oft 4 Stück.
 
-Wenn Gothic ausgefÃ¼hrt wird, liegt Gothic im Speicher herum. "Gothic" 
+Wenn Gothic ausgeführt wird, liegt Gothic im Speicher herum. "Gothic" 
 ist im dem Fall sowohl das Programm selbst (der Maschinencode) als auch 
 die Daten auf denen Gothic arbeitet. Programm und Daten sind in 
-getrennten Bereichen (Segmenten), fÃ¼r die getrennte 
+getrennten Bereichen (Segmenten), für die getrennte 
 Zugriffsberechtigungen gelten. Auf das Datensegment darf lesend und 
 schreibend zugegriffen werden und das ist auch das Segment mit dem sich 
-dieses Skriptpaket beschÃ¤ftigt.
-WÃ¤hrend Gothic arbeitet, werden immer wieder neue Objekte angelegt und 
-nicht mehr benÃ¶tigte Objekte zerstÃ¶rt, was es schwierig machen kann, ein 
+dieses Skriptpaket beschäftigt.
+Während Gothic arbeitet, werden immer wieder neue Objekte angelegt und 
+nicht mehr benötigte Objekte zerstört, was es schwierig machen kann, ein 
 bestimmtes Objekt, sagen wir eine bestimmte Truhe zu finden, da man 
 nicht von vorneherein wissen kann, wo die Daten zu dieser Truhe im 
 Speicher aufbewahrt werden.
 Ganz bestimmte Objekte kann man aber sehr leicht finden. Das sind 
 meistens sehr wichtige Objekte, die es nur einmal gibt (und irgendetwas 
-muss ja leicht zu finden sein, sonst kÃ¶nnte die Engine selbst ja gar 
+muss ja leicht zu finden sein, sonst könnte die Engine selbst ja gar 
 nicht arbeiten). Oft ist vereinbahrt, dass ein solches wichtiges Objekt 
-immer an einer ganz bestimmten Speicherstelle zu finden ist (man weiÃŸ 
-schon, wo man suchen muss, bevor man das Programm ausfÃ¼hrt). In diesem 
+immer an einer ganz bestimmten Speicherstelle zu finden ist (man weiß 
+schon, wo man suchen muss, bevor man das Programm ausführt). In diesem 
 Fall, muss man nur auf die passende Speicherstelle zugreifen und hat die 
 Daten gefunden, die man will.
 Wenn die Position des Objekts im Speicher nicht bekannt ist, gibt es 
 manchmal eine Stelle im Speicher, an der man die aktuelle Adresse des 
 Objekts nachschauen kann. Dann kann man das Objekt indirekt finden, in 
-dem man zunÃ¤chst an einem wohlbekannten Ort nachschlÃ¤gt, wo das Objekt 
-liegt und mit diesem Wissen anschlieÃŸend darauf zugreift.
+dem man zunächst an einem wohlbekannten Ort nachschlägt, wo das Objekt 
+liegt und mit diesem Wissen anschließend darauf zugreift.
 
 Vergleichbar ist das mit einem Buch: Angenommen wir suchen Kapitel 5. 
-Wenn wir wissen, dass Kapitel 5 auf Seite 42 anfÃ¤ngt, kÃ¶nnen wir das 
+Wenn wir wissen, dass Kapitel 5 auf Seite 42 anfängt, können wir das 
 Buch direkt richtig aufschlagen.
 Im Allgemeinen wird es aber so sein, dass wir das nicht wissen (denn bei 
-verschiedenen BÃ¼chern sind die KapitelanfÃ¤nge im Allgemeinen auf 
-verschiedenen Seiten). Zum GlÃ¼ck gibt es die Vereinbahrung, dass das 
-Inhaltsverzeichnis immer am Anfang des Buches ist, das heiÃŸt wir kÃ¶nnen 
-das Inhaltsverzeichnis finden und dort nachschauen wo Kapitel 5 anfÃ¤ngt. 
+verschiedenen Büchern sind die Kapitelanfänge im Allgemeinen auf 
+verschiedenen Seiten). Zum Glück gibt es die Vereinbahrung, dass das 
+Inhaltsverzeichnis immer am Anfang des Buches ist, das heißt wir können 
+das Inhaltsverzeichnis finden und dort nachschauen wo Kapitel 5 anfängt. 
 Mit diesem Wissen ist dann Kapitel 5 leicht zu finden.
 
 Navigation im Speicher ist im Grunde genau dies: Von wenigen Objekten 
@@ -187,16 +187,16 @@ Inhaltsverzeichnis und beinhalten Verweise auf andere Objekte. Diese
 Verweise nennt man auch Zeiger oder Pointer.
 
 Beispiel:
-An Speicherstelle 0xAB0884 (das ist hexadezimal fÃ¼r 11208836, also auch 
+An Speicherstelle 0xAB0884 (das ist hexadezimal für 11208836, also auch 
 nur eine Zahl) steht immer die Adresse das aktuellen oGame (das ist eine 
 Datensammlung, die wichtige Informationen zur aktuellen Spielsitzung 
-enthÃ¤lt). Wenn man diesem Verweis folgt, findet man also ein Objekt vom 
+enthält). Wenn man diesem Verweis folgt, findet man also ein Objekt vom 
 Typ oCGame. Dieses Objekt beinhaltet verschiedene Eigenschaften, unter 
 anderem die Eigenschaft "world". Hier findet sich abermals eine Adresse, 
 die diesmal auf ein Objekt vom Typ oWorld zeigt. Hier findet sich 
 widerum ein Verweis auf einen zCSkyController_Outdoor, der hat unter 
 anderem eine Textur, die widerum Daten hat... So kann man sich nach und 
-nach vom groÃŸen Ganzen auf einen einzelnen Pixel am Himmel vorhangeln.
+nach vom großen Ganzen auf einen einzelnen Pixel am Himmel vorhangeln.
 
 //--------------------------------------
 // 2.) Klassen
@@ -205,7 +205,7 @@ Ich habe bereits von Objekten gesprochen, die Eigenschaften haben. Es
 ist aber so, dass Speicher im Computer etwas unstrukturiertes, 
 "untypisiertes" ist. Man sieht einem Speicherbereich nicht an, ob es 
 sich bei seinem Inhalt zum Beispiel um eine Kommazahl, eine Zeichenkette 
-oder um Farbwerte handelt. Das heiÃŸt, selbst wenn man sich Ã¼berlegt, was 
+oder um Farbwerte handelt. Das heißt, selbst wenn man sich überlegt, was 
 man unter einem Baum, einer Truhe oder einem Npc versteht, muss man 
 genau festlegen in welcher Reihenfolge welche Daten abgelegt werden. Das 
 nennt man auch das Speicherlayout eines Objekts und wird in Daedalus als 
@@ -213,65 +213,65 @@ Klasse notiert. Beispiel:
 
 class cSandwich {
     var cToast oben;
-    var cKÃ¤se kÃ¤se;
+    var cKäse käse;
     var cToast unten;
 };
 
 Dies beschreibt eine Klasse, die drei Unterobjekte beinhaltet. Direkt am 
 Anfang der Klasse steht ein Objekt vom Typ cToast, dann kommt ein Objekt 
-vom Typ cKÃ¤se und dann noch ein Objekt vom Typ cToast. Leider kann man 
-das in Daedalus nicht so hinschreiben, sondern die Unterobjekte mÃ¼ssen 
+vom Typ cKäse und dann noch ein Objekt vom Typ cToast. Leider kann man 
+das in Daedalus nicht so hinschreiben, sondern die Unterobjekte müssen 
 in primitive Typen heruntergebrochen werden. Wenn man verfolgt, was ein 
-cToast und cKÃ¤se ist, kÃ¶nnte man das Speicherbild von cSandwich 
+cToast und cKäse ist, könnte man das Speicherbild von cSandwich 
 vielleicht so beschreiben:
 
 class cSandwich {
     //var cToast oben;
-        var int oben_brÃ¤unungsgrad;
+        var int oben_bräunungsgrad;
         var int oben_Gebuttert;
-    //var cKÃ¤se kÃ¤se;
-        var string kÃ¤se_name;
-        var int kÃ¤se_fettgehalt;
+    //var cKäse käse;
+        var string käse_name;
+        var int käse_fettgehalt;
     //var cToast unten;
-        var int unten_brÃ¤unungsgrad;
+        var int unten_bräunungsgrad;
         var int unten_Gebuttert;
 };
 
-Wenn man ein konkretes Sandwich sw vorliegen hÃ¤tte, kÃ¶nnte sw.kÃ¤se_name 
-zum Beispiel "Edammer" sein und sw.unten_gebuttert kÃ¶nnte 1 sein, das 
-heiÃŸt der untere Toast wÃ¤re mit Butter bestrichen.
+Wenn man ein konkretes Sandwich sw vorliegen hätte, könnte sw.käse_name 
+zum Beispiel "Edammer" sein und sw.unten_gebuttert könnte 1 sein, das 
+heißt der untere Toast wäre mit Butter bestrichen.
 
-Mit dem Wissen, dass eine Ganzzahl (int) immer 4 Byte groÃŸ ist und ein 
-string immer 20 Byte, weiÃŸ man schon viel Ã¼ber die Klasse.
+Mit dem Wissen, dass eine Ganzzahl (int) immer 4 Byte groß ist und ein 
+string immer 20 Byte, weiß man schon viel über die Klasse.
 
-Angenommen, ein cSandwich stÃ¼nde an Speicherposition 123452 (das heiÃŸt, 
+Angenommen, ein cSandwich stünde an Speicherposition 123452 (das heißt, 
 das Objekt beginnt dort), dann findet man an Position 123452 den Wert 
-"oben_brÃ¤unungsgrad", an Position 123456 den wert "oben_Gebuttert", an 
-Position 123460 die Zeichenkette "kÃ¤se_name", an Position 123480 den 
-Wert "kÃ¤se_fettgehalt" usw..
+"oben_bräunungsgrad", an Position 123456 den wert "oben_Gebuttert", an 
+Position 123460 die Zeichenkette "käse_name", an Position 123480 den 
+Wert "käse_fettgehalt" usw..
 
 Auch wenn dieser Hintergrund nicht unbedingt notwendig ist, um dieses 
-Paket zu benutzen, halte ich es fÃ¼r nÃ¼tzlich dies zu verstehen.
+Paket zu benutzen, halte ich es für nützlich dies zu verstehen.
 
 //--------------------------------------
 // 3.) Nicht darstellbare primitive Datentypen
 
-Nicht alle primitiven Datentypen ("primitiv" heiÃŸt nicht weiter sinnvoll 
-zerteilbar) die die ZenGin kennt, sind in Daedalus auch verfÃ¼gbar. 
+Nicht alle primitiven Datentypen ("primitiv" heißt nicht weiter sinnvoll 
+zerteilbar) die die ZenGin kennt, sind in Daedalus auch verfügbar. 
 Deadalus kennt nur Ganzzahlen (int) und Zeichenketten (string). Das 
-heiÃŸt aber nicht, dass man mit anderen Datentypen nicht auch arbeiten 
-kÃ¶nnte, aber man muss darauf achten die Datentypen korrekt zu behandeln.
+heißt aber nicht, dass man mit anderen Datentypen nicht auch arbeiten 
+könnte, aber man muss darauf achten die Datentypen korrekt zu behandeln.
 
-Ein bisschen ist das, als hÃ¤tte man einen Chemieschrank und auf jeder 
+Ein bisschen ist das, als hätte man einen Chemieschrank und auf jeder 
 Flasche steht "Destilliertes Wasser", obwohl sich in bei weitem nicht 
 allen Flaschen genau das verbirgt. Die Chemikalien funktionieren 
-natÃ¼rlich noch genauso gut, solange man weiÃŸ, was wirklich hinter den 
-Ettiketten steckt. Wenn man aber eine SÃ¤ure behandelt, als wÃ¤re sie 
+natürlich noch genauso gut, solange man weiß, was wirklich hinter den 
+Ettiketten steckt. Wenn man aber eine Säure behandelt, als wäre sie 
 Wasser, wird einen das Ettikett nicht eines besseren belehren und es 
-knallt (unter UmstÃ¤nden).
+knallt (unter Umständen).
 
 Das "Destillierte Wasser" ist in unserem Fall eine Ganzzahl, also ein 
-integer der GrÃ¶ÃŸe 32 bit. Alles was nicht gerade Zeichenkette ist, ist 
+integer der Größe 32 bit. Alles was nicht gerade Zeichenkette ist, ist 
 in den Klassen dieses Pakets als solche Ganzzahl deklariert. Was sich 
 wirklich dahinter verbirgt, geht aus den Kommentaren hervor.
 
@@ -279,47 +279,47 @@ Einige wichtige Datentypen sind:
 
 //##### int ######
 Wenn es nicht nur als int deklariert ist, sondern auch im Kommentar 
-steht, dass es ein int ist, dann ist es ein int! Also eine gewÃ¶hnliche 4 
-Byte groÃŸe Ganzzahl mit Vorzeichen.
+steht, dass es ein int ist, dann ist es ein int! Also eine gewöhnliche 4 
+Byte große Ganzzahl mit Vorzeichen.
 
 //##### zREAL ####
 Ein zREAL ist ein 4 Byte IEEE Float, oft mit "single" bezeichnet. Das 
 ist eine Gleitkommazahl mit der man in Daedalus normalerweise nicht 
 rechnen kann. Ich habe aber mal Funktionen geschrieben, die solche 
-Zahlen verarbeiten kÃ¶nnen:
+Zahlen verarbeiten können:
 http://forum.worldofplayers.de/forum/showthread.php?t=500080
 Zum Beispiel bietet diese Skriptsammlung eine Funktion roundf, die einen 
 solchen zREAL in eine Ganzzahl umwandelt (rundet).
 
 //##### zBOOL ####
-(Sinnloserweise) auch 4 Byte groÃŸ. Ein zBOOL ist wie eine Ganzzahl, aber 
+(Sinnloserweise) auch 4 Byte groß. Ein zBOOL ist wie eine Ganzzahl, aber 
 mit der Vereinbahrung, dass nur zwischen "der Wert ist 0" und "der Wert 
 ist nicht 0" unterschieden wird. Ein zBOOL hat also die Bedeutung eines 
-Wahrheitswerts. 0 steht fÃ¼r falsch/unzutreffend, 1 steht fÃ¼r 
+Wahrheitswerts. 0 steht für falsch/unzutreffend, 1 steht für 
 wahr/zutreffend.
 
 //##### zDWORD ####
 
-Eine 4 Byte groÃŸe Zahl ohne Vorzeichen. Das heiÃŸt die 
+Eine 4 Byte große Zahl ohne Vorzeichen. Das heißt die 
 Vergleichsoperationen <, <=, >, >= liefern mitunter falsche Ergebnisse, 
-da ein sehr groÃŸes zDWORD als negative Zahl interpretiert wird, obwohl 
-eine positive Zahl gemeint ist. Das sollte aber nur in AuÃŸnahmefÃ¤llen 
+da ein sehr großes zDWORD als negative Zahl interpretiert wird, obwohl 
+eine positive Zahl gemeint ist. Das sollte aber nur in Außnahmefällen 
 von Bedeutung sein, im Regelfall kann ein zDWORD behandelt werden wie 
 ein Integer, solange man nicht versucht negative Werte hineinzuschreiben.
 
 //#### zCOLOR ####
 
-Ein 4 Byte groÃŸes Speicherwort, bei dem jedes Byte fÃ¼r einen Farbkanal 
-steht: blau, grÃ¼n, rot und alpha. Jeder Kanal ist also mit 8 bit 
-aufgelÃ¶st. Die Farbe "orange" wÃ¼rde als Hexadezimalzahl interpretiert so 
+Ein 4 Byte großes Speicherwort, bei dem jedes Byte für einen Farbkanal 
+steht: blau, grün, rot und alpha. Jeder Kanal ist also mit 8 bit 
+aufgelöst. Die Farbe "orange" würde als Hexadezimalzahl interpretiert so 
 aussehen:
 
 0xFFFF7F00
 
 blauer Kanal: 00, es ist kein Blauanteil in der Farbe.
-grÃ¼ner Kanal: 7F, also mittelstark vertreten
-roter Kanal: FF, also so rot als mÃ¶glich.
-alpha Kanal: FF, also volle OpazitÃ¤t.
+grüner Kanal: 7F, also mittelstark vertreten
+roter Kanal: FF, also so rot als möglich.
+alpha Kanal: FF, also volle Opazität.
 
 Die scheinbar umgekehrte Reihenfolge kommt daher, dass die 
 niederwertigen Bytes auch an den kleineren Adressen steht. Im Speicher 
@@ -337,42 +337,42 @@ Siehe dazu auch "little Endian" z.B. in der Wikipedia.
 Dies ist kein primitiver Datentyp, wird aber oft verwendet: Es ist ein 
 Trippel aus drei zREALs und stellt einen Vektor im dreidimensionalen 
 Raum dar. Deklariert habe ich solche zVEC3 in der Regel als integer 
-Arrays der LÃ¤nge 3.
+Arrays der Länge 3.
 
 //## Zeigertypen ###
 
-Ein Zeiger ist ein vier Byte groÃŸes Speicherwort und enthÃ¤lt die Adresse 
-eines anderen Objekts. In aller Regel weiÃŸ man von welchem Typ das 
+Ein Zeiger ist ein vier Byte großes Speicherwort und enthält die Adresse 
+eines anderen Objekts. In aller Regel weiß man von welchem Typ das 
 Objekt ist, auf das der Zeiger zeigt. Als Datentyp des Zeigers gibt man 
 den Datentyp des Objekts an, auf das gezeigt wird und versieht diesen 
 mit einem *. Nehmen wir mal an, wir treffen auf folgendes:
 
 var int ptr; //cSandwich*
 
-Dass ptr als Integer deklariert ist, soll uns nicht weiter stÃ¶ren, der 
+Dass ptr als Integer deklariert ist, soll uns nicht weiter stören, der 
 wahre Datentyp steht im Kommentar: Es ist (kein cSandwich aber) ein 
 Zeiger auf ein cSandwich (die Klasse aus dem vorherigen Abschnitt). Das 
-heiÃŸt, nimmt man den Wert von ptr her und interpretiert ihn als Adresse, 
+heißt, nimmt man den Wert von ptr her und interpretiert ihn als Adresse, 
 wird man an dieser Adresse ein cSandwich im Speicher vorfinden. An 
 folgenden Adressen ist also folgendes zu finden:
 
-ptr + 0     : int oben_brÃ¤unungsgrad
+ptr + 0     : int oben_bräunungsgrad
 ptr + 4     : int oben_Gebuttert
-ptr + 8     : string kÃ¤se_name
-ptr + 28    : int kÃ¤se_fettgehalt
-ptr + 32    : int unten_brÃ¤unungsgrad
+ptr + 8     : string käse_name
+ptr + 28    : int käse_fettgehalt
+ptr + 32    : int unten_bräunungsgrad
 ptr + 36    : int unten_Gebuttert     
 
-(man beachte, dass ein Integer 4 Byte und ein String 20 Byte groÃŸ ist)
+(man beachte, dass ein Integer 4 Byte und ein String 20 Byte groß ist)
 
 Es kann auch sein, dass ein Zeiger auf gar kein Objekt zeigt. Dann ist 
 sein Wert (als Zahl interpretiert) 0. Man spricht von einem Null-Zeiger. 
-Zum Beispiel kÃ¶nnte ein Zeiger auf die aktuelle Spielsitzung Null sein, 
-solange der Spieler noch im HauptmenÃ¼ ist und gar keine Sitzung 
+Zum Beispiel könnte ein Zeiger auf die aktuelle Spielsitzung Null sein, 
+solange der Spieler noch im Hauptmenü ist und gar keine Sitzung 
 existiert.
 
-NatÃ¼rlich gibt es auch Zeiger auf Zeiger. Diese sind dann entsprechend 
-mit zusÃ¤tzlichen Sternen gekennzeichnet.
+Natürlich gibt es auch Zeiger auf Zeiger. Diese sind dann entsprechend 
+mit zusätzlichen Sternen gekennzeichnet.
 
 //######################################
 // IV. Die Klassen
@@ -380,21 +380,21 @@ mit zusÃ¤tzlichen Sternen gekennzeichnet.
 
 Die Klassen, die ich herausgesucht habe, sind bei weitem nicht alle 
 Klassen der Engine (es gibt viel mehr). Aber es sind die Klassen, von 
-denen ich glaube, dass sie fÃ¼r Modder am interessantesten sein kÃ¶nnen.
+denen ich glaube, dass sie für Modder am interessantesten sein können.
 
-Ich habe versucht zu jeder Klasse unter dem Punkt "nÃ¼tzlich fÃ¼r" ein 
-Beispiel zu nennen, wofÃ¼r man das Wissen Ã¼ber und den Zugriff auf diese 
-Klassen nutzen kÃ¶nnte. Vielleicht sind manche der genannten Sachen 
-schwieriger als ich vermute. Ich habe das meiste nÃ¤mlich nicht 
+Ich habe versucht zu jeder Klasse unter dem Punkt "nützlich für" ein 
+Beispiel zu nennen, wofür man das Wissen über und den Zugriff auf diese 
+Klassen nutzen könnte. Vielleicht sind manche der genannten Sachen 
+schwieriger als ich vermute. Ich habe das meiste nämlich nicht 
 ausprobiert.
 
 //########### oCGame #############
 
-HÃ¤lt Eigenschaften der Session und Referenzen auf zahlreiche globalen 
+Hält Eigenschaften der Session und Referenzen auf zahlreiche globalen 
 Objekte, zum Beispiel die Welt oder den InfoManager. Einige 
 Einstellungen sind auch interessant.
 
-NÃ¼tzlich fÃ¼r:
+Nützlich für:
 -Marvin Modus an und ausschalten (game_testmode)
 -Spiel pausieren (singleStep)
 -Interface ausschalten wie mit toggle Desktop (game_drawall)
@@ -402,11 +402,11 @@ NÃ¼tzlich fÃ¼r:
 
 //##### oCInformationManager #####
 
-Das Objekt, dass die Anzeige von Dialogen Ã¼bernimmt. KÃ¼mmert sich zum 
+Das Objekt, dass die Anzeige von Dialogen übernimmt. Kümmert sich zum 
 Beispiel darum, dass in den Views die passenden Dinge angezeigt werden.
 
-NÃ¼tzlich fÃ¼r:
--Diry Hacks mit isDone, z.B. um wÃ¤hrend eines Dialogs ein Dokument 
+Nützlich für:
+-Diry Hacks mit isDone, z.B. um während eines Dialogs ein Dokument 
 anzuzeigen
 -herausfinden, was im Dialog gerade passiert, z.B ob der Spieler gerade 
 eine Auswahl treffen muss.
@@ -414,94 +414,94 @@ eine Auswahl treffen muss.
 
 //######## oCInfoManager #########
 
-HÃ¤lt eine Liste aller Skript-Infos (oCInfo).
+Hält eine Liste aller Skript-Infos (oCInfo).
 
-NÃ¼tzlich fÃ¼r:
+Nützlich für:
 -?
 
 //########## oCInfo ##############
 
-In weiten Teilen schon in Daedalus bekannt. ZusÃ¤tzlich ist eine Liste 
+In weiten Teilen schon in Daedalus bekannt. Zusätzlich ist eine Liste 
 von Choices erreichbar sowieso die Eigenschaft "told", die in Daedalus 
-Ã¼ber Npc_KnowsInfo gelesen werden kann.
+über Npc_KnowsInfo gelesen werden kann.
 
-NÃ¼tzlich fÃ¼r:
--Choiceliste bearbeiten. Man kÃ¶nnte eine Funktion implementieren, die 
+Nützlich für:
+-Choiceliste bearbeiten. Man könnte eine Funktion implementieren, die 
 nur selektiv eine Choice aus der Liste entfernt.
--Nach Choicewahl durch den Nutzer entscheiden, welche Choice gewÃ¤hlt 
+-Nach Choicewahl durch den Nutzer entscheiden, welche Choice gewählt 
 wurde, selbst wenn alle Choices die selbe Funktion benutzen (man kann 
-sich unbegrenzt viele Dialogoptionen zur Laufzeit Ã¼berlegen).
+sich unbegrenzt viele Dialogoptionen zur Laufzeit überlegen).
 -Einen nicht permanenten, schon erhaltenen Dialog wieder freischalten.
 
 //######## oCInfoChoice ##########
 
-HÃ¤lt einen Beschreibungstext und den Symbolindex der Funktion, die 
+Hält einen Beschreibungstext und den Symbolindex der Funktion, die 
 aufgerufen werden soll.
 
 //#### oCMob und Unterklassen ####
 
 Die verschiedenen Mobs sind aus dem Spacer bekannt. Besonders die 
-verschlieÃŸbaren Mobs sind interessant.
+verschließbaren Mobs sind interessant.
 
-NÃ¼tzlich fÃ¼r:
+Nützlich für:
 -Das vom Spieler fokussierte Mob (oCNpc.focus_vob) bearbeiten, zum 
-Beispiel Truhen durch Zauber Ã¶ffnen.
--Von Npc geÃ¶ffnete TÃ¼r wieder verschlieÃŸen.
+Beispiel Truhen durch Zauber öffnen.
+-Von Npc geöffnete Tür wieder verschließen.
 
 //######## zCVob und oCNpc #######
 
-Sind vollstÃ¤ndig von Nico Ã¼bernommen. Einen oCNpc vollstÃ¤ndig zu kennen 
-hat dieses Skriptpaket erst mÃ¶glich gemacht!
+Sind vollständig von Nico übernommen. Einen oCNpc vollständig zu kennen 
+hat dieses Skriptpaket erst möglich gemacht!
 
-NÃ¼tzlich fÃ¼r:
--Positionsdaten auslesen und verÃ¤ndern.
+Nützlich für:
+-Positionsdaten auslesen und verändern.
 -Heldenfokus analysieren
 -Zugriff auf einen ganzen Haufen anderer Dinge
 
 //############ oCItem ############
 
-Vobs mit bekannten Skripteigenschaften. ZusÃ¤tzlich lÃ¤sst die Eigenschaft 
-"instanz" auf die Skriptinstanz des Items schlieÃŸen. "amount" (fÃ¼r 
+Vobs mit bekannten Skripteigenschaften. Zusätzlich lässt die Eigenschaft 
+"instanz" auf die Skriptinstanz des Items schließen. "amount" (für 
 fallengelassenen Itemstapel) sollte nicht vergessen werden zu 
-berÃ¼cksichtigen, wo nÃ¶tig.
+berücksichtigen, wo nötig.
 
-NÃ¼tzlich fÃ¼r:
--Items fÃ¼r den Helden beim Tauchen aufheben
+Nützlich für:
+-Items für den Helden beim Tauchen aufheben
 -Telekinese?
 
 //######### zCCamera #############
 
 Die Kamera eben. :-)
-Aber Vorsicht: Die zCCamera ist kein zCVob. Sie hÃ¤lt aber eine Referenz 
+Aber Vorsicht: Die zCCamera ist kein zCVob. Sie hält aber eine Referenz 
 auf ein Hilfsvob (connectedVob).
 
-NÃ¼tzlich fÃ¼r:
+Nützlich für:
 -Positionsdaten ermitteln
--Screenblende einbauen (i.d.R. aber Ã¼ber VFX leichter mÃ¶glich).
+-Screenblende einbauen (i.d.R. aber über VFX leichter möglich).
 
 //##### zCMenu / zCMenuItem ######
 
-Das HauptmenÃ¼ ist ein MenÃ¼. Der "Spiel starten" Button ist ein 
-MenÃ¼element. Es gibt aber noch mehr MenÃ¼s (zum Beispiel das StatusmenÃ¼) 
-die ihrerseits MenÃ¼items beinhalten.
+Das Hauptmenü ist ein Menü. Der "Spiel starten" Button ist ein 
+Menüelement. Es gibt aber noch mehr Menüs (zum Beispiel das Statusmenü) 
+die ihrerseits Menüitems beinhalten.
 
 Vorsicht: Zum Teil werden diese Objekte nur beim ersten mal erstellt und 
 dann im Speicher behalten (auch beim Laden eines anderen Savegames!) zum 
 Teil werden sie bei jeder Benutzung neu erzeugt.
 
-NÃ¼tzlich fÃ¼r:
--CharaktermenÃ¼ Ã¼berarbeiten (ziemlich fummlig)
--Speichern MenÃ¼-Item unter bestimmten UmstÃ¤nden deaktivieren 
+Nützlich für:
+-Charaktermenü überarbeiten (ziemlich fummlig)
+-Speichern Menü-Item unter bestimmten Umständen deaktivieren 
 (Realisierung von Speicherpunkten / Speicherzonen).
 
 //########## zCOption ############
 
 Kapselt die Informationen der Gothic.ini und der [ModName].ini. 
-Funktionen um die Daten zu lesen und zu verÃ¤ndern stehen in Ikarus 
+Funktionen um die Daten zu lesen und zu verändern stehen in Ikarus 
 bereit.
 
-NÃ¼tzlich fÃ¼r:
--Daten SessionÃ¼bergreifend festhalten (Lade / Speicherverhalten, 
+Nützlich für:
+-Daten Sessionübergreifend festhalten (Lade / Speicherverhalten, 
 Schwierigkeitsgrad...)
 -Einstellungen des Spielers lesen (zum Beispiel Sichtweite)
 
@@ -509,20 +509,20 @@ Schwierigkeitsgrad...)
 
 Der Parser ist nicht nur die Klasse, die beim Kompilieren der Skripte 
 meckert sondern auch eine virtuelle Maschine, die den kompilierten Code 
-ausfÃ¼hrt. Der Parser hÃ¤lt zudem die Symboltabelle.
+ausführt. Der Parser hält zudem die Symboltabelle.
 
-NÃ¼tzlich fÃ¼r:
+Nützlich für:
 -Daedalus Code zur Laufzeit bearbeiten (Parser Stack).
 
 //######## zCPar_Symbol ##########
 
-Jedes logische Konstrukt (Variable, Instanz, Funktion, Klasse) wird Ã¼ber 
+Jedes logische Konstrukt (Variable, Instanz, Funktion, Klasse) wird über 
 ein Symbol identifiziert. Im Grunde sind alle diese Objekte der Reihe 
-nach durchnummeriert. Mit dieser Nummer erreicht man Ã¼ber die 
+nach durchnummeriert. Mit dieser Nummer erreicht man über die 
 Symboltabelle des Parsers diese Symbole. Ein Symbol hat einen Namen und 
 seinen Inhalt, der verschiedenen Typs sein kann.
 
-NÃ¼tzlich fÃ¼r:
+Nützlich für:
 -"call by reference"
 -Funktionen anhand ihres Namens aufrufen
 -Instance-Offsets bearbeiten.
@@ -534,18 +534,18 @@ Planeten (Sonne und Mond), eine Farbtabelle zur Beleuchtung (je nach
 Tageszeit verschieden) (nicht aber die Lightmap selbst, die ist auf die 
 Polys verteilt) sowie aktuelle Regeneinstellungen.
 
-NÃ¼tzlich fÃ¼r:
+Nützlich für:
 -Regen starten
--Das Sonnenlicht umfÃ¤rben
--Aussehen der Planeten (Sonne / Mond) Ã¤ndern
+-Das Sonnenlicht umfärben
+-Aussehen der Planeten (Sonne / Mond) ändern
 
 //## zCTrigger und Unterklassen ###
 
 zCTrigger, oCTriggerScript, oCTriggerChangeLevel und oCMover sind aus 
 dem Spacer bekannt. Jetzt kann man auch auf sie zugreifen.
 
-NÃ¼tzlich fÃ¼r:
--Ziel eines oCTriggerScripts verÃ¤ndern
+Nützlich für:
+-Ziel eines oCTriggerScripts verändern
 -Triggerschleife bauen, die jeden Frame feuert, indem nach einem 
 Wld_SendTrigger die Eigenschaft _zCVob_nextOnTimer auf die aktuelle Zeit 
 gesetzt wird (siehe zTimer).
@@ -558,34 +558,34 @@ sind keine Vobs, aber jeder zCWaypoint hat ein Hilfsvob in der Welt
 (einen zCVobWaypoint), der auch wirklich ein Vob ist, aber sonst nichts 
 kann.
 Jeder oCWay kennt die beiden beteiligten zCWaypoints zwischen denen er 
-verlÃ¤uft und jeder zCWaypoints kennt alle oCWays, die von ihm ausgehen. 
+verläuft und jeder zCWaypoints kennt alle oCWays, die von ihm ausgehen. 
 
-NÃ¼tzlich fÃ¼r:
+Nützlich für:
 -?
 
 //########### oWorld ##############
 
-HÃ¤lt neben dem Vobbaum, in dem alle Vobs enthalten sind auch Dinge wie 
-SkyController und Waynet. AuÃŸerdem gibt es neben dem sehr technischen 
-Bsp-Tree noch die activeVobList, die alle Vobs enthÃ¤lt die auf 
+Hält neben dem Vobbaum, in dem alle Vobs enthalten sind auch Dinge wie 
+SkyController und Waynet. Außerdem gibt es neben dem sehr technischen 
+Bsp-Tree noch die activeVobList, die alle Vobs enthält die auf 
 irgendeine Art selbst aktiv sind. Das sind Npcs, Trigger usw. In jedem 
 Frame wird die activeVobList in die walkList kopiert. Die walkList wird 
 dann sequenziell durchlaufen. 
 
-NÃ¼tzlich fÃ¼r:
+Nützlich für:
 -Objekte in der Welt suchen, zum Beispiel Npcs (voblist_npcs), items 
 (voblist_items), alle Vobs mit AI, z.B. auch Trigger (activeVobList)
 -Mir ist es mit rumgehacke an activeVobList und walklist gelungen alles 
-auÃŸer den Helden einzufrieren und spÃ¤ter zu reaktivieren
+außer den Helden einzufrieren und später zu reaktivieren
 
 //######## zCZoneZFog #############
 
-Fogzones sind Gebiete mit (mÃ¶glicherweise farbigem) Nebel, der die 
+Fogzones sind Gebiete mit (möglicherweise farbigem) Nebel, der die 
 Sichtweite beeinflusst.
 
-NÃ¼tzlich fÃ¼r:
--evtl. mysteriÃ¶se Orte mit obskuren Farbwechseln
--mÃ¶glicherweise automatische Sichtweiten Korrektur abhÃ¤ngig von der 
+Nützlich für:
+-evtl. mysteriöse Orte mit obskuren Farbwechseln
+-möglicherweise automatische Sichtweiten Korrektur abhängig von der 
 Framerate
 
 //####### VERSCHIEDENES ###########
@@ -595,7 +595,7 @@ Ein Knoten in einem Baum. Das kann ein innerer Knoten oder ein
 Blattknoten sein.
 Es gibt Zeiger auf das erste Kind, den linken und rechten 
 Geschwisterknoten sowie den Elternknoten.
-NatÃ¼rlich gibt es auch einen Zeiger auf die Daten.
+Natürlich gibt es auch einen Zeiger auf die Daten.
 Der Vobtree ist aus zCTrees aufgebaut.
 
 //zCArray
@@ -603,21 +603,21 @@ Ein zCArray dient zur Verwaltung eines Felds von Daten. Das zCArray hat
 einen Zeiger auf die Speicherzelle in der das Feld beginnt.
 Die Daten sind in diesem Feld einfach aneinandergereit. Das zCArray 
 kennt zudem die Anzahl der Objekte im Feld (wichtig um nicht jenseits 
-des Feldendes zu lesen). Unter UmstÃ¤nden ist mehr Speicher alloziert als 
-das Feld gerade groÃŸ ist, daher kennt das zCArray neben der GrÃ¶ÃŸe des 
-Feldes auch die GrÃ¶ÃŸe des reservierten Speichers.
+des Feldendes zu lesen). Unter Umständen ist mehr Speicher alloziert als 
+das Feld gerade groß ist, daher kennt das zCArray neben der Größe des 
+Feldes auch die Größe des reservierten Speichers.
 
 //zCArraySort
 Wie ein Array, nur dass die Objekte immer auf bestimmte Art und Weise 
 geordnet sind (es sei denn, du machst diese Ordnung kaputt).
 
 //zList
-Sehr gewÃ¶hnungsbedÃ¼rftige generische Liste, die mit der Eigenschaft 
+Sehr gewöhnungsbedürftige generische Liste, die mit der Eigenschaft 
 "next" des generischen Typs arbeitet. Kaum verwendet.
 
 //zCList
 Ein Listenelement. Beinhaltet den Zeiger auf genau ein Objekt (die 
-Daten) und einen Zeiger auf das nÃ¤chste Listenelement.
+Daten) und einen Zeiger auf das nächste Listenelement.
 
 //zCListSort
 Wie ein Listenelement, nur dass die Gesamtheit der Listenelemente auf 
@@ -626,17 +626,17 @@ Ordnung kaputt).
 
 //zCTimer
 Man kann ablesen wie lange ein Frame braucht und es gibt Tuning 
-Parameter fÃ¼r minimale und maximale Framerate. Vorsicht. Hieran drehen, 
-kann dazu fÃ¼hren, dass das Spiel einfriert!
+Parameter für minimale und maximale Framerate. Vorsicht. Hieran drehen, 
+kann dazu führen, dass das Spiel einfriert!
 
 //oCWorldTimer
-EnthÃ¤lt die Weltzeit (0 = 0:00, 6000000 = 24:00) und den aktuellen Tag.
+Enthält die Weltzeit (0 = 0:00, 6000000 = 24:00) und den aktuellen Tag.
 
 //oCSpawnManager
-EnthÃ¤lt ein Array aller im Moment gespawnter Npcs. Das Spawnen kann 
+Enthält ein Array aller im Moment gespawnter Npcs. Das Spawnen kann 
 ausgeschaltet werden (spawningEnabled). Die eigentlich interessanten 
 Werte, die insert und remove Reichweite sind statisch, ich habe die 
-Adressen dieser Werte Ã¼ber der Klasse angegeben.
+Adressen dieser Werte über der Klasse angegeben.
 
 //oCPortalRoom und oCPortalRoomManager
 Der einzige oCPortalRoomManager der Welt kennt alle oCPortalRooms. Zudem 
@@ -649,17 +649,17 @@ Namen.
 Ein Licht. Es ist zu erwarten, dass der Bsp-Tree wissen muss, welche 
 Lichter welches Weltsegment betreffen. Daher ist nicht ganz klar, in 
 welchen Grenzen man zum Beispiel Lichter verschieben oder den 
-Leuchtradius vergrÃ¶ÃŸern kann. Die Farbe des Lichtes lÃ¤sst sich aber zum 
-Beispiel problemlos verÃ¤ndern.
+Leuchtradius vergrößern kann. Die Farbe des Lichtes lässt sich aber zum 
+Beispiel problemlos verändern.
 
 //oCMag_Book
-Wird genutzt um den Kreis Ã¼ber dem Spieler bei der Zauberauswahl 
-anzuzeigen. AuÃŸerdem enthÃ¤lt diese Klasse Zuordnungen von Zaubern <-> 
+Wird genutzt um den Kreis über dem Spieler bei der Zauberauswahl 
+anzuzeigen. Außerdem enthält diese Klasse Zuordnungen von Zaubern <-> 
 Items <-> Tasten.
 
 //zString
 Ein String. Da diese Klasse ein Daedalus-Primitiv ist, ist es in aller 
-Regel nicht nÃ¶tig, auf die einzelnen Eigenschaften zuzugreifen. Ich habe 
+Regel nicht nötig, auf die einzelnen Eigenschaften zuzugreifen. Ich habe 
 diese Eigenschaften allerdings gebraucht um Speicherallokation zu 
 implementieren.
 
@@ -667,23 +667,23 @@ implementieren.
 // V. Die Funktionen
 //######################################
 
-Ikarusfunktionen beginnen mit dem PrÃ¤fix "MEM_". Das soll eine Kurzform 
-von "Memory" sein und neben der ZugehÃ¶rigkeit zu Ikarus auch andeuten, 
+Ikarusfunktionen beginnen mit dem Präfix "MEM_". Das soll eine Kurzform 
+von "Memory" sein und neben der Zugehörigkeit zu Ikarus auch andeuten, 
 dass Eingriffe in den Speicher von Gothic stattfinden (und evtl. 
 entsprechende Vorsicht geboten ist).
-Funktionen mit dem PrÃ¤fix "MEMINT_" sind interne ("private") Funktionen 
-von Ikarus die nach auÃŸen hin keine sinnvolle Anwendungen haben oder 
+Funktionen mit dem Präfix "MEMINT_" sind interne ("private") Funktionen 
+von Ikarus die nach außen hin keine sinnvolle Anwendungen haben oder 
 zumindest undokumentiert sind. Es ist nicht garantiert, dass solche 
-Funktionen in spÃ¤teren Ikarus Versionen in dieser Form enthalten sein 
+Funktionen in späteren Ikarus Versionen in dieser Form enthalten sein 
 werden.
 Eine Ausnahme bilden Stringbearbeitungsfunktionen, die ein eigenes 
-PrÃ¤fix "STR_" besitzen.
+Präfix "STR_" besitzen.
 
 //######################################
 // 1.) Elementarer Speicherzugriff
 
 Lesen und schreiben von strings und integern ist mit folgenden 
-Funktionen mÃ¶glich:
+Funktionen möglich:
 
 func int    MEM_ReadInt     (var int address)
 func void   MEM_WriteInt    (var int address, var int val)
@@ -692,15 +692,15 @@ func void   MEM_WriteString (var int address, var string val)
 
 Wenn address <= 0 ist, wird ein Fehler ausgegeben. Andernfalls wird 
 versucht an dieser Adresse zu lesen bzw. zu schreiben.
-Liegt die Adresse in einem ungÃ¼ltigen Bereich, zum Beispiel in einem 
-Codesegment, gibt es eine Zugriffsverletzung (Gothic stÃ¼rzt ab).
-Bei Stringoperationen ist es zudem nÃ¶tig, dass an der angegebene Stelle 
-bereits ein gÃ¼ltiger zString steht. Wenn dort Unsinn steht, kann lesen 
-und schreiben gleichmaÃŸen Gothic zum Absturz bringen.
+Liegt die Adresse in einem ungültigen Bereich, zum Beispiel in einem 
+Codesegment, gibt es eine Zugriffsverletzung (Gothic stürzt ab).
+Bei Stringoperationen ist es zudem nötig, dass an der angegebene Stelle 
+bereits ein gültiger zString steht. Wenn dort Unsinn steht, kann lesen 
+und schreiben gleichmaßen Gothic zum Absturz bringen.
 
-Ein Beispiel fÃ¼r die Benutzung von MEM_WriteInt ist zum Beispiel 
+Ein Beispiel für die Benutzung von MEM_WriteInt ist zum Beispiel 
 folgende Ikarus Funktion, mit der Debugmeldungen an und ausgeschaltet 
-werden kÃ¶nnen:
+werden können:
 
 //******************
 func void MEM_SetShowDebug (var int on) {
@@ -715,7 +715,7 @@ func int MEM_WriteIntArray (var int arrayAddress, var int offset, var
 int value)
 
 Diese Funktionen lesen / schreiben den Wert an Stelle arrayAddress + 4 * 
-offset. Beispielsweise kÃ¶nnte man folgendermaÃŸen den i-ten Eintrag in 
+offset. Beispielsweise könnte man folgendermaßen den i-ten Eintrag in 
 der activeVoblist der Welt lesen:
 
 //----------------------
@@ -734,16 +734,16 @@ func int GetActiveVob (var int i) {
 };
 //----------------------
 
-Um auf einzelne Bytes zuzugreifen gibt es auÃŸerdem noch:
+Um auf einzelne Bytes zuzugreifen gibt es außerdem noch:
 
 func int  MEM_ReadByte  (var int adr)
 func void MEM_WriteByte (var int adr, var int val)
 
-Hierbei wird nur das Byte an Adresse adr verÃ¤ndert, nicht etwa ein 
-ganzes vier Byte Wort. Das heiÃŸt, die drei Folgebytes bleiben unberÃ¼hrt. 
+Hierbei wird nur das Byte an Adresse adr verändert, nicht etwa ein 
+ganzes vier Byte Wort. Das heißt, die drei Folgebytes bleiben unberührt. 
 Falls in MEM_WriteByte nicht 0 <= val < 256 gilt wird eine Warnung 
 ausgegeben, und val entsprechend zugeschnitten. Insbesondere sollten 
-keine negativen Zahlen Ã¼bergeben werden.
+keine negativen Zahlen übergeben werden.
 
 //######################################
 // 2.) Parser Zeug
@@ -758,13 +758,13 @@ Dazu gibt es folgende Funktionen:
 func instance MEM_PtrToInst  (var int ptr)
 func void     MEM_AssignInst (var int inst, var int ptr)
 
-Im Prinzip sind beide fÃ¼r den selben Zweck geschaffen.
-MEM_PtrToInst nimmt einen Zeiger entgegen und gibt eine Instanz zurÃ¼ck, 
+Im Prinzip sind beide für den selben Zweck geschaffen.
+MEM_PtrToInst nimmt einen Zeiger entgegen und gibt eine Instanz zurück, 
 die in einer Zuweisung genutzt werden kann.
 MEM_AssignInst nimmt eine Instanz (eigentlich den Symbolindex) und eine 
-Adresse entgegen und sorgt dafÃ¼r, dass die Instanz auf ptr zeigt.
+Adresse entgegen und sorgt dafür, dass die Instanz auf ptr zeigt.
 
-Als Merkregel: Folgende Formulierungen ist Ã¤quivalent:
+Als Merkregel: Folgende Formulierungen ist äquivalent:
 1.) inst = MEM_PtrToInst (ptr);
 2.) MEM_AssignInst (inst, ptr);
 
@@ -794,7 +794,7 @@ func void somefunc() {
 //----------------------
 
 Die umgekehrte Funktion zu MEM_PtrToInst ist MEM_InstToPtr. Diese 
-Funktion gibt die Adresse des Objekts zurÃ¼ck, auf das die Ã¼bergebene 
+Funktion gibt die Adresse des Objekts zurück, auf das die übergebene 
 Instanz zeigt.
 
 func int MEM_InstToPtr (var instance inst)
@@ -807,7 +807,7 @@ zeigen zu lassen ist folgende:
 
 func instance MEM_CpyInst (var int inst)
 
-Folgender Code ist Ã¤quivalent:
+Folgender Code ist äquivalent:
 1.) selfCopy = MEM_CpyInst (self);
 2.) selfCopy = MEM_PtrToInst (MEM_InstToPtr (self));
 
@@ -815,32 +815,32 @@ Anmerkung: Es gibt ein alias zu MEM_InstToPtr unter dem Namen
 MEM_InstGetOffset.
 
 Anmerkung: Instanzen eines Typs und "Variablen" eines Typs sind 
-gleichwertig. Im obigen Beispiel wÃ¤re es mÃ¶glich gewesen "meinFocusVob" 
-auÃŸerhalb der Funktion als "instance meinFocusVob (zCVob);" zu 
+gleichwertig. Im obigen Beispiel wäre es möglich gewesen "meinFocusVob" 
+außerhalb der Funktion als "instance meinFocusVob (zCVob);" zu 
 deklarieren.
 
 Anmerkung: MEM_AssignInst und MEM_PtrToInst geben eine Warnung aus, 
-falls ptr == 0, weil eine Zuweisung eines Nullzeigers in vielen FÃ¤llen 
+falls ptr == 0, weil eine Zuweisung eines Nullzeigers in vielen Fällen 
 nicht absichtlich passieren wird. Um ganz bewusst 0 zuzuweisen gibt es 
 MEM_AssignInstNull bzw. MEM_NullToInst. Die Benutzung dieser Funktionen 
-ist analog, der ptr Parameter entfÃ¤llt allerdings.
+ist analog, der ptr Parameter entfällt allerdings.
 
 Anmerkung: MEM_AssignInst kann im Gegensatz zu MEM_PtrToInst genutzt 
-werden um Instanzen in anderen Parsern zu verÃ¤ndern. In aller Regel ist 
-dies aber nicht nÃ¶tig.
+werden um Instanzen in anderen Parsern zu verändern. In aller Regel ist 
+dies aber nicht nötig.
 
 //******************
 
-Nicht immer weiÃŸ man zur Kompilierzeit, wann man welche Funktion 
+Nicht immer weiß man zur Kompilierzeit, wann man welche Funktion 
 aufrufen will. Wenn man zum Beispiel die Condition-Funktion eines Mobs 
 aufrufen will, das der Spieler im Fokus hat, ist man zur Kompilierzeit 
 ratlos, weil man nicht ahnen kann, welches Mob sich der Spieler 
-aussuchen wird. Ikarus stellt eine MÃ¶glichkeit zur VerfÃ¼gung mit deren 
+aussuchen wird. Ikarus stellt eine Möglichkeit zur Verfügung mit deren 
 Hilfe Funktionen anhand ihres Namens oder ihres Symbolindexes aufgerufen 
-werden kÃ¶nnen. Im Beispiel des Mobs, kann der Name der 
+werden können. Im Beispiel des Mobs, kann der Name der 
 Condition-Funktion einfach im Mob nachgeschaut werden.
 
-Die Funktionen sind leicht zu benutzen und leicht zu erklÃ¤ren:
+Die Funktionen sind leicht zu benutzen und leicht zu erklären:
 
 func void MEM_CallByString (var string fnc)
 func void MEM_CallByID (var int ID)
@@ -852,20 +852,20 @@ Beispiel mit MEM_FindParserSymbol oder MEM_GetFuncID (siehe unten).
 MEM_CallByID ist schneller als MEM_CallByString und sollte bevorzugt 
 werden, wenn die selbe Funktion sehr oft aufgerufen werden muss.
 
-Falls die aufzurufende Funktion Parameter hat, mÃ¼ssen diese zuvor auf 
+Falls die aufzurufende Funktion Parameter hat, müssen diese zuvor auf 
 den Datenstack gelegt werden. Das geht mit den Funktionen: 
 
 func void MEM_PushIntParam (var int param)
 func void MEM_PushStringParam (var string strParam)
 func void MEM_PushInstParam (var int instance)
 
-Die Parameter mÃ¼ssen in der richtigen Reihenfolge gepusht werden, von 
+Die Parameter müssen in der richtigen Reihenfolge gepusht werden, von 
 links nach rechts.
-Hat eine Funktion einen RÃ¼ckgabewert sollte dieser nach Aufruf vom 
-Datenstack heruntergeholt werden, sonst kÃ¶nnen unter ungÃ¼nstigen 
-UmstÃ¤nden StackÃ¼berlÃ¤ufe entstehen (abgesehen davon will man den 
-RÃ¼ckgabewert vielleicht einfach haben, weil er wichtige Informationen 
-enthÃ¤lt).
+Hat eine Funktion einen Rückgabewert sollte dieser nach Aufruf vom 
+Datenstack heruntergeholt werden, sonst können unter ungünstigen 
+Umständen Stacküberläufe entstehen (abgesehen davon will man den 
+Rückgabewert vielleicht einfach haben, weil er wichtige Informationen 
+enthält).
 Dies geht mit den Funktionen:
 
 func int      MEM_PopIntResult()
@@ -874,33 +874,33 @@ func instance MEM_PopInstResult()
 
 Siehe dazu Beispiel 5.
 
-Anmerkung: Die genannten Funktionen funktionieren ohne EinschrÃ¤nkung 
-auch fÃ¼r Externals.
+Anmerkung: Die genannten Funktionen funktionieren ohne Einschränkung 
+auch für Externals.
 
 //******************
 
-ErgÃ¤nzend zum letzten Abschnitt: 
+Ergänzend zum letzten Abschnitt: 
 
 func int MEM_GetFuncID(var func function)
 
-Gibt den Symbolindex einer Funktion zurÃ¼ck, der zum Beispiel in 
+Gibt den Symbolindex einer Funktion zurück, der zum Beispiel in 
 MEM_CallByID verwendet werden kann. Eine Funktion muss (bzgl der Parsing 
-Reihenfolge) noch nicht deklariert sein um an MEM_GetFuncID Ã¼bergeben 
-werden zu kÃ¶nnen.
+Reihenfolge) noch nicht deklariert sein um an MEM_GetFuncID übergeben 
+werden zu können.
 
 func void MEM_Call(var func function)
 
-Ã„quivalent zu MEM_CallByID(MEM_GetFuncID(function)). Dies ermÃ¶glicht 
-zweierlei interessante Dinge: Zum einen ist es mÃ¶glich dass sich zwei 
+Äquivalent zu MEM_CallByID(MEM_GetFuncID(function)). Dies ermöglicht 
+zweierlei interessante Dinge: Zum einen ist es möglich dass sich zwei 
 Funktionen gegenseitig aufrufen (was sonst problematisch ist, weil 
 normalerweise eine Funktion deklariert sein muss, bevor sie aufgerufen 
-werden kann), zum anderen ist es mÃ¶glich var func parameter sinnvoll zu 
+werden kann), zum anderen ist es möglich var func parameter sinnvoll zu 
 verwenden und somit modulare Algorithmen zu gestalten. Hier ein Beispiel:
 
 //----------------------
 
 func void DoTwice(var func f) {
-    /* Wir kÃ¶nnten direkt MEM_Call(f) verwenden.
+    /* Wir könnten direkt MEM_Call(f) verwenden.
      * zu Demonstrationszwecken hier aber nochmal
      * eine Zuweisung von Funktionen: */
     var func g; g = f; //(*)
@@ -921,16 +921,16 @@ func void foo() {
 Beachte:
 - Klassenvariablen machen erhebliche Probleme. MEM_Call erlaubt es 
 nicht, beispielsweise die on_equip Funktion eines Items aufzurufen. Nur 
-gewÃ¶hnliche "var func" auÃŸerhalb von Klassen funktionieren.
+gewöhnliche "var func" außerhalb von Klassen funktionieren.
 - Gothic legt ein recht unsinniges Verhalten bei der Zuweisung von 
 Funktionen an den Tag. An Stelle (*) des obigen Beispiels wird nicht 
-etwa der Inhalt von f in g Ã¼bertragen. Stattdessen wird der Symbolindex 
-von f in g geschrieben, das heiÃŸt, g verweist nun sozusagen auf f. Mit 
+etwa der Inhalt von f in g übertragen. Stattdessen wird der Symbolindex 
+von f in g geschrieben, das heißt, g verweist nun sozusagen auf f. Mit 
 diesem Verhalten kommt MEM_Call klar, MEM_Call wird folgende "Kette" von 
-Referenzen vorfinden und zurÃ¼ckverfolgen: MEM_Call.fnc -> DoTwice.g -> 
-DoTwice.f -> foo und wird schlieÃŸlich foo aufrufen. WÃ¼rden wir an Stelle 
-(*) allerdings ein "f = g;" einfÃ¼gen wÃ¤re diese Kette zerstÃ¶rt und f und 
-g wÃ¼rden zyklisch aufeinander verweisen. MEM_Call wÃ¼rde in einer 
+Referenzen vorfinden und zurückverfolgen: MEM_Call.fnc -> DoTwice.g -> 
+DoTwice.f -> foo und wird schließlich foo aufrufen. Würden wir an Stelle 
+(*) allerdings ein "f = g;" einfügen wäre diese Kette zerstört und f und 
+g würden zyklisch aufeinander verweisen. MEM_Call würde in einer 
 Endlosschleife gefangen sein. Ich habe das hier an Beispielen diskutiert:
 
 http://forum.worldofplayers.de/forum/threads/
@@ -941,16 +941,16 @@ http://forum.worldofplayers.de/forum/threads/
 func int MEM_FindParserSymbol (var string inst)
 
 Kleines Nebenprodukt: Liefert den Index des Parsersymbols mit Namen inst 
-zurÃ¼ck, falls ein solches Symbol existiert. Falls keines existiert wird 
-eine Warnung ausgegeben und -1 zurÃ¼ckgegeben. Einen Schritt weiter geht 
+zurück, falls ein solches Symbol existiert. Falls keines existiert wird 
+eine Warnung ausgegeben und -1 zurückgegeben. Einen Schritt weiter geht 
 die Funktion:
 
 func int MEM_GetParserSymbol (var string inst)
 
 Sie sucht ebenfalls das Parsersymbol mit Namen inst, gibt aber nicht den 
-Index zurÃ¼ck sondern direkt einen Zeiger auf das passende zCPar_Symbol. 
+Index zurück sondern direkt einen Zeiger auf das passende zCPar_Symbol. 
 Existiert kein solches Symbol wird eine Warnung ausgegeben und 0 
-zurÃ¼ckgegeben.
+zurückgegeben.
 
 So kann man Variablen anhand ihres Namens finden und bearbeiten. 
 Beispiel:
@@ -978,19 +978,19 @@ func void SetVarTo (var string variableName, var int value) {
 
 func void foo() {
     var int myVar;
-    SetVarTo ("FOO.MYVAR", 42); //Ã¤quivalent zu myVar = 42;
+    SetVarTo ("FOO.MYVAR", 42); //äquivalent zu myVar = 42;
 };
 
 //----------------------
 
 //######################################
-// 3.) SprÃ¼nge
+// 3.) Sprünge
 
-RÃ¼cksprÃ¼nge sind sehr elegant mÃ¶glich. Mithilfe zweier einfacher Zeilen 
+Rücksprünge sind sehr elegant möglich. Mithilfe zweier einfacher Zeilen 
 kann die aktuelle Position im Parserstack (darunter versteht man einen 
 maschinennahen Code der beim Kompilieren der Skripte erzeugt wird) 
 abgefragt und gesetzt werden. Wird die Position im Parserstack 
-verÃ¤ndert, so wird die AusfÃ¼hrung an dieser neuen Stelle fortgesetzt.
+verändert, so wird die Ausführung an dieser neuen Stelle fortgesetzt.
 
 Beispiel: Folgender Code gibt die Zahlen von 0 bis 42 aus:
 
@@ -1001,7 +1001,7 @@ func void foo() {
     MEM_InitLabels();
     var int count; count = 0;
     
-    /* In label die AusfÃ¼hrungsposition festhalten. */
+    /* In label die Ausführungsposition festhalten. */
     var int label;
     label = MEM_StackPos.position;
     /* <---- label zeigt jetzt hierhin,
@@ -1011,7 +1011,7 @@ func void foo() {
     count += 1;
     
     if (count <= 42) {
-        /* Die AusfÃ¼hrungsposition ersetzen,
+        /* Die Ausführungsposition ersetzen,
          * bei dem "<-----" wird dann weitergemacht */
         MEM_StackPos.position = label;
     };
@@ -1022,26 +1022,26 @@ func void foo() {
 //----------------------
 
 Wichtig: MEM_InitLabels() muss nach dem Laden eines Spielstandes einmal 
-ausgefÃ¼hrt werden. Am einfachsten ist es, diese Funktion aus INIT_GLOBAL 
+ausgeführt werden. Am einfachsten ist es, diese Funktion aus INIT_GLOBAL 
 aufzurufen. Erst nachdem diese Funktion aufgerufen wurde, kann korrekt 
 auf MEM_StackPos.position zugegriffen werden!
 
 Anmerkung: MEM_InitLabels wird auch von der Funktion MEM_InitAll 
 aufgerufen.
 
-Wichtig: Eigentlich selbstverstÃ¤ndlich: Ein Label muss initialisiert 
-sein, bevor dorthin gesprungen werden kann! VorwÃ¤rtssprÃ¼nge sind daher 
+Wichtig: Eigentlich selbstverständlich: Ein Label muss initialisiert 
+sein, bevor dorthin gesprungen werden kann! Vorwärtssprünge sind daher 
 im Allgemeinen schwierig, weil die Sprungstelle passiert wird, bevor das 
 Sprungziel passiert wird.
 
-Wichtig: Labels sind nach Speichern und Laden ungÃ¼ltig. Das heiÃŸt ein 
-Label muss "sofort" verwendet werden. Ich wÃ¼sste aber sowieso keinen 
-Grund, weshalb man sich Labels fÃ¼r lÃ¤ngere Zeit aufheben sollte.
+Wichtig: Labels sind nach Speichern und Laden ungültig. Das heißt ein 
+Label muss "sofort" verwendet werden. Ich wüsste aber sowieso keinen 
+Grund, weshalb man sich Labels für längere Zeit aufheben sollte.
 
 Wichtig: Wer zwischen verschiedenen Funktionen hin und herspringt und 
-nicht weiÃŸ, was er tut, wird auf die Nase fallen. Wer mit Labels rechnet 
-und nicht weiÃŸ was er tut ebenfalls. Allgemeiner: Wer etwas anderes 
-macht als Zuweisungen der obigen Art, kÃ¶nnte auf die Nase fallen.
+nicht weiß, was er tut, wird auf die Nase fallen. Wer mit Labels rechnet 
+und nicht weiß was er tut ebenfalls. Allgemeiner: Wer etwas anderes 
+macht als Zuweisungen der obigen Art, könnte auf die Nase fallen.
 
 //######################################
 // 4.) String Funktionen
@@ -1050,9 +1050,9 @@ macht als Zuweisungen der obigen Art, kÃ¶nnte auf die Nase fallen.
 
 func int STR_GetCharAt (var string str, var int pos)
 
-Liefert das Zeichen am Offset pos im String str zurÃ¼ck (das heiÃŸt den 
+Liefert das Zeichen am Offset pos im String str zurück (das heißt den 
 Zahlwert dieses Zeichens, wie man ihn in der ASCII-Tabelle findet). Die 
-ZÃ¤hlung beginnt bei 0. Zum Beispiel ist STR_GetCharAt ("Hello", 1) == 
+Zählung beginnt bei 0. Zum Beispiel ist STR_GetCharAt ("Hello", 1) == 
 101, weil 'e' an Position 1 ist und an Stelle 101 in der ASCII-Tabelle 
 steht.
 
@@ -1060,7 +1060,7 @@ steht.
 
 func int STR_Len (var string str)
 
-Liefert die LÃ¤nge des Strings in Zeichen.
+Liefert die Länge des Strings in Zeichen.
 
 //******************
 
@@ -1071,7 +1071,7 @@ const int STR_SMALLER = -1;
 func int STR_Compare (var string str1, var string str2) {
     
 Liefert STR_GREATER, wenn str1 lexikographisch nach str2 kommt und 
-entsprechend STR_SMALLER oder STR_EQUAL in den anderen FÃ¤llen. Beispiele:
+entsprechend STR_SMALLER oder STR_EQUAL in den anderen Fällen. Beispiele:
 
 STR_Compare ("A", "B")      -> STR_SMALLER
 STR_Compare ("ABC", "ABC")  -> STR_EQUAL
@@ -1080,7 +1080,7 @@ STR_Compare ("BA", "BB")    -> STR_SMALLER
 STR_Compare ("B", "a")      -> STR_SMALLER
 STR_Compare ("A", "")       -> STR_GREATER
 
-(zum vorletzen Beispiel ist zu bemerken, dass GroÃŸbuchstaben 
+(zum vorletzen Beispiel ist zu bemerken, dass Großbuchstaben 
 ironischerweise "kleiner" als Kleinbuchstaben sind, so ist nunmal die 
 Reihenfolge in der ASCII-Tabelle)
 
@@ -1088,27 +1088,27 @@ Reihenfolge in der ASCII-Tabelle)
 
 func int STR_ToInt (var string str)
 
-Konvertiert die String-ReprÃ¤sentation einer Ganzzahl in einen Integer. 
+Konvertiert die String-Repräsentation einer Ganzzahl in einen Integer. 
 Etwa wird "42" in den Integer 42 umgewandelt.
 
-Beispiele fÃ¼r gÃ¼ltige Strings:
+Beispiele für gültige Strings:
 1.) 42
 2.) +42
 3.) -42
 
-Beispiele fÃ¼r ungÃ¼ltige Strings:
+Beispiele für ungültige Strings:
 1.) ++42
 2.) 42+
 3.) 4.2
 4.) HelloWorld
 
-Im Fehlerfall wird eine Warnung ausgegeben und 0 zurÃ¼ckgegeben.
+Im Fehlerfall wird eine Warnung ausgegeben und 0 zurückgegeben.
 
 //******************
 
 func string STR_SubStr (var string str, var int start, var int count)
 
-Gibt den Teilstring von str zurÃ¼ck, der an Index start beginnt und count 
+Gibt den Teilstring von str zurück, der an Index start beginnt und count 
 Zeichen lang ist.
 
 Beispiele:
@@ -1119,7 +1119,7 @@ Als Spezialfall davon ist folgende Funktion implementiert:
 
 func string STR_Prefix (var string str, var int count)
 
-STR_Prefix gibt den String zurÃ¼ck, der aus den ersten count Zeichen von 
+STR_Prefix gibt den String zurück, der aus den ersten count Zeichen von 
 str besteht.
 Dies entspricht dem Verhalten von STR_SubStr, mit start == 0.
 
@@ -1127,8 +1127,8 @@ Dies entspricht dem Verhalten von STR_SubStr, mit start == 0.
 
 func string STR_Upper(var string str)
 
-Gibt eine Kopie von str zurÃ¼ck, bei der alle Kleinbuchstaben in die 
-entsprechenden GroÃŸbuchstaben verwandelt wurden. Die Behandlung ist 
+Gibt eine Kopie von str zurück, bei der alle Kleinbuchstaben in die 
+entsprechenden Großbuchstaben verwandelt wurden. Die Behandlung ist 
 mindestens bei Umlauten fehlerhaft, entspricht aber dem Engineverhalten 
 (verwendet wird zString::ToUpper). ASCII Zeichen werden korrekt 
 behandelt.
@@ -1143,9 +1143,9 @@ func string STR_Split     (var string str,
 STR_Split ist dazu da, einen String dort in mehrere Strings aufzuteilen 
 wo ein bestimmtes Zeichen (der Separator) vorkommt.
 Der Parameter Index gibt an, der wievielte String nach dieser Aufteilung 
-zurÃ¼ckgegeben werden soll.
+zurückgegeben werden soll.
 
-Zum Beispiel lÃ¤sst sich ein deutscher Satz in Worte aufteilen, in dem 
+Zum Beispiel lässt sich ein deutscher Satz in Worte aufteilen, in dem 
 der String an Leerzeichen aufgetrennt wird:
 
 //----------------------
@@ -1162,12 +1162,12 @@ Am Ende der Funktion ist tok1 == "Das", tok2 == "ist", tok3 == "ein" und
 tok4 == "Satz.".
 
 Die Funktion STR_SplitCount gibt an, in wieviele Teile der String 
-zerfÃ¤llt. Im Kontext der Funktion foo wÃ¤re STR_SplitCount(str, " ") == 4.
+zerfällt. Im Kontext der Funktion foo wäre STR_SplitCount(str, " ") == 4.
 
-Beachte: Bei der Aufteilung kÃ¶nnen auch leere Strings entstehen. Zum 
-Beispiel zerfÃ¤llt der String "..abc" in drei Strings, wenn als Separator 
-"." gewÃ¤hlt wird, nÃ¤mlich in "", "" und "abc". Analog zerfÃ¤llt der leere 
-String "" Ã¼ber jedem Separator in einen String, nÃ¤mlich den leeren 
+Beachte: Bei der Aufteilung können auch leere Strings entstehen. Zum 
+Beispiel zerfällt der String "..abc" in drei Strings, wenn als Separator 
+"." gewählt wird, nämlich in "", "" und "abc". Analog zerfällt der leere 
+String "" über jedem Separator in einen String, nämlich den leeren 
 String.
 
 //*********************
@@ -1175,10 +1175,10 @@ String.
 func int STR_IndexOf(var string str, var string tok)
 
 STR_IndexOf sucht den String tok im String str und gibt, falls tok in 
-str enthalten ist, den Index zurÃ¼ck bei dem das erste Auftreten von tok 
+str enthalten ist, den Index zurück bei dem das erste Auftreten von tok 
 beginnt und -1, falls tok nicht in str auftaucht.
 
-GroÃŸ- und Kleinschreibung wird beachtet.
+Groß- und Kleinschreibung wird beachtet.
 
 Beispiele:
 
@@ -1195,28 +1195,28 @@ STR_IndexOf("", "")                  ==  0
 
 
 //######################################
-// 5.) MenÃ¼-Funktionen
+// 5.) Menü-Funktionen
 
-Diese Funktionen sollen den Zugriff auf MenÃ¼elemente (zum Beispiel im 
-CharaktermenÃ¼) vereinfachen. Leider werden manche MenÃ¼s jedesmal neu 
+Diese Funktionen sollen den Zugriff auf Menüelemente (zum Beispiel im 
+Charaktermenü) vereinfachen. Leider werden manche Menüs jedesmal neu 
 erzeugt (vom Skript aus), andere dagegen werden einmal erzeugt und dann 
-behalten. Problem: Ein CharaktermenÃ¼ gibt es zum Beispiel erst, nachdem 
-es das erste mal geÃ¶ffnet wurde, danach liegt es im Speicher.
-AbhÃ¤ngig davon und von dem, was man eigentlich tun will, kann es 
-sinnvoll sein in den MenÃ¼skripten Ã„nderungen einzubringen oder sich das 
-MenÃ¼ als Objekt zu holen und in dem fertigen Objekt selbst 
-herumzuschmieren. FÃ¼r letzteres gibt es hier eine Hilfestellung:
+behalten. Problem: Ein Charaktermenü gibt es zum Beispiel erst, nachdem 
+es das erste mal geöffnet wurde, danach liegt es im Speicher.
+Abhängig davon und von dem, was man eigentlich tun will, kann es 
+sinnvoll sein in den Menüskripten Änderungen einzubringen oder sich das 
+Menü als Objekt zu holen und in dem fertigen Objekt selbst 
+herumzuschmieren. Für letzteres gibt es hier eine Hilfestellung:
 
 func int MEM_GetMenuByString (var string menu)
 func int MEM_GetMenuItemByString (var string menuItem)
 
-Liefert die Adresse des MenÃ¼s bzw. des MenÃ¼items falls ein MenÃ¼ bzw. 
-MenÃ¼item mit diesem Namen existiert, Null sonst.
+Liefert die Adresse des Menüs bzw. des Menüitems falls ein Menü bzw. 
+Menüitem mit diesem Namen existiert, Null sonst.
 
 //######################################
 // 6.) Globale Instanzen initialisieren
 
-Das Skriptpaket fÃ¼hrt folgende Instanzen ein:
+Das Skriptpaket führt folgende Instanzen ein:
 
 instance MEM_Game           (oCGame);
 instance MEM_World          (oWorld);
@@ -1234,12 +1234,12 @@ Die hier benutzten Klassen haben alle eines gemeinsam: Es gibt stehts
 maximal ein Objekt von ihnen zur gleichen Zeit (es gibt z.B. nicht 
 gleichzeitig zwei Welten oder zwei Himmel).
 
-Ich stelle eine Funktion zur VerfÃ¼gung, die die Offsets dieser Instanzen 
+Ich stelle eine Funktion zur Verfügung, die die Offsets dieser Instanzen 
 auf das entsprechende eindeutige Objekt setzt.
 
 func void MEM_InitGlobalInst()
 
-Nachdem MEM_InitGlobalInst aufgerufen wurde, kÃ¶nnen alle oben genannten 
+Nachdem MEM_InitGlobalInst aufgerufen wurde, können alle oben genannten 
 Instanzen genutzt werden. Nach dem Laden eines neue Spielstandes muss 
 MEM_InitGlobalInst() erneut aufgerufen werden!
 
@@ -1263,7 +1263,7 @@ myOption2=myValue2
 Literale in eckigen Klammern identifizieren Sektionen eindeutig. 
 Innerhalb von Sektionen werden Optionen mit eindeutigen Namen 
 identifiziert. Jede Option nimmt einen Wert an, der nach dem "="-Zeichen 
-steht. Da .ini Dateien keine BinÃ¤rdateien sind, sind Sektionsnamen, 
+steht. Da .ini Dateien keine Binärdateien sind, sind Sektionsnamen, 
 Optionsnamen und Werte alle vom Typ string.
 
 In diesem Skriptpaket gibt es Funktionen, um lesend und schreibend auf 
@@ -1278,11 +1278,11 @@ func string MEM_GetModOpt  (var string sectionname,
 MEM_GetGothOpt durchsucht die Gothic.ini, MEM_GetModOpt die .ini Datei 
 der Mod. Gesucht wird nach der Option optionname in der Sektion 
 sectionname. Falls eine solche Sektion mit einer solchen Option 
-existiert, wird der Wert dieser Option zurÃ¼ckgegeben. Ein leerer String 
+existiert, wird der Wert dieser Option zurückgegeben. Ein leerer String 
 sonst.
 
 Zudem habe ich Funktionen geschrieben, die die Existenz von Sektionen 
-und Optionen prÃ¼fen. Sie sollten selbsterklÃ¤rend sein:
+und Optionen prüfen. Sie sollten selbsterklärend sein:
 
 func int MEM_GothOptSectionExists (var string sectionname)
 func int MEM_GothOptExists (var string sectionname,
@@ -1302,44 +1302,44 @@ gesetzt. Falls die Sektion und/oder Option nicht existiert, werden beide
 im Zweifelsfall angelegt.
 
 Die .ini Datei der Mod kann leider nicht beschrieben werden, da Gothic 
-Ã„nderungen daran niemals auf die Festplatte zurÃ¼ckschreibt.
+Änderungen daran niemals auf die Festplatte zurückschreibt.
 
 //BEACHTE:
--Falls du neue Optionen einfÃ¼hrst gebietet der gute Stil, dass du dies 
-in einer eigenen Sektion tust und die Optionen verstÃ¤ndlich benennst! 
+-Falls du neue Optionen einführst gebietet der gute Stil, dass du dies 
+in einer eigenen Sektion tust und die Optionen verständlich benennst! 
 Als Norm schlage ich vor, dass eine Mod mit Namen "myMod" nur in der 
-Sektion "myMod" oder "MOD_mymod" neue Eigenschaften einfÃ¼hrt (und nicht 
+Sektion "myMod" oder "MOD_mymod" neue Eigenschaften einführt (und nicht 
 etwa in der Sektion "GAME" oder "PERFORMANCE").
 -Die Gothic.ini wird erst beim Verlassen von Gothic physikalisch 
-beschrieben. Falls Gothic abstÃ¼rzt, kann es also sein, dass Ã„nderungen 
+beschrieben. Falls Gothic abstürzt, kann es also sein, dass Änderungen 
 verloren gehen.
--Manche Ã„nderungen werden erst nach einem Neustart von Gothic oder dem 
-Betreten/Verlassen des MenÃ¼s Wirkung zeigen.
+-Manche Änderungen werden erst nach einem Neustart von Gothic oder dem 
+Betreten/Verlassen des Menüs Wirkung zeigen.
 
-//NutzungsmÃ¶glichkeiten:
--In der .ini Datei der Mod kÃ¶nnten dem Spieler zusÃ¤tzliche 
-KonfigurationsmÃ¶glichkeiten gegeben werden, etwa kÃ¶nnte man dort ein 
-bestimmtes Features abschalten kÃ¶nnen, falls absehbar ist, dass nicht 
-jeder Spieler es mÃ¶gen wird.
--In der Gothic.ini kÃ¶nnte zum Beispiel der Schwierigkeitsgrad der Mod 
+//Nutzungsmöglichkeiten:
+-In der .ini Datei der Mod könnten dem Spieler zusätzliche 
+Konfigurationsmöglichkeiten gegeben werden, etwa könnte man dort ein 
+bestimmtes Features abschalten können, falls absehbar ist, dass nicht 
+jeder Spieler es mögen wird.
+-In der Gothic.ini könnte zum Beispiel der Schwierigkeitsgrad der Mod 
 hinterlegt sein, der sich dadurch auf alle Savegames auswirkt, und nicht 
-fÃ¼r jedes Savegame neu festgelegt werden muss.
--In der Gothic.ini kÃ¶nnte gespeichert sein, ob die Mod bereits 
-mindestens einmal durchgespielt wurde. So kÃ¶nnte das zweite mal 
+für jedes Savegame neu festgelegt werden muss.
+-In der Gothic.ini könnte gespeichert sein, ob die Mod bereits 
+mindestens einmal durchgespielt wurde. So könnte das zweite mal 
 Durchspielen verschieden gestaltet werden.
--In der Gothic.ini kÃ¶nnten Highscores (evtl. zusammen mit idComputerName 
+-In der Gothic.ini könnten Highscores (evtl. zusammen mit idComputerName 
 gehasht zur Verifikation) hinterlegt sein.
--In der Gothic.ini kÃ¶nnten statistische Informationen festgehalten 
+-In der Gothic.ini könnten statistische Informationen festgehalten 
 werden, etwa wie oft ein Spieler (insgesamt oder in der letzten Zeit) 
-geladen hat. Denkbar wÃ¤re ein System, dass den Schwierigkeitsgrad 
-drosselt, falls der Spieler sehr oft in kurzen AbstÃ¤nden stirbt.
+geladen hat. Denkbar wäre ein System, dass den Schwierigkeitsgrad 
+drosselt, falls der Spieler sehr oft in kurzen Abständen stirbt.
 -uvm.
 
 //Anmerkung:
--MenÃ¼elemente bringen von Haus aus die MÃ¶glichkeit mit Ã„nderungen an 
+-Menüelemente bringen von Haus aus die Möglichkeit mit Änderungen an 
 Gothic.ini Eigenschaften vorzunehmen. Es ist daher leicht eine weitere 
-EinstellungsmÃ¶glichkeit ins Gothic MenÃ¼ aufzunehmen und Ã„nderungen 
-direkt aus der Gothic.ini (und nicht etwa aus dem MenÃ¼item) auszulesen.
+Einstellungsmöglichkeit ins Gothic Menü aufzunehmen und Änderungen 
+direkt aus der Gothic.ini (und nicht etwa aus dem Menüitem) auszulesen.
 
 //********************************
 // 7.1.) Tastenzuordnungen
@@ -1355,80 +1355,80 @@ func int MEM_GetKey         (var string name)
 func int MEM_GetSecondaryKey(var string name)
 
 Beide erwarten den Namen einer logischen Taste (zum Beispiel "keyUp" 
-oder "keyInventory"). ZurÃ¼ckgegeben wird die Erst- bzw. Zweitbelegung 
+oder "keyInventory"). Zurückgegeben wird die Erst- bzw. Zweitbelegung 
 der Taste. Falls die logische Taste nicht bzw. nicht ein zweites mal 
-zugewiesen wurde, wird entsprechend 0 zurÃ¼ckgegeben, sonst der 
+zugewiesen wurde, wird entsprechend 0 zurückgegeben, sonst der 
 entsprechende Tastencode, wie er in Ikarus_Const.d zu finden ist. Dieser 
-Tastencode kann dann zum Beispiel als Parameter fÃ¼r MEM_KeyPressed oder 
+Tastencode kann dann zum Beispiel als Parameter für MEM_KeyPressed oder 
 MEM_KeyState dienen.
 
-Beispiel: Um zu erkennen, dass der Spieler die Inventartaste drÃ¼ckt, 
-wÃ¼rde es genÃ¼gen, sehr hÃ¤ufig (am besten jeden Frame) zu prÃ¼fen:
+Beispiel: Um zu erkennen, dass der Spieler die Inventartaste drückt, 
+würde es genügen, sehr häufig (am besten jeden Frame) zu prüfen:
      MEM_KeyPressed(MEM_GetKey         ("keyInventory"))
   || MEM_KeyPressed(MEM_GetSecondaryKey("keyInventory"))
 
 //######################################
-// 8.) TastendrÃ¼cke erkennen
+// 8.) Tastendrücke erkennen
 
 Eine einfache Funktion ist folgende:
 
 func int MEM_KeyPressed(var int key)
 
-Liefert 1, falls die Taste gedrÃ¼ckt ist, die zu dem virtuellen 
-Tastencode key gehÃ¶rt. Die Tastencodes sind in Ikarus_Const.d zu finden.
+Liefert 1, falls die Taste gedrückt ist, die zu dem virtuellen 
+Tastencode key gehört. Die Tastencodes sind in Ikarus_Const.d zu finden.
 
 Mit MEM_KeyPressed(KEY_RETURN) kann man zum Beispiel abfragen ob die 
-ENTER Taste gedrÃ¼ckt ist.
+ENTER Taste gedrückt ist.
 
 //######################
 
-HÃ¤ufig wird man in einer Triggerschleife einem Tastendruck auflauern 
-wollen. Oft mÃ¶chte man dabei nur einmal auf einen Tastendruck reagieren, 
-auch wenn der Spieler die Taste fÃ¼r eine bestimmt Zeitspanne festhÃ¤lt. 
-Dann ist es nÃ¶tig zu unterscheiden, ob die Taste gerade neu gedrÃ¼ckt 
-wurde oder bloÃŸ noch gehalten wird. DafÃ¼r gibt es die Funktion:
+Häufig wird man in einer Triggerschleife einem Tastendruck auflauern 
+wollen. Oft möchte man dabei nur einmal auf einen Tastendruck reagieren, 
+auch wenn der Spieler die Taste für eine bestimmt Zeitspanne festhält. 
+Dann ist es nötig zu unterscheiden, ob die Taste gerade neu gedrückt 
+wurde oder bloß noch gehalten wird. Dafür gibt es die Funktion:
 
 func int MEM_KeyState(var int key)
 
-Sie zieht neben der Tatsache, ob eine Taste tatsÃ¤chlich gedrÃ¼ckt ist 
-oder nicht, auch noch in Betracht, was das letzte mal fÃ¼r diese Taste 
-zurÃ¼ckgegeben wurde. Es gibt die folgende RÃ¼ckgabewerte:
+Sie zieht neben der Tatsache, ob eine Taste tatsächlich gedrückt ist 
+oder nicht, auch noch in Betracht, was das letzte mal für diese Taste 
+zurückgegeben wurde. Es gibt die folgende Rückgabewerte:
 
-KEY_UP: Die Taste ist nicht gedrÃ¼ckt und war auch vorher nicht gedrÃ¼ckt. 
-("nicht gedrÃ¼ckt")
-KEY_PRESSED: Die Taste ist gedrÃ¼ckt und war vorher nicht gedrÃ¼ckt. ("neu 
-gedrÃ¼ckt")
-KEY_HOLD: Die Taste ist gedrÃ¼ckt und war auch vorher gedrÃ¼ckt. ("immer 
-noch gedrÃ¼ckt")
-KEY_RELEASED: Die Taste ist nicht gedrÃ¼ckt und war vorher gedrÃ¼ckt. 
+KEY_UP: Die Taste ist nicht gedrückt und war auch vorher nicht gedrückt. 
+("nicht gedrückt")
+KEY_PRESSED: Die Taste ist gedrückt und war vorher nicht gedrückt. ("neu 
+gedrückt")
+KEY_HOLD: Die Taste ist gedrückt und war auch vorher gedrückt. ("immer 
+noch gedrückt")
+KEY_RELEASED: Die Taste ist nicht gedrückt und war vorher gedrückt. 
 ("losgelassen")
 
-KEY_PRESSED oder KEY_RELEASED werden also zurÃ¼ckgeben, wenn sich der 
-Zustand der Taste seit der letzten Abfrage geÃ¤ndert hat.
-KEY_UP oder KEY_HOLD werden zurÃ¼ckgegeben, wenn sich der Zustand nicht 
-geÃ¤ndert hat.
+KEY_PRESSED oder KEY_RELEASED werden also zurückgeben, wenn sich der 
+Zustand der Taste seit der letzten Abfrage geändert hat.
+KEY_UP oder KEY_HOLD werden zurückgegeben, wenn sich der Zustand nicht 
+geändert hat.
 
 Beachte: Wenn sich der Tastenzustand zwischen zwei Abfragen zweimal 
-Ã¤ndert (zum Beispiel die Taste ganz schnell gedrÃ¼ckt und wieder 
+ändert (zum Beispiel die Taste ganz schnell gedrückt und wieder 
 losgelassen wird), dann wird MEM_KeyState das nicht bemerken. Die 
 Funktion kann nur zu den Zeitpunkten an denen sie aufgerufen wird den 
-Tastenzustand Ã¼berprÃ¼fen.
+Tastenzustand überprüfen.
 
 Beachte auch: Die Funktion wird nie zweimal direkt hintereinander 
-KEY_PRESSED zurÃ¼ckgeben. Ein Aufruf von MEM_KeyState wird also die 
-RÃ¼ckgabewerte von spÃ¤teren Aufrufen verÃ¤ndern. Folgendes ist zum 
+KEY_PRESSED zurückgeben. Ein Aufruf von MEM_KeyState wird also die 
+Rückgabewerte von späteren Aufrufen verändern. Folgendes ist zum 
 Beispiel FALSCH FALSCH FALSCH:
 
 //------ SO NICHT! -----
 if (MEM_KeyState (KEY_RETURN) == KEY_UP) {
     Print ("Die Taste ist oben!");
 } else if (MEM_KeyState (KEY_RETURN) == KEY_PRESSED) {
-    Print ("Die Taste wurde gerade gedrÃ¼ckt!");
+    Print ("Die Taste wurde gerade gedrückt!");
 };
 //----------------------
 
 Der else if Block wird niemals betreten werden. Wenn die Taste gerade 
-gedrÃ¼ckt wird, wird KEY_PRESSED nur in der ersten if-Abfrage auftauchen 
+gedrückt wird, wird KEY_PRESSED nur in der ersten if-Abfrage auftauchen 
 und ist dann "verbraucht". Die zweite if-Abfrage bekommt dann nur noch 
 KEY_HOLD ab.
 
@@ -1442,90 +1442,90 @@ returnState = MEM_KeyState (KEY_RETURN);
 if (returnState == KEY_UP) {
     Print ("Die Taste ist oben!");
 } else if (returnState == KEY_PRESSED) {
-    Print ("Die Taste wurde gerade gedrÃ¼ckt!");
+    Print ("Die Taste wurde gerade gedrückt!");
 };
 
 //----------------------
 
-Wenn mehrere Events auf die gleiche Taste hÃ¶ren, konkurrieren sie also 
-auch um die KEY_PRESSED RÃ¼ckgabewerte!
+Wenn mehrere Events auf die gleiche Taste hören, konkurrieren sie also 
+auch um die KEY_PRESSED Rückgabewerte!
 
 //######################
 
-Eine Funktion zum simulieren von TastendrÃ¼cken ist:
+Eine Funktion zum simulieren von Tastendrücken ist:
 func void MEM_InsertKeyEvent(var int key)
 
-In manchen FÃ¤llen wird die Engine (im nÃ¤chsten Frame) so reagieren, als 
-wÃ¤re die Taste gedrÃ¼ckt, die mit dem virtuellen Tastencode key in 
-Verbindung steht. Zum Beispiel Ã¶ffnet MEM_InsertKeyEvent(KEY_ESC) das 
-HauptmenÃ¼ oder schlieÃŸt geÃ¶ffnete Dokumente und 
-MEM_InsertKeyEvent(KEY_TAB) Ã¶ffnet das Inventar, falls die Einstellungen 
-des Spielers TAB als Taste fÃ¼r das Inventar vorsieht.
-In anderen FÃ¤llen funktioniert diese Funktion nicht, zum Beispiel ist es 
-nicht mÃ¶glich das Inventar auf diese Weise zu schlieÃŸen.
+In manchen Fällen wird die Engine (im nächsten Frame) so reagieren, als 
+wäre die Taste gedrückt, die mit dem virtuellen Tastencode key in 
+Verbindung steht. Zum Beispiel öffnet MEM_InsertKeyEvent(KEY_ESC) das 
+Hauptmenü oder schließt geöffnete Dokumente und 
+MEM_InsertKeyEvent(KEY_TAB) öffnet das Inventar, falls die Einstellungen 
+des Spielers TAB als Taste für das Inventar vorsieht.
+In anderen Fällen funktioniert diese Funktion nicht, zum Beispiel ist es 
+nicht möglich das Inventar auf diese Weise zu schließen.
 
-Das klingt nicht nur willkÃ¼rlich sondern ist auch so. Das Problem ist, 
+Das klingt nicht nur willkürlich sondern ist auch so. Das Problem ist, 
 dass die Engine auf verschiedene Arten und Weise abfragen kann ob eine 
-Taste gedrÃ¼ckt wurde und nur eine dieser Varianten auf 
-MEM_InsertKeyEvent "hereinfÃ¤llt". Was zum Beispiel funktioniert hat:
+Taste gedrückt wurde und nur eine dieser Varianten auf 
+MEM_InsertKeyEvent "hereinfällt". Was zum Beispiel funktioniert hat:
 
--Inventar Ã¶ffnen. (TAB)
--CharaktermenÃ¼ Ã¶ffnen (C)
+-Inventar öffnen. (TAB)
+-Charaktermenü öffnen (C)
 -Pause togglen / Quickload (F9)
--Tagebuch-Ã–ffnen (L)
--HauptmenÃ¼ Ã¶ffnen / Dokument schlieÃŸen (ESC)
+-Tagebuch-Öffnen (L)
+-Hauptmenü öffnen / Dokument schließen (ESC)
 
-Beachte: Verschiedene Spieler nutzen verschiedene Tasten fÃ¼r bestimmte 
-Aktionen! Es ist aber mÃ¶glich mit MEM_GetGothOpt an die Einstellungen 
+Beachte: Verschiedene Spieler nutzen verschiedene Tasten für bestimmte 
+Aktionen! Es ist aber möglich mit MEM_GetGothOpt an die Einstellungen 
 (Gothic.ini) heranzukommen. Hier sind ein oder zwei Tasten als 
-Hexadezimalstring (Vorsicht: Little Endian!) fÃ¼r die einzelnen Aktionen 
+Hexadezimalstring (Vorsicht: Little Endian!) für die einzelnen Aktionen 
 registriert.
 
 //######################################
-// 9.) Maschinencode ausfÃ¼hren
+// 9.) Maschinencode ausführen
 
-Unter Maschinencode versteht man ein Programm oder ein ProgrammstÃ¼ck, 
-dass in Maschinensprache vorliegt, das heiÃŸt ohne weiteren 
-Ãœbersetzungsschritt direkt von einem Prozessor ausgefÃ¼hrt werden kann. 
-Die fÃ¼r uns relevante Maschinensprache ist die zur x86 
-Prozessorarchitektur gehÃ¶rige. Alle Maschinenbefehle, was sie tun und 
+Unter Maschinencode versteht man ein Programm oder ein Programmstück, 
+dass in Maschinensprache vorliegt, das heißt ohne weiteren 
+Übersetzungsschritt direkt von einem Prozessor ausgeführt werden kann. 
+Die für uns relevante Maschinensprache ist die zur x86 
+Prozessorarchitektur gehörige. Alle Maschinenbefehle, was sie tun und 
 wie sie in Maschinensprache kodiert sind, kann man in den Intel 
-HandbÃ¼chern nachlesen.
+Handbüchern nachlesen.
 
 http://www.intel.com/products/processor/manuals/index.htm
 
 In der Praxis wird man mit sehr wenigen Befehlen auskommen und nur in 
-seltenen FÃ¤llen (abstrakte) Maschinenbefehle von Hand in (konkreten) 
-Maschinencode Ã¼bersetzen wollen, weil das sehr mÃ¼hseelig ist.
+seltenen Fällen (abstrakte) Maschinenbefehle von Hand in (konkreten) 
+Maschinencode übersetzen wollen, weil das sehr mühseelig ist.
 
 Um technische Dinge zu tun, die sich in Daedalus nicht hinschreiben 
-lassen, kann aber Maschinencode nÃ¼tzlich sein. Zum Beispiel nutzen die 
+lassen, kann aber Maschinencode nützlich sein. Zum Beispiel nutzen die 
 CALL Funktionen (siehe unten) als Basis den ASM Funktionensatz.
 
-Bemerkung: Die Funktionen tragen das PrÃ¤fix "ASM_" fÃ¼r 
+Bemerkung: Die Funktionen tragen das Präfix "ASM_" für 
 Assembler(sprache). Assemblersprache ist eine menschenlesbare Sprache 
 mit eins-zu-eins Entsprechungen zur Maschinensprache. Strenggenommen ist 
-das "ASM_" PrÃ¤fix daher fehlleitend, da es hier um Maschinencode und 
+das "ASM_" Präfix daher fehlleitend, da es hier um Maschinencode und 
 nicht um Assemblersprache geht. Gedanklich ist beides aber nah verwandt.
 
 Hinweis: Ich empfehle jedem, der nicht plant, die Funktionen aus diesem 
-Kapitel zu nutzen, dieses Kapitel zu Ã¼berspringen. Die Funktionen in 
+Kapitel zu nutzen, dieses Kapitel zu überspringen. Die Funktionen in 
 diesem Kapitel sind sehr speziell und sehr technisch.
 Wer nur Engine Funktionen aufrufen will, kann sich direkt den "CALL_" 
 Funktionen zuwenden. Die "ASM_" Funktionen sind sehr unhandlich, und nur 
-mit Intel Referenz oder einer anderen Wissensquelle Ã¼ber Maschinencode 
+mit Intel Referenz oder einer anderen Wissensquelle über Maschinencode 
 sinnvoll benutzbar.
 
 //Grundlegende Funktionsweise
 
-Ãœber die Funktion
+Über die Funktion
 
 func void ASM (var int data, var int length)
 
-ist es mÃ¶glich nach und nach Maschinencode zu diktieren. Die ersten 
+ist es möglich nach und nach Maschinencode zu diktieren. Die ersten 
 length Bytes von data (maximal aber 4!) werden an den bereits zuvor 
-diktierten Teil angehÃ¤ngt. So entsteht StÃ¼ck fÃ¼r StÃ¼ck ein vom Prozessor 
-ausfÃ¼hrbares ProgrammstÃ¼ck.
+diktierten Teil angehängt. So entsteht Stück für Stück ein vom Prozessor 
+ausführbares Programmstück.
 
 Es stehen als kompaktere Schreibweise die Funktionen 
 
@@ -1534,98 +1534,98 @@ func void ASM_2 (var int data) { ASM (data, 2); };
 func void ASM_3 (var int data) { ASM (data, 3); };
 func void ASM_4 (var int data) { ASM (data, 4); };
 
-zur VerfÃ¼gung. Einzelne Maschinenbefehle kÃ¶nnen durchaus eine Kodierung 
-besitzen, die lÃ¤nger als 4 Byte ist, in diesen FÃ¤llen muss diese eben 
-StÃ¼ck fÃ¼r StÃ¼ck diktiert werden. In der Regel gibt es aber eine logische 
-Aufteilung in BlÃ¶cke die hÃ¶chstens 4 Byte groÃŸ sind (und damit in einen 
+zur Verfügung. Einzelne Maschinenbefehle können durchaus eine Kodierung 
+besitzen, die länger als 4 Byte ist, in diesen Fällen muss diese eben 
+Stück für Stück diktiert werden. In der Regel gibt es aber eine logische 
+Aufteilung in Blöcke die höchstens 4 Byte groß sind (und damit in einen 
 Integer hineinpassen).
 
-Um ein fertig diktiertes StÃ¼ck Maschinencode auszufÃ¼hren gibt es die 
+Um ein fertig diktiertes Stück Maschinencode auszuführen gibt es die 
 Funktion
 
 func void ASM_RunOnce()
 
-Diese fÃ¼hrt den bis zu diesem Zeitpunkt diktierten Code aus, Ã¤hnlich wie 
-eine externe Funktion ausgefÃ¼hrt wird. Der ausgefÃ¼hrte Code wird danach 
+Diese führt den bis zu diesem Zeitpunkt diktierten Code aus, ähnlich wie 
+eine externe Funktion ausgeführt wird. Der ausgeführte Code wird danach 
 freigegeben, und neuer Code kann diktiert werden.
 
-Anmerkung: Der diktierte Code wird im Datensegment ausgefÃ¼hrt. Falls die 
-DatenausfÃ¼hrungsverhinderung von Windows fÃ¼r Gothic aktiv ist (das wÃ¤re 
-Ã¤uÃŸerst ungewÃ¶hnlich) wird eine Schutzverletzung auftreten und Windows 
+Anmerkung: Der diktierte Code wird im Datensegment ausgeführt. Falls die 
+Datenausführungsverhinderung von Windows für Gothic aktiv ist (das wäre 
+äußerst ungewöhnlich) wird eine Schutzverletzung auftreten und Windows 
 wird Gothic beenden.
 
 Anmerkung: Wie man sieht kann es zu jedem Zeitpunkt nur maximal ein 
-angefangenes Diktat von Maschinencode geben. Es ist nicht mÃ¶glich zwei 
+angefangenes Diktat von Maschinencode geben. Es ist nicht möglich zwei 
 verschiedene Sequenzen von Maschinencode gleichzeitig aufzubauen.
 
-Anmerkung: Das System ist nicht robust gegenÃ¼ber Lade und 
+Anmerkung: Das System ist nicht robust gegenüber Lade und 
 Speicheroperationen. Es ist daher nicht nur unsinnig sondern auch 
-unzulÃ¤ssig ein angefangenes Diktat Ã¼ber einen oder mehrere Frames hinweg 
+unzulässig ein angefangenes Diktat über einen oder mehrere Frames hinweg 
 liegen zu lassen. Ein Diktat ist abgeschlossen, wenn es durch einen 
 Aufruf von ASM_RunOnce oder ASM_Close beendet wurde.
 
 //aktuelle Codeposition
 
 Zum Beispiel bei Jumps und Calls kann es notwendig sein die Adresse des 
-gerade ausgefÃ¼hrten Codes zu kennen. Die Funktion
+gerade ausgeführten Codes zu kennen. Die Funktion
 
 func int ASM_Here()
 
-liefert sozusagen die Adresse des Cursors, das heiÃŸt die Adresse der 
-Stelle, die als nÃ¤chtes durch einen Aufruf von ASM beschrieben werden 
+liefert sozusagen die Adresse des Cursors, das heißt die Adresse der 
+Stelle, die als nächtes durch einen Aufruf von ASM beschrieben werden 
 wird. Es ist garantiert, dass die Stelle an der der Code geschrieben 
-wird auch die Stelle ist, an der er ausgefÃ¼hrt wird.
+wird auch die Stelle ist, an der er ausgeführt wird.
 
 //allozierter Speicher
 
 Der Speicher in dem der Maschinencode steht, wird zu Beginn des Diktats 
-alloziert. Falls keine spezielle GrÃ¶ÃŸe spezifiziert wird, das heiÃŸt, 
+alloziert. Falls keine spezielle Größe spezifiziert wird, das heißt, 
 falls das Diktat direkt mit ASM oder ASM_Here beginnt, so werden 256 
-Bytes alloziert. FÃ¼r einfache Anwendungen ist dies oft ausreichend.
-Wird mehr Speicher benÃ¶tigt, muss dies explizit zu Beginn des Diktats 
-angekÃ¼ndigt werden. Dazu wird das Diktat mit dem speziellen Befehl
+Bytes alloziert. Für einfache Anwendungen ist dies oft ausreichend.
+Wird mehr Speicher benötigt, muss dies explizit zu Beginn des Diktats 
+angekündigt werden. Dazu wird das Diktat mit dem speziellen Befehl
 
 func void ASM_Open(var int space)
 
-eingeleitet. space soll hierbei die GrÃ¶ÃŸe des zu reservierenden 
+eingeleitet. space soll hierbei die Größe des zu reservierenden 
 Speicherbereichs in Byte behinhalten.
 
 //Performance
 
-Falls eine Funktion mehrmals in kurzer zeitlicher Abfolge benÃ¶tigt wird, 
-kann es sinnvoll sein, sie nicht fÃ¼r jeden Aufruf von neuem zu 
-diktieren. Es ist mÃ¶glich ein Diktat von Maschinencode nicht mit 
+Falls eine Funktion mehrmals in kurzer zeitlicher Abfolge benötigt wird, 
+kann es sinnvoll sein, sie nicht für jeden Aufruf von neuem zu 
+diktieren. Es ist möglich ein Diktat von Maschinencode nicht mit 
 ASM_RunOnce sondern stattdessen mit 
 
 func int ASM_Close()
 
 zu beenden. Diese Funktion beendet das Diktat (sodass ein neues beginnen 
-kann) und gibt einen Zeiger auf einen Speicherbereich zurÃ¼ck, der den 
-diktierten Maschinencode enthÃ¤lt. Dieser Zeiger kann nun jederzeit und 
+kann) und gibt einen Zeiger auf einen Speicherbereich zurück, der den 
+diktierten Maschinencode enthält. Dieser Zeiger kann nun jederzeit und 
 beliebig oft an
 
 func void ASM_Run(var int ptr)
 
-Ã¼bergeben werden, damit der Maschinencode ausgefÃ¼hrt wird.
+übergeben werden, damit der Maschinencode ausgeführt wird.
 
-Doch Vorsicht: Der durch ASM_Close erhaltene Speicherbereich muss Ã¼ber 
+Doch Vorsicht: Der durch ASM_Close erhaltene Speicherbereich muss über 
 MEM_Free manuell freigegeben werden um Speicherlecks zu vermeiden.
-Vermutlich ist es fÃ¼r fast alle praktischen Belange ausreichend 
+Vermutlich ist es für fast alle praktischen Belange ausreichend 
 ASM_RunOnce zu verwenden und Code immer wieder von neuem zu diktieren, 
-sobald er benÃ¶tigt wird.
+sobald er benötigt wird.
 
 Anmerkung: ASM_Run kann auch benutzt werden, um Engine Funktionen ohne 
-Parameter und ohne relevanten RÃ¼ckgabewert aufzurufen. In diesem Fall 
-mÃ¼sste ptr einfach auf die auszufÃ¼hrende Funktion im Codesegment zeigen.
+Parameter und ohne relevanten Rückgabewert aufzurufen. In diesem Fall 
+müsste ptr einfach auf die auszuführende Funktion im Codesegment zeigen.
 
 //Beispiel:
 
-Folgende Funktion setzt den als slf Ã¼bergebenen Npc als den Spieler, so 
-als hÃ¤tte man mit diesem Npc im Fokus im Marvin Modus "o" gedrÃ¼ckt.
+Folgende Funktion setzt den als slf übergebenen Npc als den Spieler, so 
+als hätte man mit diesem Npc im Fokus im Marvin Modus "o" gedrückt.
 Das ist deshalb so kurz, weil es genau zu diesem Zweck bereits eine 
 Funktion gibt, sie ist nur normalerweise aus den Skripten heraus nicht 
 erreichbar.
-Es genÃ¼gt daher Assemblercode zu schreiben, der den Parameter der 
+Es genügt daher Assemblercode zu schreiben, der den Parameter der 
 Funktion (den "this"-Pointer) in das entsprechende Register schiebt und 
 dann die Funktion aufruft.
 
@@ -1644,22 +1644,22 @@ func void SetAsPlayer (var C_NPC slf) {
     ASM_1 (ASMINT_OP_call);
     ASM_4 (oCNpc__SetAsPlayer - ASM_Here() - 4);
     
-    ASM_RunOnce(); /* retn wird automatisch hinzugefÃ¼gt */
+    ASM_RunOnce(); /* retn wird automatisch hinzugefügt */
 };
 
 Bemerkung: Callziele werden relativ zu derjenigen Instruktion angegeben, 
-die nach der eigentlichen Call-Instruktion ausgefÃ¼hrt worden wÃ¤re. Daher 
+die nach der eigentlichen Call-Instruktion ausgeführt worden wäre. Daher 
 ist sowohl ASM_Here() als auch die Subtraktion von 4 im Parameter von 
-call nÃ¶tig.
+call nötig.
 
 Bemerkung: Die Opcodes ASMINT_OP_movImToECX und ASMINT_OP_call sind in 
 Ikarus.d als Konstanten enthalten. Dort sind allerdings nur die Opcodes 
-verfÃ¼gbar, die auch direkt von den Call-Skripten benÃ¶tigt werden. 
-Opcodes herauszufinden ist mÃ¼hseelig.
+verfügbar, die auch direkt von den Call-Skripten benötigt werden. 
+Opcodes herauszufinden ist mühseelig.
 
 Bemerkung: Das folgende Unterkapitel beschreibt unter anderem 
 CALL__thiscall, eine Funktionen, mit deren Hilfe sich SetAsPlayer auch 
-so implementieren lÃ¤sst:
+so implementieren lässt:
 
 func void SetAsPlayer (var C_NPC slf) {
     const int oCNpc__SetAsPlayer = 7612064;
@@ -1669,32 +1669,32 @@ func void SetAsPlayer (var C_NPC slf) {
 //######################################
 // 10. Enginefunktionen aufrufen
 
-Um eine Funktion benutzen zu kÃ¶nnen, muss man ihre Schnittstelle kennen, 
-das heiÃŸt Anzahl und Art der Parameter (was will die Funktion wissen?) 
-und die Art des RÃ¼ckgabewerts (was sagt mir die Funktion?). Das kennt 
+Um eine Funktion benutzen zu können, muss man ihre Schnittstelle kennen, 
+das heißt Anzahl und Art der Parameter (was will die Funktion wissen?) 
+und die Art des Rückgabewerts (was sagt mir die Funktion?). Das kennt 
 man ja.
 Was in einer maschinennahen Situation hinzukommt, ist die 
-Aufrufkonvention (wie hÃ¤tte die Funktion ihre Parameter gerne und wer 
-rÃ¤umt auf?) und die Adresse der Funktion (wo steht sie Ã¼berhaupt im 
+Aufrufkonvention (wie hätte die Funktion ihre Parameter gerne und wer 
+räumt auf?) und die Adresse der Funktion (wo steht sie überhaupt im 
 Speicher?).
 
-An dieses Wissen Ã¼ber Engine Funktionen kann man zum Beispiel mit IDA 
+An dieses Wissen über Engine Funktionen kann man zum Beispiel mit IDA 
 herankommen, einem Werkzeug, das die GothicMod.exe / Gothic2.exe 
-analysieren und in eine fÃ¼r Menschen besser (aber immer noch sehr 
-schwer) lesbare Ansicht Ã¼berfÃ¼hren kann.
+analysieren und in eine für Menschen besser (aber immer noch sehr 
+schwer) lesbare Ansicht überführen kann.
 Wie man eine gute Ansicht der GothicMod.exe / Gothic2.exe bekommt, hat 
 Nico hier beschrieben:
 
 http://forum.worldofplayers.de/forum/showpost.php?p=12395375
 
-Mit diesem Wissen ausgestattet, kÃ¼mmern sich die folgenden Funktionen um 
+Mit diesem Wissen ausgestattet, kümmern sich die folgenden Funktionen um 
 den Rest der noch fehlt um Enginefunktionen aufzurufen.
 Und so funktioniert's:
 
 //Schritt 1: Parameter von rechts nach links
 
-ZunÃ¤chst mÃ¼ssen die Parameter, die die Funktion erwartet in umgekehrter 
-Reihenfolge, das heiÃŸt vom Parameter ganz rechts bis zum Parameter ganz 
+Zunächst müssen die Parameter, die die Funktion erwartet in umgekehrter 
+Reihenfolge, das heißt vom Parameter ganz rechts bis zum Parameter ganz 
 links auf den Maschinenstack.
 Dazu gibt es folgende Funktionen:
 
@@ -1707,16 +1707,16 @@ func void CALL_StructParam (var int ptr, var int words) /* struct   */
 
 Die meisten Parameter sind Zahlen oder Zeiger.
 Da es in Daedalus nicht ganz leicht ist, an den Zeiger auf einen String 
-zu kommen, sind die SpezialfÃ¤lle "Zeiger auf zString" und "Zeiger auf 
+zu kommen, sind die Spezialfälle "Zeiger auf zString" und "Zeiger auf 
 cString" implementiert. Dabei wird ein zString* bzw. ein char** erzeugt, 
-jeweils mit den Daten wie sie im Ã¼bergebenen Daedalus String enthalten 
+jeweils mit den Daten wie sie im übergebenen Daedalus String enthalten 
 waren. Der so gewonnene Wert wird dann als Parameter auf den Stack 
 gelegt.
 
 Dass ein komplexer Parameter, also ein Objekt oder eine Struktur direkt 
 auf dem Stack liegt (kein Zeiger sondern alle Daten) ist selten. In 
-diesem Fall ist CALL_StructParam ein Zeiger auf das Objekt und die GrÃ¶ÃŸe 
-des Objekts in Worten (1 Wort = 32 bit) zu Ã¼bergeben. CALL_StructParam 
+diesem Fall ist CALL_StructParam ein Zeiger auf das Objekt und die Größe 
+des Objekts in Worten (1 Wort = 32 bit) zu übergeben. CALL_StructParam 
 legt es dann in seiner Gesamtheit auf den Stack.
 
 Anmerkung: CALL_IntParam, CALL_FloatParam und CALL_PtrParam sind 
@@ -1724,9 +1724,9 @@ identisch. Die Unterscheidung soll lediglich helfen Code gut lesbar zu
 halten.
 
 Spitzfindigkeit: Diese Funktionen legen keine Parameter auf den 
-Maschinenstack. Genau mÃ¼sste es heiÃŸen: Sie erzeugen den Maschinencode, 
-der Parameter auf den Maschinenstack legen wird, wenn er denn ausgefÃ¼hrt 
-wird. Und ausgefÃ¼hrt wird er erst im zweiten Schritt mit der Bekanntgabe 
+Maschinenstack. Genau müsste es heißen: Sie erzeugen den Maschinencode, 
+der Parameter auf den Maschinenstack legen wird, wenn er denn ausgeführt 
+wird. Und ausgeführt wird er erst im zweiten Schritt mit der Bekanntgabe 
 der Aufrufkonvention.
 
 //Schritt 2: Der Aufruf
@@ -1738,126 +1738,126 @@ func void CALL__thiscall (var int this, var int adr             )
 func void CALL__cdecl    (var int adr                           )
 func void CALL__fastcall (var int ecx,  var int edx, var int adr)
 
-__stdcall steht fÃ¼r "Standard Call" und hat sich neben __cdecl als eine 
-der wichtigsten Aufrufkonvention durchgesetzt. CALL__stdcall benÃ¶tigt 
+__stdcall steht für "Standard Call" und hat sich neben __cdecl als eine 
+der wichtigsten Aufrufkonvention durchgesetzt. CALL__stdcall benötigt 
 als Parameter lediglich die Adresse der Funktion. Die Windows API 
 benutzt sehr konsequent __stdcall als Aufrufkonvention.
-__thiscall ist eine Abwandlung von __stdcall fÃ¼r Klassenfunktionen. 
+__thiscall ist eine Abwandlung von __stdcall für Klassenfunktionen. 
 Hierbei wird der this-Pointer, also der Zeiger auf das Objekt, auf dem 
 die Funktion aufgerufen werden soll als versteckter Parameter im 
-Register ecx Ã¼bergeben. CALL__thiscall erwartet neben der Adresse daher 
-zusÃ¤tzlich einen Objektzeiger. Da Gothic durchgÃ¤ngig objektorientiert 
-programmiert wurde, ist der __thiscall die hÃ¤ufigste anzutreffende 
+Register ecx übergeben. CALL__thiscall erwartet neben der Adresse daher 
+zusätzlich einen Objektzeiger. Da Gothic durchgängig objektorientiert 
+programmiert wurde, ist der __thiscall die häufigste anzutreffende 
 Aufrufkonvention.
 
 Funktionen, die nicht aus der Windows API sind und keine 
-Klassenfunktionen sind, benutzen hÃ¤ufig __cdecl als Aufrufkonvention. 
+Klassenfunktionen sind, benutzen häufig __cdecl als Aufrufkonvention. 
 Benutzt wird CALL__cdecl genau wie CALL__stdcall. Der Unterschied liegt 
-intern in der Verantwortlichkeit fÃ¼r das anpassen des Stackpointers.
+intern in der Verantwortlichkeit für das anpassen des Stackpointers.
 
 __fastcall ist nicht standardisiert. Manche Compiler, darunter auch der 
 Compiler des Microsoft Visual Studio mit dem Gothic compiliert wurde, 
 bieten eine solche Aufrufkonvention an, die potenziell etwas 
 performanter ist.  
 Im Falle von Microsoft Visual Studio werden die ersten zwei Parameter 
-auf dem Stack Ã¼bergeben (in ecx und edx). __fastcall wird selten 
+auf dem Stack übergeben (in ecx und edx). __fastcall wird selten 
 verwendet.
 
-Welche Aufrufkonvention eine konkrete Enginefunktion nutzt, lÃ¤sst sich 
+Welche Aufrufkonvention eine konkrete Enginefunktion nutzt, lässt sich 
 mit IDA (oder einem anderen Disassembler) herausfinden.
 
 Die Bekanntgabe der Aufrufkonvention, also der Aufruf einer der drei 
 oben genannten Funktionen) ist gleichzeitig der Zeitpunkt des Aufrufs 
-der Funktion. Zu diesem Zeitpunkt mÃ¼ssen insbesondere schon alle 
+der Funktion. Zu diesem Zeitpunkt müssen insbesondere schon alle 
 Parameter spezifiziert sein.
 
-//Schritt 3: Der RÃ¼ckgabewert
+//Schritt 3: Der Rückgabewert
 
 Sobald der Funktionsaufruf stattgefunden hat, also nach Schritt 2, kann 
-der RÃ¼ckgabewert abgefragt werden.
-Die folgenden Funktionen interpretieren den RÃ¼ckgabewert (in aller Regel 
+der Rückgabewert abgefragt werden.
+Die folgenden Funktionen interpretieren den Rückgabewert (in aller Regel 
 ist das der Inhalt von EAX unmittelbar nach dem Aufruf) in der im 
 Funktionsnamen suggerierten Art und Weise. Das Ergebnis wird dann in 
-einer in Daedalus brauchbaren Art und Weise zurÃ¼ckgeliefert.
+einer in Daedalus brauchbaren Art und Weise zurückgeliefert.
 
 func int      CALL_RetValAsInt       () /* Ganzzahl */
 func int      CALL_RetValAsPtr       () /* Zeiger   */
 func instance CALL_RetValAsStructPtr () /* struct*  */
 func string   CALL_RetValAszStringPtr() /* zString* */
 
-CALL_RetValAsInt und CALL_RetValAsPtr liefern den RÃ¼ckgabewert einfach 
-als Zahl zurÃ¼ck.
+CALL_RetValAsInt und CALL_RetValAsPtr liefern den Rückgabewert einfach 
+als Zahl zurück.
 
 CALL_RetValAsStructPtr kann genutzt werden um eine Zuweisung an eine 
 Instanz zu machen, zum Beispiel eine Zuweisung an ein var zCVob, falls 
-der RÃ¼ckgabewert ein Zeiger auf ein zCVob ist.
+der Rückgabewert ein Zeiger auf ein zCVob ist.
 
-Ist der RÃ¼ckgabewert ein zString* so kann CALL_RetValAszStringPtr 
-benutzt werden um den RÃ¼ckgabewert in handlicher Form als Daedalusstring 
+Ist der Rückgabewert ein zString* so kann CALL_RetValAszStringPtr 
+benutzt werden um den Rückgabewert in handlicher Form als Daedalusstring 
 zu erhalten.
 
 Einen Spezialfall stellen Floats dar (sie werden nicht in EAX 
-zurÃ¼ckgegeben). Vor der Bekanntgabe der Aufrufkonvention (und damit der 
-AusfÃ¼hrung des Calls) muss daher die Funktion:
+zurückgegeben). Vor der Bekanntgabe der Aufrufkonvention (und damit der 
+Ausführung des Calls) muss daher die Funktion:
 
 func void CALL_RetValIsFloat()
 
 aufgerufen werden um diesen Umstand zu melden. Nach dem Call an den 
-RÃ¼ckgabewert zu kommen ist dann nicht weiter problematisch.
+Rückgabewert zu kommen ist dann nicht weiter problematisch.
 
 func int      CALL_RetValAsFloat     () /* Gleitkommazahl */
 
 Anmerkung: CALL_RetValAsInt, CALL_RetValAsPtr und CALL_RetValAsFloat 
-sind identisch und geben einfach eine interne Ergebnisvariable zurÃ¼ck. 
-Die Unterscheidung erfolgt hier abermals aus LesbarkeitsgrÃ¼nden.
+sind identisch und geben einfach eine interne Ergebnisvariable zurück. 
+Die Unterscheidung erfolgt hier abermals aus Lesbarkeitsgründen.
 
-//Komplexe RÃ¼ckgabewerte
+//Komplexe Rückgabewerte
 
-In seltenen FÃ¤llen ist ein RÃ¼ckgabewert ein groÃŸes Objekt (kein Zeiger, 
+In seltenen Fällen ist ein Rückgabewert ein großes Objekt (kein Zeiger, 
 sondern das gesamte Objekt), zum Beispiel ein zVEC3. Dies stellt einen 
 Sonderfall dar. Er muss mit 
 
 func void CALL_RetValIsStruct (var int words)
 
 unmittelbar vor Bekanntgabe der Aufrufkonvention (und damit der 
-AusfÃ¼hrung des Calls) angekÃ¼ndigt werden. Die GrÃ¶ÃŸe der Struktur ist 
+Ausführung des Calls) angekündigt werden. Die Größe der Struktur ist 
 hier in Worten (1 Wort = 32 bit) anzugeben. Ein zVEC3 hat zum Beispiel 
-eine GrÃ¶ÃŸe von drei Worten.
-Intern wird dann Speicher fÃ¼r den RÃ¼ckgabewert reserviert und ein Zeiger 
+eine Größe von drei Worten.
+Intern wird dann Speicher für den Rückgabewert reserviert und ein Zeiger 
 auf den reservierten Speicherbereich als versteckter letzter Parameter 
-auf den Stack geschoben. Die aufgerufene Funktion befÃ¼llt dann diesen 
-Speicher und gibt (eigentlich Ã¼berflÃ¼ssigerweise, weil der Aufrufer sie 
-schon kennt) die Adresse des RÃ¼ckgabewerts zurÃ¼ck.
-Der RÃ¼ckgabewert ist also Ã¼ber CALL_RetValAsPtr oder 
-CALL_RetValAsStructPtr zugÃ¤nglich, als wÃ¤re der RÃ¼ckgabewert kein 
+auf den Stack geschoben. Die aufgerufene Funktion befüllt dann diesen 
+Speicher und gibt (eigentlich überflüssigerweise, weil der Aufrufer sie 
+schon kennt) die Adresse des Rückgabewerts zurück.
+Der Rückgabewert ist also über CALL_RetValAsPtr oder 
+CALL_RetValAsStructPtr zugänglich, als wäre der Rückgabewert kein 
 komplexes Objekt, sondern ein Zeiger auf ein komplexes Objekt.
 
-Hinweis: Im Falle eines komplexen RÃ¼ckgabewertes wurde das 
-zurÃ¼ckgegebene Objekt speziell fÃ¼r den Aufrufer konstruiert. Es muss 
-also auch von ihm freigegeben werden, wenn es nicht mehr benÃ¶tigt wird. 
-Im Falle eines zVEC3 wÃ¼rde es genÃ¼gen den Speicherbereich mit MEM_Free 
+Hinweis: Im Falle eines komplexen Rückgabewertes wurde das 
+zurückgegebene Objekt speziell für den Aufrufer konstruiert. Es muss 
+also auch von ihm freigegeben werden, wenn es nicht mehr benötigt wird. 
+Im Falle eines zVEC3 würde es genügen den Speicherbereich mit MEM_Free 
 freizugeben.
 
-//Spezialfall: RÃ¼ckgabewert zString
+//Spezialfall: Rückgabewert zString
 
-Ein Spezialfall eines komplexen RÃ¼ckgabewerts ist ein zString. Da es 
+Ein Spezialfall eines komplexen Rückgabewerts ist ein zString. Da es 
 nicht ganz einfach ist, einen zString Unfall- und Speicherleckfrei in 
-einen Daedalusstring hinÃ¼berzuretten, gibt es hierfÃ¼r spezielle 
+einen Daedalusstring hinüberzuretten, gibt es hierfür spezielle 
 Funktionen:
 
 func void   CALL_RetValIszString()
 func string CALL_RetValAszString()
 
 Hierbei ersetzt CALL_RetValIszString den Aufruf von CALL_RetValIsStruct.
-CALL_RetValAszString kopiert den zurÃ¼ckgegebenen String in einen 
-Daedalusstring und gibt anschlieÃŸend den zurÃ¼ckgegebenen String frei.
+CALL_RetValAszString kopiert den zurückgegebenen String in einen 
+Daedalusstring und gibt anschließend den zurückgegebenen String frei.
 
 Anmerkung: CALL_RetValAszStringPtr und CALL_RetValAszString sind 
 durchaus verschieden und sollten nicht verwechselt werden. Bei einer 
 Verwendung von CALL_RetValAszString anstelle von CALL_RetValAszStringPtr 
-wird Speicher freigegeben, der evtl noch benÃ¶tigt wird. Bei einer 
+wird Speicher freigegeben, der evtl noch benötigt wird. Bei einer 
 umgekehrten Verwechslung wird Speicher nicht freigegeben, der nicht mehr 
-benÃ¶tigt wird (-> Speicherleck).
+benötigt wird (-> Speicherleck).
 
 //Beispiel:
 
@@ -1866,8 +1866,8 @@ MessageBox ist eine Funktion aus der WinAPI, die in Gothic2 an Stelle
 
 http://msdn.microsoft.com/en-us/library/ms645505%28v=vs.85%29.aspx
 
-Um sie bequem aus Gothic heraus aufrufen zu kÃ¶nnen schreiben wir eine 
-Daedalusfunktion, die sich um Parameter und Aufrufkonvention kÃ¼mmert.
+Um sie bequem aus Gothic heraus aufrufen zu können schreiben wir eine 
+Daedalusfunktion, die sich um Parameter und Aufrufkonvention kümmert.
 
 In IDA (oder einem anderen Disassembler) finden wir folgende Zeile:
 
@@ -1875,8 +1875,8 @@ int __stdcall MessageBoxA (HWND hWnd, LPCSTR lpText,
                            LPCSTR lpCaption,UINT uType)
                            
 sie sagt uns, dass es sich um einen __stdcall handelt. Zudem ist Anzahl 
-und Art der Parameter, sowie die Art des RÃ¼ckgabewerts ersichtlich, 
-(alles stimmt mit der Spezifikation auf der MSDN Seite Ã¼berein). Ein 
+und Art der Parameter, sowie die Art des Rückgabewerts ersichtlich, 
+(alles stimmt mit der Spezifikation auf der MSDN Seite überein). Ein 
 LPCSTR ist ein "Long Pointer to a c String", ein UINT ein "unsigned 
 Integer" und HWND ein Zeigertyp.
 
@@ -1893,7 +1893,7 @@ func int MEM_MessageBox (var string txt,
     CALL_cStringPtrParam (txt);     // char **
     CALL_PtrParam (0);              // owner Window; darf Null sein
     
-    /* als __stdcall ausfÃ¼hren */
+    /* als __stdcall ausführen */
     CALL__stdcall (WinAPI__MessageBox);
     
     return CALL_RetValAsInt();
@@ -1901,7 +1901,7 @@ func int MEM_MessageBox (var string txt,
 
 //----------------------
 
-Anmerkung: Dies ist ein besonders einfacher Fall. FÃ¼r Funktionen von 
+Anmerkung: Dies ist ein besonders einfacher Fall. Für Funktionen von 
 Gothic besitzt man keine Dokumentation. Die Bedeutung der Parameter ist 
 im Allgemeinen unklar, und nur zu erraten oder zu erforschen. Adresse 
 und Signatur der Funktion sind allerdings Problemlos mit IDA (oder einem 
@@ -1910,7 +1910,7 @@ anderen Disassembler) in Erfahrung zu bringen.
 //Weitere Beispiele:
 
 Die folgenden Beispiele gehen davon aus, dass MEM_InitAll oder 
-MEM_InitGlobalInst aufgerufen wurde, das heiÃŸt dass bestimmte globale 
+MEM_InitGlobalInst aufgerufen wurde, das heißt dass bestimmte globale 
 Instanzen initialisiert sind.
 
 1.) Erhalte den Spieler mithilfe von
@@ -1942,12 +1942,12 @@ int __thiscall oCNpc::ApplyOverlay(class zSTRING const &)
     const int oCNpc__ApplyOverlay = 7525056; //0x72D2C0
     CALL_zStringPtrParam ("HUMANS_MILITIA.MDS");
     CALL__thiscall (MEM_InstToPtr (hero), oCNpc__ApplyOverlay);
-    //RÃ¼ckgabewert interessiert uns hier nicht.
+    //Rückgabewert interessiert uns hier nicht.
 }
 //----------------------
 
-3.) Hole eine StringreprÃ¤sentation der Zeit, das heiÃŸt zum Beispiel 
-"7:30" fÃ¼r halb acht Uhr morgens mit Hilfe von 
+3.) Hole eine Stringrepräsentation der Zeit, das heißt zum Beispiel 
+"7:30" für halb acht Uhr morgens mit Hilfe von 
 
 .text:00780EC0:
 class zSTRING __thiscall oCWorldTimer::GetTimeString(void)
@@ -1962,15 +1962,15 @@ class zSTRING __thiscall oCWorldTimer::GetTimeString(void)
 }
 //----------------------
 
-Beachte: Der RÃ¼ckgabewert ist hier ein zString also ein 20 Byte groÃŸes 
-Objekt. Das muss mit CALL_RetValIszString angekÃ¼ndigt werden, damit der 
-Speicher fÃ¼r den RÃ¼ckgabewert im Vorfeld angelegt werden kann.
-CALL_RetValAszString sorgt dafÃ¼r, dass der angelegte Speicher auch 
+Beachte: Der Rückgabewert ist hier ein zString also ein 20 Byte großes 
+Objekt. Das muss mit CALL_RetValIszString angekündigt werden, damit der 
+Speicher für den Rückgabewert im Vorfeld angelegt werden kann.
+CALL_RetValAszString sorgt dafür, dass der angelegte Speicher auch 
 wieder freigegeben wird. Bei anderen Strukturen als zString gibt es 
 diesen Automatismus nicht.
 
 4.) Hole die "Himmelszeit", ein Gleitkommawert zwischen 0 und 1, der 
-Mittags um 12 von 1 auf 0 zurÃ¼ckspringt. Nutze dazu:
+Mittags um 12 von 1 auf 0 zurückspringt. Nutze dazu:
 
 .text:00781240:
 float __thiscall oCWorldTimer::GetSkyTime(void)
@@ -1986,7 +1986,7 @@ func int GetSkyTime() {
 };
 //----------------------
 
-Beachte: Da der RÃ¼ckgabewert eine Gleitkommazahl ist, muss 
+Beachte: Da der Rückgabewert eine Gleitkommazahl ist, muss 
 CALL_RetValIsFloat aufgerufen werden.
 
 //######################################
@@ -2002,14 +2002,14 @@ http://msdn.microsoft.com/en-us/library/ms684175%28v=vs.85%29.aspx
 http://msdn.microsoft.com/en-us/library/ms683212%28v=vs.85%29.aspx
 
 Ikarus bietet die Funktionen genau wie in MSDN beschrieben an, also 
-folgendermaÃŸen:
+folgendermaßen:
 
 func int LoadLibrary    (var string lpFileName)
 func int GetProcAddress (var int hModule, var string lpProcName)
 
-Die mit GetProcAddress erhaltenen Funktionsadressen kÃ¶nnen mit Hilfe der 
+Die mit GetProcAddress erhaltenen Funktionsadressen können mit Hilfe der 
 CALL_ Funktionen verwendet werden um die Funktionen auch wirklich 
-aufzurufen. Beispielsweise kÃ¶nnte folgendermaÃŸen die Sleep Funktion aus 
+aufzurufen. Beispielsweise könnte folgendermaßen die Sleep Funktion aus 
 der Kernel32.dll aufgerufen werden:
 
 //----------------------
@@ -2027,11 +2027,11 @@ zwar hier:
 http://msdn.microsoft.com/en-us/library/ms686298%28v=vs.85%29.aspx
 
 Da die Kernel32.dll eine wichtige Bibliothek ist, stellt Ikarus 
-abkÃ¼rzend folgende Funktion zur VerfÃ¼gung:
+abkürzend folgende Funktion zur Verfügung:
 
 func int FindKernelDllFunction (var string name)
 
-FindKernelDllFunction ist Ã¤qivalent zu GetProcAddress mit der Adresse 
+FindKernelDllFunction ist äqivalent zu GetProcAddress mit der Adresse 
 von Kernel32.dll als fixem erstem Parameter.
 
 //######################################
@@ -2040,7 +2040,7 @@ von Kernel32.dll als fixem erstem Parameter.
 func int MEM_SearchVobByName (var string str)
 
 Liefert die Adresse eines zCVobs mit dem Namen str, falls ein solches 
-Vob existiert. Andernfalls wird 0 zurÃ¼ckgegeben.
+Vob existiert. Andernfalls wird 0 zurückgegeben.
 
 Als Abwandlung davon gibt es
 
@@ -2049,7 +2049,7 @@ func int MEM_SearchAllVobsByName (var string str)
 Diese Funktion erzeugt ein zCArray in dem alle Zeiger auf Vobs mit dem 
 Namen str stehen. Falls kein Vob mit dem Namen existiert wird ein leeres 
 zCArray erzeugt. Ein Zeiger auf das erzeugte zCArray wird dann 
-zurÃ¼ckgegeben. Dieses kann ausgewertet werden, sollte aber noch vor Ende 
+zurückgegeben. Dieses kann ausgewertet werden, sollte aber noch vor Ende 
 des Frames (bevor der Spieler Laden kann) wieder mit MEM_ArrayFree 
 freigegeben werden um Speicherlecks zu vermeiden. 
 Die Klasse zCArray ist in Misc.d zu finden.
@@ -2058,18 +2058,18 @@ Die Klasse zCArray ist in Misc.d zu finden.
 
 func int MEM_InsertVob(var string vis, var string wp)
 
-FÃ¼gt ein Vob mit dem Visual vis am Waypoint wp ein. Hierbei muss vis der 
+Fügt ein Vob mit dem Visual vis am Waypoint wp ein. Hierbei muss vis der 
 Name eines Visuals mit Dateierweiterung sein, zum Beispiel 
 "FAKESCROLL.3DS", "FIRE.PFX", "SNA_BODY.ASC", 
 "CHESTSMALL_NW_POOR_LOCKED.MDS", oder "ADD_PIRATEFLAG.MMS".
 
-ZurÃ¼ckgegeben wird ein Pointer auf das erzeugte Objekt.
+Zurückgegeben wird ein Pointer auf das erzeugte Objekt.
 Falls das Visual oder der Waypoint nicht existiert ist das Verhalten 
 dieser Funktion undefiniert.
 
-Anmerkung: Das eingefÃ¼gt Vob ist sogar ein oCMob, kann also zum Beispiel 
+Anmerkung: Das eingefügt Vob ist sogar ein oCMob, kann also zum Beispiel 
 einen Fokusnamen bekommen. Man kann es aber wie ein zCVob behandeln, 
-wenn man die zusÃ¤tzlichen Eigenschaften nicht benÃ¶tigt.
+wenn man die zusätzlichen Eigenschaften nicht benötigt.
 
 //******************
 
@@ -2078,21 +2078,21 @@ func void MEM_UntriggerVob (var int vobPtr)
 
 Diese beide Funktionen nehmen jeweils einen Pointer auf ein zCVob 
 entgegen und senden eine Triggernachricht beziehungsweise 
-Untriggernachricht an das Vob. DafÃ¼r wird das Vob temporÃ¤r umbenannt. 
+Untriggernachricht an das Vob. Dafür wird das Vob temporär umbenannt. 
 Falls das Triggern des Vobs also unmittelbare Auswirkungen hat (noch 
 bevor MEM_TriggerVob verlassen wird) ist der Name des Vobs in dieser 
-Zeit verfÃ¤lscht. Es ist nicht ratsam das Objekt in diesem Moment 
-umzubenennen, nochmal zu triggern oder zu zerstÃ¶ren, das Verhalten in 
-solchen FÃ¤llen ist ungetestet.
+Zeit verfälscht. Es ist nicht ratsam das Objekt in diesem Moment 
+umzubenennen, nochmal zu triggern oder zu zerstören, das Verhalten in 
+solchen Fällen ist ungetestet.
 
 //******************
 
 func void MEM_RenameVob (var int vobPtr, var string newName)
 
 Nimmt einen Zeiger auf ein Vob entgegen und benennt das Vob in den 
-ebenfalls zu Ã¼bergebenden Namen newName um. Das Objekt wird dazu 
-zunÃ¤chst aus der Vobhashtabelle entfernt, dann unbenannt und dann wieder 
-unter neuem Namen in die Vobhashtabelle eingefÃ¼gt.
+ebenfalls zu übergebenden Namen newName um. Das Objekt wird dazu 
+zunächst aus der Vobhashtabelle entfernt, dann unbenannt und dann wieder 
+unter neuem Namen in die Vobhashtabelle eingefügt.
 
 //******************
 
@@ -2106,16 +2106,16 @@ func int Hlp_Is_oCItem(var int ptr)
 func int Hlp_Is_zCMover(var int ptr)
 func int Hlp_Is_oCMobFire(var int ptr)
 
-Diese Funktionen kÃ¶nnen u.a. nÃ¼tzlich sein, wenn es darum geht den Fokus 
-des Helden auszuwerten. Die Funktionen geben 1 zurÃ¼ck, falls der 
-Ã¼bergebene Zeiger auf ein Objekt der angegebenen Klasse oder eine 
+Diese Funktionen können u.a. nützlich sein, wenn es darum geht den Fokus 
+des Helden auszuwerten. Die Funktionen geben 1 zurück, falls der 
+übergebene Zeiger auf ein Objekt der angegebenen Klasse oder eine 
 Unterklasse dieser Klasse zeigt.
 
-FÃ¼r einen Stuhl wÃ¼rden zum Beispiel Hlp_Is_oCMob und Hlp_Is_oCMobInter 1 
-zurÃ¼ckgeben, die anderen Funktionen 0.
+Für einen Stuhl würden zum Beispiel Hlp_Is_oCMob und Hlp_Is_oCMobInter 1 
+zurückgeben, die anderen Funktionen 0.
 
-NatÃ¼rlich kann man diese Funktionen noch fÃ¼r andere Objekttypen als Mobs 
-schreiben, wenn das nÃ¶tig ist.
+Natürlich kann man diese Funktionen noch für andere Objekttypen als Mobs 
+schreiben, wenn das nötig ist.
 
 //******************
 
@@ -2131,8 +2131,8 @@ nutzlosem Enginezeug unter.
 
 func string MEM_GetCommandLine ()
 
-Gibt den Inhalt der Kommandozeile zurÃ¼ck, die an Gothic Ãœbergeben wurde. 
-Diese kÃ¶nnte zum Beispiel so aussehen:
+Gibt den Inhalt der Kommandozeile zurück, die an Gothic Übergeben wurde. 
+Diese könnte zum Beispiel so aussehen:
 
 "-TIME:7:35 -GAME:TEST_IKARUS.INI -ZREPARSE -ZWINDOW -ZLOG:5,S -DEVMODE 
 -ZMAXFRAMERATE:30"
@@ -2143,14 +2143,14 @@ func int MEM_MessageBox (var string txt,
                          var string caption,
                          var int type)
 
-Erzeugt ein kleines Fenster mit Ãœberschrift caption und Inhalt txt.
-Die mÃ¶glichen Werte fÃ¼r type sowie die RÃ¼ckgabewerte entsprechen der 
+Erzeugt ein kleines Fenster mit Überschrift caption und Inhalt txt.
+Die möglichen Werte für type sowie die Rückgabewerte entsprechen der 
 Beschreibung auf:
 
 http://msdn.microsoft.com/en-us/library/ms645505%28v=vs.85%29.aspx
 
 Alle sinnvoll anwendbaren Konstanten von dieser Seite stehen zur 
-VerfÃ¼gung.
+Verfügung.
 
 Beispiel:
 
@@ -2168,13 +2168,13 @@ func void panic() {
 };
 //----------------------
 
-Als Spezialfall von MEM_MessageBox ist MEM_InfoBox verfÃ¼gbar:
+Als Spezialfall von MEM_MessageBox ist MEM_InfoBox verfügbar:
 
 func void MEM_InfoBox (var string txt)
 
 Auf einer Infobox gibt es nur einen OK-Knopf und ein Informationssymbol.
 
-Message Boxen beenden den Vollbildmodus und sind daher wohl nur fÃ¼r 
+Message Boxen beenden den Vollbildmodus und sind daher wohl nur für 
 Debugzwecke sinnvoll zu gebrauchen.
 
 //******************
@@ -2182,23 +2182,23 @@ Debugzwecke sinnvoll zu gebrauchen.
 func int MEM_GetSystemTime()
 
 Gibt die seit dem Start von Gothic verstrichene Zeit in Millisekunden 
-zurÃ¼ck.
+zurück.
 
 //******************
 
 func int MEM_BenchmarkMS(var func f)
 
-MEM_BenchmarkMS fÃ¼hrt die Ã¼bergebene parameterlose Funktion aus und gibt 
-zurÃ¼ck, wie lange die AusfÃ¼hrung gedauert hat und zwar in Millisekunden, 
+MEM_BenchmarkMS führt die übergebene parameterlose Funktion aus und gibt 
+zurück, wie lange die Ausführung gedauert hat und zwar in Millisekunden, 
 daher das MS.
-Zeitmessung kann sinnvoll sein, um festzustellen ob und in welchem MaÃŸe 
-eine Funktion die Leistung beeintrÃ¤chtigt.
+Zeitmessung kann sinnvoll sein, um festzustellen ob und in welchem Maße 
+eine Funktion die Leistung beeinträchtigt.
 
 Millisekunden ist allerdings oft eine zu grobe Einheit, mit anderen 
-Worten, eine Millisekunde ist fÃ¼r ProzessorverhÃ¤ltnisse eine sehr lange 
+Worten, eine Millisekunde ist für Prozessorverhältnisse eine sehr lange 
 Zeit. 
 Besser geeignet ist daher der sogenannte Performancecounter, der 
-allerdings je nach System verschieden schnell zÃ¤hlt.
+allerdings je nach System verschieden schnell zählt.
 
 Die Anzahl der Performancecounter Ticks, die eine Funktion braucht, kann 
 mit folgender Abwandlung der Benchmarkfunktion gemessen werden:
@@ -2207,40 +2207,40 @@ func int MEM_BenchmarkPC(var func f)
 
 Der Performancecounter ist gut geeignet um die Geschwindigkeit 
 verschiedener Funktionen zu vergleichen.
-Umrechnung in Millisekunden ist mÃ¶glich, die Anzahl der 
+Umrechnung in Millisekunden ist möglich, die Anzahl der 
 Performancecounter Ticks pro Millisekunde steht an der Addresse 
 PC_TicksPerMS_Address.
 Auf meinem System sind es 2741 Ticks pro Millisekunde. Umrechnung in 
-Nanosekunden kÃ¶nnte schnell an die Grenzen von 32 bit Ganzzahlen kommen, 
+Nanosekunden könnte schnell an die Grenzen von 32 bit Ganzzahlen kommen, 
 also vorsicht!
 
-Um ein verlÃ¤ssliches Ergebnis zu erhalten ist es sehr zu empfehlen nicht 
+Um ein verlässliches Ergebnis zu erhalten ist es sehr zu empfehlen nicht 
 einen einzigen Durchlauf einer Funktion zu messen, sondern die 
-Gesamtdauer vieler DurchlÃ¤ufe (zum Beispiel 1000).
+Gesamtdauer vieler Durchläufe (zum Beispiel 1000).
 Besonders bei recht schnellen Funktionen wird sonst das Ergebnis durch 
-die Messung selbst zu stark verfÃ¤lscht. Daher gibt es noch Abwandlungen 
+die Messung selbst zu stark verfälscht. Daher gibt es noch Abwandlungen 
 der Benchmark-Funktionen, die einen Parameter entgegennehmen, der 
-besagt, wieviele DurchlÃ¤ufe der Funktion f durchgefÃ¼hrt werden sollen.
-ZurÃ¼ckgegeben wird dann die aufsummierte Dauer aller DurchlÃ¤ufe (kein 
+besagt, wieviele Durchläufe der Funktion f durchgeführt werden sollen.
+Zurückgegeben wird dann die aufsummierte Dauer aller Durchläufe (kein 
 Mittelwert) in der entsprechenden Einheit:
 
 func int MEM_BenchmarkMS_N(var func f, var int n)
 func int MEM_BenchmarkPC_N(var func f, var int n)
 
 Anmerkungen zur Konditionierung der Messung:
--Der Paramter n ist so zu wÃ¤hlen, dass das Ergebnis in einem geeigneten 
-Bereich zu erwarten ist. Wenn n AusfÃ¼hrungen der Funktion nicht einmal 
-eine Millisekunde dauern, ist natÃ¼rlich ein RÃ¼ckgabewert in 
-Millisekunden nicht aussagekrÃ¤ftig.
+-Der Paramter n ist so zu wählen, dass das Ergebnis in einem geeigneten 
+Bereich zu erwarten ist. Wenn n Ausführungen der Funktion nicht einmal 
+eine Millisekunde dauern, ist natürlich ein Rückgabewert in 
+Millisekunden nicht aussagekräftig.
 -Bei *sehr* schnellen Funktion f wird die Zeit, die in der 
 Benchmark-Funktion aufgewendet wird (und nicht in f) signifikant zur 
-Messung beitragen (was das Ergebnis verfÃ¤lscht). Nur Funktionen, die 
-hinreichend langsam sind, kÃ¶nnen sinnvoll gemessen werden.
+Messung beitragen (was das Ergebnis verfälscht). Nur Funktionen, die 
+hinreichend langsam sind, können sinnvoll gemessen werden.
 
-Zur Orientierung, hier eine Zeitmessung fÃ¼r einige Operationen (in 
+Zur Orientierung, hier eine Zeitmessung für einige Operationen (in 
 Nanosekunden, also milliardstel Sekunden):
 
-- Funktionsaufruf (hin und zurÃ¼ckspringen)  :     30ns
+- Funktionsaufruf (hin und zurückspringen)  :     30ns
 - Elementare Rechnung (z.B: i = i + 1)      :    130ns
 - Wld_IsTime                                :    200ns
 - MEM_ReadInt, MEM_WriteInt                 :    350ns
@@ -2254,14 +2254,14 @@ Nanosekunden, also milliardstel Sekunden):
 
 //******************
 
-Der Zugriff auf statische Arrays ist in Daedalus sehr mÃ¼hsam. Unter 
-einem statischen Array verstehe ich ein gewÃ¶hnliches Skriptarray, zum 
+Der Zugriff auf statische Arrays ist in Daedalus sehr mühsam. Unter 
+einem statischen Array verstehe ich ein gewöhnliches Skriptarray, zum 
 Beispiel:
 
 var int myStaticArray[42];
 
-Es ist nicht mÃ¶glich mit einem variablen Index i auf myStaticArray[i] 
-zuzugreifen, sondern stehts nur mit einer Konstanten. Das Ã¤ndert sich 
+Es ist nicht möglich mit einem variablen Index i auf myStaticArray[i] 
+zuzugreifen, sondern stehts nur mit einer Konstanten. Das ändert sich 
 mit folgenden Funktionen:
 
 func int  MEM_ReadStatArr  (var int array, var int offset)
@@ -2284,9 +2284,9 @@ MEM_InitStatArrs() erneut aufgerufen werden.
 Anmerkung: MEM_InitStatArrs wird auch von der Funktion MEM_InitAll 
 aufgerufen.
 
-Vorsicht: Keine der beiden Funktionen fÃ¼hrt irgendeine Art von 
-GÃ¼ltigkeitsprÃ¼fung durch. Falls es sich beim Ã¼bergebenen Wert nicht um 
-ein Array handelt oder offset jenseits der Grenzen des Ã¼bergebenen 
+Vorsicht: Keine der beiden Funktionen führt irgendeine Art von 
+Gültigkeitsprüfung durch. Falls es sich beim übergebenen Wert nicht um 
+ein Array handelt oder offset jenseits der Grenzen des übergebenen 
 Arrays liegen ist das Verhalten undefiniert.
 
 //******************
@@ -2299,8 +2299,8 @@ func int MEM_GetStringAddress(var string s)
 func int MEM_GetFloatAddress (var float  f)
 func int MEM_GetIntAddress   (var int    i)
 
-Der RÃ¼ckgabewert ist jeweils die Addresse der Ã¼bergebenen Variable. Wird 
-anstatt einer Variable, ein arithmetischer Ausdruck Ã¼bergeben (zum 
+Der Rückgabewert ist jeweils die Addresse der übergebenen Variable. Wird 
+anstatt einer Variable, ein arithmetischer Ausdruck übergeben (zum 
 Beispiel MEM_GetIntAddress(x + 1)), wird kein sinnvolles Verhalten 
 garantiert.
 
@@ -2310,21 +2310,21 @@ Beispiel:
 func void foo() {
     MEM_GetAddress_Init();
     
-    //Beispiel fÃ¼r MEM_GetIntAddress
+    //Beispiel für MEM_GetIntAddress
       var int i;    i   = 0;
       var int ptr;  ptr = MEM_GetIntAddress(i);
         
       MEM_WriteInt(ptr, 42);
       Print(IntToString(i)); //gibt "42" aus.
         
-    //Beispiel fÃ¼r MEM_GetStringAddress
+    //Beispiel für MEM_GetStringAddress
       var string str;   str  = "Hello";
       var zString zStr; zStr = MEM_PtrToInst(MEM_GetStringAddress(str));
     
       MEM_WriteByte(zStr.ptr, 66); //66 = B im ASCII Zeichensatz
       Print(str); //<-gibt Bello aus. 
     
-    //Zwei SonderfÃ¤lle:
+    //Zwei Sonderfälle:
       /* (1) */
       ptr = MEM_GetStringAddress("Hello?");
       
@@ -2333,13 +2333,13 @@ func void foo() {
 };
 //----------------------
 
-Zu den SonderfÃ¤llen im Beispiel:
+Zu den Sonderfällen im Beispiel:
 Nach (1) steht in ptr die Adresse des Strings "Hello?", der in 
 irgendeiner Stringtabelle des Parsers liegt.
 
 Nach (2) steht in ptr die Adresse eines statischen zStrings der von der 
 Enginefunktion ConcatStrings benutzt wird (und gerade "Hello World!" 
-enthÃ¤lt).
+enthält).
 
 Wichtig: Diese Funktionen setzen voraus, dass MEM_InitAll oder 
 MEM_GetAddress_Init aufgerufen wurde.
@@ -2357,32 +2357,32 @@ func void MEM_ArrayRemoveValueOnce (var int zCArray_ptr, var int value)
 zCArrays sind eine sehr einfache Feld-Datenstruktur, die exzessiv von 
 der Engine verwedet wird.
 
-Arrays dieser Art kÃ¶nnen aber auch Skriptintern sinnvoll zur Ãœbergabe 
-von groÃŸen Datenmengen dienen. Zum Beispiel nutzt 
-MEM_SearchAllVobsByName Arrays um gleich eine groÃŸe Menge von Vobs 
-zurÃ¼ckzugeben. Dabei wird verlangt, dass der Nutzer das Array noch im 
-selben Frame (bevor der Spieler Laden oder Speichern kÃ¶nnte) wieder 
+Arrays dieser Art können aber auch Skriptintern sinnvoll zur Übergabe 
+von großen Datenmengen dienen. Zum Beispiel nutzt 
+MEM_SearchAllVobsByName Arrays um gleich eine große Menge von Vobs 
+zurückzugeben. Dabei wird verlangt, dass der Nutzer das Array noch im 
+selben Frame (bevor der Spieler Laden oder Speichern könnte) wieder 
 freigibt (mit MEM_ArrayFree).
 
-Das EinfÃ¼gen eines Elements in ein Array ist nicht einfach, da eventuell 
-der Platz im Array nicht ausreicht und das Array vergrÃ¶ÃŸert werden muss. 
-Daher habe ich diese Funktion zur VerfÃ¼gung gestellt. Die anderen 
+Das Einfügen eines Elements in ein Array ist nicht einfach, da eventuell 
+der Platz im Array nicht ausreicht und das Array vergrößert werden muss. 
+Daher habe ich diese Funktion zur Verfügung gestellt. Die anderen 
 Funktionen sind sozusagen Beiwerk und leisten einfachere Dinge.
 zCArray_ptr ist in allen Funktionen ein Zeiger auf ein zCArray (siehe 
 auch Misc.d).
 
 MEM_ArrayCreate: Erzeuge ein leeres zCArray und gebe seine Adresse 
-zurÃ¼ck.
+zurück.
 MEM_ArrayFree:   Gebe sowohl das zCArray als auch seine Daten frei.
 MEM_ArrayClear:  Gibt die Daten des zCArray frei. Es wird zu einem 
 leeren Array.
-MEM_ArrayInsert: FÃ¼gt value ans Ende des Arrays an. Das Array wird 
-automatisch vergrÃ¶ÃŸert falls es zu klein ist.
+MEM_ArrayInsert: Fügt value ans Ende des Arrays an. Das Array wird 
+automatisch vergrößert falls es zu klein ist.
 
-Entfernen von Elementen passiert durch auffÃ¼llen der LÃ¼cke mit dem 
+Entfernen von Elementen passiert durch auffüllen der Lücke mit dem 
 letzten Element. Wird zum Beispiel aus einem Array (1,2,3,4,5) die 3 
 entfernt, wird das Ergebnis so aussehen: (1,2,5,4). Die 5 ist in die 
-entstehende LÃ¼cke gewandert.
+entstehende Lücke gewandert.
 
 MEM_ArrayRemoveIndex: Entfernt das Element an Position index.
 MEM_ArrayRemoveValue: Sucht alle Vorkommen von value im Array und 
@@ -2394,9 +2394,9 @@ ausgegeben.
 Hinweis: Diese Funktionen erwarten Pointer auf ein zCArray! Nicht 
 verwechseln mit der Adresse des ersten Datenelements oder dem 
 Symbolindex irgendeines "var zCArray"! Manchmal wird man sich die 
-Adresse eines zCArrays erst ausrechnen mÃ¼ssen und zwar aus der Adresse 
+Adresse eines zCArrays erst ausrechnen müssen und zwar aus der Adresse 
 des Objekts, das dieses zCArray beinhaltet und dem Offset des zCArrays 
-in der entsprechenden Klasse (Bytes zÃ¤hlen!).
+in der entsprechenden Klasse (Bytes zählen!).
 
 Lesen und Schreiben auf Indizes ist selbst zu organisieren, zum Beispiel 
 mit MEM_ReadIntArray, MEM_WriteIntArray angewendet auf zCArray.array. 
@@ -2412,12 +2412,12 @@ func void MEM_SwapWords (var int ptr1, var int ptr2, var int wordcount)
 func int MEM_CompareBytes (var int ptr1, var int ptr2, var int byteCount)
 func int MEM_CompareWords (var int ptr1, var int ptr2, var int wordcount)
 
-Die hier aufgefÃ¼hrten Funktionen arbeiten jeweils auf zwei 
-Speicherbereichen gleicher GrÃ¶ÃŸe, wobei die ersten zwei Parameter 
+Die hier aufgeführten Funktionen arbeiten jeweils auf zwei 
+Speicherbereichen gleicher Größe, wobei die ersten zwei Parameter 
 angeben wo die Speicherbereiche beginnen. Der dritte Parameter gibt die 
-GrÃ¶ÃŸe beider Speicherbereiche an. Es gibt jeweils eine Version, die die 
-GrÃ¶ÃŸe in Bytes entgegennimmt und eine Version, die die GrÃ¶ÃŸe in 
-Speicherworten entgegenimmt (1 Wort = 4 Byte, was der GrÃ¶ÃŸe vieler 
+Größe beider Speicherbereiche an. Es gibt jeweils eine Version, die die 
+Größe in Bytes entgegennimmt und eine Version, die die Größe in 
+Speicherworten entgegenimmt (1 Wort = 4 Byte, was der Größe vieler 
 primitiver Datentypen entspricht, zum Beispiel Integer).
 
 /* Copy */
@@ -2425,21 +2425,21 @@ Die Varianten von MEM_Copy kopieren entsprechend viele Bytes bzw. Worte
 von der Quelle (beginnend von Speicherstelle src) ans Ziel (beginnend an 
 Speicherstelle dst).
 
-Beachte: Wenn sich die Speicherbereiche Ã¼berlappen ist das Verhalten 
+Beachte: Wenn sich die Speicherbereiche überlappen ist das Verhalten 
 unspezifiziert.
 
 /* Swap */
 "Swap" bedeutet so viel wie tauschen. Die Daten beginnend an der Adresse 
 ptr1 werden an die Adresse ptr2 verschoben und umgekehrt.
 
-Beachte: Wenn sich die Speicherbereiche Ã¼berlappen ist das Verhalten 
+Beachte: Wenn sich die Speicherbereiche überlappen ist das Verhalten 
 unspezifiziert.
-Anmerkung: Es wird nur konstant viel zusÃ¤tzlicher Speicher benÃ¶tigt.
+Anmerkung: Es wird nur konstant viel zusätzlicher Speicher benötigt.
 
 /* Compare */
 Die Varianten von MEM_Compare vergleichen die Daten in den 
 Speicherbereichen beginnend an ptr1 und ptr2. Bei Gleichheit wird 1 
-zurÃ¼ckgegeben, bei Ungleichheit 0.
+zurückgegeben, bei Ungleichheit 0.
 
 //******************
 
@@ -2450,13 +2450,13 @@ einzelnen Features. Tut nichts anderes als MEM_InitGlobalInst,
 MEM_InitLabels, MEM_InitStatArrs, STR_GetAddressInit und 
 MEM_ReinitParser aufzurufen.
 
-Tipp: Ein Aufruf in INIT_GLOBAL ist empfehlenswert. Dann mÃ¼ssen bis nach 
-dem nÃ¤chsten Laden keine weiteren Initialisierungen mehr vorgenommen 
+Tipp: Ein Aufruf in INIT_GLOBAL ist empfehlenswert. Dann müssen bis nach 
+dem nächsten Laden keine weiteren Initialisierungen mehr vorgenommen 
 werden.
 
 Vorsicht: Manche Funktionen werden noch vor INIT_GLOBAL aufgerufen. Zum 
 Beispiel werden Npcs vor INIT_GLOBAL erzeugt. Wird also zum Beispiel 
-wÃ¤hrend der Npc Erzeugung auf Ikarus FunktionalitÃ¤t zurÃ¼ckgegriffen der 
+während der Npc Erzeugung auf Ikarus Funktionalität zurückgegriffen der 
 eine Initialisierung mit einer der genannten Funktionen vorausgehen 
 muss, ist ein Aufruf von MEM_InitAll in INIT_GLOBAL nicht hinreichend. 
 Im Zweifelsfall ist es zu empfehlen, die passende 
@@ -2469,19 +2469,19 @@ nennenswerten Performancetechnischen Implikationen.
 
 Ikarus bietet auch einige eher technische Funktionen an, deren Nutzen 
 nicht unbedingt unmittelbar greifbar ist. Die meisten, die diese Paket 
-benutzen, werden sie nicht brauchen, ich werde sie hier dennoch erklÃ¤ren.
+benutzen, werden sie nicht brauchen, ich werde sie hier dennoch erklären.
 
 //******************
 
 func int MEM_GetFuncPtr(var func fnc)
 
-Gibt die Adresse einer Daedalus Funktion zurÃ¼ck. Das ist der Ort im 
-Speicher, an der ihr Code anfÃ¤ngt, das heiÃŸt die Adresse des ersten 
-Tokens (z.B. zPAR_TOK_PUSHVAR), dass zur Funktion gehÃ¶rt.
+Gibt die Adresse einer Daedalus Funktion zurück. Das ist der Ort im 
+Speicher, an der ihr Code anfängt, das heißt die Adresse des ersten 
+Tokens (z.B. zPAR_TOK_PUSHVAR), dass zur Funktion gehört.
 
 func int MEM_GetFuncOffset(var func fnc)
 
-Ã„hnlich wie MEM_GetFuncPtr, allerdings wird die Adresse nicht absolut, 
+Ähnlich wie MEM_GetFuncPtr, allerdings wird die Adresse nicht absolut, 
 sondern relativ zum Anfang des Codes angegeben. Jumps und Calls nutzen 
 solche relativen Adressen.
 
@@ -2489,33 +2489,33 @@ solche relativen Adressen.
 
 func int MEM_GetClassDef (var int objPtr)
 
-Ãœbergeben wird ein Zeiger objPtr auf ein zCObject O, also zum Beispiel 
+Übergeben wird ein Zeiger objPtr auf ein zCObject O, also zum Beispiel 
 auf ein zCVob oder ein zCMaterial. Viele Objekte, die mehr als simple 
 Datenstrukturen sind, sind direkt oder indirekt von zCObject abgeleitet.
 MEM_GetClassDef gibt einen Zeiger auf ein Objekt C vom Typ zCClassDef 
-zurÃ¼ck. C enthÃ¤lt Informationen Ã¼ber die Klasse, der O angehÃ¶rt. Zum 
-Beispiel wÃ¼rde MEM_GetClassDef (MEM_InstToPtr (hero)) einen Zeiger auf 
-das zCClassDef Objekt liefern, dass zur Klasse oCNpc gehÃ¶rt.
+zurück. C enthält Informationen über die Klasse, der O angehört. Zum 
+Beispiel würde MEM_GetClassDef (MEM_InstToPtr (hero)) einen Zeiger auf 
+das zCClassDef Objekt liefern, dass zur Klasse oCNpc gehört.
 
 zCClassDef hat einige Interessante Eigenschaften (siehe Misc.d).
 
 func string MEM_GetClassName (var int objPtr)
 
 ist eine einfache Anwendung von MEM_GetClassDef und gibt den 
-Klassennamen der Klasse aus, der das Objekt angehÃ¶rt, auf das objPtr 
+Klassennamen der Klasse aus, der das Objekt angehört, auf das objPtr 
 zeigt. Zum Bespiel liefert MEM_GetClassName (MEM_InstToPtr (hero)) den 
 string "oCNpc".
 
-Wenn diesen Funktionen ein Zeiger Ã¼bergeben wird, der nicht auf ein 
-zCObject zeigt, wird das mit groÃŸer Wahrscheinlichkeit zu einem Absturz 
-fÃ¼hren.
+Wenn diesen Funktionen ein Zeiger übergeben wird, der nicht auf ein 
+zCObject zeigt, wird das mit großer Wahrscheinlichkeit zu einem Absturz 
+führen.
 
 //******************
 
 func int MEM_GetBufferCRC32 (var int buf, var int buflen) 
 
 Berechnet einen Hashwert aus einem Bytearray, dass an buf beginnt und 
-LÃ¤nge buflen hat. Es wird die selbe Hashfunktion verwendet wie in Gothic.
+Länge buflen hat. Es wird die selbe Hashfunktion verwendet wie in Gothic.
 
 func int MEM_GetStringHash (var string str) {
 
@@ -2528,69 +2528,69 @@ Bemerkung: Diese Funktion wird von MEM_SearchVobByName benutzt.
 func int MEM_Alloc (var int amount)
 
 Mit MEM_Alloc werden amount Byte Speicher alloziert und ein Zeiger auf 
-den Speicherbereich zurÃ¼ckgegeben.
-Gothic hÃ¤lt keine Referenz auf diesen Speicherbereich und kann ihn auch 
-nicht freigeben (auch nicht beim ZerstÃ¶ren der Session!).
+den Speicherbereich zurückgegeben.
+Gothic hält keine Referenz auf diesen Speicherbereich und kann ihn auch 
+nicht freigeben (auch nicht beim Zerstören der Session!).
 Speicher sollte daher nur dann reserviert werden, wenn er garantiert vor 
 dem Laden eines Spielstands wieder mit MEM_Free freigegeben werden kann 
-oder garantiert ist, dass Gothic von diesem Speicherbereich weiÃŸ und ihn 
-selbststÃ¤ndig freigibt.
+oder garantiert ist, dass Gothic von diesem Speicherbereich weiß und ihn 
+selbstständig freigibt.
 Vielleicht kann man mit dieser Funktion neue Objekte erzeugen und 
 dauerhaft in die Objektstruktur von Gothic einbauen. Das Bedarf aber 
-groÃŸer Vorsicht, da die Objektkonstrukturen nicht genutzt werden kÃ¶nnen. 
-Man mÃ¼sste alles von Hand machen.
+großer Vorsicht, da die Objektkonstrukturen nicht genutzt werden können. 
+Man müsste alles von Hand machen.
 
-Sehr gut geeignet dÃ¼rfte diese Funktion sein um Kleinigkeiten wie 
+Sehr gut geeignet dürfte diese Funktion sein um Kleinigkeiten wie 
 Listenelemente zu bauen und in vorhandenen Listen zu integrieren. Der 
 neu allozierte Speicher ist stets genullt.
 
 func int MEM_Realloc (var int oldptr, var int oldsize, var int newsize)
 
-Alloziert einen Speicherbereich der grÃ¶ÃŸe newsize und gibt einen Zeiger 
-auf diesen Speicherbereich zurÃ¼ck.
+Alloziert einen Speicherbereich der größe newsize und gibt einen Zeiger 
+auf diesen Speicherbereich zurück.
 Der Speicherbereich ab Stelle oldptr wird freigegeben.
 Falls newsize >= oldsize werden die ersten oldsize Bytes aus dem alten 
-Speicherbereich in den neuen Ã¼bernommen. Der zusÃ¤tzliche Speicher ist 
+Speicherbereich in den neuen übernommen. Der zusätzliche Speicher ist 
 mit Null initialisiert.
 Falls newsize <= oldsize werden alle Bytes des neuen Speicherbereichs 
 mit den entsprechenden Werten des alten Speicherbereichs initialisiert.
 Diese Funktion ist dazu gedacht um einen allozierten Speicherbereich zu 
-vergrÃ¶ÃŸern oder zu verkleinern. Vorhandene Daten bleiben auf natÃ¼rliche 
+vergrößern oder zu verkleinern. Vorhandene Daten bleiben auf natürliche 
 Art und Weise erhalten.
 
 func void MEM_Free (var int ptr)
 
 Gibt einen allozierten Speicherbereich wieder frei.
-Vielleicht kann man so auch Engine-Objekte zerstÃ¶ren. Auch hier ist 
-groÃŸe Vorsicht angesagt, da keine Destruktoren aufgerufen werden!
+Vielleicht kann man so auch Engine-Objekte zerstören. Auch hier ist 
+große Vorsicht angesagt, da keine Destruktoren aufgerufen werden!
 
-Kleinigkeiten wie Listenelemente kÃ¶nnen so aber problemlos freigegeben 
+Kleinigkeiten wie Listenelemente können so aber problemlos freigegeben 
 werden.
 
 //******************
 
 func void MEM_SetParser(var int parserID)
 
-Hiermit lÃ¤sst sich der aktuelle Parser auf etwas anderes als den 
-Content-Parser umstellen. Dies ist nÃ¶tig, wenn man zum Beispiel mit 
-Symbolen im MenÃ¼ suchen und bearbeiten will. Kommunikation mit den 
-MenÃ¼skripten wird dadurch mÃ¶glich. Aber leider ist das ganze nicht ohne 
-TÃ¼cken und vermutlich eher uninteressant, weil die MenÃ¼skripte selten 
-von Gothic aufgerufen werden. Bestimmte MenÃ¼objekte bleiben Ã¼ber die 
+Hiermit lässt sich der aktuelle Parser auf etwas anderes als den 
+Content-Parser umstellen. Dies ist nötig, wenn man zum Beispiel mit 
+Symbolen im Menü suchen und bearbeiten will. Kommunikation mit den 
+Menüskripten wird dadurch möglich. Aber leider ist das ganze nicht ohne 
+Tücken und vermutlich eher uninteressant, weil die Menüskripte selten 
+von Gothic aufgerufen werden. Bestimmte Menüobjekte bleiben über die 
 Session hinaus erhalten.
 
 //******************
 
 func void MemoryProtectionOverride (var int address, var int size)
 
-Der Versuch das Codesegment oder schreibgeschÃ¼tzte Datensegmente zu 
+Der Versuch das Codesegment oder schreibgeschützte Datensegmente zu 
 beschreiben wird eine Accessviolation verursachen. 
-MemoryProtectionOverride hebelt diesen Schreibschutz fÃ¼r den 
-Adressbereich aus, der bei address beginnt und size Bytes groÃŸ ist.
+MemoryProtectionOverride hebelt diesen Schreibschutz für den 
+Adressbereich aus, der bei address beginnt und size Bytes groß ist.
 
-Anmerkung: MemoryProtectionOverride hebt den Schreibschutz fÃ¼r alle 
+Anmerkung: MemoryProtectionOverride hebt den Schreibschutz für alle 
 Seite auf, die mindestens ein Byte im spezifizierten Adressbereich 
-beinhalten. Im Allgemeinen ist also ein grÃ¶ÃŸerer Speicherbereich 
+beinhalten. Im Allgemeinen ist also ein größerer Speicherbereich 
 betroffen als angegeben.
 MemoryProtectionOverride benutzt die Windows Funktion VirtualProtect.
 
@@ -2600,25 +2600,25 @@ MemoryProtectionOverride benutzt die Windows Funktion VirtualProtect.
 // VI. Gefahren
 //######################################
 
-Dieses Skriptpaket heiÃŸt nicht umsonst Ikarus:
+Dieses Skriptpaket heißt nicht umsonst Ikarus:
 Man kann die Grenzen von Daedalus hinter sich lassen, aber dabei auch 
-auf die Schnauze fallen. Wer etwa an ungÃ¼ltigen Adressen liest, bekommt 
+auf die Schnauze fallen. Wer etwa an ungültigen Adressen liest, bekommt 
 dabei keine zSpy-Warnung, sondern landet auf dem Desktop mit einer 
 Access Violations. Dies ist kein Grund zur Panik, setzt aber 
 Frusttolleranz vorraus (die man als Skripter aber auch sonst gut 
 gebrauchen kann).
 
-NatÃ¼rlich kann man auch solche spektakulÃ¤r anmutenden Fehler beheben und 
+Natürlich kann man auch solche spektakulär anmutenden Fehler beheben und 
 wenn man konzentriert und planvoll arbeitet, wird man schon was 
-vernÃ¼nftiges zu Stande bringen.
+vernünftiges zu Stande bringen.
 
 Kurz gesagt: Besondere Sorgfalt ist geboten! Ein Bug der zum Absturz 
-fÃ¼hrt ist nichts, was man in der Releaseversion haben will. Aber wenn 
-man sauber arbeitet und ausfÃ¼hrlich testet ist das alles halb so wild.
+führt ist nichts, was man in der Releaseversion haben will. Aber wenn 
+man sauber arbeitet und ausführlich testet ist das alles halb so wild.
 
-Ein guter Freund beim beheben von AbstÃ¼rzen ist zweifellos PrintDebug, 
-damit ist es mÃ¶glich Meldungen an den zSpy zu schicken (zum Beispiel um 
-einzugrenzen wo der Absturz Ã¼berhaupt stattfindet). Auf die Funktion 
+Ein guter Freund beim beheben von Abstürzen ist zweifellos PrintDebug, 
+damit ist es möglich Meldungen an den zSpy zu schicken (zum Beispiel um 
+einzugrenzen wo der Absturz überhaupt stattfindet). Auf die Funktion 
 MEM_SetShowDebug und den Textfilter (Options -> Textfilter) im zSpy sei 
 in diesem Zusammenhang nochmal besonders hingewiesen.
 
@@ -2627,7 +2627,7 @@ in diesem Zusammenhang nochmal besonders hingewiesen.
 //######################################
 
 //--------------------------------------
-// 1.) Funktion zum Ã¶ffnen der Truhe im Fokus:
+// 1.) Funktion zum öffnen der Truhe im Fokus:
 
 func void OpenFocussedChestOrDoor() {
     var oCNpc her;
@@ -2639,9 +2639,9 @@ func void OpenFocussedChestOrDoor() {
         return;
     };
     
-    //Fokusvob kein verschlieÃŸbares Vob?
+    //Fokusvob kein verschließbares Vob?
     if (!Hlp_Is_oCMobLockable(her.focus_vob)) {
-        Print ("Keine Truhe oder TÃ¼r im Fokus!");
+        Print ("Keine Truhe oder Tür im Fokus!");
         return;
     };
     
@@ -2653,7 +2653,7 @@ func void OpenFocussedChestOrDoor() {
 oCMobLockable_bitfield_locked;
         
         Print (ConcatStrings (
-                "Folgendes Vob geÃ¶ffnet: ",
+                "Folgendes Vob geöffnet: ",
                 Lockable._zCObject_objectName));
     } else {
         Print (ConcatStrings (
@@ -2671,7 +2671,7 @@ func void PrintCameraPos() {
     MEM_InitGlobalInst();
     
     /* Das Kameraobjekt ist kein vob (sondern was abstraktes),
-     * weiÃŸ nicht wo und wie da Positionsdaten stehen.
+     * weiß nicht wo und wie da Positionsdaten stehen.
     Ich arbeite lieber auf dem Kameravob: */
     var zCVob camVob;
     camVob = MEM_PtrToInst (MEM_Camera.connectedVob);
@@ -2680,11 +2680,11 @@ func void PrintCameraPos() {
 
         Sie besteht aus drei Vektoren, die x, y und z Richtung
         des lokalen Koordinatensystem des Kameravobs
-        in Weltkoordinaten angeben (dabei mÃ¼sste z die
+        in Weltkoordinaten angeben (dabei müsste z die
         Blickrichtung sein). Ich habe diese Vektoren hier
         mit v1, v2, v3 Bezeichnet.
-        ZusÃ¤tzlich gibt es in der 4. Spalte die Translation,
-        das heiÃŸt die Position der Kamera.
+        Zusätzlich gibt es in der 4. Spalte die Translation,
+        das heißt die Position der Kamera.
     
         v1_x    v2_x    v3_x    x
         v1_y    v2_y    v3_y    y
@@ -2692,7 +2692,7 @@ func void PrintCameraPos() {
         0       0       0       0
         
         Die Matrix ist Zeilenweise im Speicher abgelegt.
-        Da wir uns fÃ¼r die letzte Spalte interessieren sind die Indizes
+        Da wir uns für die letzte Spalte interessieren sind die Indizes
         im trafoWorld Array 3, 7 und 11, die wir brauchen.
     */
     
@@ -2709,18 +2709,18 @@ IntToString(roundf(camVob.trafoObjToWorld[11]))));
 
 func void StartRain() {
     /* Globale Instanzen initialisieren: */
-    MEM_InitGlobalInst(); /* Hierrunter fÃ¤llt auch der Skycontroller */
+    MEM_InitGlobalInst(); /* Hierrunter fällt auch der Skycontroller */
     
-    /* man kÃ¶nnte sich jetzt hier was besseres Ã¼berlegen,
+    /* man könnte sich jetzt hier was besseres überlegen,
      * aber ich machs mal so: */
     
     /* start am Anfang vom Tag (12:00 Uhr mittags) */
     MEM_SkyController.rainFX_timeStartRain = 0; //FLOATNULL;
-     /* ende am Ende vom Tag (12:00 Uhr mittags des nÃ¤chsten Tags) */
+     /* ende am Ende vom Tag (12:00 Uhr mittags des nächsten Tags) */
     MEM_SkyController.rainFX_timeStopRain = 1065353216; //FLOATEINS;
     
     /* Bemerkung dazu: Die Start und Endzeiten sind Gleitkommazahlen.
-     * 0 steht fÃ¼r den Anfang des Tages 1 fÃ¼r das Ende des Tages.
+     * 0 steht für den Anfang des Tages 1 für das Ende des Tages.
      * Ein "Skytag" beginnt um 12:00 Uhr.
      * Zum Aufbau des Gleitkommaformats google man nach IEEE 745.
      * Ich habe mal floats in Daedalus implementiert:
@@ -2735,7 +2735,7 @@ func void StartRain() {
 //--------------------------------------
 // 4.) Geschachtelte Schleife
     
-/* Soll alle Paare (x,y) aufzÃ¤hlen mit
+/* Soll alle Paare (x,y) aufzählen mit
     0 <= x < max_x,
     0 <= j < max_y
 */
@@ -2776,7 +2776,7 @@ func void printpairs(var int max_x, var int max_y) {
     };
 };
 
-/* Ausgabe eines Aufrufs printpairs (4,2) wÃ¤re dann:
+/* Ausgabe eines Aufrufs printpairs (4,2) wäre dann:
     00:36 Info:  5 U:    Skript: (0, 0) .... <zError.cpp,#465>
     00:36 Info:  5 U:    Skript: (0, 1) .... <zError.cpp,#465>
     00:36 Info:  5 U:    Skript: (1, 0) .... <zError.cpp,#465>
@@ -2805,7 +2805,7 @@ func void foo() {
     var int result;
     
     /* Der Code zwischen A und B ist in diesem Fall
-     * Ã¤quivalent zu:
+     * äquivalent zu:
      *   result = MyFunction (42, "Hello ", 23, "World!");
      *                                                    */
     
@@ -2828,7 +2828,7 @@ func void foo() {
 
 /* Anmerkung: Da Symbolindizes fortlaufend sind
  * und der Symbolindex von someObject einfach durch
- * someObject selbst gegeben ist, kÃ¶nnte
+ * someObject selbst gegeben ist, könnte
  * MEM_CallByString ("MYFUNCTION");
  * hier auch ersetzt werden durch
  * MEM_CallByID (someObject + 1); */
