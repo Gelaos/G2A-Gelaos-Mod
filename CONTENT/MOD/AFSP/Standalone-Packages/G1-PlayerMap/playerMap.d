@@ -18,9 +18,12 @@ func void _hook_oCNPC_OpenScreen_Map () {
 	var oCNPC slf; slf = _^ (ECX);
 
 	if (NPC_IsPlayer (slf)) {
+		//Call close inventory events
+		Event_Execute (_CloseInventory_Event, evOpenScreenMap);
+
 		//Is there any specific map that player should open ?
 		var int mapInstanceName; mapInstanceName = GetPlayerMapInstance ();
-	
+
 		//Get item
 		if (NPC_GetInvItem (slf, mapInstanceName)) {
 			//t_MAP_Stand_2_S0
@@ -28,7 +31,7 @@ func void _hook_oCNPC_OpenScreen_Map () {
 			AI_UseItemToState (slf, item, 0);
 			return;
 		};
-	
+
 		//Reopen last map
 		//Get item
 		if (NPC_GetInvItem (slf, oCDocumentManager_LastMapInstance)) {
@@ -61,7 +64,7 @@ func void _hook_oCNPC_OpenScreen_Map () {
 		var int count;
 
 		count = NPC_GetInvItemBySlot (slf, INV_DOC, itmSlot);
-		
+
 		while (count);
 			if (Hlp_StrCmp (item.scemeName, "MAP")) {
 				//t_MAP_Stand_2_S0
@@ -79,11 +82,16 @@ func void _hook_oCNPC_OpenScreen_Map () {
 func void G1_PlayerMap_Init () {
 	const int once = 0;
 
+	//We only need to make sure that event handler for _CloseInventory_Event is initialized
+	G12_CloseInventoryEvent_Init ();
+
 	if (!once) {
 		//Add hook which will recognize latest map
 		HookEngine (oCDocumentManager__CreateMap, 6, "_hook_oCDocumentManager_CreateMap");
 
-		//Replace original function
+		//Replace original function for opening map
 		ReplaceEngineFunc (oCNPC__OpenScreen_Map, 0, "_hook_oCNPC_OpenScreen_Map");
+
+		once = 1;
 	};
 };

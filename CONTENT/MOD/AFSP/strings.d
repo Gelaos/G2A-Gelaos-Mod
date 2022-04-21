@@ -1,5 +1,6 @@
 /*
  *	Copied from Ikarus --> MEM_Error & MEM_Warn calls removed
+ *	MEM_Error will eventually cause Gothic to crash in my experience
  */
 func string mySTR_SubStr (var string str, var int start, var int count) {
     if (start < 0) || (count < 0) {
@@ -10,7 +11,7 @@ func string mySTR_SubStr (var string str, var int start, var int count) {
     /* Hole Adressen von zwei Strings, Source und Destination (für Kopieroperation) */
     var zString zStrSrc;
     var zString zStrDst; var string dstStr; dstStr = "";
-    
+
     zStrSrc = _^(_@s(str));
     zStrDst = _^(_@s(dstStr));
 
@@ -18,7 +19,7 @@ func string mySTR_SubStr (var string str, var int start, var int count) {
         if (zStrSrc.len < start) {
             //MEM_Warn ("STR_SubStr: The desired start of the substring lies beyond the end of the string.");
             return "";
-            
+
         } else {
             /* The start is in valid bounds. The End is shitty. */
             /* Careful! MEM_Warn will use STR_SubStr (but will never use it in a way that would produce a warning) */
@@ -56,12 +57,12 @@ func int HEX2RGBA (var string hex) {
 	var int G; G = 255;
 	var int B; B = 255;
 	var int A; A = 255;
-	
+
 	if (STR_Len(hex) > 1) { R = hex2dec (mySTR_SubStr (hex, 0, 2)); };
 	if (STR_Len(hex) > 3) { G = hex2dec (mySTR_SubStr (hex, 2, 2)); };
 	if (STR_Len(hex) > 5) { B = hex2dec (mySTR_SubStr (hex, 4, 2)); };
 	if (STR_Len(hex) > 7) { A = hex2dec (mySTR_SubStr (hex, 6, 2)); };
-	
+
 	return RGBA (R, G, B, A);
 };
 
@@ -110,7 +111,6 @@ func string STR_TrimL(var string str, var string tok) {
     };
 };
 
-
 func string STR_TrimR(var string str, var string tok) {
     var int lenS; lenS = STR_Len(str);
     var int lenT; lenT = STR_Len(tok);
@@ -120,10 +120,9 @@ func string STR_TrimR(var string str, var string tok) {
     var int cont;
     var int t;
 
-    // Start from the beginning
+    // Start from the end
     var int endP; endP = lenS-1;
 
-    // Start from the end
     while(endP >= 0);
         ss = STR_Substr(str, endP, 1);
         cont = FALSE;
@@ -157,5 +156,120 @@ func string STR_TrimR(var string str, var string tok) {
     };
 };
 
+/*
+ *	Copied from Ikarus --> added startFrom
+ */
+func int STR_IndexOfFrom (var string str, var string tok, var int startFrom) {
+    var zString zStr; zStr = _^(_@s(str));
+    var zString zTok; zTok = _^(_@s(tok));
 
+    if(zTok.len == 0) {
+        return 0;
+    };
+    if (zStr.len == 0) {
+        return -1;
+    };
 
+    var int startPos; startPos = zStr.ptr + startFrom;
+    var int startMax; startMax = zStr.ptr + zStr.len - zTok.len;
+
+    var int loopPos; loopPos = MEM_StackPos.position;
+    if (startPos <= startMax) {
+        if (MEM_CompareBytes(startPos, zTok.ptr, zTok.len)) {
+            return startPos - zStr.ptr;
+        };
+        startPos += 1;
+        MEM_StackPos.position = loopPos;
+    };
+    return -1;
+};
+
+/*
+ *	Converts char to byte value, 'A' to 64, 'a' to 96
+ */
+func int CtoB (var string s) {
+	var int buf; buf = STR_toChar (s);
+	var int chr; chr = MEM_ReadInt (buf) & 255;
+	return chr;
+};
+
+/*
+ *	Converts byte back to char, 96 to 'a', 64 to 'A'
+ */
+func string BtoC (var int i) {
+	const int mem = 0;
+	if (!mem) { mem = MEM_Alloc (1); };
+
+	MEM_WriteByte (mem, i);
+	return STR_FromChar (mem);
+};
+
+func string STR_Left (var string s, var int count) {
+	var int len; len = STR_Len (s);
+
+	if (len < count) {
+		return s;
+	};
+
+	return mySTR_SubStr (s, 0, count);
+};
+
+func string STR_Right (var string s, var int count) {
+	var int len; len = STR_Len (s);
+
+	if (len < count) {
+		return s;
+	};
+
+	return mySTR_SubStr (s, len - count, count);
+};
+
+/*
+ *	Just a little wrapper function ... to eliminate unnecessary code
+ *	LeGo already has STR_StartsWith, so why not :)
+ */
+func int STR_EndsWith (var string s, var string s1) {
+	return Hlp_StrCmp (STR_Right (s, STR_Len (s1)), s1);
+};
+
+/*
+ *
+ */
+func string STR_AddString (var string s, var string s1, var string separator) {
+	if (STR_Len (s) > 0) {
+		s = ConcatStrings (s, separator);
+	};
+
+	s = ConcatStrings (s, s1);
+
+	return s;
+};
+
+/*
+ *
+ *	 - derived from mud-freak's STR_IndexOfFirstNonNumeric function
+ */
+func int STR_IsNumeric (var string s) {
+	var int len; len = STR_Len (s);
+	var int buf; buf = STR_toChar (s);
+
+	var int index; index = 0;
+
+	if (!len) { return FALSE; };
+
+	while(index < len);
+		var int chr; chr = MEM_ReadInt(buf + index) & 255;
+
+		if (chr >= 48 /* 0 */) && (chr <= 57 /* 9 */) {
+
+		} else if ((chr != 45 /*-*/) && (chr != 43 /*+*/)) && (index == 0) {
+
+		} else {
+			return FALSE;
+		};
+
+		index += 1;
+	end;
+
+	return TRUE;
+};
