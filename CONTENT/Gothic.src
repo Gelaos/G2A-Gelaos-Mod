@@ -340,9 +340,10 @@ STORY\B_Story\B_ENTER_DRAGONISLAND.d
 ; ///////////////////////////////////////////////
 
 \GelaosMod\Constants_And_Variables.d
+\GelaosMod\Functions\*.d
 \GelaosMod\Items\*.d
-\GelaosMod\CharacterCustomization.d
 \GelaosMod\Story\NPC\*.d
+\GelaosMod\Story\Dialoge\Teach\*.d
 \GelaosMod\Story\Dialoge\*.d
 
 ; ///////////////////////////////////////////////

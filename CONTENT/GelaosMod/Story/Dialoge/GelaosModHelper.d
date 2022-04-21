@@ -137,8 +137,40 @@ func void DIA_GelaosModHelper_ChangeBaldness_Info() {
 
 
 
+// //////////////////////////////////////////////////
+// Teach Dialogue
+// //////////////////////////////////////////////////
+instance DIA_GelaosModHelper_Teach_LP (C_INFO) {
+   nr          = 1;
+   npc         = GelaosModHelper;
+   condition   = DIA_GelaosModHelper_Teach_LP_Condition;
+   information = DIA_GelaosModHelper_Teach_LP_Info;
+   important   = FALSE;
+   permanent   = TRUE;
+   description = "Teach...";
+};
+
+func int DIA_GelaosModHelper_Teach_LP_Condition() {
+   Teach_LP_Spinner_Setup();
+
+   return TRUE;
+};
 
 
+func void DIA_GelaosModHelper_Teach_LP_Info() {
+   Info_ClearChoices(DIA_GelaosModHelper_Teach_LP);
+   Info_AddChoice(DIA_GelaosModHelper_Teach_LP, DIALOG_BACK, DIA_Teach_LP_Back);
+   Info_AddChoice(DIA_GelaosModHelper_Teach_LP, "s@Teach_LP Buy Learning Points: ", DIA_Teach_LP);
+};
+
+func void DIA_Teach_LP() {
+   Teach_LP();
+   DIA_GelaosModHelper_Teach_LP_Info();
+};
+
+func void DIA_Teach_LP_Back() {
+   Info_ClearChoices(DIA_GelaosModHelper_Teach_LP);
+};
 
 
 
