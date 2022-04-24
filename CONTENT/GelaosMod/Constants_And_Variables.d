@@ -2,18 +2,41 @@
 // /////////////////////////////////////////////////
 // Constants and variables
 // /////////////////////////////////////////////////
-// /////////////////////////////////////////////////
+// ///////////////////////////////////////////////// 
 
 // /////////////////////////////////////////////////
-// XP & Levelling
+// XP & Levelling & Teaching
 // /////////////////////////////////////////////////    
 
-var int BuyedLPs;
-var int SpentXP;
-var int LP_CostAndCount[2];
+const string TEACH_DIA_DESC = "(Learn)";
+
+// LP buying ---------------------------------------
+const string TEACH_LP_CANT_BUY = "Not enough XP.";
+const string TEACH_LP_BOUGHT_MSG = "Learning points + ";
+const string TEACH_LP_DIA_DESC = "Buy Learning Points: ";
+var int BuyedLPs; // count of already bought LPs
+var int SpentXP; // sum of XP spent for buying LPs
+var int LP_CostAndCount[2]; // count and XP cost of LPs that player can/wants to buy
 const int LP_COST = 0;
 const int LP_COUNT = 1;
 
+// Attributes ---------------------------------------
+var int TEACH_STR_TEACHER_MIM;
+var int TEACH_STR_TEACHER_MAX;
+var int TEACH_DEX_TEACHER_MIM;
+var int TEACH_DEX_TEACHER_MAX;
+var int TEACH_1H_TEACHER_MIM;
+var int TEACH_1H_TEACHER_MAX;
+var int TEACH_2H_TEACHER_MIM;
+var int TEACH_2H_TEACHER_MAX;
+var int TEACH_BOW_TEACHER_MIM;
+var int TEACH_BOW_TEACHER_MAX;
+var int TEACH_CBOW_TEACHER_MIM;
+var int TEACH_CBOW_TEACHER_MAX;
+var int TEACH_MP_TEACHER_MIM;
+var int TEACH_MP_TEACHER_MAX;
+var int TEACH_HP_TEACHER_MIM;
+var int TEACH_HP_TEACHER_MAX;
 
 // /////////////////////////////////////////////////
 // Character Appearance Customization

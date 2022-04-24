@@ -26,7 +26,7 @@ func void B_GivePlayerXP (var int add_xp)
 		hero.attribute[ATR_HITPOINTS_MAX] 	= hero.attribute[ATR_HITPOINTS_MAX]	+ HP_PER_LEVEL;
 		hero.attribute[ATR_HITPOINTS] 		= hero.attribute[ATR_HITPOINTS]		+ HP_PER_LEVEL;
 		
-		hero.LP = hero.LP + LP_PER_LEVEL;
+		//hero.LP = hero.LP + LP_PER_LEVEL;
 				
 		PrintScreen (PRINT_LevelUp, -1, YPOS_LevelUp, FONT_Screen, 2);				
 		Snd_Play ("LevelUp");
