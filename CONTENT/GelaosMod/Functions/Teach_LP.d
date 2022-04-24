@@ -1,18 +1,23 @@
-var string lastSpinnerID;
+const string TEACH_LP_SPINNER_ID = "Teach_LP";
+
+var int spinnerLPActive;
 var int spinnerLPMin;
 var int spinnerLPMax;
-var int spinnerLPActive;
-var string spinnerLPDescription;
 var int spinnerLPValue;
-const string TEACH_LP_SPINNER_ID = "Teach_LP";
+
+var string lastSpinnerID;
+var string spinnerLPDescription;
+var string availableXPStr;
+var string xpCostSelectedStr;
+var string spinnerLPValueStr;
 
 // -----------------------------------------------------
 
 func void Teach_LP_Spinner_Setup() {
     // set range
     GetLP_CostAndCount(BuyedLPs, -1, hero.exp - SpentXP); // how many LPs at most can player buy and for what XP cost? 
-    spinnerLPMin = 0;
-    spinnerLPMax = LP_CostAndCount[LP_COUNT];
+    spinnerLPMax = LP_CostAndCount[LP_COUNT];    
+    spinnerLPMin = iif(spinnerLPMax >= 1, 1, 0); // if max >= 1, set min to 1, otherwise to 0
 
     // check boundaries
     if (spinnerLPValue < spinnerLPMin) { spinnerLPValue = spinnerLPMin; };
@@ -24,7 +29,7 @@ func void Teach_LP_Spinner_Setup() {
     if (spinnerLPActive) {
         // setup spinner value if spinner ID has changed
         if (!Hlp_StrCmp (InfoManagerSpinnerID, lastSpinnerID)) {
-            InfoManagerSpinnerValue = spinnerLPMin;
+            InfoManagerSpinnerValue = spinnerLPValue;
         };
         
         InfoManagerSpinnerPageSize = 1; // page Up/Down quantities         
@@ -34,9 +39,36 @@ func void Teach_LP_Spinner_Setup() {
         spinnerLPValue = InfoManagerSpinnerValue; // update value
     };    
 
+    availableXPStr = IntToString(hero.exp - SpentXP);    
+
     // update spinner description
-    var string spinnerLPValueStr; spinnerLPValueStr = IntToString (spinnerLPValue);
-    spinnerLPDescription = ConcatStrings7("s@", TEACH_LP_SPINNER_ID, " ", TEACH_LP_DIA_DESC, spinnerLPValueStr, " / ", IntToString (spinnerLPMax));
+    // not enough XP to buy LP
+    if (spinnerLPMax < 1) {
+        var string currentXP; currentXP = IntToString(hero.exp - SpentXP);
+        var string requiredXP; requiredXP = IntToString(GetPriceNthLP(BuyedLPs));
+        
+        spinnerLPDescription = ConcatStrings13(
+            DIA_SPINNER, TEACH_LP_SPINNER_ID, " ", TEACH_LP_DIA_DESC, 
+            DIA_FORMAT_START, DIA_COLOR_RED, 
+                TEACH_LP_CANT_BUY,  "  (", currentXP, " / ", requiredXP, " XP)", 
+            DIA_FORMAT_END
+        );     
+    }
+    // enough XP to buy LP
+    else {
+        // get XP cost for given LP amount
+        GetLP_CostAndCount(BuyedLPs, spinnerLPValue, hero.exp - SpentXP);
+        
+        spinnerLPValueStr = IntToString (spinnerLPValue);
+        xpCostSelectedStr = IntToString(LP_CostAndCount[LP_COST]);    
+        
+        spinnerLPDescription = ConcatStrings12(
+            DIA_SPINNER, TEACH_LP_SPINNER_ID,  " ",  TEACH_LP_DIA_DESC, 
+            spinnerLPValueStr,  " / ",  IntToString (spinnerLPMax), 
+            "  (",  xpCostSelectedStr,  " / ", availableXPStr, " XP)" 
+        );
+    };    
+    
     InfoManager_SetInfoChoiceText_BySpinnerID (spinnerLPDescription, TEACH_LP_SPINNER_ID);
 
     lastSpinnerID = InfoManagerSpinnerID;
@@ -45,11 +77,7 @@ func void Teach_LP_Spinner_Setup() {
 // -----------------------------------------------------
 
 func void Teach_LP() {
-    if (spinnerLPValue <= 0) {
-        // no LPs can be bought
-        if (LP_CostAndCount[LP_COUNT] <= 0) {
-            PrintScreen (TEACH_LP_CANT_BUY, -1, YPOS_LevelUp, FONT_Screen, 5);
-        };
+    if (spinnerLPValue <= 0 || InfoManagerSpinnerValue < 0) {
         return; 
     };
 
