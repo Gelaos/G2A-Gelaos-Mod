@@ -1,15 +1,18 @@
-const string TEACH_LP_SPINNER_ID = "Teach_LP";
+const string TEACH_SPINNER_ID_LP    = "Teach_LP";
+const string TEACH_LP_CANT_BUY      = "Not enough XP";
+const string TEACH_LP_DIA_DESC      = "Buy Learning Points: ";
 
 var int spinnerLPActive;
 var int spinnerLPMin;
 var int spinnerLPMax;
 var int spinnerLPValue;
 
-var string lastSpinnerID;
 var string spinnerLPDescription;
 var string availableXPStr;
 var string xpCostSelectedStr;
 var string spinnerLPValueStr;
+
+var string lastSpinnerLPID;
 
 // -----------------------------------------------------
 
@@ -23,13 +26,21 @@ func void Teach_LP_Spinner_Setup() {
     if (spinnerLPValue < spinnerLPMin) { spinnerLPValue = spinnerLPMin; };
     if (spinnerLPValue > spinnerLPMax) { spinnerLPValue = spinnerLPMax; };
 
-    spinnerLPActive = Hlp_StrCmp (InfoManagerSpinnerID, TEACH_LP_SPINNER_ID);
+    spinnerLPActive = Hlp_StrCmp (InfoManagerSpinnerID, TEACH_SPINNER_ID_LP);
 
     // setup spinner
     if (spinnerLPActive) {
         // setup spinner value if spinner ID has changed
-        if (!Hlp_StrCmp (InfoManagerSpinnerID, lastSpinnerID)) {
+        if (!Hlp_StrCmp (InfoManagerSpinnerID, lastSpinnerLPID)) {
             InfoManagerSpinnerValue = spinnerLPValue;
+        };
+        
+        // check InfoManagerSpinnerValue, just in case...
+        if (InfoManagerSpinnerValue <  spinnerLPMin) {
+            InfoManagerSpinnerValue = spinnerLPMin;
+        };
+        if (InfoManagerSpinnerValue > spinnerLPMax) {
+            InfoManagerSpinnerValue = spinnerLPMax;
         };
         
         InfoManagerSpinnerPageSize = 1; // page Up/Down quantities         
@@ -48,7 +59,7 @@ func void Teach_LP_Spinner_Setup() {
         var string requiredXP; requiredXP = IntToString(GetPriceNthLP(BuyedLPs));
         
         spinnerLPDescription = ConcatStrings13(
-            DIA_SPINNER, TEACH_LP_SPINNER_ID, " ", TEACH_LP_DIA_DESC, 
+            DIA_SPINNER, TEACH_SPINNER_ID_LP, " ", TEACH_LP_DIA_DESC, 
             DIA_FORMAT_START, DIA_COLOR_RED, 
                 TEACH_LP_CANT_BUY,  "  (", currentXP, " / ", requiredXP, " XP)", 
             DIA_FORMAT_END
@@ -63,15 +74,15 @@ func void Teach_LP_Spinner_Setup() {
         xpCostSelectedStr = IntToString(LP_CostAndCount[LP_COST]);    
         
         spinnerLPDescription = ConcatStrings12(
-            DIA_SPINNER, TEACH_LP_SPINNER_ID,  " ",  TEACH_LP_DIA_DESC, 
+            DIA_SPINNER, TEACH_SPINNER_ID_LP,  " ",  TEACH_LP_DIA_DESC, 
             spinnerLPValueStr,  " / ",  IntToString (spinnerLPMax), 
             "  (",  xpCostSelectedStr,  " / ", availableXPStr, " XP)" 
         );
     };    
     
-    InfoManager_SetInfoChoiceText_BySpinnerID (spinnerLPDescription, TEACH_LP_SPINNER_ID);
+    InfoManager_SetInfoChoiceText_BySpinnerID (spinnerLPDescription, TEACH_SPINNER_ID_LP);
 
-    lastSpinnerID = InfoManagerSpinnerID;
+    lastSpinnerLPID = InfoManagerSpinnerID;
 };
 
 // -----------------------------------------------------
@@ -89,7 +100,7 @@ func void Teach_LP() {
 
     // print message    
     var string message; message = "";
-    message = ConcatStrings(TEACH_LP_BOUGHT_MSG, IntToString(spinnerLPValue));
+    message = ConcatStrings(PRINT_LearnLP, IntToString(spinnerLPValue));
     PrintScreen (message, -1, YPOS_LevelUp, FONT_Screen, 5);
 };
 

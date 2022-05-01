@@ -13,53 +13,16 @@ const string DIA_COLOR_RED = "h@FF3030 hs@FF4646:";
 // XP & Levelling & Teaching
 // /////////////////////////////////////////////////    
 
-const string TEACH_DIA_DESC = "(Learn)";
-
 // LP buying ---------------------------------------
-const string TEACH_LP_CANT_BUY = "Not enough XP";
-const string TEACH_LP_BOUGHT_MSG = "Learning points + ";
-const string TEACH_LP_DIA_DESC = "Buy Learning Points: ";
 var int BuyedLPs; // count of already bought LPs
 var int SpentXP; // sum of XP spent for buying LPs
+
 var int LP_CostAndCount[2]; // count and XP cost of LPs that player can/wants to buy
 const int LP_COST = 0;
 const int LP_COUNT = 1;
 
-// Attributes & Talents -----------------------------
-const int START_HP      = 40;
-const int START_MP      = 10;
-const int TEACH_STR     = 1;
-const int TEACH_DEX     = 2;
-const int TEACH_1H      = 3;
-const int TEACH_2H      = 4;
-const int TEACH_BOW     = 5;
-const int TEACH_CBOW    = 6;
-const int TEACH_MP      = 7;
-const int TEACH_HP      = 8;
 var int Learned_HP;
-var int Learned_MP;
-
-var int Teach_Attribute[3]; // count and cost in LP and gold of attribute that player can/wants to buy
-const int TEACH_ATTRIBUTE_COUNT = 0;
-const int TEACH_ATTRIBUTE_COST_LP = 1;
-const int TEACH_ATTRIBUTE_COST_GOLD = 2;
-
-var int TEACH_STR_TEACHER_MIM;
-var int TEACH_STR_TEACHER_MAX;
-var int TEACH_DEX_TEACHER_MIM;
-var int TEACH_DEX_TEACHER_MAX;
-var int TEACH_1H_TEACHER_MIM;
-var int TEACH_1H_TEACHER_MAX;
-var int TEACH_2H_TEACHER_MIM;
-var int TEACH_2H_TEACHER_MAX;
-var int TEACH_BOW_TEACHER_MIM;
-var int TEACH_BOW_TEACHER_MAX;
-var int TEACH_CBOW_TEACHER_MIM;
-var int TEACH_CBOW_TEACHER_MAX;
-var int TEACH_MP_TEACHER_MIM;
-var int TEACH_MP_TEACHER_MAX;
-var int TEACH_HP_TEACHER_MIM;
-var int TEACH_HP_TEACHER_MAX;
+var int Attribute_Real_MP;
 
 // /////////////////////////////////////////////////
 // Character Appearance Customization

@@ -137,40 +137,6 @@ func void DIA_GelaosModHelper_ChangeBaldness_Info() {
 
 
 
-// //////////////////////////////////////////////////
-// Teach Dialogue
-// //////////////////////////////////////////////////
-instance DIA_GelaosModHelper_Teach (C_INFO) {
-   nr          = 998;
-   npc         = GelaosModHelper;
-   condition   = DIA_GelaosModHelper_Teach_Condition;
-   information = DIA_GelaosModHelper_Teach_Info;
-   important   = FALSE;
-   permanent   = TRUE;
-   description = TEACH_DIA_DESC;
-};
-// --------------------------------------------------------------
-func int DIA_GelaosModHelper_Teach_Condition() {
-   Teach_LP_Spinner_Setup();
-
-   return TRUE;
-};
-// --------------------------------------------------------------
-func void DIA_GelaosModHelper_Teach_Info() {
-   Info_ClearChoices(DIA_GelaosModHelper_Teach);
-
-   Info_AddChoice(DIA_GelaosModHelper_Teach, DIALOG_BACK, DIA_GelaosModHelper_Teach_Back);
-   Info_AddChoice(DIA_GelaosModHelper_Teach, ConcatStrings("s@",TEACH_LP_SPINNER_ID), DIA_GelaosModHelper_Teach_LP);
-};
-// --------------------------------------------------------------
-func void DIA_GelaosModHelper_Teach_Back() {
-   Info_ClearChoices(DIA_GelaosModHelper_Teach);
-};
-// --------------------------------------------------------------
-func void DIA_GelaosModHelper_Teach_LP() {
-   Teach_LP();
-   DIA_GelaosModHelper_Teach_Info();
-};
 
 
 
