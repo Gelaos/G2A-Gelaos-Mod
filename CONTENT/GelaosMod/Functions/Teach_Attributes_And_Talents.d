@@ -167,6 +167,10 @@ func int Get_Attribute_Count(var int attributeType, var int currentValue, var in
 // Attributes cost = sum from current up to target attribute level
 // i.e. raising STR from 18 to 21 will cost (19 + 20 + 21) = 60 gold
 func int Get_Attribute_Cost_Gold (var int attributeType, var int currentValue, var int targetValue) {
+    if (attributeType == TEACH_MP) {
+        return (targetValue - currentValue)*10;
+    };
+
     var int goldCost; goldCost = 0;
     var int value; value = currentValue + 1;    
 
@@ -176,7 +180,7 @@ func int Get_Attribute_Cost_Gold (var int attributeType, var int currentValue, v
             goldCost += value;
             value += 1;
         end;    
-    };    
+    };        
 
     return goldCost;
 };
@@ -184,25 +188,13 @@ func int Get_Attribute_Cost_Gold (var int attributeType, var int currentValue, v
 // -----------------------------------------------------
 // Teach_IsAvailable()
 func int Teach_IsAvailable (var int attributeType) {
-//    var string msg; msg = "";
-//    if (attributeType == TEACH_STR) {
-//        if (( teachingFlags & attributeType )) { msg = ConcatStrings(msg, "1"); }
-//        else { msg = ConcatStrings(msg, "0"); };
-//
-//        if (Get_Attribute_CurrentValue(attributeType) >= MEM_ReadStatArr(Teach_Attribute_TeacherMin, attributeType)) { msg = ConcatStrings(msg, "1"); }
-//        else { msg = ConcatStrings(msg, "0"); };
-//
-//        if (Get_Attribute_CurrentValue(attributeType) < MEM_ReadStatArr(Teach_Attribute_TeacherMax, attributeType)) { msg = ConcatStrings(msg, "1"); }
-//        else { msg = ConcatStrings(msg, "0"); };
-//    };
-//
-//    PrintScreen	(msg, -1, -1, FONT_SCREEN, 5);
+    var int currentValue; currentValue = Get_Attribute_CurrentValue(attributeType);
 
     return (
         ( teachingFlags & 1 << attributeType ) // is teaching enabled?
         // is player's attribute in teacher's range?
-        && Get_Attribute_CurrentValue(attributeType) >= MEM_ReadStatArr(Teach_Attribute_TeacherMin, attributeType)
-        && Get_Attribute_CurrentValue(attributeType) < MEM_ReadStatArr(Teach_Attribute_TeacherMax, attributeType)
+        && currentValue >= MEM_ReadStatArr(Teach_Attribute_TeacherMin, attributeType)
+        && currentValue < MEM_ReadStatArr(Teach_Attribute_TeacherMax, attributeType)
     );
 };
 
