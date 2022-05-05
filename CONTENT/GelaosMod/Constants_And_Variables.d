@@ -22,7 +22,7 @@ const int LP_COST = 0;
 const int LP_COUNT = 1;
 
 var int Learned_HP;
-var int Attribute_Real_MP;
+var int Learned_MP;
 
 // /////////////////////////////////////////////////
 // Character Appearance Customization

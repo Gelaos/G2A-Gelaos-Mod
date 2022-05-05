@@ -133,7 +133,7 @@ func int Get_Attribute_CurrentValue (var int attributeType) {
     else if ( attributeType == TEACH_2H   )   { currentValue = hero.aivar[REAL_TALENT_2H];      }
     else if ( attributeType == TEACH_BOW  )   { currentValue = hero.aivar[REAL_TALENT_BOW];     }
     else if ( attributeType == TEACH_CBOW )   { currentValue = hero.aivar[REAL_TALENT_CROSSBOW];}
-    else if ( attributeType == TEACH_MP   )   { currentValue = START_MP + Attribute_Real_MP;    }
+    else if ( attributeType == TEACH_MP   )   { currentValue = START_MP + Learned_MP;    }
     else if ( attributeType == TEACH_HP   )   { currentValue = START_HP + Learned_HP;           };
 
     return currentValue;
@@ -322,27 +322,27 @@ func void Teach_Attribute_Spinner_Setup (var int attributeType) {
 // sets fight animation of given attribute acccording to its level
 func void Teach_Combat_SetFightAnimation(var int combatType, var int percent) {
     if (combatType == TEACH_1H) {
-		if (hero.HitChance[NPC_TALENT_1H] >=0)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_1H, 0);	};
-		if (hero.HitChance[NPC_TALENT_1H] >=30)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_1H, 1);	};
-		if (hero.HitChance[NPC_TALENT_1H] >=60)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_1H, 2);	};
+		if (percent >=0)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_1H, 0);	};
+		if (percent >=30)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_1H, 1);	};
+		if (percent >=60)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_1H, 2);	};
 	};
 	
 	if (combatType == TEACH_2H) {
-		if (hero.HitChance[NPC_TALENT_1H] >=0)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_2H, 0);	};
-		if (hero.HitChance[NPC_TALENT_2H] >=30)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_2H, 1);	};
-		if (hero.HitChance[NPC_TALENT_2H] >=60)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_2H, 2);	};
+		if (percent >=0)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_2H, 0);	};
+		if (percent >=30)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_2H, 1);	};
+		if (percent >=60)	        {	Npc_SetTalentSkill (hero, NPC_TALENT_2H, 2);	};
 	};
 	
 	if (combatType == TEACH_BOW) {		
-		if (hero.HitChance[NPC_TALENT_BOW] >=0)         {	Npc_SetTalentSkill (hero, NPC_TALENT_BOW, 0);	};
-		if (hero.HitChance[NPC_TALENT_BOW] >=30)	    {	Npc_SetTalentSkill (hero, NPC_TALENT_BOW, 1);	};
-		if (hero.HitChance[NPC_TALENT_BOW] >=60)        {	Npc_SetTalentSkill (hero, NPC_TALENT_BOW, 2);	};
+		if (percent >=0)         {	Npc_SetTalentSkill (hero, NPC_TALENT_BOW, 0);	};
+		if (percent >=30)	    {	Npc_SetTalentSkill (hero, NPC_TALENT_BOW, 1);	};
+		if (percent >=60)        {	Npc_SetTalentSkill (hero, NPC_TALENT_BOW, 2);	};
 	};
 	
 	if (combatType == TEACH_CBOW) {	
-		if (hero.HitChance[NPC_TALENT_CROSSBOW] >=0)    {	Npc_SetTalentSkill (hero, NPC_TALENT_CROSSBOW, 0);	};
-		if (hero.HitChance[NPC_TALENT_CROSSBOW] >=30)   {	Npc_SetTalentSkill (hero, NPC_TALENT_CROSSBOW, 1);	};
-		if (hero.HitChance[NPC_TALENT_CROSSBOW] >=60)   {	Npc_SetTalentSkill (hero, NPC_TALENT_CROSSBOW, 2);	};
+		if (percent >=0)    {	Npc_SetTalentSkill (hero, NPC_TALENT_CROSSBOW, 0);	};
+		if (percent >=30)   {	Npc_SetTalentSkill (hero, NPC_TALENT_CROSSBOW, 1);	};
+		if (percent >=60)   {	Npc_SetTalentSkill (hero, NPC_TALENT_CROSSBOW, 2);	};
 	};
 };
 // ------------------------------------------
@@ -378,7 +378,7 @@ func void Teach (var int attributeType) {
         hero.aivar[REAL_TALENT_1H] += points;
         hero.HitChance[NPC_TALENT_1H] += points;   
         
-        Teach_Combat_SetFightAnimation(TEACH_1H, hero.HitChance[NPC_TALENT_1H]); 
+        Teach_Combat_SetFightAnimation(TEACH_1H, hero.aivar[REAL_TALENT_1H]); 
         
         message = "";
     }
@@ -387,7 +387,7 @@ func void Teach (var int attributeType) {
         hero.aivar[REAL_TALENT_2H] += points;
         hero.HitChance[NPC_TALENT_2H] += points;    
 
-        Teach_Combat_SetFightAnimation(TEACH_2H, hero.HitChance[NPC_TALENT_2H]); 
+        Teach_Combat_SetFightAnimation(TEACH_2H, hero.aivar[REAL_TALENT_2H]); 
         
         message = PRINT_Learn2H;
     }
@@ -396,7 +396,7 @@ func void Teach (var int attributeType) {
         hero.aivar[REAL_TALENT_BOW] += points;
         hero.HitChance[NPC_TALENT_BOW] += points;    
 
-        Teach_Combat_SetFightAnimation(TEACH_BOW, hero.HitChance[NPC_TALENT_BOW]); 
+        Teach_Combat_SetFightAnimation(TEACH_BOW, hero.aivar[REAL_TALENT_BOW]); 
         
         message = PRINT_LearnBow;
     }
@@ -405,7 +405,7 @@ func void Teach (var int attributeType) {
         hero.aivar[REAL_TALENT_CROSSBOW] += points;
         hero.HitChance[NPC_TALENT_CROSSBOW] += points;    
 
-        Teach_Combat_SetFightAnimation(TEACH_CBOW, hero.HitChance[NPC_TALENT_CROSSBOW]); 
+        Teach_Combat_SetFightAnimation(TEACH_CBOW, hero.aivar[REAL_TALENT_CROSSBOW]); 
         
         message = PRINT_LearnCrossbow;
     }
@@ -414,7 +414,7 @@ func void Teach (var int attributeType) {
         hero.attribute[ATR_MANA] += points;
         hero.attribute[ATR_MANA_MAX] += points;
         
-        Attribute_Real_MP += points;
+        Learned_MP += points;
         message = PRINT_LearnMANA_MAX;         
     };
 			

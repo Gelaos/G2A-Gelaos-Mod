@@ -113,26 +113,29 @@ instance DIA_GelaosModHelper_Teach_Setup (C_INFO) {
 };
 
 func int DIA_GelaosModHelper_Teach_Setup_Condition() {   
-   // set up which things will be available for teaching & initialize their default range
-   // setting is done via bit-wise operations, thus the '1 << xxx' in the code
-   Teach_Setup(
-        1 << TEACH_STR    
-      | 1 << TEACH_DEX 
-      | 1 << TEACH_1H  
-      | 1 << TEACH_2H  
-      | 1 << TEACH_BOW 
-      | 1 << TEACH_CBOW
-      | 1 << TEACH_MP  
-      //| (1 << TEACH_HP   )
-   );
 
-   // (optional): restrict range
-   //Teach_SetRange(TEACH_STR, 0, 1000);      
-   //Teach_SetRange(TEACH_STR, 0, 1000);  
-   //Teach_SetRange(TEACH_DEX, 0, 1000);  
-   //Teach_SetRange(TEACH_MP, 0, 1000);  
+   if (DIA_TeachHandler.npc != Hlp_GetinstanceID (self)) {
+      // set up which things will be available for teaching & initialize their default range
+      // setting is done via bit-wise operations, thus the '1 << xxx' in the code
+      Teach_Setup(
+         1 << TEACH_STR    
+         | 1 << TEACH_DEX 
+         | 1 << TEACH_1H  
+         | 1 << TEACH_2H  
+         | 1 << TEACH_BOW 
+         | 1 << TEACH_CBOW
+         | 1 << TEACH_MP  
+         //| (1 << TEACH_HP   )
+      );
 
-   DIA_TeachHandler.npc = Hlp_GetinstanceID (self);
+      // (optional): restrict range
+      //Teach_SetRange(TEACH_STR, 0, 1000);      
+      //Teach_SetRange(TEACH_STR, 0, 1000);  
+      //Teach_SetRange(TEACH_DEX, 0, 1000);  
+      //Teach_SetRange(TEACH_MP, 0, 1000);  
+
+      DIA_TeachHandler.npc = Hlp_GetinstanceID (self);
+   };
 
     return false;
 };
