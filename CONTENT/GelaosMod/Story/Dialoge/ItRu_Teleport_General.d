@@ -68,10 +68,11 @@ INSTANCE DIA_ItRu_Teleport_General_EXIT   (C_INFO)
 };
 FUNC INT DIA_ItRu_Teleport_General_EXIT_Condition()
 {
-	return (CurrentLevel != OLDWORLD_ZEN && CurrentLevel != NEWWORLD_ZEN);
+	return (TeleportStarted && CurrentLevel != OLDWORLD_ZEN && CurrentLevel != NEWWORLD_ZEN);
 };
 FUNC VOID DIA_ItRu_Teleport_General_EXIT_Info()
 {
+	TeleportStarted = false;
 	MEM_Timer.factorMotion = mkf(1);
 	DIA_Teleport_Location_Reset_Selection();
 	AI_StopProcessInfos (self);
@@ -81,6 +82,7 @@ FUNC VOID DIA_ItRu_Teleport_General_EXIT_Info()
 //	Teleport function
 //---------------------------------------------------------------------
 func void TeleportHandler (var C_NPC npc, var string wp) {
+	TeleportStarted = false;
 	MEM_Timer.factorMotion = mkf(1);
 	DIA_Teleport_Location_Reset_Selection();
 	AI_StopProcessInfos (npc);
@@ -101,7 +103,7 @@ INSTANCE DIA_Teleport_Location_NW_City   (C_INFO)
 };
 FUNC INT DIA_Teleport_Location_NW_City_Condition()
 {
-	return (CurrentLevel == NEWWORLD_ZEN && TeleportLocationMainMenu);
+	return (TeleportStarted && CurrentLevel == NEWWORLD_ZEN && TeleportLocationMainMenu);
 };
 FUNC VOID DIA_Teleport_Location_NW_City_Info()
 {
@@ -168,7 +170,7 @@ INSTANCE DIA_Teleport_Location_NW_Nature   (C_INFO)
 };
 FUNC INT DIA_Teleport_Location_NW_Nature_Condition()
 {
-	return (CurrentLevel == NEWWORLD_ZEN && TeleportLocationMainMenu);
+	return (TeleportStarted && CurrentLevel == NEWWORLD_ZEN && TeleportLocationMainMenu);
 };
 FUNC VOID DIA_Teleport_Location_NW_Nature_Info()
 {
@@ -309,7 +311,7 @@ INSTANCE DIA_Teleport_Location_NW_Separator   (C_INFO)
 };
 FUNC INT DIA_Teleport_Location_NW_Separator_Condition()
 {
-	return (CurrentLevel == NEWWORLD_ZEN && TeleportLocationMainMenu);
+	return (TeleportStarted && CurrentLevel == NEWWORLD_ZEN && TeleportLocationMainMenu);
 };
 FUNC VOID DIA_Teleport_Location_NW_Separator_Info()
 {
@@ -330,7 +332,8 @@ INSTANCE DIA_Teleport_Location_NW_Quick_City   (C_INFO)
 FUNC INT DIA_Teleport_Location_NW_Quick_City_Condition()
 {
 	return (
-		CurrentLevel == NEWWORLD_ZEN 
+		TeleportStarted
+		&& CurrentLevel == NEWWORLD_ZEN 
 		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_NW_CITY_SOUTHGATE]
 	);
@@ -355,7 +358,8 @@ INSTANCE DIA_Teleport_Location_NW_Quick_Onar   (C_INFO)
 FUNC INT DIA_Teleport_Location_NW_Quick_Onar_Condition()
 {
 	return (
-		CurrentLevel == NEWWORLD_ZEN 
+		TeleportStarted
+		&& CurrentLevel == NEWWORLD_ZEN 
 		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_NW_NATURE_ONAR]
 	);
@@ -380,7 +384,8 @@ INSTANCE DIA_Teleport_Location_NW_Quick_Tavern   (C_INFO)
 FUNC INT DIA_Teleport_Location_NW_Quick_Tavern_Condition()
 {
 	return (
-		CurrentLevel == NEWWORLD_ZEN 
+		TeleportStarted		
+		&& CurrentLevel == NEWWORLD_ZEN 
 		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_NW_NATURE_TAVERNE]
 	);
@@ -405,7 +410,8 @@ INSTANCE DIA_Teleport_Location_NW_Quick_Monastery   (C_INFO)
 FUNC INT DIA_Teleport_Location_NW_Quick_Monastery_Condition()
 {
 	return (
-		CurrentLevel == NEWWORLD_ZEN 
+		TeleportStarted
+		&& CurrentLevel == NEWWORLD_ZEN 
 		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_NW_NATURE_MONASTERY] 
 	);
@@ -429,7 +435,7 @@ INSTANCE DIA_Teleport_Location_OW_Nature   (C_INFO)
 };
 FUNC INT DIA_Teleport_Location_OW_Nature_Condition()
 {
-	return (CurrentLevel == OLDWORLD_ZEN && TeleportLocationMainMenu);
+	return (TeleportStarted && CurrentLevel == OLDWORLD_ZEN && TeleportLocationMainMenu);
 };
 FUNC VOID DIA_Teleport_Location_OW_Nature_Info()
 {
@@ -508,7 +514,7 @@ INSTANCE DIA_Teleport_Location_OW_Separator   (C_INFO)
 };
 FUNC INT DIA_Teleport_Location_OW_Separator_Condition()
 {
-	return (CurrentLevel == OLDWORLD_ZEN && TeleportLocationMainMenu);
+	return (TeleportStarted && CurrentLevel == OLDWORLD_ZEN && TeleportLocationMainMenu);
 };
 FUNC VOID DIA_Teleport_Location_OW_Separator_Info()
 {
@@ -529,7 +535,8 @@ INSTANCE DIA_Teleport_Location_OW_Quick_Castle   (C_INFO)
 FUNC INT DIA_Teleport_Location_OW_Quick_Castle_Condition()
 {
 	return (
-		CurrentLevel == OLDWORLD_ZEN 
+		TeleportStarted
+		&& CurrentLevel == OLDWORLD_ZEN 
 		&& TeleportLocationMainMenu
 		&& Teleport_Location_IsEnabled [TELEPORT_OW_CASTLE] 
 	);

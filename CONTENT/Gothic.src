@@ -1,6 +1,8 @@
 _INTERN\CONSTANTS.D
 _INTERN\CLASSES.D
 
+\GelaosMod\Constants_And_Variables.d
+
 ;Ikarus and LeGo
 MOD\Ikarus\Ikarus_G2.src
 MOD\LeGo\Header_G2.src
@@ -339,13 +341,12 @@ STORY\B_Story\B_ENTER_DRAGONISLAND.d
 ; Gelaos Mod
 ; ///////////////////////////////////////////////
 
-\GelaosMod\Constants_And_Variables.d
-
 \GelaosMod\Functions\iif.d
 \GelaosMod\Functions\ConcatStrings.d
 \GelaosMod\Functions\CharacterCustomization.d
 \GelaosMod\Functions\XP_and_LP.d
 \GelaosMod\Functions\Teach*.d
+\GelaosMod\Functions\BankingSystem.d
 
 \GelaosMod\Items\*.d
 \GelaosMod\Story\NPC\*.d

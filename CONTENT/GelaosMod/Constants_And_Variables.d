@@ -59,6 +59,7 @@ const string ITRU_TELEPORT_GENERAL_DESCRIPTION = "Multifunctional teleport";
 const int TELEPORT_LOCATION_COUNT = 36;
 var int Teleport_Location_IsEnabled[TELEPORT_LOCATION_COUNT];
 var int TeleportLocationMainMenu;
+var int TeleportStarted;
 
 // NewWorld - nature
 const int TELEPORT_NW_NATURE_PORTAL             = 0;

@@ -383,6 +383,7 @@ func void Spell_Cast_TeleportGeneral()
 	};
 			
 	MEM_Timer.factorMotion = divf (mkf(1), mkf(10)); // Slow down the time. MUST BE SET BACK TO 1.0 LATER!
+	TeleportStarted = true;
 	AI_ProcessInfos(self); // start the teleportation rune "dialogue"	
 };
 
