@@ -347,6 +347,7 @@ STORY\B_Story\B_ENTER_DRAGONISLAND.d
 \GelaosMod\Functions\XP_and_LP.d
 \GelaosMod\Functions\Teach*.d
 \GelaosMod\Functions\BankingSystem.d
+\GelaosMod\Functions\SkyController.d
 
 \GelaosMod\Items\*.d
 \GelaosMod\Story\NPC\*.d

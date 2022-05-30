@@ -49,6 +49,11 @@ func void INIT_GLOBAL()
 	// set character appearance
 	var C_NPC pchero; pchero = Hlp_GetNpc(PC_Hero);
 	CharacterCustomizationApply(pchero);
+
+	// sky color settings
+	if (!FF_Active(SetSkyColor)) { 
+		FF_Apply(SetSkyColor); 
+	};
 };
 
 
