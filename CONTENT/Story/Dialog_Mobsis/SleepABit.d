@@ -27,11 +27,11 @@ func void PC_Sleep (var int t)
 
 	if (SC_IsObsessed == TRUE)
 	{
- 		PrintScreen	(PRINT_SleepOverObsessed, -1,-1,FONT_Screen,2);
+ 		//PrintScreen	(PRINT_SleepOverObsessed, -1,-1,FONT_Screen,2);
 	}
 	else
 	{
-		PrintScreen	(PRINT_SleepOver, -1,-1,FONT_Screen,2);
+		//PrintScreen	(PRINT_SleepOver, -1,-1,FONT_Screen,2);
 		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
 	};
@@ -235,10 +235,10 @@ func void PC_Sleep_HoursMinutes (var int hour, var int min)
 	// Wld_PlayEffect ("SLEEP_BLEND", hero, hero, 0, 0, 0, FALSE);
 
 	if (SC_IsObsessed == TRUE) {
- 		PrintScreen	(PRINT_SleepOverObsessed, -1,-1,FONT_Screen,2);
+ 		//PrintScreen	(PRINT_SleepOverObsessed, -1,-1,FONT_Screen,2);
 	}
 	else {
-		PrintScreen	(PRINT_SleepOver, -1,-1,FONT_Screen,2);
+		//PrintScreen	(PRINT_SleepOver, -1,-1,FONT_Screen,2);
 		
 		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
