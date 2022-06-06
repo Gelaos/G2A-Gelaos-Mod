@@ -1,10 +1,6 @@
 _INTERN\CONSTANTS.D
 _INTERN\CLASSES.D
 
-\GelaosMod\Constants_And_Variables.d
-\GelaosMod\Functions\iif.d
-\GelaosMod\Functions\ConcatStrings.d
-
 ;Ikarus and LeGo
 MOD\Ikarus\Ikarus_G2.src
 MOD\LeGo\Header_G2.src
@@ -15,6 +11,15 @@ MOD\ConsoleCommands.d
 
 ;AFSP
 MOD\AFSP\_headers_G2_All.src
+
+; -----------------------------------
+; Gelaos Mod
+\GelaosMod\Constants_And_Variables.d
+\GelaosMod\Functions\iif.d
+\GelaosMod\Functions\ConcatStrings.d
+\GelaosMod\Functions\StringOverlay.d
+\GelaosMod\Functions\Sleep_HP_MP_Regeneration.d
+; -----------------------------------
 
 AI\AI_INTERN\AI_CONSTANTS.D
 AI\AI_INTERN\BODYSTATES.D
