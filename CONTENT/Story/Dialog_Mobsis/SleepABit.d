@@ -49,7 +49,7 @@ func void SetSleepDialogueDescription(var C_INFO info, var int hour, var int min
 	var string timeStr;   timeStr   = ConcatStrings5("(",hourStr, ":", minuteStr,")");
 
 	StringOverlay_Reset();
-	StringOverlay_Set_Padding(25, StringOverlay_Padding_Side_Start);
+	StringOverlay_Set_PaddingStart(25, " ");
 	StringOverlay_Set_TextAlign(StringOverlay_TextAlign_Left);
 	timeStr = StringOverlay_Generate(timeStr);
 
@@ -57,7 +57,7 @@ func void SetSleepDialogueDescription(var C_INFO info, var int hour, var int min
 
 	// target time on the next day
 	if (! Wld_IsTime(00,00, hour, minute)) {		
-		StringOverlay_Set_Padding(33, StringOverlay_Padding_Side_Start);
+		StringOverlay_Set_PaddingStart(33, " ");
 		StringOverlay_Set_ColorPreset(StringOverlay_ColorPreset_Red);
 		description = ConcatStrings(description, StringOverlay_Generate("next day"));
 	};
@@ -300,7 +300,7 @@ FUNC INT PC_SleepTime_Custom_Condition() {
 		// if the target time is on next day, add info to description 
 		if ( !Wld_IsTime(00,00, PC_Sleep_SpinnerHourMinute_Hour, PC_Sleep_SpinnerHourMinute_Minute)) {
 			StringOverlay_Reset();
-			StringOverlay_Set_Padding(33, StringOverlay_Padding_Side_Start);
+			StringOverlay_Set_PaddingStart(33, " ");
 			StringOverlay_Set_TextAlign(StringOverlay_TextAlign_Left);
 			StringOverlay_Set_ColorPreset(StringOverlay_ColorPreset_Red);
 
