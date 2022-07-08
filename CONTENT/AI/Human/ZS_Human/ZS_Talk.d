@@ -97,7 +97,7 @@ FUNC void ZS_Talk ()
 			};
 		};
 		
-		// ------ Heiltrank geben kÃ¶nnen ------
+		// ------ Heiltrank geben können ------
 		if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 		&& (Hlp_GetInstanceID (self) != Hlp_GetInstanceID (Biff))
 		&& (Hlp_GetInstanceID (self) != Hlp_GetInstanceID (Biff_NW))
@@ -131,24 +131,23 @@ FUNC void ZS_Talk ()
 	/*
 	if (self.aivar[AIV_TalkedToPlayer] == TRUE) && ...
 	{
-		B_Say (self,other,"$ABS_COMMANDER"); //Ich hÃ¶rte, du warst beim Kommandanten und hast die Sache wieder in Ordnung gebracht.
-		B_Say (self,other,"$ABS_MONASTERY"); //Ich hÃ¶rte, du warst bei Vater Parlan und hast BuÃŸe getan..
-		B_Say (self,other,"$ABS_FARM");	//Ich hÃ¶rte, du warst bei Lee und und hast die Sache wieder in Ordnung gebracht.
+		B_Say (self,other,"$ABS_COMMANDER"); //Ich hörte, du warst beim Kommandanten und hast die Sache wieder in Ordnung gebracht.
+		B_Say (self,other,"$ABS_MONASTERY"); //Ich hörte, du warst bei Vater Parlan und hast Buße getan..
+		B_Say (self,other,"$ABS_FARM");	//Ich hörte, du warst bei Lee und und hast die Sache wieder in Ordnung gebracht.
 		ABS_GOOD		//Das ist gut!
 	};
 	*/ // *** FIXME ***
 
 	// ------ START Multiple Choice Dialog ------
-	AI_ProcessInfos(self);
-
-	
-	zsTalkBugfix = FALSE;	//var resetten!
+	CinemaScopeSlideIn ();
+	AI_ProcessInfos(self);		
+	zsTalkBugfix = FALSE;	//var resetten!	
 };
 
 func INT ZS_Talk_Loop ()
 {
    	if (InfoManager_HasFinished())
-   	&& (zsTalkBugfix == TRUE)			//verhindert, daÃŸ InfoManager_HasFinished im ERSTEN FRAME der Loop abgefragt wird --> fÃ¼hrt sonst bei MOB-SITZENDEN NSCs (kein Scheiss) zu Abbruch der Loop im ERSTEN FRAME! 
+   	&& (zsTalkBugfix == TRUE)			//verhindert, daß InfoManager_HasFinished im ERSTEN FRAME der Loop abgefragt wird --> führt sonst bei MOB-SITZENDEN NSCs (kein Scheiss) zu Abbruch der Loop im ERSTEN FRAME! 
    										//(Problem besteht wegen falscher Reihenfolge der Befehle AI_ProcessInfos und InfoManager_HasFinished)
    	{
 		self.aivar[AIV_INVINCIBLE] = FALSE;
@@ -180,7 +179,7 @@ func INT ZS_Talk_Loop ()
 
 FUNC VOID ZS_Talk_End ()
 {
-	// ------ damit nicht nach Dialog+Losgehen gegrÃ¼ÃŸt wird ------
+	// ------ damit nicht nach Dialog+Losgehen gegrüßt wird ------
 	Npc_SetRefuseTalk(other,20); //BEACHTEN: other ist Spieler!
 
 	// ------ wenn Spieler in meinem Raum ------
@@ -193,5 +192,6 @@ FUNC VOID ZS_Talk_End ()
 	{
 
 	};
+	CinemaScopeSlideOut ();
 };
 

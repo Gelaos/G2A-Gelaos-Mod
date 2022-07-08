@@ -19,6 +19,7 @@ MOD\AFSP\_headers_G2_All.src
 \GelaosMod\Functions\ConcatStrings.d
 \GelaosMod\Functions\StringOverlay.d
 \GelaosMod\Functions\Sleep_HP_MP_Regeneration.d
+\GelaosMod\Functions\CinemaScope.d
 ; -----------------------------------
 
 AI\AI_INTERN\AI_CONSTANTS.D

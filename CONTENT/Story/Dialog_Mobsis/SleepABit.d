@@ -23,6 +23,7 @@ var string PC_Sleep_SpinnerHourMinute_MinuteStr;
 
 func void PC_Sleep_HoursMinutes (var int hour, var int min)
 {
+	CinemaScopeFadeOut();
 	AI_StopProcessInfos(self);		// [SK] ->muss hier stehen um das update zu gewährleisten
 
 	PLAYER_MOBSI_PRODUCTION	= MOBSI_NONE;
@@ -77,6 +78,8 @@ func void SLEEPABIT_S1 ()
 	{
 		self.aivar[AIV_INVINCIBLE]=TRUE;
 		PLAYER_MOBSI_PRODUCTION	=	MOBSI_SLEEPABIT;
+
+		CinemaScopeFadeIn();
 		Ai_ProcessInfos (her);
 
 		if (SC_IsObsessed == TRUE)
@@ -110,9 +113,12 @@ FUNC INT PC_NoSleep_Condition()
 
 func VOID PC_NoSleep_Info()
 {
+	CinemaScopeFadeOut();
 	AI_StopProcessInfos (self);
- 	Wld_StopEffect("DEMENTOR_FX");
-	self.aivar[AIV_INVINCIBLE]=FALSE;
+ 	
+	Wld_StopEffect("DEMENTOR_FX");
+	
+	self.aivar[AIV_INVINCIBLE] = FALSE;
 	PLAYER_MOBSI_PRODUCTION	=	MOBSI_NONE;
 
 	PC_Sleep_SpinnerHourMinute_Initialized = false;
